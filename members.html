@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Portal - Atlantean Gardens</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="members.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Atlantean Gardens</h1>
+                <p class="tagline">Members Portal</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Botanical Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="members.html" class="members-link">Members Portal</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Password Gate -->
+    <div id="password-gate" class="password-gate">
+        <div class="password-container">
+            <h2>🌿 Enter the Inner Gardens 🌿</h2>
+            <p>This sanctuary is for members only. Please enter your password to continue.</p>
+            <form id="password-form">
+                <input 
+                    type="password" 
+                    id="password-input" 
+                    placeholder="Enter password..." 
+                    required
+                >
+                <button type="submit" class="btn btn-primary">Enter</button>
+            </form>
+            <p class="error-message" id="error-message"></p>
+            <p class="note">Not a member yet? <a href="index.html">Learn more</a></p>
+        </div>
+    </div>
+
+    <!-- Members Content (Hidden until password correct) -->
+    <div id="members-content" class="members-content hidden">
+        
+        <!-- Welcome Section -->
+        <section class="members-welcome">
+            <div class="container">
+                <h2>Welcome Back to the Gardens 🌊</h2>
+                <p class="welcome-text">The flowers are blooming. The guardians are tending. Choose your medicine.</p>
+            </div>
+        </section>
+
+        <!-- Current Menu Section -->
+        <section class="strain-menu">
+            <div class="container">
+                <h2>🌿 Current Garden Offerings</h2>
+                
+                <!-- Flowers Section -->
+                <div class="menu-category">
+                    <h3 class="category-title">✨ Flowers</h3>
+                    <div class="strain-grid">
+                        
+                        <!-- Chocolate Diesel -->
+                        <div class="strain-card">
+                            <img src="images/chocolate-diesel.png" alt="Chocolate Diesel">
+                            <h4>Chocolate Diesel</h4>
+                            <p class="strain-type">Sativa-Dominant Hybrid</p>
+                            <p class="strain-description">
+                                Energy with grounding. A little spark for focused creativity without the jitters. 
+                                Smooth cocoa notes, grounding diesel finish.
+                            </p>
+                            <p class="strain-mood">🎨 Creative, Focused, Uplifted</p>
+                        </div>
+
+                        <!-- Mango Kush -->
+                        <div class="strain-card">
+                            <img src="images/mango-kush.png" alt="Mango Kush">
+                            <h4>Mango Kush</h4>
+                            <p class="strain-type">Indica-Dominant Hybrid</p>
+                            <p class="strain-description">
+                                Soft, tropical calm. Gentle ease for body and mind. Perfect for unwinding 
+                                after a long day without heavy sedation.
+                            </p>
+                            <p class="strain-mood">🌴 Relaxed, Happy, Peaceful</p>
+                        </div>
+
+                        <!-- Thin Mints -->
+                        <div class="strain-card">
+                            <img src="images/thin-mints.png" alt="Thin Mints">
+                            <h4>Thin Mints</h4>
+                            <p class="strain-type">Balanced Hybrid</p>
+                            <p class="strain-description">
+                                A trusted companion for evening rituals. Balanced bliss that soothes 
+                                without sedating. Minty-sweet comfort.
+                            </p>
+                            <p class="strain-mood">🍃 Balanced, Content, Grounded</p>
+                        </div>
+
+                        <!-- Ice Cream -->
+                        <div class="strain-card">
+                            <img src="images/ice-cream.png" alt="Ice Cream">
+                            <h4>Ice Cream</h4>
+                            <p class="strain-type">Indica-Dominant Hybrid (60/40)</p>
+                            <p class="strain-description">
+                                Velvety calm that soothes body and mind. Sweet vanilla meets earthy pine. 
+                                Melts away tension, welcomes contentment.
+                            </p>
+                            <p class="strain-mood">😌 Soothing, Calming, Euphoric</p>
+                        </div>
+
+                        <!-- Runtz Layer Cake -->
+                        <div class="strain-card">
+                            <img src="images/runtz-layer-cake.png" alt="Runtz Layer Cake">
+                            <h4>Runtz Layer Cake</h4>
+                            <p class="strain-type">Balanced Hybrid (50/50)</p>
+                            <p class="strain-description">
+                                Decadent fusion stacked with euphoric delight. Sweet, creamy aromas 
+                                with a citrusy twist. Balanced bliss, frosted tranquility.
+                            </p>
+                            <p class="strain-mood">🍰 Euphoric, Relaxed, Uplifted</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Edibles Section -->
+                <div class="menu-category">
+                    <h3 class="category-title">🍄 Edibles</h3>
+                    <div class="edibles-list">
+                        <div class="edible-item">
+                            <h4>Muffins</h4>
+                            <p>1 piece: $25 | 3 pieces: $70 | 6 pieces: $120</p>
+                        </div>
+                        <div class="edible-item">
+                            <h4>Fruity Canna Leaf Gummies</h4>
+                            <p>1 piece: $15 | 5 pieces: $70 | 10 pieces: $120</p>
+                        </div>
+                        <div class="edible-item">
+                            <h4>Cannabis Butter</h4>
+                            <p>75g block: $160</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Info -->
+                <div class="pricing-scroll">
+                    <h3>🌸 Flower Pricing</h3>
+                    <div class="pricing-grid">
+                        <div class="price-item">
+                            <span class="amount">3.5g (⅛ oz)</span>
+                            <span class="price">$50</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="amount">7g (¼ oz)</span>
+                            <span class="price">$90</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="amount">14g (½ oz)</span>
+                            <span class="price">$170</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="amount">28g (1 oz)</span>
+                            <span class="price">$320</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Order Form Section -->
+        <section class="order-section">
+            <div class="container">
+                <h2>🌊 Place Your Order</h2>
+                <p class="order-intro">
+                    Fill out this form and I'll reach out via Signal to confirm details and arrange delivery.
+                </p>
+                
+                <!-- Typeform Embed Placeholder -->
+                <div class="typeform-container">
+                    <iframe 
+                        id="typeform-embed" 
+                        src="https://form.typeform.com/to/YOUR_FORM_ID" 
+                        frameborder="0" 
+                        style="width: 100%; height: 600px;">
+                    </iframe>
+                    <p class="typeform-note">
+                        ⚠️ <strong>Replace with your actual Typeform link!</strong><br>
+                        Create a Typeform at <a href="https://www.typeform.com" target="_blank">typeform.com</a> 
+                        with these fields:
+                    </p>
+                    <ul class="form-fields">
+                        <li>Name</li>
+                        <li>Signal/Phone Number</li>
+                        <li>Delivery Address</li>
+                        <li>Product Selection (Dropdown/Multiple Choice)</li>
+                        <li>Quantities</li>
+                        <li>Preferred Delivery Day/Time</li>
+                        <li>Any Special Notes</li>
+                    </ul>
+                </div>
+
+                <!-- Alternative: Simple Contact Form -->
+                <div class="simple-form">
+                    <h3>Or reach out directly:</h3>
+                    <p>Signal: <strong>[Your Signal Number]</strong></p>
+                    <p>Text me your order details and preferred delivery time. 🌿</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Atlantean Gardens</h4>
+                    <p>Myth Made Medicine</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="members.html">Members</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p>Signal: [Your Signal Number]</p>
+                    <p>For inquiries & orders</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Atlantean Gardens. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="members.js"></script>
+</body>
+</html>
