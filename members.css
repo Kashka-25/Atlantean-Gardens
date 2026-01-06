@@ -1,4 +1,4 @@
-/* ===== MEMBERS PORTAL STYLES ===== */
+/* ===== MEMBERS PORTAL STYLES - IMAGE-FREE VERSION ===== */
 
 /* Password Gate */
 .password-gate {
@@ -8,6 +8,18 @@
     justify-content: center;
     background: linear-gradient(135deg, var(--primary-teal), var(--light-teal));
     padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.password-gate::before {
+    content: '🔐';
+    position: absolute;
+    font-size: 20rem;
+    opacity: 0.05;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .password-container {
@@ -18,6 +30,8 @@
     width: 100%;
     text-align: center;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
 }
 
 .password-container h2 {
@@ -86,13 +100,33 @@
 /* Members Welcome */
 .members-welcome {
     padding: 4rem 2rem;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-cream) 100%);
+    background: linear-gradient(135deg, 
+        var(--cream) 0%, 
+        var(--warm-cream) 50%,
+        var(--sage-green) 100%);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.members-welcome::before {
+    content: '🌊';
+    position: absolute;
+    font-size: 15rem;
+    opacity: 0.05;
+    top: -50px;
+    right: -50px;
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
 }
 
 .welcome-text {
     font-size: 1.3rem;
-    color: var(--text-light);
+    color: var(--text-dark);
     font-style: italic;
     max-width: 600px;
     margin: 0 auto;
@@ -123,11 +157,12 @@
 }
 
 .strain-card {
-    background: var(--cream);
+    background: var(--white);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    border-top: 4px solid var(--gold);
 }
 
 .strain-card:hover {
@@ -135,10 +170,72 @@
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* Replace strain images with beautiful unique gradients */
 .strain-card img {
+    display: none;
+}
+
+/* Unique gradient for each strain */
+.strain-card::before {
+    content: '';
+    display: block;
     width: 100%;
     height: 250px;
-    object-fit: cover;
+    background: linear-gradient(135deg, 
+        var(--light-teal) 0%,
+        var(--primary-teal) 100%);
+    position: relative;
+}
+
+/* Chocolate Diesel - rich browns and greens */
+.strain-card:nth-child(1)::before {
+    background: linear-gradient(135deg, 
+        #6b4423 0%,
+        var(--moss-green) 50%,
+        var(--sage-green) 100%);
+}
+
+/* Mango Kush - warm golden tones */
+.strain-card:nth-child(2)::before {
+    background: linear-gradient(135deg, 
+        #ff9a56 0%,
+        var(--gold) 50%,
+        var(--warm-cream) 100%);
+}
+
+/* Thin Mints - minty greens */
+.strain-card:nth-child(3)::before {
+    background: linear-gradient(135deg, 
+        var(--sage-green) 0%,
+        var(--light-teal) 50%,
+        var(--moss-green) 100%);
+}
+
+/* Ice Cream - creamy vanilla tones */
+.strain-card:nth-child(4)::before {
+    background: linear-gradient(135deg, 
+        var(--cream) 0%,
+        var(--warm-cream) 50%,
+        var(--gold) 100%);
+}
+
+/* Runtz Layer Cake - sweet pastels */
+.strain-card:nth-child(5)::before {
+    background: linear-gradient(135deg, 
+        var(--warm-cream) 0%,
+        #ffd1dc 50%,
+        var(--gold) 100%);
+}
+
+/* Add decorative emoji overlay */
+.strain-card::after {
+    content: '🌿';
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4rem;
+    opacity: 0.3;
 }
 
 .strain-card h4 {
@@ -178,10 +275,20 @@
 }
 
 .edible-item {
-    background: var(--cream);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-cream) 100%);
     padding: 1.5rem;
     border-radius: 10px;
     border-left: 4px solid var(--gold);
+    position: relative;
+}
+
+.edible-item::before {
+    content: '🍄';
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    opacity: 0.2;
 }
 
 .edible-item h4 {
@@ -201,18 +308,33 @@
     background: linear-gradient(135deg, var(--primary-teal), var(--light-teal));
     border-radius: 15px;
     color: var(--cream);
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-scroll::before {
+    content: '🌸';
+    position: absolute;
+    font-size: 15rem;
+    opacity: 0.05;
+    bottom: -50px;
+    right: -50px;
 }
 
 .pricing-scroll h3 {
     color: var(--warm-cream);
     text-align: center;
     margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 .price-item {
@@ -222,6 +344,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s ease;
+}
+
+.price-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
 }
 
 .amount {
@@ -238,7 +366,9 @@
 /* Order Section */
 .order-section {
     padding: 4rem 2rem;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-cream) 100%);
+    background: linear-gradient(135deg, 
+        var(--cream) 0%, 
+        var(--warm-cream) 100%);
 }
 
 .order-intro {
@@ -282,21 +412,36 @@
 
 .simple-form {
     text-align: center;
-    padding: 2rem;
+    padding: 3rem 2rem;
     background: var(--white);
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.simple-form::before {
+    content: '📱';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.05;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .simple-form h3 {
     color: var(--primary-teal);
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 .simple-form p {
     font-size: 1.1rem;
     color: var(--text-light);
     margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .simple-form strong {
@@ -315,6 +460,10 @@
     }
 
     .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .edibles-list {
         grid-template-columns: 1fr;
     }
 }
