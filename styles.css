@@ -1,5 +1,5 @@
-/* ===== ATLANTEAN GARDENS STYLES ===== */
-/* Color Palette from Brand Images */
+/* ===== ATLANTEAN GARDENS STYLES - IMAGE-FREE VERSION ===== */
+/* Color Palette from Brand Inspiration */
 :root {
     --primary-teal: #2a7d7d;
     --light-teal: #5fa8a8;
@@ -135,35 +135,58 @@ a {
     transition: all 0.3s ease;
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== HERO SECTION - PURE CSS ===== */
 .hero {
     min-height: 80vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 4rem 2rem;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-cream) 100%);
+    background: linear-gradient(135deg, 
+        var(--cream) 0%, 
+        var(--warm-cream) 50%,
+        var(--sage-green) 100%);
     position: relative;
     overflow: hidden;
 }
 
+/* Decorative CSS circles */
 .hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('images/tea-ceremony.png') center/cover no-repeat;
-    opacity: 0.15;
-    z-index: 0;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--light-teal) 0%, transparent 70%);
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+    opacity: 0.2;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
 }
 
 .hero-content {
-    flex: 1;
-    max-width: 600px;
+    max-width: 800px;
     z-index: 1;
     position: relative;
+    text-align: center;
 }
 
 .hero-title {
@@ -171,6 +194,7 @@ a {
     color: var(--primary-teal);
     margin-bottom: 1rem;
     line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hero-subtitle {
@@ -184,6 +208,7 @@ a {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .btn {
@@ -229,25 +254,16 @@ a {
     color: var(--cream);
 }
 
+/* Hide image elements */
 .hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-
-.hero-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: none;
 }
 
 /* ===== PHILOSOPHY SECTION ===== */
 .philosophy {
     padding: 5rem 2rem;
     background: var(--white);
+    position: relative;
 }
 
 .philosophy-text {
@@ -267,12 +283,13 @@ a {
 }
 
 .card {
-    background: var(--cream);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-cream) 100%);
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    border-top: 4px solid var(--light-teal);
 }
 
 .card:hover {
@@ -289,7 +306,12 @@ a {
 /* ===== HIGHLIGHTS SECTION ===== */
 .highlights {
     padding: 5rem 2rem;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-cream) 100%);
+    background: linear-gradient(135deg, var(--sage-green) 0%, var(--moss-green) 100%);
+    position: relative;
+}
+
+.highlights h2 {
+    color: var(--cream);
 }
 
 .highlight-grid {
@@ -305,6 +327,7 @@ a {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    min-height: 350px;
 }
 
 .highlight-card:hover {
@@ -312,10 +335,21 @@ a {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* Replace images with beautiful gradients */
 .highlight-card img {
+    display: none;
+}
+
+.highlight-card::before {
+    content: '';
+    display: block;
     width: 100%;
     height: 250px;
-    object-fit: cover;
+    background: linear-gradient(135deg, 
+        var(--light-teal) 0%,
+        var(--primary-teal) 50%,
+        var(--gold) 100%);
+    opacity: 0.8;
 }
 
 .highlight-card h3 {
@@ -335,17 +369,48 @@ a {
     background: linear-gradient(135deg, var(--primary-teal), var(--light-teal));
     text-align: center;
     color: var(--cream);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta::before {
+    content: '🌿';
+    position: absolute;
+    font-size: 15rem;
+    opacity: 0.1;
+    top: -50px;
+    left: -50px;
+    animation: rotate 20s linear infinite;
+}
+
+.cta::after {
+    content: '🌊';
+    position: absolute;
+    font-size: 15rem;
+    opacity: 0.1;
+    bottom: -50px;
+    right: -50px;
+    animation: rotate 25s linear infinite reverse;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .cta h2 {
     color: var(--warm-cream);
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 .cta p {
     color: var(--cream);
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .cta-buttons {
@@ -353,6 +418,8 @@ a {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
 /* ===== FOOTER ===== */
@@ -397,8 +464,13 @@ footer {
 /* ===== SHOP PAGE STYLES ===== */
 .shop-hero {
     padding: 4rem 2rem 2rem;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-cream) 100%);
+    background: linear-gradient(135deg, 
+        var(--cream) 0%, 
+        var(--warm-cream) 50%,
+        var(--light-teal) 100%);
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .shop-subtitle {
@@ -454,7 +526,7 @@ footer {
 .category-section {
     margin-bottom: 3rem;
     padding: 2rem;
-    background: var(--cream);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-cream) 100%);
     border-radius: 15px;
 }
 
@@ -499,6 +571,17 @@ footer {
     background: linear-gradient(135deg, var(--primary-teal), var(--light-teal));
     text-align: center;
     color: var(--cream);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-hero::before {
+    content: '✨';
+    position: absolute;
+    font-size: 20rem;
+    opacity: 0.05;
+    top: -50px;
+    right: -50px;
 }
 
 .about-hero h2 {
@@ -538,7 +621,7 @@ footer {
 
 .philosophy-section {
     padding: 5rem 2rem;
-    background: var(--cream);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-cream) 100%);
 }
 
 .philosophy-grid {
@@ -603,7 +686,11 @@ footer {
 
 .different-section {
     padding: 5rem 2rem;
-    background: var(--cream);
+    background: linear-gradient(135deg, var(--sage-green) 0%, var(--moss-green) 100%);
+}
+
+.different-section h2 {
+    color: var(--cream);
 }
 
 .different-grid {
@@ -664,7 +751,6 @@ footer {
     }
 
     .hero {
-        flex-direction: column;
         text-align: center;
         padding: 2rem 1rem;
     }
@@ -675,10 +761,6 @@ footer {
 
     .hero-subtitle {
         font-size: 1.1rem;
-    }
-
-    .hero-image {
-        margin-top: 2rem;
     }
 
     h2 {
