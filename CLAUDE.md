@@ -30,7 +30,7 @@ Local folder `C:\Users\cassi\Projects\Atlantean-Gardens\` also holds:
 
 **OPEN DECISION (Cassidy's call):** which prototype the real Atlantean Gardens
 experience grows from — the Living Atlas, the Next.js MVP, or a combination.
-Do not pick one, merge them, or port content between them without her say-so.
+Do not pick one, merge them, or port content between them without Cassidy's say-so.
 
 ## Brand and story material
 Lives in `C:\Users\cassi\OneDrive\Documents\Atlantean Gardens\` (Manuscripts,
