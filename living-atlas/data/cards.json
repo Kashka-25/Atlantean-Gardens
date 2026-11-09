@@ -1,0 +1,232 @@
+[
+ {
+  "atlas": "lusty-lady",
+  "code": "AG-014",
+  "name": "Lusty Lady",
+  "title": "The Floral Siren",
+  "printedRealm": "The Sunlit Terraces",
+  "id": "lusty-lady",
+  "front": "assets/cards/lusty-lady-front.jpg",
+  "back": "assets/cards/lusty-lady-back.jpg"
+ },
+ {
+  "atlas": "strawberry-akeil",
+  "code": "AG-009",
+  "name": "Strawberry Akeil",
+  "title": "The Sunshine Bard",
+  "printedRealm": "The Sunlit Fields",
+  "id": "strawberry-akeil",
+  "front": "assets/cards/strawberry-akeil-front.jpg",
+  "back": "assets/cards/strawberry-akeil-back.jpg"
+ },
+ {
+  "atlas": "honey-melon-kush",
+  "code": "",
+  "name": "Honey Melon Kush",
+  "title": "The Sunkissed Sweetie",
+  "printedRealm": "The Orchard",
+  "id": "honey-melon-kush",
+  "front": "assets/cards/honey-melon-kush-front.jpg",
+  "back": "assets/cards/honey-melon-kush-back.jpg"
+ },
+ {
+  "atlas": "ice-cream",
+  "code": "AG-012",
+  "name": "Ice Cream",
+  "title": "The Gelato Dreamer",
+  "printedRealm": "The Frosted Coast",
+  "id": "ice-cream",
+  "front": "assets/cards/ice-cream-front.jpg",
+  "back": "assets/cards/ice-cream-back.jpg"
+ },
+ {
+  "atlas": "lilac-diesel-grape-diamonds",
+  "code": "AG-008",
+  "name": "Lilac Diesel x Grape Diamonds",
+  "title": "The Vineyard Jester",
+  "printedRealm": "The Vineyard",
+  "id": "lilac-diesel-grape-diamonds",
+  "front": "assets/cards/lilac-diesel-grape-diamonds-front.jpg",
+  "back": "assets/cards/lilac-diesel-grape-diamonds-back.jpg"
+ },
+ {
+  "atlas": "chemical-bride",
+  "code": "AG-013",
+  "name": "Chemical Bride",
+  "title": "The Alchemical Bride",
+  "printedRealm": "The Crystal Conservatory",
+  "id": "chemical-bride",
+  "front": "assets/cards/chemical-bride-front.jpg",
+  "back": "assets/cards/chemical-bride-back.jpg"
+ },
+ {
+  "atlas": "alien-mints-permanent-marker",
+  "code": "AG-021",
+  "name": "Alien Mints × Permanent Marker",
+  "title": "The Dream Cartographer",
+  "printedRealm": "The Celestial Archive",
+  "id": "alien-mints-permanent-marker",
+  "front": "assets/cards/alien-mints-permanent-marker-front.jpg",
+  "back": "assets/cards/alien-mints-permanent-marker-back.jpg"
+ },
+ {
+  "atlas": "glookies",
+  "code": "AG-011",
+  "name": "Glookies",
+  "title": "The Hearth Baker",
+  "printedRealm": "The Hearth",
+  "id": "glookies",
+  "front": "assets/cards/glookies-front.jpg",
+  "back": "assets/cards/glookies-back.jpg"
+ },
+ {
+  "atlas": "permanent-marker",
+  "code": "AG-016",
+  "name": "Permanent Marker",
+  "title": "The Storykeeper",
+  "printedRealm": "The Living Archive",
+  "id": "permanent-marker",
+  "front": "assets/cards/permanent-marker-front.jpg",
+  "back": "assets/cards/permanent-marker-back.jpg"
+ },
+ {
+  "atlas": null,
+  "code": "AG-002",
+  "name": "Mango Kush",
+  "title": "The Sunlit Wanderer",
+  "printedRealm": "Sun Realm",
+  "id": "mango-kush",
+  "front": "assets/cards/mango-kush-front.jpg",
+  "back": null
+ },
+ {
+  "atlas": null,
+  "code": "AG-006",
+  "name": "Grandpa Cookies",
+  "title": "The Gentle Gardener",
+  "printedRealm": "The Orchard",
+  "id": "grandpa-cookies",
+  "front": "assets/cards/grandpa-cookies-front.jpg",
+  "back": "assets/cards/grandpa-cookies-back.jpg"
+ },
+ {
+  "atlas": null,
+  "code": "AG-007",
+  "name": "White Wedding RBX",
+  "title": "The Blossom Keeper",
+  "printedRealm": "The Garden",
+  "id": "white-wedding-rbx",
+  "front": "assets/cards/white-wedding-rbx-front.jpg",
+  "back": "assets/cards/white-wedding-rbx-back.jpg"
+ },
+ {
+  "atlas": null,
+  "code": "AG-010",
+  "name": "Chocolate Diesel",
+  "title": "The Forge Artisan",
+  "printedRealm": "The Foundry",
+  "id": "chocolate-diesel",
+  "front": "assets/cards/chocolate-diesel-front.jpg",
+  "back": "assets/cards/chocolate-diesel-back.jpg"
+ },
+ {
+  "atlas": null,
+  "code": "AG-015",
+  "name": "Purple Alien OG",
+  "title": "The Starswept Wanderer",
+  "printedRealm": "The Celestial Expanse",
+  "id": "purple-alien-og",
+  "front": "assets/cards/purple-alien-og-front.jpg",
+  "back": null
+ },
+ {
+  "atlas": null,
+  "code": "AG-017",
+  "name": "Godfather OG",
+  "title": "The Orchard Patriarch",
+  "printedRealm": "The Ancient Orchard",
+  "id": "godfather-og",
+  "front": "assets/cards/godfather-og-front.jpg",
+  "back": "assets/cards/godfather-og-back.jpg"
+ },
+ {
+  "atlas": null,
+  "code": "AG-018",
+  "name": "Pineapple Pucker",
+  "title": "The Tropical Trickster",
+  "printedRealm": "The Sunlit Isles",
+  "id": "pineapple-pucker",
+  "front": "assets/cards/pineapple-pucker-front.jpg",
+  "back": null
+ },
+ {
+  "atlas": null,
+  "code": "AG-019",
+  "name": "Lung Buster",
+  "title": "The Timberheart Giant",
+  "printedRealm": "The Evergreen Grove",
+  "id": "lung-buster",
+  "front": "assets/cards/lung-buster-front.jpg",
+  "back": "assets/cards/lung-buster-back.jpg"
+ },
+ {
+  "atlas": null,
+  "code": "AG-020",
+  "name": "XXX OG",
+  "title": "The Silent Mountain King",
+  "printedRealm": "The Pine Crown Peaks",
+  "id": "xxx-og",
+  "front": "assets/cards/xxx-og-front.jpg",
+  "back": "assets/cards/xxx-og-back.jpg"
+ },
+ {
+  "atlas": null,
+  "code": "AG-020",
+  "name": "Pineapple Diesel",
+  "title": "The Tropical Inventor",
+  "printedRealm": "The Sunlit Isles",
+  "id": "pineapple-diesel",
+  "front": "assets/cards/pineapple-diesel-front.jpg",
+  "back": "assets/cards/pineapple-diesel-back.jpg"
+ },
+ {
+  "atlas": null,
+  "code": "AG-022",
+  "name": "Runtz Layer Cake",
+  "title": "The Festival Baker",
+  "printedRealm": "Sugar Blossom Market",
+  "id": "runtz-layer-cake",
+  "front": "assets/cards/runtz-layer-cake-front.jpg",
+  "back": "assets/cards/runtz-layer-cake-back.jpg"
+ },
+ {
+  "atlas": null,
+  "code": "AG-023",
+  "name": "Gorilla Zkittlez",
+  "title": "The Fruit Grove Guardian",
+  "printedRealm": "The Rainbow Canopy",
+  "id": "gorilla-zkittlez",
+  "front": "assets/cards/gorilla-zkittlez-front.jpg",
+  "back": "assets/cards/gorilla-zkittlez-back.jpg"
+ },
+ {
+  "atlas": null,
+  "code": "AG-024",
+  "name": "Blue Dream",
+  "title": "The Tidewatcher's Journal",
+  "printedRealm": "The Sapphire Sea",
+  "id": "blue-dream",
+  "front": "assets/cards/blue-dream-front.jpg",
+  "back": "assets/cards/blue-dream-back.jpg"
+ },
+ {
+  "atlas": null,
+  "code": "",
+  "name": "Puro Loco",
+  "title": "The Keeper of Beautiful Chaos",
+  "printedRealm": "",
+  "id": "puro-loco",
+  "front": "assets/cards/puro-loco-front.jpg",
+  "back": null
+ }
+]
