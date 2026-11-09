@@ -57,9 +57,10 @@ section{position:relative}
 @keyframes drift{to{transform:scale(1.1) translate(-2%,1.5%)}}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(11,26,34,.15),rgba(7,18,26,.9) 72%),linear-gradient(180deg,transparent 70%,var(--night))}
 .hero__in{position:relative;z-index:1;max-width:760px}
-.emblem{width:148px;height:148px;margin:0 auto 1.6rem;border-radius:50%;object-fit:cover;object-position:50% 28%;border:2px solid var(--gold);box-shadow:0 0 0 7px rgba(210,171,98,.12),0 0 70px rgba(143,211,224,.4);animation:breathe 6s ease-in-out infinite}
-@keyframes breathe{50%{box-shadow:0 0 0 11px rgba(210,171,98,.07),0 0 100px rgba(143,211,224,.55)}}
-.hero h1{font-size:clamp(2.5rem,8.5vw,5.2rem);color:var(--parch);text-shadow:0 2px 40px rgba(210,171,98,.35)}
+.emblem{width:clamp(132px,16vw,176px);height:auto;aspect-ratio:1;margin:0 auto 1.4rem;border-radius:50%;box-shadow:0 0 0 6px rgba(210,171,98,.1),0 0 70px rgba(210,171,98,.32);animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{50%{box-shadow:0 0 0 10px rgba(210,171,98,.06),0 0 100px rgba(240,213,149,.48)}}
+.hero h1{margin:0 auto}
+.wordmark{width:min(640px,88vw);margin:0 auto;filter:drop-shadow(0 0 2px rgba(243,231,204,.55)) drop-shadow(0 0 22px rgba(243,231,204,.28))}
 .hero .tag{font-style:italic;color:var(--gold-2);font-size:clamp(1.15rem,2.6vw,1.5rem);margin:.4rem 0 2rem}
 .hero .lede{margin:0 auto;color:var(--text)}
 .cue{margin-top:2.6rem;display:inline-flex;flex-direction:column;align-items:center;gap:.5rem;font-family:var(--display);font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--text-dim);text-decoration:none}
@@ -193,9 +194,9 @@ footer b{font-family:var(--display);font-weight:600;letter-spacing:.14em;color:v
 <header class="hero" id="top">
   <div class="hero__bg" aria-hidden="true"></div>
   <div class="hero__in">
-    <img class="emblem rv" src="img/emblem.jpg" alt="The Atlantean Gardens guide emblem: a meditating monkey wrapped in blue cloud-spirits beneath a rising sun">
+    <img class="emblem rv" src="img/logo-emblem.png" alt="The Atlantean Gardens emblem: a golden tree with spiralling branches above waves and green hills, in a gold-rimmed circle">
     <p class="eyebrow rv d1">The story of</p>
-    <h1 class="rv d2">Atlantean Gardens</h1>
+    <h1 class="rv d2"><img class="wordmark" src="img/logo-wordmark.png" alt="Atlantean Gardens"></h1>
     <p class="tag rv d3">Atlantis Rising · Myth Made Medicine</p>
     <p class="lede rv d4">Bringing love, creativity and joy back to the world of plant medicine, especially cannabis.</p>
     <a class="cue rv d5" href="#idea">Begin the story<span></span></a>
