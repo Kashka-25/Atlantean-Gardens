@@ -77,6 +77,16 @@ from the originals with Pillow.
   Your Journey.
 - Glimmer positions (`GLIMMER_SPOTS` in `js/atlas.js`) are placeholders,
   set clear of the title scrolls. Cassidy may want to place each one by hand.
-- Respects reduced motion: no zoom, straight into the scene.
+- Each scene breathes with ambient life drawn from its visual identity in
+  The Atlas 7 Worlds: petals and pollen (Sunlight), rising bubbles (Bubble
+  Coast), falling leaves (Living Harvest), crystal glints (Crystal
+  Conservatory), embers (Hearthlands), fireflies (Verdant Wilds), stars
+  (Celestial), golden motes (Heart of Atlantis).
+- Hovering a glimmer whispers the place it hides near, using the strain's or
+  Keeper's district from the Atlas data (for example "Near Coco's Old Table").
+- The Celestial Realm and Heart of Atlantis now use clean crops of the
+  unlabelled Atlas painting ("Without Bake.png") in place of the labelled map.
+- Respects reduced motion: no zoom and no ambient particles; it goes straight
+  into the scene.
 - Source of truth is now `site/living-atlas/`; the older local
   `dream-experience/` folder is superseded.

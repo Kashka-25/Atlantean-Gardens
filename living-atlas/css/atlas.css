@@ -498,3 +498,15 @@ button { font: inherit; color: inherit; }
   .scene__count { font-size: .56rem; padding: 0 .4rem; white-space: nowrap; }
   .glimmer { width: 52px; height: 52px; margin: -26px 0 0 -26px; }
 }
+
+/* ambient life and glimmer whispers */
+.scene__life { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; mix-blend-mode: screen; }
+.glimmer { z-index: 2; }
+.glimmer[data-near]::after {
+  content: attr(data-near); position: absolute; left: 50%; top: calc(100% + 2px); transform: translate(-50%, 4px); white-space: nowrap;
+  font-family: var(--display); font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: var(--parch);
+  background: var(--glass); border: 1px solid var(--gold-dim); padding: .2rem .55rem; border-radius: 999px;
+  opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s;
+}
+.glimmer[data-near]:hover::after, .glimmer[data-near]:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+.glimmer.is-found[data-near]::after { color: #d7f3f8; border-color: rgba(143,211,224,.5); }

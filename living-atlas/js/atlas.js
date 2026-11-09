@@ -382,7 +382,72 @@
     const keepers = W.keepers.filter((k) => k.realm === r.id).map((k) => ({ kind: "keepers", id: k.id, name: k.name, k }));
     const strains = W.strains.filter((s) => s.realm === r.id).map((s) => ({ kind: "cards", id: s.id, name: s.name, s }));
     const shift = (r.order || 0) % GLIMMER_SPOTS.length;
-    return keepers.concat(strains).map((g, i) => Object.assign(g, { spot: GLIMMER_SPOTS[(i + shift) % GLIMMER_SPOTS.length] }));
+    return keepers.concat(strains).map((g, i) => Object.assign(g, {
+      spot: GLIMMER_SPOTS[(i + shift) % GLIMMER_SPOTS.length],
+      near: (g.kind === "cards" ? districtName(g.s) : r.districtIds[g.k.district]) || "",
+    }));
+  }
+
+  /* Ambient life: each realm breathes with the "visual identity" from
+     The Atlas 7 Worlds (bubbles rising on the Bubble Coast, embers in the
+     Hearthlands, stars in the Celestial Realm...). Drawn on a canvas. */
+  const AMBIENCE = {
+    "sunlight-realms": { kind: "petals", n: 34, colors: ["#ffd7e3", "#fff1c9", "#ffe39a"] },
+    "bubble-coast-realm": { kind: "bubbles", n: 38, colors: ["#d7f6ff", "#9fe6f2"] },
+    "living-harvest-realm": { kind: "leaves", n: 26, colors: ["#e9c46a", "#a7c957", "#d4a373"] },
+    "crystal-conservatory-realm": { kind: "glints", n: 46, colors: ["#e4d4ff", "#b9f3ff", "#ffffff"] },
+    "hearthlands-realm": { kind: "embers", n: 40, colors: ["#ffb347", "#ff7b39", "#ffe08a"] },
+    "verdant-wilds-realm": { kind: "fireflies", n: 30, colors: ["#e8ff9c", "#c5f27a"] },
+    "celestial-realm": { kind: "stars", n: 70, colors: ["#ffffff", "#dcd3ff", "#bfe6ff"] },
+    "heart-of-atlantis": { kind: "motes", n: 34, colors: ["#fff3c4", "#d9f2c4"] },
+  };
+  function startAmbience(canvas, realmId) {
+    const cfg = AMBIENCE[realmId]; if (!cfg || reduceMotion()) return;
+    const ctx = canvas.getContext("2d"); let w = 0, h = 0, dpr = 1;
+    const size = () => { dpr = Math.min(window.devicePixelRatio || 1, 2); w = canvas.clientWidth; h = canvas.clientHeight; canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+    size(); window.addEventListener("resize", size);
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const spawn = (fresh) => {
+      const p = { x: rnd(0, w), y: fresh ? rnd(0, h) : 0, c: cfg.colors[Math.floor(Math.random() * cfg.colors.length)], t: rnd(0, 6.28), s: rnd(.6, 1.4) };
+      switch (cfg.kind) {
+        case "bubbles": p.r = rnd(2, 7); p.vy = -rnd(.25, .8); p.vx = 0; if (!fresh) p.y = h + 10; break;
+        case "embers": p.r = rnd(1, 2.6); p.vy = -rnd(.3, .9); p.vx = rnd(-.15, .15); if (!fresh) p.y = h + 5; break;
+        case "petals": p.r = rnd(2.5, 5); p.vy = rnd(.25, .6); p.vx = rnd(.15, .5); if (!fresh) p.y = -10; break;
+        case "leaves": p.r = rnd(3, 6); p.vy = rnd(.3, .7); p.vx = rnd(-.2, .25); if (!fresh) p.y = -10; break;
+        default: p.r = rnd(.8, 2.4); p.vy = rnd(-.12, .12); p.vx = rnd(-.15, .15);
+      }
+      return p;
+    };
+    const ps = Array.from({ length: cfg.n }, () => spawn(true));
+    let last = performance.now(), raf = 0;
+    const frame = (now) => {
+      if (!canvas.isConnected) { window.removeEventListener("resize", size); return; }
+      const dt = Math.min(3, (now - last) / 16.7); last = now;
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < ps.length; i++) {
+        const p = ps[i]; p.t += .02 * dt * p.s;
+        const sway = Math.sin(p.t) * (cfg.kind === "petals" || cfg.kind === "leaves" ? .6 : cfg.kind === "bubbles" ? .35 : .25);
+        p.x += (p.vx + sway) * dt; p.y += p.vy * dt;
+        if (p.y < -20 || p.y > h + 20 || p.x < -20 || p.x > w + 20) { ps[i] = spawn(cfg.kind === "glints" || cfg.kind === "stars" || cfg.kind === "fireflies" || cfg.kind === "motes"); continue; }
+        const pulse = .5 + .5 * Math.sin(p.t * (cfg.kind === "stars" || cfg.kind === "glints" ? 2.4 : 1.3));
+        ctx.save(); ctx.translate(p.x, p.y);
+        if (cfg.kind === "bubbles") {
+          ctx.globalAlpha = .55; ctx.strokeStyle = p.c; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(0, 0, p.r, 0, 6.28); ctx.stroke();
+          ctx.globalAlpha = .7; ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(-p.r * .35, -p.r * .35, p.r * .25, 0, 6.28); ctx.fill();
+        } else if (cfg.kind === "petals" || cfg.kind === "leaves") {
+          ctx.rotate(p.t); ctx.globalAlpha = .75; ctx.fillStyle = p.c; ctx.beginPath(); ctx.ellipse(0, 0, p.r, p.r * .45, 0, 0, 6.28); ctx.fill();
+        } else {
+          const glow = cfg.kind === "embers" ? .9 : pulse;
+          ctx.globalAlpha = glow; ctx.shadowColor = p.c; ctx.shadowBlur = cfg.kind === "stars" ? 6 : 12;
+          ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(0, 0, p.r * (cfg.kind === "glints" ? .6 + pulse : 1), 0, 6.28); ctx.fill();
+          if (cfg.kind === "glints" && pulse > .85) { ctx.fillRect(-p.r * 4, -.5, p.r * 8, 1); ctx.fillRect(-.5, -p.r * 4, 1, p.r * 8); }
+        }
+        ctx.restore();
+      }
+      raf = requestAnimationFrame(frame);
+    };
+    raf = requestAnimationFrame(frame);
+    document.addEventListener("visibilitychange", () => { if (document.hidden) cancelAnimationFrame(raf); else if (canvas.isConnected) { last = performance.now(); raf = requestAnimationFrame(frame); } });
   }
 
   function viewRealm(stage, id) {
@@ -395,9 +460,10 @@
         <div class="scene__vp" id="scene-vp">
           <div class="scene__art">
             <img src="${esc(r.image)}" alt="Painting of ${esc(r.name)}" draggable="false">
-            ${glims.map((g, i) => `<button class="glimmer${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.7).toFixed(1)}s" data-g="${i}" aria-label="${found(g) ? esc(g.name) : "A hidden glimmer"}"><span></span></button>`).join("")}
+            ${glims.map((g, i) => `<button class="glimmer${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.7).toFixed(1)}s" data-g="${i}"${g.near ? ` data-near="${esc(found(g) ? g.name : "Near " + g.near)}"` : ""} aria-label="${found(g) ? esc(g.name) : "A hidden glimmer" + (g.near ? " near " + esc(g.near) : "")}"><span></span></button>`).join("")}
           </div>
         </div>
+        <canvas class="scene__life" aria-hidden="true"></canvas>
         <header class="scene__head">
           <div class="realm__num">${r.number ? "REALM " + r.number : "THE CENTRE OF THE ATLAS"}</div>
           <h1>${esc(r.name)}</h1>
@@ -418,8 +484,9 @@
     stage.querySelector("[data-tale]").addEventListener("click", () => openRealm(r.id));
     stage.querySelectorAll(".glimmer").forEach((b) => b.addEventListener("click", () => {
       const g = glims[+b.dataset.g];
-      revealGlimmer(g, b, () => { b.classList.add("is-found"); b.setAttribute("aria-label", g.name); updateCount(); });
+      revealGlimmer(g, b, () => { b.classList.add("is-found"); b.setAttribute("aria-label", g.name); if (b.dataset.near) b.dataset.near = g.name; updateCount(); });
     }));
+    startAmbience(stage.querySelector(".scene__life"), r.id);
     const vp = $("#scene-vp");
     requestAnimationFrame(() => { vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2; vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2; });
     enableDragPan(vp);
