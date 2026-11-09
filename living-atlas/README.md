@@ -75,8 +75,18 @@ from the originals with Pillow.
   strain and Keeper that lives in that realm. Touching one raises its
   collector card out of the light, ready to flip. Finds count toward
   Your Journey.
-- Glimmer positions (`GLIMMER_SPOTS` in `js/atlas.js`) are placeholders,
-  set clear of the title scrolls. Cassidy may want to place each one by hand.
+- **Hiding places** (`HIDING` in `js/atlas.js`): each strain and Keeper hides
+  where its Atlas district appears in its painting. Glookies is in the doorway
+  of The Baked Leaf, Lilac Diesel × Grape Diamonds among the vineyard
+  terraces, Raptor by the road signposts, and so on. Each one has a seeker's
+  clue describing what is painted there.
+- **Seek panel:** a "Clues" list in every scene, like a Where's Wally card.
+  Portraits stay shadowed until found; touching a found one shows its card
+  again.
+- **Strain pages** put the card centre stage: a large card that tilts with the
+  cursor, buttons to show the character or the tale and the plant, an "Up
+  close" reader for the small print on card backs, and the realm painting
+  glowing behind. The Herbarium details sit below.
 - Each scene breathes with ambient life drawn from its visual identity in
   The Atlas 7 Worlds: petals and pollen (Sunlight), rising bubbles (Bubble
   Coast), falling leaves (Living Harvest), crystal glints (Crystal

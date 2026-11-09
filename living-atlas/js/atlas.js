@@ -216,44 +216,88 @@
       return "";
     }).join("");
     const cardSide = art
-      ? `<button class="flip" id="flip" aria-label="Flip the ${esc(s.name)} card">
-           <span class="flip__inner"><span class="flip__side"><img src="${esc(art.front)}" alt="${esc(s.name)} card front"></span>
-           ${art.back ? `<span class="flip__side flip__back"><img src="${esc(art.back)}" alt="${esc(s.name)} card back"></span>` : ""}</span>
-         </button>${art.back ? '<p class="flip__hint">Tap the card to turn it over</p>' : ""}`
-      : `<div class="ccard ccard--type" style="aspect-ratio:2/3">${cardHTML(s).replace(/^<a[^>]*>|<\/a>$/g, "")}</div><p class="flip__hint">Its portrait is still being painted</p>`;
+      ? `<div class="tilt" id="tilt"><button class="flip cardstage__flip" id="flip" aria-label="${art.back ? "Turn the " + esc(s.name) + " card over" : esc(s.name) + " card"}">
+           <span class="flip__inner"><span class="flip__side"><img src="${esc(art.front)}" alt="${esc(s.name)} card front"><i class="glare"></i></span>
+           ${art.back ? `<span class="flip__side flip__back"><img src="${esc(art.back)}" alt="${esc(s.name)} card back"><i class="glare"></i></span>` : ""}</span>
+         </button></div>`
+      : `<div class="ccard ccard--type cardstage__flip" style="aspect-ratio:2/3">${cardHTML(s).replace(/^<a[^>]*>|<\/a>$/g, "")}</div>`;
     const profile = [["Flavour", s.flavor], ["Aroma", s.aroma], ["Effects", s.effects], ["May relieve", s.mayRelieve]].filter(([, v]) => v);
+    const where = r ? `${esc(r.name)}${districtName(s) ? " · " + esc(districtName(s)) : ""}` : "Still finding its realm";
     stage.innerHTML = `
-      <section class="page view">
-        <div class="crumbs">${r ? `<a href="#/atlas/${r.id}">${esc(r.name)}</a>${districtName(s) ? " › " + esc(districtName(s)) : ""}` : '<a href="#/cards">Strains</a> › Still finding its realm'} › ${esc(s.name)}</div>
-        <div class="strain">
-          <div class="strain__card">${cardSide}</div>
-          <article class="parchment">
-            <p class="eyebrow">${esc(s.code || "Awaiting a card number")}${s.category ? " · " + esc(s.category) : ""}</p>
-            <h1>${esc(s.name)}</h1>
-            ${s.title ? `<p class="sub">${esc(s.title)}</p>` : ""}
-            <div class="chips">${s.tags.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>
-            <div class="ptabs" role="tablist">
-              <button role="tab" aria-selected="true" data-tab="story">Story</button>
-              <button role="tab" aria-selected="false" data-tab="effects">Effects</button>
-              <button role="tab" aria-selected="false" data-tab="terpenes">Terpenes</button>
-              <button role="tab" aria-selected="false" data-tab="pairs">Pairs with</button>
-              <button role="tab" aria-selected="false" data-tab="grow">Grow notes</button>
-            </div>
-            <div data-pane="story">
-              ${s.body ? `<p>${esc(s.body)}</p>` : `<p class="empty">${art && art.back ? "This strain's tale is written on the back of its card. Tap the card to turn it over." : EMPTY}</p>`}
-              ${s.quote ? `<blockquote>“${esc(s.quote)}”</blockquote>` : ""}
-              <aside class="plant-ask">${passageHTML(PLANT_ASK)}</aside>
-              <dl class="kv"><dt>Atlas realm</dt><dd>${r ? esc(r.name) : "Still finding its realm"}</dd>${districtName(s) ? `<dt>District</dt><dd>${esc(districtName(s))}</dd>` : ""}${s.printedRealm ? `<dt>On the card</dt><dd>${esc(s.printedRealm)}</dd>` : ""}${s.cardTitle ? `<dt>Card title</dt><dd>${esc(s.cardTitle)}</dd>` : ""}</dl>
-            </div>
-            <div data-pane="effects" hidden>${profile.length ? `<dl class="kv">${profile.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>` : `<div class="empty">${art && art.back ? "Turn the card over: its flavour and effects are written on its back." : EMPTY}</div>`}</div>
-            <div data-pane="terpenes" hidden>${s.terpenes.length ? `<div class="chips">${s.terpenes.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>` : `<div class="empty">${EMPTY}</div>`}</div>
-            <div data-pane="pairs" hidden>${kin ? `<div class="kin">${kin}</div>` : `<div class="empty">${EMPTY}</div>`}</div>
-            <div data-pane="grow" hidden>${s.growNotes ? `<p>${esc(s.growNotes)}</p>` : `<div class="empty">${EMPTY}</div>`}</div>
-          </article>
+      <section class="cardstage view">
+        <div class="cardstage__bg" aria-hidden="true" style="background-image:url('${esc(r ? r.image : "assets/atlas-clean.jpg")}')"></div>
+        <div class="cardstage__inner">
+          <div class="crumbs">${r ? `<a href="#/realm/${r.id}">${esc(r.name)}</a>${districtName(s) ? " › " + esc(districtName(s)) : ""}` : '<a href="#/cards">Strains</a> › Still finding its realm'} › ${esc(s.name)}</div>
+          <div class="cardstage__left"><div class="cardstage__card">${cardSide}</div>
+          ${art ? `<div class="cardstage__controls" role="group" aria-label="Card side">
+            <button class="seg is-on" data-side="front" aria-pressed="true">The character</button>
+            ${art.back ? `<button class="seg" data-side="back" aria-pressed="false">The tale &amp; the plant</button>` : ""}
+            <button class="seg seg--zoom" data-zoom aria-label="Read the card up close">Up close</button>
+          </div>` : `<p class="flip__hint">Its portrait is still being painted</p>`}</div>
+          <div class="cardstage__right">
+          <p class="eyebrow cardstage__code">${esc(s.code || "Awaiting a card number")}${s.category ? " · " + esc(s.category) : ""}</p>
+          <h1 class="cardstage__name">${esc(s.name)}</h1>
+          ${(s.cardTitle || s.title) ? `<p class="cardstage__title">${esc(s.cardTitle || s.title)}</p>` : ""}
+          ${s.quote ? `<blockquote class="cardstage__quote">“${esc(s.quote)}”</blockquote>` : ""}
+          <p class="cardstage__where">✦ ${where}</p>
+          ${art && art.back ? `<p class="cardstage__nudge">Turn the card over to read its tale, its flavour and its effects.</p>` : ""}
+          </div>
         </div>
+      </section>
+      <section class="page view herbarium">
+        <article class="parchment">
+          <p class="eyebrow">From the Herbarium</p>
+          <div class="chips">${s.tags.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>
+          <div class="ptabs" role="tablist">
+            <button role="tab" aria-selected="true" data-tab="story">Story</button>
+            <button role="tab" aria-selected="false" data-tab="effects">Effects</button>
+            <button role="tab" aria-selected="false" data-tab="terpenes">Terpenes</button>
+            <button role="tab" aria-selected="false" data-tab="pairs">Pairs with</button>
+            <button role="tab" aria-selected="false" data-tab="grow">Grow notes</button>
+          </div>
+          <div data-pane="story">
+            ${s.body ? `<p>${esc(s.body)}</p>` : `<p class="empty">${art && art.back ? "This strain's tale is written on the back of its card. Turn it over above." : EMPTY}</p>`}
+            <aside class="plant-ask">${passageHTML(PLANT_ASK)}</aside>
+            <dl class="kv"><dt>Atlas realm</dt><dd>${r ? esc(r.name) : "Still finding its realm"}</dd>${districtName(s) ? `<dt>District</dt><dd>${esc(districtName(s))}</dd>` : ""}${s.printedRealm ? `<dt>On the card</dt><dd>${esc(s.printedRealm)}</dd>` : ""}</dl>
+          </div>
+          <div data-pane="effects" hidden>${profile.length ? `<dl class="kv">${profile.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>` : `<div class="empty">${art && art.back ? "Turn the card over: its flavour and effects are written on its back." : EMPTY}</div>`}</div>
+          <div data-pane="terpenes" hidden>${s.terpenes.length ? `<div class="chips">${s.terpenes.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>` : `<div class="empty">${EMPTY}</div>`}</div>
+          <div data-pane="pairs" hidden>${kin ? `<div class="kin">${kin}</div>` : `<div class="empty">${EMPTY}</div>`}</div>
+          <div data-pane="grow" hidden>${s.growNotes ? `<p>${esc(s.growNotes)}</p>` : `<div class="empty">${EMPTY}</div>`}</div>
+        </article>
       </section>`;
     wireTabs(stage.querySelector(".parchment"));
-    const flip = $("#flip"); if (flip && art && art.back) flip.addEventListener("click", () => flip.classList.toggle("is-flipped"));
+    const flip = $("#flip"), segs = stage.querySelectorAll(".seg[data-side]");
+    const show = (side) => {
+      if (!flip || !art || !art.back) return;
+      flip.classList.toggle("is-flipped", side === "back");
+      segs.forEach((b) => { const on = b.dataset.side === side; b.classList.toggle("is-on", on); b.setAttribute("aria-pressed", String(on)); });
+    };
+    if (flip && art && art.back) flip.addEventListener("click", () => show(flip.classList.contains("is-flipped") ? "front" : "back"));
+    segs.forEach((b) => b.addEventListener("click", () => show(b.dataset.side)));
+    const zoom = stage.querySelector("[data-zoom]");
+    if (zoom) zoom.addEventListener("click", () => openCloseUp(flip && flip.classList.contains("is-flipped") ? art.back : art.front, s.name));
+    const tilt = $("#tilt");
+    if (tilt && !reduceMotion() && window.matchMedia("(hover: hover)").matches) {
+      tilt.addEventListener("pointermove", (e) => {
+        const b = tilt.getBoundingClientRect(); const px = (e.clientX - b.left) / b.width - .5, py = (e.clientY - b.top) / b.height - .5;
+        tilt.style.transform = `rotateY(${px * 14}deg) rotateX(${-py * 12}deg)`;
+        tilt.style.setProperty("--gx", `${(px + .5) * 100}%`); tilt.style.setProperty("--gy", `${(py + .5) * 100}%`);
+      });
+      tilt.addEventListener("pointerleave", () => { tilt.style.transform = ""; });
+    }
+  }
+
+  function openCloseUp(src, name) {
+    const el = document.createElement("div");
+    el.className = "closeup"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-label", name + " up close");
+    el.innerHTML = `<img src="${esc(src)}" alt="${esc(name)} card, up close"><button class="drawer__close" aria-label="Close">${svg(ICON.close).replace("<svg", '<svg width="20" height="20"')}</button>`;
+    document.body.appendChild(el);
+    requestAnimationFrame(() => el.classList.add("is-in"));
+    const onKey = (e) => { if (e.key === "Escape") shut(); };
+    const shut = () => { el.classList.remove("is-in"); setTimeout(() => el.remove(), 350); document.removeEventListener("keydown", onKey); };
+    el.addEventListener("click", shut); document.addEventListener("keydown", onKey);
+    setTimeout(() => el.querySelector("button").focus(), 50);
   }
 
   function viewKeepers(stage) {
@@ -349,9 +393,35 @@
 
   /* ── Realm portals and hidden glimmers ──────────────────── */
   const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  // Where glimmers sit on each 3:2 realm painting (percent of width, height).
-  // A design choice for now, kept clear of the paintings' title scrolls;
-  // Cassidy can place each one by hand later.
+  // Hiding places: each strain or Keeper sits where its Atlas district
+  // appears in its realm painting (x, y in percent of the 3:2 painting),
+  // with a seeker's clue that describes what is painted there.
+  const HIDING = {
+    "sunlight-realms": {
+      "coco": { x: 25, y: 71, clue: "In the sun-baked courtyard of low stone walls, just west of the arched aqueduct." },
+      "lusty-lady": { x: 41, y: 45, clue: "Where pink blossom trees crowd the terraced steps above the waterfalls." },
+      "strawberry-akeil": { x: 52, y: 56, clue: "Beneath the little green-domed pavilion, the kind of place a bard would play." },
+      "honey-melon-kush": { x: 46, y: 66, clue: "Dozing on the sunny meadow just below the green-domed pavilion." },
+    },
+    "bubble-coast-realm": {
+      "ice-cream": { x: 47, y: 71, clue: "At the end of the long wooden pier, drifting slowly beside the great glass bubble-dome." },
+    },
+    "living-harvest-realm": {
+      "lilac-diesel-grape-diamonds": { x: 66, y: 32, clue: "Among the terraced rows of vines beneath the glass-domed hall." },
+      "lila": { x: 52, y: 37, clue: "Under the leafy arbor walkway that wanders through the vineyard terraces." },
+    },
+    "crystal-conservatory-realm": {
+      "dnine": { x: 12, y: 68, clue: "Among the crowded bookshelves of the little glass study on the left." },
+      "alien-mints-permanent-marker": { x: 18, y: 86, clue: "On the cluttered desk beside the brass telescope, among the open books." },
+      "chemical-bride": { x: 88, y: 70, clue: "Inside the glass gazebo on the right, where a table is laid among the crystals." },
+    },
+    "hearthlands-realm": {
+      "glookies": { x: 19, y: 58, clue: "In the glowing doorway of The Baked Leaf, where the ovens never cool." },
+      "permanent-marker": { x: 30, y: 77, clue: "Around the fire circle, where friends sit close and stories linger." },
+      "raptor": { x: 91, y: 82, clue: "By the wooden signposts that point every traveller down the road." },
+    },
+  };
+  // Fallback spots for anyone not yet given a hiding place.
   const GLIMMER_SPOTS = [[58, 38], [76, 60], [45, 70], [86, 32], [64, 82], [36, 52], [70, 44], [52, 56]];
   let arrivingFrom = null;
 
@@ -382,8 +452,10 @@
     const keepers = W.keepers.filter((k) => k.realm === r.id).map((k) => ({ kind: "keepers", id: k.id, name: k.name, k }));
     const strains = W.strains.filter((s) => s.realm === r.id).map((s) => ({ kind: "cards", id: s.id, name: s.name, s }));
     const shift = (r.order || 0) % GLIMMER_SPOTS.length;
+    const hide = HIDING[r.id] || {};
     return keepers.concat(strains).map((g, i) => Object.assign(g, {
-      spot: GLIMMER_SPOTS[(i + shift) % GLIMMER_SPOTS.length],
+      spot: hide[g.id] ? [hide[g.id].x, hide[g.id].y] : GLIMMER_SPOTS[(i + shift) % GLIMMER_SPOTS.length],
+      clue: hide[g.id] ? hide[g.id].clue : "",
       near: (g.kind === "cards" ? districtName(g.s) : r.districtIds[g.k.district]) || "",
     }));
   }
@@ -475,8 +547,17 @@
         <div class="scene__bar">
           <button class="btn" data-leave>${svg(ICON.back).replace("<svg", '<svg width="16" height="16"')} The Atlas</button>
           <button class="btn" data-tale>Read the tale</button>
-          ${glims.length ? `<span class="scene__count" id="scene-count"></span>` : ""}
+          ${glims.length ? `<button class="btn" data-seek aria-expanded="true" aria-controls="seek">Clues</button><span class="scene__count" id="scene-count"></span>` : ""}
         </div>
+        ${glims.length ? `<aside class="seek is-open" id="seek" aria-label="Who is hiding here">
+          <p class="seek__title">Seek in ${esc(r.name)}</p>
+          <ol>${glims.map((g, i) => {
+            const thumb = g.kind === "keepers" ? g.k.portrait : (g.s.art && g.s.art.front);
+            return `<li class="${found(g) ? "is-found" : ""}" data-gi="${i}">
+              ${thumb ? `<img class="seek__thumb" src="${esc(thumb)}" alt="" loading="lazy">` : `<span class="seek__thumb seek__thumb--blank">✦</span>`}
+              <div><b>${esc(g.name)}</b><span>${esc(g.clue || (g.near ? "Somewhere near " + g.near + "." : "Somewhere in this realm."))}</span></div>
+            </li>`; }).join("")}</ol>
+        </aside>` : ""}
       </section>`;
     const updateCount = () => { const c = $("#scene-count"); if (c) c.textContent = `✦ ${glims.filter(found).length} of ${glims.length} found`; };
     updateCount();
@@ -484,7 +565,18 @@
     stage.querySelector("[data-tale]").addEventListener("click", () => openRealm(r.id));
     stage.querySelectorAll(".glimmer").forEach((b) => b.addEventListener("click", () => {
       const g = glims[+b.dataset.g];
-      revealGlimmer(g, b, () => { b.classList.add("is-found"); b.setAttribute("aria-label", g.name); if (b.dataset.near) b.dataset.near = g.name; updateCount(); });
+      revealGlimmer(g, b, () => {
+        b.classList.add("is-found"); b.setAttribute("aria-label", g.name); if (b.dataset.near) b.dataset.near = g.name; updateCount();
+        const li = stage.querySelector(`.seek li[data-gi="${b.dataset.g}"]`); if (li) li.classList.add("is-found");
+      });
+    }));
+    const seek = $("#seek"), seekBtn = stage.querySelector("[data-seek]");
+    if (seek && window.matchMedia("(max-width: 860px)").matches) { seek.classList.remove("is-open"); seekBtn.setAttribute("aria-expanded", "false"); }
+    if (seekBtn) seekBtn.addEventListener("click", () => { const o = seek.classList.toggle("is-open"); seekBtn.setAttribute("aria-expanded", String(o)); });
+    stage.querySelectorAll(".seek li").forEach((li) => li.addEventListener("click", () => {
+      const b = stage.querySelector(`.glimmer[data-g="${li.dataset.gi}"]`);
+      if (li.classList.contains("is-found")) { b.click(); return; }
+      li.classList.add("is-seeking"); setTimeout(() => li.classList.remove("is-seeking"), 1200);
     }));
     startAmbience(stage.querySelector(".scene__life"), r.id);
     const vp = $("#scene-vp");
