@@ -63,3 +63,20 @@ from the originals with Pillow.
   before printing"), so only its front is shown.
 - **Celestial Realm and Heart of Atlantis:** they have no dedicated paintings
   yet, so the preview uses a crop of the Atlas map.
+
+## Realm portals (branch `feature/realm-portals`, not live yet)
+
+- Touching a realm on the Atlas dives into it. The map zooms toward the pin
+  while a circular portal opens onto the realm's painting.
+- Each realm is its own scene (`#/realm/<id>`). Its painting fills the
+  screen and can be panned on phones. "Read the tale" opens the realm's
+  verses, and "The Atlas" surfaces back to the map.
+- Hidden glimmers (the easter eggs) twinkle on the painting, one for each
+  strain and Keeper that lives in that realm. Touching one raises its
+  collector card out of the light, ready to flip. Finds count toward
+  Your Journey.
+- Glimmer positions (`GLIMMER_SPOTS` in `js/atlas.js`) are placeholders,
+  set clear of the title scrolls. Cassidy may want to place each one by hand.
+- Respects reduced motion: no zoom, straight into the scene.
+- Source of truth is now `site/living-atlas/`; the older local
+  `dream-experience/` folder is superseded.
