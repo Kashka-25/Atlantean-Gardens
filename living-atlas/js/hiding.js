@@ -91,11 +91,11 @@ window.HIDING = {
   "heart-of-atlantis": {
     strains: {},
     keepers: {
-      "kasper": { x: 38, y: 15, riddle: "Where water spills from the high terraces, / a wanderer has found another path." },
-      "lila": { x: 55, y: 30, riddle: "High in the crown of the oldest tree, / she is the green the leaves agree on." },
-      "coco": { x: 70, y: 76, riddle: "Among the great roots, deep and patient, / one who never stopped deepening his own." },
-      "dnine": { x: 36, y: 86, riddle: "In the little round house at the foot of the hill, / a question is quietly brewing." },
-      "raptor": { x: 85, y: 25, riddle: "Out past the river on the stone isles, / a builder is checking every bridge." },
+      "kasper": { x: 52, y: 27, riddle: "High in the oldest tree a small arched window glows; / a journal keeper is looking out at every realm." },
+      "lila": { x: 31, y: 91, riddle: "Where lily pads float below the stone bridge, / she listens to the rivers leaving for every realm." },
+      "coco": { x: 55, y: 64, riddle: "In the ring of stones around the gentle flame, / an elder welcomes whoever arrives." },
+      "dnine": { x: 77, y: 79, riddle: "Beside the great open book and the turning rings of brass, / a question is quietly brewing." },
+      "raptor": { x: 92, y: 78, riddle: "Where a deer stands watch by the falling water, / a protector keeps the far bank safe." },
     },
   },
 };
