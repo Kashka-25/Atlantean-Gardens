@@ -489,7 +489,7 @@
     "hearthlands-realm": { kind: "embers", n: 40, colors: ["#ffb347", "#ff7b39", "#ffe08a"] },
     "verdant-wilds-realm": { kind: "fireflies", n: 30, colors: ["#e8ff9c", "#c5f27a"] },
     "celestial-realm": { kind: "stars", n: 70, colors: ["#ffffff", "#dcd3ff", "#bfe6ff"] },
-    "heart-of-atlantis": { kind: "motes", n: 34, colors: ["#fff3c4", "#d9f2c4"] },
+    "heart-of-atlantis": { kind: "heart", n: 46, colors: ["#c9a7ff", "#b48ef0", "#e6d0ff"], sparks: ["#ffe9a8", "#ffd36b", "#fff6d6"] },
   };
   function startAmbience(canvas, realmId) {
     const cfg = AMBIENCE[realmId]; if (!cfg || reduceMotion()) return;
@@ -504,6 +504,12 @@
         case "embers": p.r = rnd(1, 2.6); p.vy = -rnd(.3, .9); p.vx = rnd(-.15, .15); if (!fresh) p.y = h + 5; break;
         case "petals": p.r = rnd(2.5, 5); p.vy = rnd(.25, .6); p.vx = rnd(.15, .5); if (!fresh) p.y = -10; break;
         case "leaves": p.r = rnd(3, 6); p.vy = rnd(.3, .7); p.vx = rnd(-.2, .25); if (!fresh) p.y = -10; break;
+        case "heart":
+          // wisteria petals drifting down from the great tree, and lantern
+          // sparks rising from the gathering circle beneath it
+          if (Math.random() < .55) { p.k = "petal"; p.r = rnd(2.5, 4.8); p.vy = rnd(.22, .5); p.vx = rnd(-.25, .2); if (!fresh) p.y = -10; }
+          else { p.k = "spark"; p.c = cfg.sparks[Math.floor(Math.random() * cfg.sparks.length)]; p.r = rnd(1, 2.3); p.vy = -rnd(.2, .55); p.vx = rnd(-.12, .12); if (!fresh) { p.y = h * rnd(.55, 1) + 5; } }
+          break;
         default: p.r = rnd(.8, 2.4); p.vy = rnd(-.12, .12); p.vx = rnd(-.15, .15);
       }
       return p;
@@ -516,7 +522,7 @@
       ctx.clearRect(0, 0, w, h);
       for (let i = 0; i < ps.length; i++) {
         const p = ps[i]; p.t += .02 * dt * p.s;
-        const sway = Math.sin(p.t) * (cfg.kind === "petals" || cfg.kind === "leaves" ? .6 : cfg.kind === "bubbles" ? .35 : .25);
+        const sway = Math.sin(p.t) * (cfg.kind === "petals" || cfg.kind === "leaves" || p.k === "petal" ? .6 : cfg.kind === "bubbles" ? .35 : .25);
         p.x += (p.vx + sway) * dt; p.y += p.vy * dt;
         if (p.y < -20 || p.y > h + 20 || p.x < -20 || p.x > w + 20) { ps[i] = spawn(cfg.kind === "glints" || cfg.kind === "stars" || cfg.kind === "fireflies" || cfg.kind === "motes"); continue; }
         const pulse = .5 + .5 * Math.sin(p.t * (cfg.kind === "stars" || cfg.kind === "glints" ? 2.4 : 1.3));
@@ -524,10 +530,10 @@
         if (cfg.kind === "bubbles") {
           ctx.globalAlpha = .55; ctx.strokeStyle = p.c; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(0, 0, p.r, 0, 6.28); ctx.stroke();
           ctx.globalAlpha = .7; ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(-p.r * .35, -p.r * .35, p.r * .25, 0, 6.28); ctx.fill();
-        } else if (cfg.kind === "petals" || cfg.kind === "leaves") {
+        } else if (cfg.kind === "petals" || cfg.kind === "leaves" || p.k === "petal") {
           ctx.rotate(p.t); ctx.globalAlpha = .75; ctx.fillStyle = p.c; ctx.beginPath(); ctx.ellipse(0, 0, p.r, p.r * .45, 0, 0, 6.28); ctx.fill();
         } else {
-          const glow = cfg.kind === "embers" ? .9 : pulse;
+          const glow = cfg.kind === "embers" ? .9 : p.k === "spark" ? .55 + .45 * pulse : pulse;
           ctx.globalAlpha = glow; ctx.shadowColor = p.c; ctx.shadowBlur = cfg.kind === "stars" ? 6 : 12;
           ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(0, 0, p.r * (cfg.kind === "glints" ? .6 + pulse : 1), 0, 6.28); ctx.fill();
           if (cfg.kind === "glints" && pulse > .85) { ctx.fillRect(-p.r * 4, -.5, p.r * 8, 1); ctx.fillRect(-.5, -p.r * 4, 1, p.r * 8); }
