@@ -558,7 +558,7 @@
         </div>
         <div class="scene__fore" aria-hidden="true" style="background-image:url('${esc(sceneImage(r))}')"></div>
         <canvas class="scene__life" aria-hidden="true"></canvas>
-        <header class="scene__head${SHIELDS[r.id] ? " sr-only" : ""}">
+        <header class="scene__head">
           <div class="realm__num">${r.number ? "REALM " + r.number : "THE CENTRE OF THE ATLAS"}</div>
           <h1>${esc(r.name)}</h1>
           <p>“${esc(r.tagline)}”</p>
@@ -649,14 +649,17 @@
     raf = requestAnimationFrame(frame);
   }
 
-  /* Each realm's parchment shield (words and all) is lifted off the painting
-     and floats above it in the same spot; the painting beneath is softly
-     filled. Made by tools/lift_shields.py. */
-  const SHIELDS = window.SHIELDS || {};
-  const sceneImage = (r) => SHIELDS[r.id] ? r.image.replace(/\.jpg$/, "-base.jpg") : r.image;
+  /* Words lifted off each realm's title scroll float back above it. */
+  const SCROLLS = window.SCROLL_TEXT || {};
+  const sceneImage = (r) => SCROLLS[r.id] ? r.image.replace(/\.jpg$/, "-clean.jpg") : r.image;
   function scrollWords(r) {
-    const sh = SHIELDS[r.id]; if (!sh) return "";
-    return `<img class="shield" src="${esc(r.image.replace(/\.jpg$/, "-shield.png"))}" alt="${esc(r.name)}" style="left:${sh.x}%;top:${sh.y}%;width:${sh.w}%" draggable="false">`;
+    const sc = SCROLLS[r.id]; if (!sc) return "";
+    const [l, t, rr, b] = sc.box, W = 1536, H = 1024;
+    return `<div class="scroll-words" style="left:${(l / W * 100).toFixed(2)}%;top:${(t / H * 100).toFixed(2)}%;width:${((rr - l) / W * 100).toFixed(2)}%;height:${((b - t) / H * 100).toFixed(2)}%;--ink:${sc.ink}" aria-hidden="true">
+      <p class="scroll-words__title">${sc.title.map(esc).join("<br>")}</p>
+      <span class="scroll-words__rule">✦</span>
+      ${sc.body.map(([txt, kind]) => `<p class="scroll-words__body${kind === "plain" ? " is-plain" : ""}">${esc(txt)}</p>`).join('<span class="scroll-words__rule is-small">❧</span>')}
+    </div>`;
   }
 
   function realmTally(r) { const g = glimmersFor(r); return { found: g.filter(isFound).length, total: g.length }; }

@@ -768,10 +768,16 @@ button { font: inherit; color: inherit; }
 .app.rail-tucked .rail__name, .app.rail-tucked .rail__body { opacity: 0; pointer-events: none; visibility: hidden; }
 .app.rail-tucked .rail__toggle { animation: breathe 6s ease-in-out infinite; }
 
-/* each realm's parchment shield floats above the painting */
+/* words floating above each realm's title scroll */
 .scene__art { container-type: inline-size; }
-.scene__art > img.shield { position: absolute; z-index: 2; height: auto; object-fit: initial; pointer-events: none; user-select: none;
-  filter: drop-shadow(0 1.2cqw 1.4cqw rgba(10,6,0,.45)) drop-shadow(0 0 .5cqw rgba(255,240,200,.25));
-  animation: shieldFloat 7s ease-in-out infinite; transform-origin: 50% 50%; }
-@keyframes shieldFloat { 0%, 100% { transform: translate(.4cqw, .5cqw) rotate(-.4deg); } 50% { transform: translate(.4cqw, -.1cqw) rotate(.3deg); } }
-@media (prefers-reduced-motion: reduce) { .scene__art > img.shield { animation: none; transform: translate(.4cqw, .4cqw); } }
+.scroll-words { position: absolute; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55cqw;
+  text-align: center; color: var(--ink, #3b3220); pointer-events: none; animation: scrollFloat 7s ease-in-out infinite; }
+.scroll-words p { margin: 0; text-shadow: 0 .35cqw .5cqw rgba(60,40,10,.22), 0 0 .1cqw rgba(255,248,225,.6); }
+.scroll-words__title { font-family: var(--display); font-weight: 600; font-size: 2.05cqw; line-height: 1.12; letter-spacing: .02em; }
+.scroll-words__body { font-family: var(--serif); font-style: italic; font-size: 1.02cqw; line-height: 1.45; max-width: 80%; }
+.scroll-words__body.is-plain { font-style: normal; font-size: .95cqw; }
+.scroll-words__rule { font-size: .8cqw; opacity: .7; letter-spacing: 1.2cqw; }
+.scroll-words__rule::before, .scroll-words__rule::after { content: "———"; letter-spacing: -.1cqw; opacity: .6; margin: 0 .3cqw; }
+.scroll-words__rule.is-small::before, .scroll-words__rule.is-small::after { content: "—"; }
+@keyframes scrollFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-.35cqw); } }
+@media (prefers-reduced-motion: reduce) { .scroll-words { animation: none; } }
