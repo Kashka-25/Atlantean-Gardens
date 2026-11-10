@@ -145,12 +145,12 @@
   /* The clean, unlabelled Atlas painting ("Without Bake"); realm names float
      above it as living labels. x, y are percentages of the painting. */
   const ATLAS = {
-    src: "assets/atlas-clean.jpg",
+    src: "assets/atlas-home.jpg",
     spots: {
-      "sunlight-realms": { x: 42, y: 15 }, "bubble-coast-realm": { x: 69, y: 17 },
-      "living-harvest-realm": { x: 31, y: 36 }, "crystal-conservatory-realm": { x: 83, y: 36 },
-      "heart-of-atlantis": { x: 57, y: 38 }, "hearthlands-realm": { x: 37, y: 61 },
-      "verdant-wilds-realm": { x: 80, y: 60 }, "celestial-realm": { x: 58, y: 79 },
+      "sunlight-realms": { x: 26, y: 14 }, "bubble-coast-realm": { x: 66, y: 13 },
+      "living-harvest-realm": { x: 22, y: 36 }, "crystal-conservatory-realm": { x: 84, y: 33 },
+      "heart-of-atlantis": { x: 50, y: 37 }, "hearthlands-realm": { x: 22, y: 59 },
+      "verdant-wilds-realm": { x: 81, y: 57 }, "celestial-realm": { x: 52, y: 72 },
     },
   };
 
