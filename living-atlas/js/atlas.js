@@ -43,9 +43,21 @@
     "celestial-realm": "rgba(120,130,240,.5)", "heart-of-atlantis": "rgba(150,200,120,.4)",
   };
 
+  /* Card frames take the exact shape of their own artwork, so no card or
+     Keeper portrait is ever trimmed (Keeper portraits are taller than the
+     2:3 strain cards, and a few older cards are too). */
+  document.addEventListener("load", (e) => {
+    const img = e.target; if (!img || img.tagName !== "IMG" || !img.naturalWidth) return;
+    const ratio = `${img.naturalWidth} / ${img.naturalHeight}`;
+    if (img.classList.contains("ccard__art")) { const c = img.closest(".ccard"); if (c) c.style.aspectRatio = ratio; return; }
+    const side = img.closest(".flip__side");
+    if (side && !side.classList.contains("flip__back")) { const f = side.closest(".flip"); if (f) f.style.aspectRatio = ratio; }
+    const portrait = img.closest(".portrait"); if (portrait) portrait.style.aspectRatio = ratio;
+  }, true);
+
   /* ── Journey (per-browser only) ────────────────────────── */
   const KEY = "ag-living-atlas-journey-v1";
-  let journey = { realms: [], cards: [], keepers: [], scrolls: [], sightings: [] };
+  let journey = { realms: [], cards: [], keepers: [], scrolls: [], sightings: [], bloomed: [] };
   try { const j = JSON.parse(localStorage.getItem(KEY) || "null"); if (j) journey = Object.assign(journey, j); } catch (e) { /* storage unavailable */ }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(journey)); } catch (e) { /* ignore */ } };
   function discover(kind, id, label) {
@@ -103,11 +115,11 @@
 
   /* ── Views ─────────────────────────────────────────────── */
   function viewAtlas(stage) {
-    const pins = W.realms.map((r) => `
-      <button class="pin${journey.realms.includes(r.id) ? " is-visited" : ""}" style="left:${r.pin.x}%;top:${r.pin.y}%" data-realm="${r.id}" aria-label="Open ${esc(r.name)}">
-        <span class="pin__label">${esc(r.name)}</span>
-      </button>`).join("");
-    const bar = W.realms.map((r) => `<button data-realm="${r.id}">${r.number ? `<b>${r.number}</b>` : "✦ "}${esc(r.name.replace(/ Realms?$/, ""))}</button>`).join("");
+    const pins = W.realms.map((r) => { const t = realmTally(r); return `
+      <button class="pin${journey.realms.includes(r.id) ? " is-visited" : ""}${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${r.pin.x}%;top:${r.pin.y}%" data-realm="${r.id}" aria-label="Open ${esc(r.name)}, ${t.found} of ${t.total} found">
+        <span class="pin__label">${esc(r.name)}${t.total ? ` · ${t.found}/${t.total}` : ""}</span>
+      </button>`; }).join("");
+    const bar = W.realms.map((r) => { const t = realmTally(r); return `<button data-realm="${r.id}"${journey.bloomed.includes(r.id) ? ' class="is-bloomed"' : ""}>${r.number ? `<b>${r.number}</b>` : "✦ "}${esc(r.name.replace(/ Realms?$/, ""))}${t.total ? `<small>${t.found}/${t.total}</small>` : ""}</button>`; }).join("");
     stage.innerHTML = `
       <section class="atlas view">
         <div class="atlas__viewport" id="atlas-vp">
@@ -383,13 +395,13 @@
           <div class="stat"><b>${p.pct}%</b><span>of the charted Atlas</span></div>
         </div>
         <div class="section-label">Realms</div>
-        <div class="realm-list">${W.realms.map((r) => `<button class="realm-tile${journey.realms.includes(r.id) ? " is-visited" : ""}" data-realm="${r.id}"><img src="${esc(r.image)}" alt="" loading="lazy"><span>${esc(r.name)}<em>${journey.realms.includes(r.id) ? esc(r.tagline) : "Still hidden in mist"}</em></span></button>`).join("")}</div>
+        <div class="realm-list">${W.realms.map((r) => `<button class="realm-tile${journey.realms.includes(r.id) ? " is-visited" : ""}${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" data-realm="${r.id}"><img src="${esc(r.image)}" alt="" loading="lazy"><span>${esc(r.name)}<em>${journey.realms.includes(r.id) ? esc(r.tagline) : "Still hidden in mist"}</em></span></button>`).join("")}</div>
         <aside class="nudge nudge--page">${passageHTML(BECOMING)}</aside>
         <p style="margin-top:2rem"><button class="btn" id="reset">Begin the journey again</button></p>
         ${demoStrip()}
       </section>`;
     stage.querySelectorAll("[data-realm]").forEach((b) => b.addEventListener("click", () => { location.hash = `#/realm/${b.dataset.realm}`; }));
-    $("#reset").addEventListener("click", () => { journey = { realms: [], cards: [], keepers: [], scrolls: [], sightings: [] }; save(); renderRailJourney(); viewJourney(stage); toast("The mist settles back over the Atlas."); });
+    $("#reset").addEventListener("click", () => { journey = { realms: [], cards: [], keepers: [], scrolls: [], sightings: [], bloomed: [] }; save(); renderRailJourney(); viewJourney(stage); toast("The mist settles back over the Atlas."); });
   }
 
   const demoStrip = () => `<div class="demo-strip"><b>A work in progress.</b> Every name, story, verse and image here grows from Cassidy's Atlantean Archives; nothing has been invented. Where a page is still blank, the Garden is still growing. Your journey is kept only in this browser.</div>`;
@@ -534,18 +546,24 @@
             const thumb = g.kind === "keepers" ? `assets/keepers/${g.id}-face.png` : (g.s.art && g.s.art.front);
             return `<li class="${found(g) ? "is-found" : ""}" data-gi="${i}">
               ${thumb ? `<img class="seek__thumb${g.kind === "keepers" ? " seek__thumb--face" : ""}" src="${esc(thumb)}" alt="" loading="lazy">` : `<span class="seek__thumb seek__thumb--blank">✦</span>`}
-              <div><b>${esc(g.name)}</b><span class="riddle">${(g.riddle || "Somewhere in this realm.").split(" / ").map(esc).join("<br>")}</span></div>
+              <div><b>${esc(g.name)}</b><span class="riddle">${(g.riddle || "Somewhere in this realm.").split(" / ").map(esc).join("<br>")}</span><button class="whisper" data-whisper="${i}" aria-label="Whisper a hint for ${esc(g.name)}">✧ Whisper a hint</button></div>
             </li>`; }).join("")}</ol>
         </aside>` : ""}
       </section>`;
-    const updateCount = () => { const c = $("#scene-count"); if (c) c.textContent = `✦ ${glims.filter(found).length} of ${glims.length} found`; };
+    const updateCount = (justFound) => {
+      const c = $("#scene-count"), n = glims.filter(found).length;
+      if (c) c.textContent = `✦ ${n} of ${glims.length} found`;
+      if (justFound && glims.length && n === glims.length && !journey.bloomed.includes(r.id)) {
+        journey.bloomed.push(r.id); save(); setTimeout(() => bloomRealm(stage, r), 1400);
+      }
+    };
     updateCount();
     stage.querySelector("[data-leave]").addEventListener("click", () => leaveRealm(r.id));
     stage.querySelector("[data-tale]").addEventListener("click", () => openRealm(r.id));
     stage.querySelectorAll(".glimmer").forEach((b) => b.addEventListener("click", () => {
       const g = glims[+b.dataset.g];
       revealGlimmer(g, b, () => {
-        b.classList.add("is-found"); b.setAttribute("aria-label", g.name); b.dataset.near = g.name; updateCount();
+        b.classList.add("is-found"); b.setAttribute("aria-label", g.name); b.dataset.near = g.name; updateCount(true);
         const li = stage.querySelector(`.seek li[data-gi="${b.dataset.g}"]`); if (li) li.classList.add("is-found");
       });
     }));
@@ -555,6 +573,14 @@
       const b = stage.querySelector(`.glimmer[data-g="${li.dataset.gi}"]`);
       if (li.classList.contains("is-found")) { b.click(); return; }
       li.classList.add("is-seeking"); setTimeout(() => li.classList.remove("is-seeking"), 1200);
+    }));
+    stage.querySelectorAll("[data-whisper]").forEach((w) => w.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const b = stage.querySelector(`.glimmer[data-g="${w.dataset.whisper}"]`);
+      if (window.matchMedia("(max-width: 860px)").matches) { seek.classList.remove("is-open"); seekBtn.setAttribute("aria-expanded", "false"); }
+      b.scrollIntoView({ block: "center", inline: "center", behavior: reduceMotion() ? "auto" : "smooth" });
+      b.classList.remove("is-hinted"); void b.offsetWidth; b.classList.add("is-hinted");
+      setTimeout(() => b.classList.remove("is-hinted"), 3600);
     }));
     startAmbience(stage.querySelector(".scene__life"), r.id);
     startDepth(stage.querySelector(".scene"));
@@ -566,6 +592,7 @@
   /* 2.5D: the painting, a soft out-of-focus foreground and the drifting
      particles move at different speeds as the pointer (or a tilted phone)
      moves, so the flat painting reads as layered depth. */
+  let askedTilt = false;
   function startDepth(scene) {
     if (!scene || reduceMotion()) return;
     const art = scene.querySelector(".scene__art"), fore = scene.querySelector(".scene__fore"), life = scene.querySelector(".scene__life");
@@ -575,6 +602,9 @@
     scene.addEventListener("pointermove", onMove);
     scene.addEventListener("pointerleave", () => { tx = 0; ty = 0; });
     window.addEventListener("deviceorientation", onTilt);
+    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function" && !askedTilt) {
+      scene.addEventListener("pointerdown", () => { if (askedTilt) return; askedTilt = true; DeviceOrientationEvent.requestPermission().catch(() => {}); }, { once: true });
+    }
     const frame = () => {
       if (!scene.isConnected) { window.removeEventListener("deviceorientation", onTilt); return; }
       x += (tx - x) * .06; y += (ty - y) * .06;
@@ -584,6 +614,27 @@
       raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
+  }
+
+  function realmTally(r) { const g = glimmersFor(r); return { found: g.filter(isFound).length, total: g.length }; }
+
+  /* When everyone hiding in a realm has been found, the realm blooms. */
+  const BLOOM = { lines: ["Only together does the Garden truly bloom."], source: "Character Bible · The Gardeners of Atlantean Gardens" };
+  function bloomRealm(stage, r) {
+    const scene = stage.querySelector(".scene"); if (!scene) return;
+    const el = document.createElement("div");
+    el.className = "bloom"; el.setAttribute("role", "status");
+    el.innerHTML = `<div class="bloom__ring" aria-hidden="true"></div>
+      <div class="bloom__card"><p class="eyebrow">${esc(r.name)} has bloomed</p>
+      <p class="bloom__line">${esc(BLOOM.lines[0])}</p><small>${esc(BLOOM.source)}</small>
+      <p class="bloom__note">Every strain and Keeper hiding here has been found.</p>
+      <button class="btn btn--gold" data-bloom-ok>Keep wandering</button></div>`;
+    scene.appendChild(el);
+    requestAnimationFrame(() => el.classList.add("is-in"));
+    const close = () => { el.classList.remove("is-in"); setTimeout(() => el.remove(), 600); };
+    el.querySelector("[data-bloom-ok]").addEventListener("click", close);
+    setTimeout(close, 9000);
+    toast(`✦ ${r.name} has bloomed`);
   }
 
   function revealGlimmer(g, from, done) {
@@ -627,6 +678,7 @@
   function route() {
     const [, base = "atlas", id] = (location.hash || "#/atlas").split("/");
     const stage = $("#stage");
+    document.querySelectorAll(".reveal, .closeup, .bloom").forEach((el) => el.remove());
     renderNav(base === "realm" ? "atlas" : base);
     if (base === "atlas") {
       if (lastBase !== "atlas" || !stage.querySelector(".atlas")) viewAtlas(stage);
