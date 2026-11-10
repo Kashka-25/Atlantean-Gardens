@@ -767,17 +767,3 @@ button { font: inherit; color: inherit; }
 .app.rail-tucked .rail__brand { padding: 0; border: 0; }
 .app.rail-tucked .rail__name, .app.rail-tucked .rail__body { opacity: 0; pointer-events: none; visibility: hidden; }
 .app.rail-tucked .rail__toggle { animation: breathe 6s ease-in-out infinite; }
-
-/* words floating above each realm's title scroll */
-.scene__art { container-type: inline-size; }
-.scroll-words { position: absolute; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55cqw;
-  text-align: center; color: var(--ink, #3b3220); pointer-events: none; animation: scrollFloat 7s ease-in-out infinite; }
-.scroll-words p { margin: 0; text-shadow: 0 .35cqw .5cqw rgba(60,40,10,.22), 0 0 .1cqw rgba(255,248,225,.6); }
-.scroll-words__title { font-family: var(--display); font-weight: 600; font-size: 2.05cqw; line-height: 1.12; letter-spacing: .02em; }
-.scroll-words__body { font-family: var(--serif); font-style: italic; font-size: 1.02cqw; line-height: 1.45; max-width: 80%; }
-.scroll-words__body.is-plain { font-style: normal; font-size: .95cqw; }
-.scroll-words__rule { font-size: .8cqw; opacity: .7; letter-spacing: 1.2cqw; }
-.scroll-words__rule::before, .scroll-words__rule::after { content: "———"; letter-spacing: -.1cqw; opacity: .6; margin: 0 .3cqw; }
-.scroll-words__rule.is-small::before, .scroll-words__rule.is-small::after { content: "—"; }
-@keyframes scrollFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-.35cqw); } }
-@media (prefers-reduced-motion: reduce) { .scroll-words { animation: none; } }

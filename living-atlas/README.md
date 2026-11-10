@@ -99,11 +99,6 @@ from the originals with Pillow.
   glowing labels (with each realm's found tally) that open the realm when
   clicked; positions are in `ATLAS.spots` in `js/atlas.js`. The title floats
   over the painting's blank parchment edge.
-- **Floating scroll words:** `tools/clear_scrolls.py` lifts the painted
-  lettering off each realm's title scroll (keeping parchment, frame, vines and
-  emblem) into `assets/realms/<id>-clean.jpg`. The same words, transcribed
-  exactly in `js/scrolls.js`, float back over the scroll in the realm scenes.
-  Originals are untouched and still used for the portal, panels and Journey.
 - **Glass navigation:** the side rail is a floating translucent panel, and the
   Atlas and realm scenes run full-bleed beneath it. The bottom bars are glass
   too, and tuck away into the tree emblem (and open again from it); the
