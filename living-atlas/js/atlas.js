@@ -557,7 +557,7 @@
         </div>
         <div class="scene__fore" aria-hidden="true" style="background-image:url('${esc(r.image)}')"></div>
         <canvas class="scene__life" aria-hidden="true"></canvas>
-        <header class="scene__head">
+        <header class="scene__head sr-only">
           <div class="realm__num">${r.number ? "REALM " + r.number : "THE CENTRE OF THE ATLAS"}</div>
           <h1>${esc(r.name)}</h1>
           <p>“${esc(r.tagline)}”</p>
