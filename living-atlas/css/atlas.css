@@ -590,7 +590,6 @@ button { font: inherit; color: inherit; }
 @media (max-width: 860px) { .glimmer--keeper { width: 38px; height: 38px; margin: -19px 0 0 -19px; } }
 
 /* 2.5D depth */
-.scene__vp { perspective: 1400px; }
 .scene__art { will-change: transform; transform-origin: 50% 50%; }
 .scene__fore { position: absolute; inset: -8%; z-index: 1; pointer-events: none; background-size: cover; background-position: center;
   filter: blur(7px) brightness(.8) saturate(1.1); opacity: .9; will-change: transform;
@@ -646,3 +645,62 @@ button { font: inherit; color: inherit; }
 
 .reveal { overflow-y: auto; }
 @media (max-width: 860px) { .reveal__card { width: min(200px, 52vw); } }
+
+/* ── Glass navigation (translucent rail and bars over the art) ── */
+:root {
+  --glass-bg: linear-gradient(160deg, rgba(20,44,54,.46), rgba(8,22,29,.38));
+  --glass-line: rgba(240,213,149,.30);
+  --glass-blur: blur(16px) saturate(1.35);
+  --glass-shadow: 0 18px 50px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.rail {
+  top: 16px; left: 16px; bottom: 16px; width: 220px; border-radius: 20px;
+  background: var(--glass-bg); border: 1px solid var(--glass-line); box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+}
+.rail__brand { border-bottom-color: rgba(240,213,149,.18); }
+.rail__journey { background: rgba(255,255,255,.05); border-color: rgba(240,213,149,.2); }
+.navlink { border-radius: 12px; }
+.navlink.is-active { border-color: rgba(240,213,149,.55); background: linear-gradient(90deg, rgba(210,171,98,.22), rgba(210,171,98,.04)); box-shadow: inset 0 0 18px rgba(240,213,149,.08); }
+/* the Atlas and realm scenes run beneath the glass */
+.app[data-view="atlas"] .stage, .app[data-view="realm"] .stage { margin-left: 0; }
+.stage { margin-left: 252px; }
+
+.atlas__bar, .scene__bar, .scene__head, .atlas__hint, .seek, .cardstage__controls {
+  background: var(--glass-bg); border-color: var(--glass-line); box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+}
+.app[data-view="atlas"] .atlas__bar, .app[data-view="realm"] .scene__bar { left: calc(50% + 126px); }
+.app[data-view="realm"] .scene__hint { left: calc(50% + 126px); }
+.app[data-view="realm"] .seek { left: 252px; }
+
+/* tuck-away bars: the tree emblem opens and closes them */
+.dockable { display: flex; align-items: center; gap: .4rem; flex-wrap: nowrap; max-width: calc(100% - 300px); transition: padding .4s var(--ease); }
+.dockable__items { display: flex; align-items: center; gap: .4rem; overflow-x: auto; scrollbar-width: none; max-width: 100%; transition: opacity .35s, max-width .5s var(--ease); }
+.dockable__items::-webkit-scrollbar { display: none; }
+.atlas__bar .dockable__items button { border: 0; background: transparent; cursor: pointer; padding: .45rem .9rem; border-radius: 999px; white-space: nowrap;
+  font-family: var(--display); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-dim); }
+.atlas__bar .dockable__items button:hover { color: var(--parch); background: rgba(210,171,98,.14); }
+.dock-toggle { flex: none; width: 38px; height: 38px; border-radius: 50%; padding: 0; border: 0; cursor: pointer; background: none;
+  box-shadow: 0 0 0 1px rgba(240,213,149,.45), 0 0 16px rgba(240,213,149,.25); transition: transform .4s var(--ease), box-shadow .3s; }
+.atlas__bar .dock-toggle { padding: 0; }
+.dock-toggle img { width: 100%; height: 100%; border-radius: 50%; }
+.dock-toggle:hover { transform: rotate(-12deg) scale(1.06); box-shadow: 0 0 0 1px var(--gold-2), 0 0 22px rgba(240,213,149,.5); }
+.dockable.is-tucked { padding: .3rem; gap: 0; }
+.dockable.is-tucked .dockable__items { max-width: 0; opacity: 0; pointer-events: none; }
+.dockable.is-tucked .dock-toggle { width: 48px; height: 48px; animation: breathe 6s ease-in-out infinite; }
+
+@media (max-width: 860px) {
+  .stage, .app[data-view] .stage { margin-left: 0; }
+  .app[data-view="atlas"] .atlas__bar, .app[data-view="realm"] .scene__bar, .app[data-view="realm"] .scene__hint { left: 50%; }
+  .app[data-view="realm"] .seek { left: .6rem; }
+  .dockable { max-width: calc(100% - 1.2rem); }
+  .dock { left: 8px; right: 8px; bottom: 8px; border-radius: 20px; border: 1px solid var(--glass-line);
+    background: var(--glass-bg); box-shadow: var(--glass-shadow); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+  .stage { padding-bottom: calc(86px + env(safe-area-inset-bottom)); }
+  .app[data-view="atlas"] .stage, .app[data-view="realm"] .stage { padding-bottom: 0; }
+  .atlas, .scene { height: 100vh; height: 100dvh; }
+  .atlas__bar, .scene__bar { bottom: calc(84px + env(safe-area-inset-bottom)); }
+  .scene__hint { bottom: calc(140px + env(safe-area-inset-bottom)); }
+  .seek { bottom: calc(140px + env(safe-area-inset-bottom)); }
+}

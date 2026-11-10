@@ -130,9 +130,10 @@
         </div>
         <h1 class="sr-only">The Living Atlas</h1>
         <div class="atlas__hint">Curiosity has always been the truest map of Atlantis. Touch a glowing light to enter.</div>
-        <div class="atlas__bar" role="toolbar" aria-label="Realms">${bar}</div>
+        <div class="atlas__bar dockable" role="toolbar" aria-label="Realms"><button class="dock-toggle" aria-expanded="true" aria-label="Tuck the bar away"><img src="assets/logo-emblem.png" alt=""></button><div class="dockable__items">${bar}</div></div>
       </section>`;
     stage.querySelectorAll("[data-realm]").forEach((b) => b.addEventListener("click", () => enterRealm(b.dataset.realm)));
+    wireDockables(stage);
     if (arrivingFrom) { const m = stage.querySelector(".atlas__map"); m.classList.add("is-surfacing"); setTimeout(() => m.classList.remove("is-surfacing"), 1300); arrivingFrom = null; }
     // On narrow screens the map is wider than the view: start centred on the Heart.
     const vp = $("#atlas-vp");
@@ -406,6 +407,22 @@
 
   const demoStrip = () => `<div class="demo-strip"><b>A work in progress.</b> Every name, story, verse and image here grows from Cassidy's Atlantean Archives; nothing has been invented. Where a page is still blank, the Garden is still growing. Your journey is kept only in this browser.</div>`;
 
+  /* Bottom bars tuck away into the tree emblem, so nothing hides the art. */
+  const TUCK_KEY = "ag-bars-tucked";
+  function wireDockables(root) {
+    let tucked = false; try { tucked = localStorage.getItem(TUCK_KEY) === "1"; } catch (e) { /* ignore */ }
+    const apply = (t) => root.querySelectorAll(".dockable").forEach((d) => {
+      d.classList.toggle("is-tucked", t);
+      const b = d.querySelector(".dock-toggle");
+      b.setAttribute("aria-expanded", String(!t)); b.setAttribute("aria-label", t ? "Open the bar" : "Tuck the bar away");
+    });
+    apply(tucked);
+    root.querySelectorAll(".dock-toggle").forEach((b) => b.addEventListener("click", (e) => {
+      e.stopPropagation(); tucked = !tucked; apply(tucked);
+      try { localStorage.setItem(TUCK_KEY, tucked ? "1" : "0"); } catch (err) { /* ignore */ }
+    }));
+  }
+
   /* ── Realm portals and hidden glimmers ──────────────────── */
   const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   // Hiding places and riddles live in js/hiding.js (window.HIDING).
@@ -535,10 +552,11 @@
         <div class="scene__hint">${glims.length
           ? `<span>A distant light glimpsed through ancient trees.</span><small>Manuscript VI · Wonder Before Explanation</small>`
           : `<span>Even now, seeds lie sleeping beneath the soil, waiting patiently for the day their stories are needed.</span><small>Manuscript V · The Endless Herbarium</small>`}</div>
-        <div class="scene__bar">
-          <button class="btn" data-leave>${svg(ICON.back).replace("<svg", '<svg width="16" height="16"')} The Atlas</button>
+        <div class="scene__bar dockable">
+          <button class="dock-toggle" aria-expanded="true" aria-label="Tuck the bar away"><img src="assets/logo-emblem.png" alt=""></button>
+          <div class="dockable__items"><button class="btn" data-leave>${svg(ICON.back).replace("<svg", '<svg width="16" height="16"')} The Atlas</button>
           <button class="btn" data-tale>Read the tale</button>
-          ${glims.length ? `<button class="btn btn--gold" data-seek aria-expanded="false" aria-controls="seek">Riddles</button><span class="scene__count" id="scene-count"></span>` : ""}
+          ${glims.length ? `<button class="btn btn--gold" data-seek aria-expanded="false" aria-controls="seek">Riddles</button><span class="scene__count" id="scene-count"></span>` : ""}</div>
         </div>
         ${glims.length ? `<aside class="seek" id="seek" aria-label="Who is hiding here">
           <p class="seek__title">Seek in ${esc(r.name)}</p><p class="seek__sub">${glims.filter((g) => g.kind === "cards").length ? "A strain card and the five Keepers hide here. " : "The five Keepers hide here. "}Read each riddle, then search the painting.</p>
@@ -584,6 +602,7 @@
     }));
     startAmbience(stage.querySelector(".scene__life"), r.id);
     startDepth(stage.querySelector(".scene"));
+    wireDockables(stage);
     const vp = $("#scene-vp");
     requestAnimationFrame(() => { vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2; vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2; });
     enableDragPan(vp);
@@ -608,7 +627,7 @@
     const frame = () => {
       if (!scene.isConnected) { window.removeEventListener("deviceorientation", onTilt); return; }
       x += (tx - x) * .06; y += (ty - y) * .06;
-      art.style.transform = `translate3d(${-x * 18}px, ${-y * 12}px, 0) rotateY(${x * 2.2}deg) rotateX(${-y * 1.6}deg) scale(1.03)`;
+      art.style.transform = `translate(${-x * 18}px, ${-y * 12}px) scale(1.03)`;
       if (fore) fore.style.transform = `translate3d(${-x * 46}px, ${-y * 30}px, 0) scale(1.18)`;
       if (life) life.style.transform = `translate3d(${x * 26}px, ${y * 18}px, 0)`;
       raf = requestAnimationFrame(frame);
@@ -682,6 +701,7 @@
     const stage = $("#stage");
     document.querySelectorAll(".reveal, .closeup, .bloom").forEach((el) => el.remove());
     renderNav(base === "realm" ? "atlas" : base);
+    $("#app").dataset.view = base;
     if (base === "atlas") {
       if (lastBase !== "atlas" || !stage.querySelector(".atlas")) viewAtlas(stage);
       if (id) openRealm(id); else closeDrawer();

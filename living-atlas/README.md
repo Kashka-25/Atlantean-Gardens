@@ -94,6 +94,10 @@ from the originals with Pillow.
   particles move at different speeds as the pointer moves (or, on Android, as
   the phone tilts). This fakes depth without splitting the paintings; true
   layered depth would need each painting separated into layers.
+- **Glass navigation:** the side rail is a floating translucent panel, and the
+  Atlas and realm scenes run full-bleed beneath it. The bottom bars are glass
+  too, and tuck away into the tree emblem (and open again from it); the
+  choice is remembered.
 - **Seek panel:** a "Clues" list in every scene, like a Where's Wally card.
   Portraits stay shadowed until found; touching a found one shows its card
   again.
