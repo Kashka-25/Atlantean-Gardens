@@ -4,6 +4,9 @@
 (function () {
   "use strict";
   const W = window.WORLD;
+  // Bump when realm paintings change, so browsers fetch the new ones.
+  const ART_V = "2";
+  W.realms.forEach((r) => { r.image += "?v=" + ART_V; });
   const $ = (s, el = document) => el.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const realmById = Object.fromEntries(W.realms.map((r) => [r.id, r]));
@@ -43,9 +46,21 @@
     "celestial-realm": "rgba(120,130,240,.5)", "heart-of-atlantis": "rgba(150,200,120,.4)",
   };
 
+  /* Card frames take the exact shape of their own artwork, so no card or
+     Keeper portrait is ever trimmed (Keeper portraits are taller than the
+     2:3 strain cards, and a few older cards are too). */
+  document.addEventListener("load", (e) => {
+    const img = e.target; if (!img || img.tagName !== "IMG" || !img.naturalWidth) return;
+    const ratio = `${img.naturalWidth} / ${img.naturalHeight}`;
+    if (img.classList.contains("ccard__art")) { const c = img.closest(".ccard"); if (c && c.classList.contains("ccard--portrait")) c.style.aspectRatio = ratio; return; }
+    const side = img.closest(".flip__side");
+    if (side && !side.classList.contains("flip__back")) { const f = side.closest(".flip"); if (f) f.style.aspectRatio = ratio; }
+    const portrait = img.closest(".portrait"); if (portrait) portrait.style.aspectRatio = ratio;
+  }, true);
+
   /* ── Journey (per-browser only) ────────────────────────── */
   const KEY = "ag-living-atlas-journey-v1";
-  let journey = { realms: [], cards: [], keepers: [], scrolls: [] };
+  let journey = { realms: [], cards: [], keepers: [], scrolls: [], sightings: [], bloomed: [] };
   try { const j = JSON.parse(localStorage.getItem(KEY) || "null"); if (j) journey = Object.assign(journey, j); } catch (e) { /* storage unavailable */ }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(journey)); } catch (e) { /* ignore */ } };
   function discover(kind, id, label) {
@@ -53,11 +68,13 @@
     journey[kind].push(id); save(); renderRailJourney();
     toast(`✦ Discovered: ${label}`);
   }
-  const totals = () => ({ realms: W.realms.length, cards: W.strains.length, keepers: W.keepers.length, scrolls: W.manuscripts.length });
+  const HIDING = window.HIDING || {};
+  const SIGHTINGS = Object.values(HIDING).reduce((n, h) => n + Object.keys(h.keepers || {}).length, 0);
+  const totals = () => ({ realms: W.realms.length, cards: W.strains.length, keepers: W.keepers.length, scrolls: W.manuscripts.length, sightings: SIGHTINGS });
   function progress() {
     const t = totals();
-    const got = journey.realms.length + journey.cards.length + journey.keepers.length + journey.scrolls.length;
-    const all = t.realms + t.cards + t.keepers + t.scrolls;
+    const got = journey.realms.length + journey.cards.length + journey.keepers.length + journey.scrolls.length + journey.sightings.length;
+    const all = t.realms + t.cards + t.keepers + t.scrolls + t.sightings;
     return { got, all, pct: Math.round((got / all) * 100) };
   }
   function renderRailJourney() {
@@ -101,29 +118,44 @@
 
   /* ── Views ─────────────────────────────────────────────── */
   function viewAtlas(stage) {
-    const pins = W.realms.map((r) => `
-      <button class="pin${journey.realms.includes(r.id) ? " is-visited" : ""}" style="left:${r.pin.x}%;top:${r.pin.y}%" data-realm="${r.id}" aria-label="Open ${esc(r.name)}">
-        <span class="pin__label">${esc(r.name)}</span>
-      </button>`).join("");
-    const bar = W.realms.map((r) => `<button data-realm="${r.id}">${r.number ? `<b>${r.number}</b>` : "✦ "}${esc(r.name.replace(/ Realms?$/, ""))}</button>`).join("");
+    const pins = W.realms.map((r, i) => { const t = realmTally(r), at = ATLAS.spots[r.id] || r.pin; return `
+      <button class="pin${journey.realms.includes(r.id) ? " is-visited" : ""}${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${at.y}%" data-realm="${r.id}" aria-label="Open ${esc(r.name)}, ${t.found} of ${t.total} found"></button>
+      <button class="realm-label${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${at.y}%;--d:${(i * 0.6).toFixed(1)}s" data-realm="${r.id}" tabindex="-1" aria-hidden="true">
+        ${r.number ? `<i>${r.number}</i>` : `<i>✦</i>`}<b>${esc(r.name.replace(/^The /, ""))}</b>${t.total ? `<small>${t.found} of ${t.total} found</small>` : ""}
+      </button>`; }).join("");
+    const bar = W.realms.map((r) => { const t = realmTally(r); return `<button data-realm="${r.id}"${journey.bloomed.includes(r.id) ? ' class="is-bloomed"' : ""}>${r.number ? `<b>${r.number}</b>` : "✦ "}${esc(r.name.replace(/ Realms?$/, ""))}${t.total ? `<small>${t.found}/${t.total}</small>` : ""}</button>`; }).join("");
     stage.innerHTML = `
       <section class="atlas view">
         <div class="atlas__viewport" id="atlas-vp">
           <div class="atlas__map">
-            <img src="assets/atlas-map.jpg" alt="The Living Atlas of Atlantean Gardens: seven realms around the Heart of Atlantis" draggable="false">
+            <img src="${ATLAS.src}" alt="The Living Atlas of Atlantean Gardens: seven realms around the Heart of Atlantis" draggable="false">
             ${pins}
           </div>
         </div>
-        <h1 class="sr-only">The Living Atlas</h1>
+        <button class="atlas__float-title" data-rail-toggle aria-label="Open or close the menu"><img src="assets/logo-emblem.png" alt=""><div><h1>The Living Atlas</h1><p>of Atlantean Gardens</p><em>No map has ever captured the whole of Atlantis. This one is simply where today's journey begins.</em></div></button>
         <div class="atlas__hint">Curiosity has always been the truest map of Atlantis. Touch a glowing light to enter.</div>
-        <div class="atlas__bar" role="toolbar" aria-label="Realms">${bar}</div>
+        <div class="atlas__bar dockable" role="toolbar" aria-label="Realms"><button class="dock-toggle" aria-expanded="true" aria-label="Tuck the bar away"><img src="assets/logo-emblem.png" alt=""></button><div class="dockable__items">${bar}</div></div>
       </section>`;
-    stage.querySelectorAll("[data-realm]").forEach((b) => b.addEventListener("click", () => { location.hash = `#/atlas/${b.dataset.realm}`; }));
+    stage.querySelectorAll("[data-realm]").forEach((b) => b.addEventListener("click", () => enterRealm(b.dataset.realm)));
+    wireDockables(stage);
+    if (arrivingFrom) { const m = stage.querySelector(".atlas__map"); m.classList.add("is-surfacing"); setTimeout(() => m.classList.remove("is-surfacing"), 1300); arrivingFrom = null; }
     // On narrow screens the map is wider than the view: start centred on the Heart.
     const vp = $("#atlas-vp");
     requestAnimationFrame(() => { vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2; vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2; });
     enableDragPan(vp);
   }
+
+  /* The clean, unlabelled Atlas painting ("Without Bake"); realm names float
+     above it as living labels. x, y are percentages of the painting. */
+  const ATLAS = {
+    src: "assets/atlas-home.jpg?v=2",
+    spots: {
+      "sunlight-realms": { x: 26, y: 14 }, "bubble-coast-realm": { x: 66, y: 13 },
+      "living-harvest-realm": { x: 22, y: 36 }, "crystal-conservatory-realm": { x: 84, y: 33 },
+      "heart-of-atlantis": { x: 50, y: 37 }, "hearthlands-realm": { x: 22, y: 59 },
+      "verdant-wilds-realm": { x: 81, y: 57 }, "celestial-realm": { x: 52, y: 72 },
+    },
+  };
 
   function enableDragPan(vp) {
     let down = false, sx = 0, sy = 0, sl = 0, st = 0, moved = false;
@@ -158,7 +190,7 @@
           ${r.nudge ? `<aside class="nudge">${passageHTML(r.nudge)}</aside>` : ""}
         </div>` : ""}
         <div data-pane="dwellers"${r.tale.length ? " hidden" : ""}>
-          ${keepers.length ? `<div class="section-label">Keepers who tend here</div><div class="cards">${keepers.map((k) => `<a class="ccard" href="#/keepers/${k.id}" aria-label="${esc(k.name)}"><span class="ccard__face"><img class="ccard__art" src="${esc(k.portrait)}" alt="" loading="lazy"><span class="ccard__caption"><span class="ccard__name">${esc(k.name)}</span><span class="ccard__title">${esc(k.pillar)}</span></span></span></a>`).join("")}</div>` : ""}
+          ${keepers.length ? `<div class="section-label">Keepers who tend here</div><div class="cards">${keepers.map((k) => `<a class="ccard ccard--portrait" href="#/keepers/${k.id}" aria-label="${esc(k.name)}"><span class="ccard__face"><img class="ccard__art" src="${esc(k.portrait)}" alt="" loading="lazy"><span class="ccard__caption"><span class="ccard__name">${esc(k.name)}</span><span class="ccard__title">${esc(k.pillar)}</span></span></span></a>`).join("")}</div>` : ""}
           <div class="section-label">Strains of this realm</div>
           ${strains.length ? `<div class="cards">${strains.map((s) => cardHTML(s, { caption: true })).join("")}</div>` : `<div class="empty">Even now, seeds lie sleeping beneath the soil, waiting patiently for the day their stories are needed.<small>Manuscript V · The Endless Herbarium</small></div>`}
         </div>
@@ -215,44 +247,88 @@
       return "";
     }).join("");
     const cardSide = art
-      ? `<button class="flip" id="flip" aria-label="Flip the ${esc(s.name)} card">
-           <span class="flip__inner"><span class="flip__side"><img src="${esc(art.front)}" alt="${esc(s.name)} card front"></span>
-           ${art.back ? `<span class="flip__side flip__back"><img src="${esc(art.back)}" alt="${esc(s.name)} card back"></span>` : ""}</span>
-         </button>${art.back ? '<p class="flip__hint">Tap the card to turn it over</p>' : ""}`
-      : `<div class="ccard ccard--type" style="aspect-ratio:2/3">${cardHTML(s).replace(/^<a[^>]*>|<\/a>$/g, "")}</div><p class="flip__hint">Its portrait is still being painted</p>`;
+      ? `<div class="tilt" id="tilt"><button class="flip cardstage__flip" id="flip" aria-label="${art.back ? "Turn the " + esc(s.name) + " card over" : esc(s.name) + " card"}">
+           <span class="flip__inner"><span class="flip__side"><img src="${esc(art.front)}" alt="${esc(s.name)} card front"><i class="glare"></i></span>
+           ${art.back ? `<span class="flip__side flip__back"><img src="${esc(art.back)}" alt="${esc(s.name)} card back"><i class="glare"></i></span>` : ""}</span>
+         </button></div>`
+      : `<div class="ccard ccard--type cardstage__flip" style="aspect-ratio:2/3">${cardHTML(s).replace(/^<a[^>]*>|<\/a>$/g, "")}</div>`;
     const profile = [["Flavour", s.flavor], ["Aroma", s.aroma], ["Effects", s.effects], ["May relieve", s.mayRelieve]].filter(([, v]) => v);
+    const where = r ? `${esc(r.name)}${districtName(s) ? " · " + esc(districtName(s)) : ""}` : "Still finding its realm";
     stage.innerHTML = `
-      <section class="page view">
-        <div class="crumbs">${r ? `<a href="#/atlas/${r.id}">${esc(r.name)}</a>${districtName(s) ? " › " + esc(districtName(s)) : ""}` : '<a href="#/cards">Strains</a> › Still finding its realm'} › ${esc(s.name)}</div>
-        <div class="strain">
-          <div class="strain__card">${cardSide}</div>
-          <article class="parchment">
-            <p class="eyebrow">${esc(s.code || "Awaiting a card number")}${s.category ? " · " + esc(s.category) : ""}</p>
-            <h1>${esc(s.name)}</h1>
-            ${s.title ? `<p class="sub">${esc(s.title)}</p>` : ""}
-            <div class="chips">${s.tags.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>
-            <div class="ptabs" role="tablist">
-              <button role="tab" aria-selected="true" data-tab="story">Story</button>
-              <button role="tab" aria-selected="false" data-tab="effects">Effects</button>
-              <button role="tab" aria-selected="false" data-tab="terpenes">Terpenes</button>
-              <button role="tab" aria-selected="false" data-tab="pairs">Pairs with</button>
-              <button role="tab" aria-selected="false" data-tab="grow">Grow notes</button>
-            </div>
-            <div data-pane="story">
-              ${s.body ? `<p>${esc(s.body)}</p>` : `<p class="empty">${art && art.back ? "This strain's tale is written on the back of its card. Tap the card to turn it over." : EMPTY}</p>`}
-              ${s.quote ? `<blockquote>“${esc(s.quote)}”</blockquote>` : ""}
-              <aside class="plant-ask">${passageHTML(PLANT_ASK)}</aside>
-              <dl class="kv"><dt>Atlas realm</dt><dd>${r ? esc(r.name) : "Still finding its realm"}</dd>${districtName(s) ? `<dt>District</dt><dd>${esc(districtName(s))}</dd>` : ""}${s.printedRealm ? `<dt>On the card</dt><dd>${esc(s.printedRealm)}</dd>` : ""}${s.cardTitle ? `<dt>Card title</dt><dd>${esc(s.cardTitle)}</dd>` : ""}</dl>
-            </div>
-            <div data-pane="effects" hidden>${profile.length ? `<dl class="kv">${profile.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>` : `<div class="empty">${art && art.back ? "Turn the card over: its flavour and effects are written on its back." : EMPTY}</div>`}</div>
-            <div data-pane="terpenes" hidden>${s.terpenes.length ? `<div class="chips">${s.terpenes.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>` : `<div class="empty">${EMPTY}</div>`}</div>
-            <div data-pane="pairs" hidden>${kin ? `<div class="kin">${kin}</div>` : `<div class="empty">${EMPTY}</div>`}</div>
-            <div data-pane="grow" hidden>${s.growNotes ? `<p>${esc(s.growNotes)}</p>` : `<div class="empty">${EMPTY}</div>`}</div>
-          </article>
+      <section class="cardstage view">
+        <div class="cardstage__bg" aria-hidden="true" style="background-image:url('${esc(r ? r.image : "assets/atlas-clean.jpg")}')"></div>
+        <div class="cardstage__inner">
+          <div class="crumbs">${r ? `<a href="#/realm/${r.id}">${esc(r.name)}</a>${districtName(s) ? " › " + esc(districtName(s)) : ""}` : '<a href="#/cards">Strains</a> › Still finding its realm'} › ${esc(s.name)}</div>
+          <div class="cardstage__left"><div class="cardstage__card">${cardSide}</div>
+          ${art ? `<div class="cardstage__controls" role="group" aria-label="Card side">
+            <button class="seg is-on" data-side="front" aria-pressed="true">The character</button>
+            ${art.back ? `<button class="seg" data-side="back" aria-pressed="false">The tale &amp; the plant</button>` : ""}
+            <button class="seg seg--zoom" data-zoom aria-label="Read the card up close">Up close</button>
+          </div>` : `<p class="flip__hint">Its portrait is still being painted</p>`}</div>
+          <div class="cardstage__right">
+          <p class="eyebrow cardstage__code">${esc(s.code || "Awaiting a card number")}${s.category ? " · " + esc(s.category) : ""}</p>
+          <h1 class="cardstage__name">${esc(s.name)}</h1>
+          ${(s.cardTitle || s.title) ? `<p class="cardstage__title">${esc(s.cardTitle || s.title)}</p>` : ""}
+          ${s.quote ? `<blockquote class="cardstage__quote">“${esc(s.quote)}”</blockquote>` : ""}
+          <p class="cardstage__where">✦ ${where}</p>
+          ${art && art.back ? `<p class="cardstage__nudge">Turn the card over to read its tale, its flavour and its effects.</p>` : ""}
+          </div>
         </div>
+      </section>
+      <section class="page view herbarium">
+        <article class="parchment">
+          <p class="eyebrow">From the Herbarium</p>
+          <div class="chips">${s.tags.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>
+          <div class="ptabs" role="tablist">
+            <button role="tab" aria-selected="true" data-tab="story">Story</button>
+            <button role="tab" aria-selected="false" data-tab="effects">Effects</button>
+            <button role="tab" aria-selected="false" data-tab="terpenes">Terpenes</button>
+            <button role="tab" aria-selected="false" data-tab="pairs">Pairs with</button>
+            <button role="tab" aria-selected="false" data-tab="grow">Grow notes</button>
+          </div>
+          <div data-pane="story">
+            ${s.body ? `<p>${esc(s.body)}</p>` : `<p class="empty">${art && art.back ? "This strain's tale is written on the back of its card. Turn it over above." : EMPTY}</p>`}
+            <aside class="plant-ask">${passageHTML(PLANT_ASK)}</aside>
+            <dl class="kv"><dt>Atlas realm</dt><dd>${r ? esc(r.name) : "Still finding its realm"}</dd>${districtName(s) ? `<dt>District</dt><dd>${esc(districtName(s))}</dd>` : ""}${s.printedRealm ? `<dt>On the card</dt><dd>${esc(s.printedRealm)}</dd>` : ""}</dl>
+          </div>
+          <div data-pane="effects" hidden>${profile.length ? `<dl class="kv">${profile.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>` : `<div class="empty">${art && art.back ? "Turn the card over: its flavour and effects are written on its back." : EMPTY}</div>`}</div>
+          <div data-pane="terpenes" hidden>${s.terpenes.length ? `<div class="chips">${s.terpenes.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>` : `<div class="empty">${EMPTY}</div>`}</div>
+          <div data-pane="pairs" hidden>${kin ? `<div class="kin">${kin}</div>` : `<div class="empty">${EMPTY}</div>`}</div>
+          <div data-pane="grow" hidden>${s.growNotes ? `<p>${esc(s.growNotes)}</p>` : `<div class="empty">${EMPTY}</div>`}</div>
+        </article>
       </section>`;
     wireTabs(stage.querySelector(".parchment"));
-    const flip = $("#flip"); if (flip && art && art.back) flip.addEventListener("click", () => flip.classList.toggle("is-flipped"));
+    const flip = $("#flip"), segs = stage.querySelectorAll(".seg[data-side]");
+    const show = (side) => {
+      if (!flip || !art || !art.back) return;
+      flip.classList.toggle("is-flipped", side === "back");
+      segs.forEach((b) => { const on = b.dataset.side === side; b.classList.toggle("is-on", on); b.setAttribute("aria-pressed", String(on)); });
+    };
+    if (flip && art && art.back) flip.addEventListener("click", () => show(flip.classList.contains("is-flipped") ? "front" : "back"));
+    segs.forEach((b) => b.addEventListener("click", () => show(b.dataset.side)));
+    const zoom = stage.querySelector("[data-zoom]");
+    if (zoom) zoom.addEventListener("click", () => openCloseUp(flip && flip.classList.contains("is-flipped") ? art.back : art.front, s.name));
+    const tilt = $("#tilt");
+    if (tilt && !reduceMotion() && window.matchMedia("(hover: hover)").matches) {
+      tilt.addEventListener("pointermove", (e) => {
+        const b = tilt.getBoundingClientRect(); const px = (e.clientX - b.left) / b.width - .5, py = (e.clientY - b.top) / b.height - .5;
+        tilt.style.transform = `rotateY(${px * 14}deg) rotateX(${-py * 12}deg)`;
+        tilt.style.setProperty("--gx", `${(px + .5) * 100}%`); tilt.style.setProperty("--gy", `${(py + .5) * 100}%`);
+      });
+      tilt.addEventListener("pointerleave", () => { tilt.style.transform = ""; });
+    }
+  }
+
+  function openCloseUp(src, name) {
+    const el = document.createElement("div");
+    el.className = "closeup"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-label", name + " up close");
+    el.innerHTML = `<img src="${esc(src)}" alt="${esc(name)} card, up close"><button class="drawer__close" aria-label="Close">${svg(ICON.close).replace("<svg", '<svg width="20" height="20"')}</button>`;
+    document.body.appendChild(el);
+    requestAnimationFrame(() => el.classList.add("is-in"));
+    const onKey = (e) => { if (e.key === "Escape") shut(); };
+    const shut = () => { el.classList.remove("is-in"); setTimeout(() => el.remove(), 350); document.removeEventListener("keydown", onKey); };
+    el.addEventListener("click", shut); document.addEventListener("keydown", onKey);
+    setTimeout(() => el.querySelector("button").focus(), 50);
   }
 
   function viewKeepers(stage) {
@@ -331,33 +407,330 @@
           <div class="stat"><b>${journey.realms.length}/${t.realms}</b><span>Realms entered</span></div>
           <div class="stat"><b>${journey.cards.length}/${t.cards}</b><span>Strains met</span></div>
           <div class="stat"><b>${journey.keepers.length}/${t.keepers}</b><span>Keepers met</span></div>
+          <div class="stat"><b>${journey.sightings.length}/${t.sightings}</b><span>Keepers spotted in hiding</span></div>
           <div class="stat"><b>${journey.scrolls.length}/${t.scrolls}</b><span>Manuscripts opened</span></div>
           <div class="stat"><b>${p.pct}%</b><span>of the charted Atlas</span></div>
         </div>
         <div class="section-label">Realms</div>
-        <div class="realm-list">${W.realms.map((r) => `<button class="realm-tile${journey.realms.includes(r.id) ? " is-visited" : ""}" data-realm="${r.id}"><img src="${esc(r.image)}" alt="" loading="lazy"><span>${esc(r.name)}<em>${journey.realms.includes(r.id) ? esc(r.tagline) : "Still hidden in mist"}</em></span></button>`).join("")}</div>
+        <div class="realm-list">${W.realms.map((r) => `<button class="realm-tile${journey.realms.includes(r.id) ? " is-visited" : ""}${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" data-realm="${r.id}"><img src="${esc(r.image)}" alt="" loading="lazy"><span>${esc(r.name)}<em>${journey.realms.includes(r.id) ? esc(r.tagline) : "Still hidden in mist"}</em></span></button>`).join("")}</div>
         <aside class="nudge nudge--page">${passageHTML(BECOMING)}</aside>
         <p style="margin-top:2rem"><button class="btn" id="reset">Begin the journey again</button></p>
         ${demoStrip()}
       </section>`;
-    stage.querySelectorAll("[data-realm]").forEach((b) => b.addEventListener("click", () => { location.hash = `#/atlas/${b.dataset.realm}`; }));
-    $("#reset").addEventListener("click", () => { journey = { realms: [], cards: [], keepers: [], scrolls: [] }; save(); renderRailJourney(); viewJourney(stage); toast("The mist settles back over the Atlas."); });
+    stage.querySelectorAll("[data-realm]").forEach((b) => b.addEventListener("click", () => { location.hash = `#/realm/${b.dataset.realm}`; }));
+    $("#reset").addEventListener("click", () => { journey = { realms: [], cards: [], keepers: [], scrolls: [], sightings: [], bloomed: [] }; save(); renderRailJourney(); viewJourney(stage); toast("The mist settles back over the Atlas."); });
   }
 
   const demoStrip = () => `<div class="demo-strip"><b>A work in progress.</b> Every name, story, verse and image here grows from Cassidy's Atlantean Archives; nothing has been invented. Where a page is still blank, the Garden is still growing. Your journey is kept only in this browser.</div>`;
+
+  /* Bottom bars tuck away into the tree emblem, so nothing hides the art. */
+  const TUCK_KEY = "ag-bars-tucked";
+  function wireDockables(root) {
+    let tucked = false; try { tucked = localStorage.getItem(TUCK_KEY) === "1"; } catch (e) { /* ignore */ }
+    const apply = (t) => root.querySelectorAll(".dockable").forEach((d) => {
+      d.classList.toggle("is-tucked", t);
+      const b = d.querySelector(".dock-toggle");
+      b.setAttribute("aria-expanded", String(!t)); b.setAttribute("aria-label", t ? "Open the bar" : "Tuck the bar away");
+    });
+    apply(tucked);
+    root.querySelectorAll(".dock-toggle").forEach((b) => b.addEventListener("click", (e) => {
+      e.stopPropagation(); tucked = !tucked; apply(tucked);
+      try { localStorage.setItem(TUCK_KEY, tucked ? "1" : "0"); } catch (err) { /* ignore */ }
+    }));
+  }
+
+  /* ── Realm portals and hidden glimmers ──────────────────── */
+  const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Hiding places and riddles live in js/hiding.js (window.HIDING).
+  // Fallback spots for anyone not yet given a hiding place.
+  const GLIMMER_SPOTS = [[58, 38], [76, 60], [45, 70], [86, 32], [64, 82], [36, 52], [70, 44], [52, 56]];
+  let arrivingFrom = null;
+
+  function enterRealm(id) {
+    const r = realmById[id]; if (!r) return;
+    const pin = document.querySelector(`.pin[data-realm="${id}"]`);
+    if (!pin || reduceMotion()) { location.hash = `#/realm/${id}`; return; }
+    const box = pin.getBoundingClientRect();
+    const x = box.left + box.width / 2, y = box.top + box.height / 2;
+    const map = pin.closest(".atlas__map"), mb = map.getBoundingClientRect();
+    map.style.transformOrigin = `${x - mb.left}px ${y - mb.top}px`;
+    map.classList.add("is-diving");
+    const portal = document.createElement("div");
+    portal.className = "portal"; portal.setAttribute("aria-hidden", "true");
+    portal.style.setProperty("--x", x + "px"); portal.style.setProperty("--y", y + "px");
+    portal.innerHTML = `<span class="portal__ring"></span><span class="portal__art" style="background-image:url('${r.image}')"></span>`;
+    document.body.appendChild(portal);
+    requestAnimationFrame(() => requestAnimationFrame(() => portal.classList.add("is-open")));
+    setTimeout(() => {
+      location.hash = `#/realm/${id}`;
+      setTimeout(() => { portal.classList.add("is-done"); setTimeout(() => portal.remove(), 700); }, 120);
+    }, 1300);
+  }
+
+  function leaveRealm(id) { arrivingFrom = id; location.hash = "#/atlas"; }
+
+  function glimmersFor(r) {
+    const hide = HIDING[r.id] || { strains: {}, keepers: {} };
+    const strains = W.strains.filter((s) => s.realm === r.id).map((s) => ({ kind: "cards", id: s.id, key: s.id, name: s.name, s, h: (hide.strains || {})[s.id] }));
+    const keepers = W.keepers.filter((k) => (hide.keepers || {})[k.id]).map((k) => ({ kind: "keepers", id: k.id, key: `${r.id}:${k.id}`, name: k.name, k, h: hide.keepers[k.id] }));
+    const shift = (r.order || 0) % GLIMMER_SPOTS.length;
+    return strains.concat(keepers).map((g, i) => Object.assign(g, {
+      spot: g.h ? [g.h.x, g.h.y] : GLIMMER_SPOTS[(i + shift) % GLIMMER_SPOTS.length],
+      riddle: g.h ? g.h.riddle : "",
+    }));
+  }
+  const isFound = (g) => g.kind === "keepers" ? journey.sightings.includes(g.key) : journey.cards.includes(g.id);
+
+  /* Ambient life: each realm breathes with the "visual identity" from
+     The Atlas 7 Worlds (bubbles rising on the Bubble Coast, embers in the
+     Hearthlands, stars in the Celestial Realm...). Drawn on a canvas. */
+  const AMBIENCE = {
+    "sunlight-realms": { kind: "petals", n: 34, colors: ["#ffd7e3", "#fff1c9", "#ffe39a"] },
+    "bubble-coast-realm": { kind: "bubbles", n: 38, colors: ["#d7f6ff", "#9fe6f2"] },
+    "living-harvest-realm": { kind: "leaves", n: 26, colors: ["#e9c46a", "#a7c957", "#d4a373"] },
+    "crystal-conservatory-realm": { kind: "glints", n: 46, colors: ["#e4d4ff", "#b9f3ff", "#ffffff"] },
+    "hearthlands-realm": { kind: "embers", n: 40, colors: ["#ffb347", "#ff7b39", "#ffe08a"] },
+    "verdant-wilds-realm": { kind: "fireflies", n: 30, colors: ["#e8ff9c", "#c5f27a"] },
+    "celestial-realm": { kind: "stars", n: 70, colors: ["#ffffff", "#dcd3ff", "#bfe6ff"] },
+    "heart-of-atlantis": { kind: "heart", n: 46, colors: ["#c9a7ff", "#b48ef0", "#e6d0ff"], sparks: ["#ffe9a8", "#ffd36b", "#fff6d6"] },
+  };
+  function startAmbience(canvas, realmId) {
+    const cfg = AMBIENCE[realmId]; if (!cfg || reduceMotion()) return;
+    const ctx = canvas.getContext("2d"); let w = 0, h = 0, dpr = 1;
+    const size = () => { dpr = Math.min(window.devicePixelRatio || 1, 2); w = canvas.clientWidth; h = canvas.clientHeight; canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+    size(); window.addEventListener("resize", size);
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const spawn = (fresh) => {
+      const p = { x: rnd(0, w), y: fresh ? rnd(0, h) : 0, c: cfg.colors[Math.floor(Math.random() * cfg.colors.length)], t: rnd(0, 6.28), s: rnd(.6, 1.4) };
+      switch (cfg.kind) {
+        case "bubbles": p.r = rnd(2, 7); p.vy = -rnd(.25, .8); p.vx = 0; if (!fresh) p.y = h + 10; break;
+        case "embers": p.r = rnd(1, 2.6); p.vy = -rnd(.3, .9); p.vx = rnd(-.15, .15); if (!fresh) p.y = h + 5; break;
+        case "petals": p.r = rnd(2.5, 5); p.vy = rnd(.25, .6); p.vx = rnd(.15, .5); if (!fresh) p.y = -10; break;
+        case "leaves": p.r = rnd(3, 6); p.vy = rnd(.3, .7); p.vx = rnd(-.2, .25); if (!fresh) p.y = -10; break;
+        case "heart":
+          // wisteria petals drifting down from the great tree, and lantern
+          // sparks rising from the gathering circle beneath it
+          if (Math.random() < .55) { p.k = "petal"; p.r = rnd(2.5, 4.8); p.vy = rnd(.22, .5); p.vx = rnd(-.25, .2); if (!fresh) p.y = -10; }
+          else { p.k = "spark"; p.c = cfg.sparks[Math.floor(Math.random() * cfg.sparks.length)]; p.r = rnd(1, 2.3); p.vy = -rnd(.2, .55); p.vx = rnd(-.12, .12); if (!fresh) { p.y = h * rnd(.55, 1) + 5; } }
+          break;
+        default: p.r = rnd(.8, 2.4); p.vy = rnd(-.12, .12); p.vx = rnd(-.15, .15);
+      }
+      return p;
+    };
+    const ps = Array.from({ length: cfg.n }, () => spawn(true));
+    let last = performance.now(), raf = 0;
+    const frame = (now) => {
+      if (!canvas.isConnected) { window.removeEventListener("resize", size); return; }
+      const dt = Math.min(3, (now - last) / 16.7); last = now;
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < ps.length; i++) {
+        const p = ps[i]; p.t += .02 * dt * p.s;
+        const sway = Math.sin(p.t) * (cfg.kind === "petals" || cfg.kind === "leaves" || p.k === "petal" ? .6 : cfg.kind === "bubbles" ? .35 : .25);
+        p.x += (p.vx + sway) * dt; p.y += p.vy * dt;
+        if (p.y < -20 || p.y > h + 20 || p.x < -20 || p.x > w + 20) { ps[i] = spawn(cfg.kind === "glints" || cfg.kind === "stars" || cfg.kind === "fireflies" || cfg.kind === "motes"); continue; }
+        const pulse = .5 + .5 * Math.sin(p.t * (cfg.kind === "stars" || cfg.kind === "glints" ? 2.4 : 1.3));
+        ctx.save(); ctx.translate(p.x, p.y);
+        if (cfg.kind === "bubbles") {
+          ctx.globalAlpha = .55; ctx.strokeStyle = p.c; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(0, 0, p.r, 0, 6.28); ctx.stroke();
+          ctx.globalAlpha = .7; ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(-p.r * .35, -p.r * .35, p.r * .25, 0, 6.28); ctx.fill();
+        } else if (cfg.kind === "petals" || cfg.kind === "leaves" || p.k === "petal") {
+          ctx.rotate(p.t); ctx.globalAlpha = .75; ctx.fillStyle = p.c; ctx.beginPath(); ctx.ellipse(0, 0, p.r, p.r * .45, 0, 0, 6.28); ctx.fill();
+        } else {
+          const glow = cfg.kind === "embers" ? .9 : p.k === "spark" ? .55 + .45 * pulse : pulse;
+          ctx.globalAlpha = glow; ctx.shadowColor = p.c; ctx.shadowBlur = cfg.kind === "stars" ? 6 : 12;
+          ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(0, 0, p.r * (cfg.kind === "glints" ? .6 + pulse : 1), 0, 6.28); ctx.fill();
+          if (cfg.kind === "glints" && pulse > .85) { ctx.fillRect(-p.r * 4, -.5, p.r * 8, 1); ctx.fillRect(-.5, -p.r * 4, 1, p.r * 8); }
+        }
+        ctx.restore();
+      }
+      raf = requestAnimationFrame(frame);
+    };
+    raf = requestAnimationFrame(frame);
+    document.addEventListener("visibilitychange", () => { if (document.hidden) cancelAnimationFrame(raf); else if (canvas.isConnected) { last = performance.now(); raf = requestAnimationFrame(frame); } });
+  }
+
+  function viewRealm(stage, id) {
+    const r = realmById[id]; if (!r) return viewAtlas(stage);
+    discover("realms", r.id, r.name);
+    const glims = glimmersFor(r);
+    const found = isFound;
+    stage.innerHTML = `
+      <section class="scene view" aria-label="${esc(r.name)}">
+        <div class="scene__vp" id="scene-vp">
+          <div class="scene__art">
+            <img src="${esc(r.image)}" alt="Painting of ${esc(r.name)}" draggable="false">
+            ${glims.map((g, i) => g.kind === "keepers"
+              ? `<button class="glimmer glimmer--keeper${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.9).toFixed(1)}s" data-g="${i}"${found(g) ? ` data-near="${esc(g.name)}"` : ""} aria-label="${found(g) ? esc(g.name) : "Someone hiding"}"><img src="assets/keepers/${g.id}-face.png" alt=""></button>`
+              : `<button class="glimmer${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.7).toFixed(1)}s" data-g="${i}"${found(g) ? ` data-near="${esc(g.name)}"` : ""} aria-label="${found(g) ? esc(g.name) : "A hidden glimmer"}"><span></span></button>`).join("")}
+          </div>
+        </div>
+        <div class="scene__fore" aria-hidden="true" style="background-image:url('${esc(r.image)}')"></div>
+        <canvas class="scene__life" aria-hidden="true"></canvas>
+        <header class="scene__head sr-only">
+          <div class="realm__num">${r.number ? "REALM " + r.number : "THE CENTRE OF THE ATLAS"}</div>
+          <h1>${esc(r.name)}</h1>
+          <p>“${esc(r.tagline)}”</p>
+        </header>
+        <div class="scene__hint">${glims.length
+          ? `<span>A distant light glimpsed through ancient trees.</span><small>Manuscript VI · Wonder Before Explanation</small>`
+          : `<span>Even now, seeds lie sleeping beneath the soil, waiting patiently for the day their stories are needed.</span><small>Manuscript V · The Endless Herbarium</small>`}</div>
+        <div class="scene__bar dockable">
+          <button class="dock-toggle" aria-expanded="true" aria-label="Tuck the bar away"><img src="assets/logo-emblem.png" alt=""></button>
+          <div class="dockable__items"><button class="btn" data-leave>${svg(ICON.back).replace("<svg", '<svg width="16" height="16"')} The Atlas</button>
+          <button class="btn" data-tale>Read the tale</button>
+          ${glims.length ? `<button class="btn btn--gold" data-seek aria-expanded="false" aria-controls="seek">Riddles</button><span class="scene__count" id="scene-count"></span>` : ""}</div>
+        </div>
+        ${glims.length ? `<aside class="seek" id="seek" aria-label="Who is hiding here">
+          <p class="seek__title">Seek in ${esc(r.name)}</p><p class="seek__sub">${glims.filter((g) => g.kind === "cards").length ? "A strain card and the five Keepers hide here. " : "The five Keepers hide here. "}Read each riddle, then search the painting.</p>
+          <ol>${glims.map((g, i) => {
+            const thumb = g.kind === "keepers" ? `assets/keepers/${g.id}-face.png` : (g.s.art && g.s.art.front);
+            return `<li class="${found(g) ? "is-found" : ""}" data-gi="${i}">
+              ${thumb ? `<img class="seek__thumb${g.kind === "keepers" ? " seek__thumb--face" : ""}" src="${esc(thumb)}" alt="" loading="lazy">` : `<span class="seek__thumb seek__thumb--blank">✦</span>`}
+              <div><b>${esc(g.name)}</b><span class="riddle">${(g.riddle || "Somewhere in this realm.").split(" / ").map(esc).join("<br>")}</span><button class="whisper" data-whisper="${i}" aria-label="Whisper a hint for ${esc(g.name)}">✧ Whisper a hint</button></div>
+            </li>`; }).join("")}</ol>
+        </aside>` : ""}
+      </section>`;
+    const updateCount = (justFound) => {
+      const c = $("#scene-count"), n = glims.filter(found).length;
+      if (c) c.textContent = `✦ ${n} of ${glims.length} found`;
+      if (justFound && glims.length && n === glims.length && !journey.bloomed.includes(r.id)) {
+        journey.bloomed.push(r.id); save(); setTimeout(() => bloomRealm(stage, r), 1400);
+      }
+    };
+    updateCount();
+    stage.querySelector("[data-leave]").addEventListener("click", () => leaveRealm(r.id));
+    stage.querySelector("[data-tale]").addEventListener("click", () => openRealm(r.id));
+    stage.querySelectorAll(".glimmer").forEach((b) => b.addEventListener("click", () => {
+      const g = glims[+b.dataset.g];
+      revealGlimmer(g, b, () => {
+        b.classList.add("is-found"); b.setAttribute("aria-label", g.name); b.dataset.near = g.name; updateCount(true);
+        const li = stage.querySelector(`.seek li[data-gi="${b.dataset.g}"]`); if (li) li.classList.add("is-found");
+      });
+    }));
+    const seek = $("#seek"), seekBtn = stage.querySelector("[data-seek]");
+    if (seekBtn) seekBtn.addEventListener("click", () => { const o = seek.classList.toggle("is-open"); seekBtn.setAttribute("aria-expanded", String(o)); });
+    stage.querySelectorAll(".seek li").forEach((li) => li.addEventListener("click", () => {
+      const b = stage.querySelector(`.glimmer[data-g="${li.dataset.gi}"]`);
+      if (li.classList.contains("is-found")) { b.click(); return; }
+      li.classList.add("is-seeking"); setTimeout(() => li.classList.remove("is-seeking"), 1200);
+    }));
+    stage.querySelectorAll("[data-whisper]").forEach((w) => w.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const b = stage.querySelector(`.glimmer[data-g="${w.dataset.whisper}"]`);
+      if (window.matchMedia("(max-width: 860px)").matches) { seek.classList.remove("is-open"); seekBtn.setAttribute("aria-expanded", "false"); }
+      b.scrollIntoView({ block: "center", inline: "center", behavior: reduceMotion() ? "auto" : "smooth" });
+      b.classList.remove("is-hinted"); void b.offsetWidth; b.classList.add("is-hinted");
+      setTimeout(() => b.classList.remove("is-hinted"), 3600);
+    }));
+    startAmbience(stage.querySelector(".scene__life"), r.id);
+    startDepth(stage.querySelector(".scene"));
+    wireDockables(stage);
+    const vp = $("#scene-vp");
+    requestAnimationFrame(() => { vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2; vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2; });
+    enableDragPan(vp);
+  }
+
+  /* 2.5D: the painting, a soft out-of-focus foreground and the drifting
+     particles move at different speeds as the pointer (or a tilted phone)
+     moves, so the flat painting reads as layered depth. */
+  let askedTilt = false;
+  function startDepth(scene) {
+    if (!scene || reduceMotion()) return;
+    const art = scene.querySelector(".scene__art"), fore = scene.querySelector(".scene__fore"), life = scene.querySelector(".scene__life");
+    let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+    const onMove = (e) => { const b = scene.getBoundingClientRect(); tx = (e.clientX - b.left) / b.width - .5; ty = (e.clientY - b.top) / b.height - .5; };
+    const onTilt = (e) => { if (e.gamma == null) return; tx = Math.max(-.5, Math.min(.5, e.gamma / 40)); ty = Math.max(-.5, Math.min(.5, (e.beta - 45) / 40)); };
+    scene.addEventListener("pointermove", onMove);
+    scene.addEventListener("pointerleave", () => { tx = 0; ty = 0; });
+    window.addEventListener("deviceorientation", onTilt);
+    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function" && !askedTilt) {
+      scene.addEventListener("pointerdown", () => { if (askedTilt) return; askedTilt = true; DeviceOrientationEvent.requestPermission().catch(() => {}); }, { once: true });
+    }
+    const frame = () => {
+      if (!scene.isConnected) { window.removeEventListener("deviceorientation", onTilt); return; }
+      x += (tx - x) * .025; y += (ty - y) * .025;
+      art.style.transform = `translate(${-x * 5}px, ${-y * 3}px) scale(1.01)`;
+      if (fore) fore.style.transform = `translate3d(${-x * 9}px, ${-y * 6}px, 0) scale(1.18)`;
+      if (life) life.style.transform = `translate3d(${x * 5}px, ${y * 3}px, 0)`;
+      raf = requestAnimationFrame(frame);
+    };
+    raf = requestAnimationFrame(frame);
+  }
+
+  function realmTally(r) { const g = glimmersFor(r); return { found: g.filter(isFound).length, total: g.length }; }
+
+  /* When everyone hiding in a realm has been found, the realm blooms. */
+  const BLOOM = { lines: ["Only together does the Garden truly bloom."], source: "Character Bible · The Gardeners of Atlantean Gardens" };
+  function bloomRealm(stage, r) {
+    const scene = stage.querySelector(".scene"); if (!scene) return;
+    const el = document.createElement("div");
+    el.className = "bloom"; el.setAttribute("role", "status");
+    el.innerHTML = `<div class="bloom__ring" aria-hidden="true"></div>
+      <div class="bloom__card"><p class="eyebrow">${esc(r.name)} has bloomed</p>
+      <p class="bloom__line">${esc(BLOOM.lines[0])}</p><small>${esc(BLOOM.source)}</small>
+      <p class="bloom__note">Every strain and Keeper hiding here has been found.</p>
+      <button class="btn btn--gold" data-bloom-ok>Keep wandering</button></div>`;
+    scene.appendChild(el);
+    requestAnimationFrame(() => el.classList.add("is-in"));
+    const close = () => { el.classList.remove("is-in"); setTimeout(() => el.remove(), 600); };
+    el.querySelector("[data-bloom-ok]").addEventListener("click", close);
+    setTimeout(close, 9000);
+    toast(`✦ ${r.name} has bloomed`);
+  }
+
+  function revealGlimmer(g, from, done) {
+    const fb = from.getBoundingClientRect();
+    const art = g.kind === "cards" ? (g.s.art || null) : null;
+    const front = g.kind === "keepers" ? g.k.portrait : (art && art.front);
+    const back = art && art.back;
+    const title = g.kind === "keepers" ? `${g.k.pillar} · ${g.k.virtue}` : (g.s.cardTitle || g.s.title || "");
+    const link = g.kind === "keepers" ? `#/keepers/${g.id}` : `#/cards/${g.id}`;
+    const msg = g.kind === "keepers" ? ((window.KEEPER_MESSAGES || {})[g.key.split(":")[0]] || {})[g.id] : null;
+    const el = document.createElement("div");
+    el.className = "reveal"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-label", g.name);
+    el.style.setProperty("--fx", (fb.left + fb.width / 2 - innerWidth / 2) + "px");
+    el.style.setProperty("--fy", (fb.top + fb.height / 2 - innerHeight / 2) + "px");
+    el.innerHTML = `
+      <div class="reveal__scrim" data-shut></div>
+      <div class="reveal__body">
+        ${front
+          ? `<button class="flip reveal__card" aria-label="${back ? "Turn the card over" : esc(g.name)}"><span class="flip__inner"><span class="flip__side"><img src="${esc(front)}" alt="${esc(g.name)}"></span>${back ? `<span class="flip__side flip__back"><img src="${esc(back)}" alt="${esc(g.name)}, card back"></span>` : ""}</span></button>`
+          : `<div class="reveal__card ccard ccard--type">${cardHTML(g.s).replace(/^<a[^>]*>|<\/a>$/g, "")}</div>`}
+        <p class="eyebrow">${g.kind === "keepers" ? "You spotted a Keeper" : "You found a strain"}</p>
+        <h2>${esc(g.name)}</h2>
+        ${title ? `<p class="reveal__title">${esc(title)}</p>` : ""}
+        ${msg ? `<div class="reveal__message"><p class="reveal__says">${esc(g.name)} whispers</p>${passageHTML(msg)}</div>` : ""}
+        ${back ? '<p class="reveal__hint">Tap the card to turn it over</p>' : ""}
+        <div class="reveal__actions"><a class="btn btn--gold" href="${link}">${g.kind === "keepers" ? "Meet them" : "Read its story"}</a><button class="btn" data-shut>Keep wandering</button></div>
+      </div>`;
+    document.body.appendChild(el);
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("is-in")));
+    const flip = el.querySelector("button.flip"); if (flip && back) flip.addEventListener("click", () => flip.classList.toggle("is-flipped"));
+    const onKey = (e) => { if (e.key === "Escape") shut(); };
+    const shut = () => { el.classList.remove("is-in"); setTimeout(() => el.remove(), 450); document.removeEventListener("keydown", onKey); };
+    document.addEventListener("keydown", onKey);
+    el.querySelectorAll("[data-shut]").forEach((x) => x.addEventListener("click", shut));
+    el.querySelector(".reveal__actions a").addEventListener("click", () => { document.removeEventListener("keydown", onKey); el.remove(); });
+    if (g.kind === "keepers") discover("sightings", g.key, `${g.name} in the ${(realmById[g.key.split(":")[0]] || {}).name || "Garden"}`); else discover("cards", g.id, g.name);
+    done();
+    setTimeout(() => el.querySelector(".reveal__actions a").focus(), 400);
+  }
 
   /* ── Router ────────────────────────────────────────────── */
   let lastBase = "";
   function route() {
     const [, base = "atlas", id] = (location.hash || "#/atlas").split("/");
     const stage = $("#stage");
-    renderNav(base);
+    document.querySelectorAll(".reveal, .closeup, .bloom").forEach((el) => el.remove());
+    renderNav(base === "realm" ? "atlas" : base);
+    $("#app").dataset.view = base;
     if (base === "atlas") {
       if (lastBase !== "atlas" || !stage.querySelector(".atlas")) viewAtlas(stage);
       if (id) openRealm(id); else closeDrawer();
     } else {
       closeDrawer();
-      if (base === "cards") id ? viewStrain(stage, id) : viewCards(stage);
+      if (base === "realm") viewRealm(stage, id);
+      else if (base === "cards") id ? viewStrain(stage, id) : viewCards(stage);
       else if (base === "keepers") id ? viewKeeper(stage, id) : viewKeepers(stage);
       else if (base === "lore") viewLore(stage);
       else if (base === "journey") viewJourney(stage);
@@ -385,11 +758,24 @@
   }
 
   document.addEventListener("click", (e) => {
-    if (e.target.closest("[data-close]")) { location.hash = "#/atlas"; }
+    if (e.target.closest("[data-close]")) { if (location.hash.startsWith("#/realm/")) closeDrawer(); else location.hash = "#/atlas"; }
   });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && $("#drawer").classList.contains("is-open")) location.hash = "#/atlas";
+    if (e.key === "Escape" && $("#drawer").classList.contains("is-open")) { if (location.hash.startsWith("#/realm/")) closeDrawer(); else location.hash = "#/atlas"; }
   });
+  /* The side menu tucks away into the tree emblem and opens again from it. */
+  (function railToggle() {
+    const KEY = "ag-rail-tucked", app = $("#app"), btn = $("#rail-toggle");
+    const apply = (t) => {
+      app.classList.toggle("rail-tucked", t);
+      btn.setAttribute("aria-expanded", String(!t)); btn.setAttribute("aria-label", t ? "Open the menu" : "Tuck the menu away");
+    };
+    let t = false; try { t = localStorage.getItem(KEY) === "1"; } catch (e) { /* ignore */ }
+    apply(t);
+    const toggle = () => { t = !t; apply(t); try { localStorage.setItem(KEY, t ? "1" : "0"); } catch (e) { /* ignore */ } };
+    btn.addEventListener("click", toggle);
+    document.addEventListener("click", (e) => { if (e.target.closest("[data-rail-toggle]")) toggle(); });
+  })();
   window.addEventListener("hashchange", route);
   threshold();
 })();

@@ -63,3 +63,64 @@ from the originals with Pillow.
   before printing"), so only its front is shown.
 - **Celestial Realm and Heart of Atlantis:** they have no dedicated paintings
   yet, so the preview uses a crop of the Atlas map.
+
+## Realm portals (branch `feature/realm-portals`, not live yet)
+
+- Touching a realm on the Atlas dives into it. The map zooms toward the pin
+  while a circular portal opens onto the realm's painting.
+- Each realm is its own scene (`#/realm/<id>`). Its painting fills the
+  screen and can be panned on phones. "Read the tale" opens the realm's
+  verses, and "The Atlas" surfaces back to the map.
+- Hidden glimmers (the easter eggs) twinkle on the painting, one for each
+  strain and Keeper that lives in that realm. Touching one raises its
+  collector card out of the light, ready to flip. Finds count toward
+  Your Journey.
+- **Hiding places** (`HIDING` in `js/atlas.js`): each strain and Keeper hides
+  where its Atlas district appears in its painting. Glookies is in the doorway
+  of The Baked Leaf, Lilac Diesel × Grape Diamonds among the vineyard
+  terraces, Raptor by the road signposts, and so on. Each one has a seeker's
+  clue describing what is painted there.
+- **Keepers in hiding:** all five Keepers hide in every realm (38 spots), shown
+  as tiny half-hidden faces cut from the Hall of Living Portraits. Spotting one
+  counts as a sighting on Your Journey. Spots and riddles live in
+  `js/hiding.js`.
+- **Keeper messages** (`js/messages.js`): every Keeper sighting carries its own
+  whispered message, 40 in all, one per Keeper per realm. Each is quoted word
+  for word from the manuscripts or the Character Bible (checked automatically)
+  and chosen to fit both the Keeper and the realm.
+- **Riddles:** every hiding place has a two-line riddle describing what is
+  painted there, without naming it outright.
+- **2.5D depth:** the painting, a soft out-of-focus foreground and the drifting
+  particles move at different speeds as the pointer moves (or, on Android, as
+  the phone tilts). This fakes depth without splitting the paintings; true
+  layered depth would need each painting separated into layers.
+- **Clean Atlas with living labels:** the map is now the unlabelled Atlas
+  painting ("Without Bake.png"). Realm names float above it as gently bobbing,
+  glowing labels (with each realm's found tally) that open the realm when
+  clicked; positions are in `ATLAS.spots` in `js/atlas.js`. The title floats
+  over the painting's blank parchment edge.
+- **Glass navigation:** the side rail is a floating translucent panel, and the
+  Atlas and realm scenes run full-bleed beneath it. The bottom bars are glass
+  too, and tuck away into the tree emblem (and open again from it); the
+  choice is remembered.
+- **Seek panel:** a "Clues" list in every scene, like a Where's Wally card.
+  Portraits stay shadowed until found; touching a found one shows its card
+  again.
+- **Strain pages** put the card centre stage: a large card that tilts with the
+  cursor, buttons to show the character or the tale and the plant, an "Up
+  close" reader for the small print on card backs, and the realm painting
+  glowing behind. The Herbarium details sit below.
+- Each scene breathes with ambient life drawn from its visual identity in
+  The Atlas 7 Worlds: petals and pollen (Sunlight), rising bubbles (Bubble
+  Coast), falling leaves (Living Harvest), crystal glints (Crystal
+  Conservatory), embers (Hearthlands), fireflies (Verdant Wilds), stars
+  (Celestial), golden motes (Heart of Atlantis).
+- Hovering a glimmer whispers the place it hides near, using the strain's or
+  Keeper's district from the Atlas data (for example "Near Coco's Old Table").
+- The Celestial Realm and the Heart of Atlantis have their own paintings (made
+  by Cassidy with ChatGPT, 10 Nov 2026, in the series style), so all eight
+  locations now have a dedicated painting.
+- Respects reduced motion: no zoom and no ambient particles; it goes straight
+  into the scene.
+- Source of truth is now `site/living-atlas/`; the older local
+  `dream-experience/` folder is superseded.
