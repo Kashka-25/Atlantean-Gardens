@@ -49,7 +49,7 @@
   document.addEventListener("load", (e) => {
     const img = e.target; if (!img || img.tagName !== "IMG" || !img.naturalWidth) return;
     const ratio = `${img.naturalWidth} / ${img.naturalHeight}`;
-    if (img.classList.contains("ccard__art")) { const c = img.closest(".ccard"); if (c) c.style.aspectRatio = ratio; return; }
+    if (img.classList.contains("ccard__art")) { const c = img.closest(".ccard"); if (c && c.classList.contains("ccard--portrait")) c.style.aspectRatio = ratio; return; }
     const side = img.closest(".flip__side");
     if (side && !side.classList.contains("flip__back")) { const f = side.closest(".flip"); if (f) f.style.aspectRatio = ratio; }
     const portrait = img.closest(".portrait"); if (portrait) portrait.style.aspectRatio = ratio;
@@ -174,7 +174,7 @@
           ${r.nudge ? `<aside class="nudge">${passageHTML(r.nudge)}</aside>` : ""}
         </div>` : ""}
         <div data-pane="dwellers"${r.tale.length ? " hidden" : ""}>
-          ${keepers.length ? `<div class="section-label">Keepers who tend here</div><div class="cards">${keepers.map((k) => `<a class="ccard" href="#/keepers/${k.id}" aria-label="${esc(k.name)}"><span class="ccard__face"><img class="ccard__art" src="${esc(k.portrait)}" alt="" loading="lazy"><span class="ccard__caption"><span class="ccard__name">${esc(k.name)}</span><span class="ccard__title">${esc(k.pillar)}</span></span></span></a>`).join("")}</div>` : ""}
+          ${keepers.length ? `<div class="section-label">Keepers who tend here</div><div class="cards">${keepers.map((k) => `<a class="ccard ccard--portrait" href="#/keepers/${k.id}" aria-label="${esc(k.name)}"><span class="ccard__face"><img class="ccard__art" src="${esc(k.portrait)}" alt="" loading="lazy"><span class="ccard__caption"><span class="ccard__name">${esc(k.name)}</span><span class="ccard__title">${esc(k.pillar)}</span></span></span></a>`).join("")}</div>` : ""}
           <div class="section-label">Strains of this realm</div>
           ${strains.length ? `<div class="cards">${strains.map((s) => cardHTML(s, { caption: true })).join("")}</div>` : `<div class="empty">Even now, seeds lie sleeping beneath the soil, waiting patiently for the day their stories are needed.<small>Manuscript V · The Endless Herbarium</small></div>`}
         </div>
