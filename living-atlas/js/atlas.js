@@ -549,13 +549,14 @@
       <section class="scene view" aria-label="${esc(r.name)}">
         <div class="scene__vp" id="scene-vp">
           <div class="scene__art">
-            <img src="${esc(r.image)}" alt="Painting of ${esc(r.name)}" draggable="false">
+            <img src="${esc(sceneImage(r))}" alt="Painting of ${esc(r.name)}" draggable="false">
+            ${scrollWords(r)}
             ${glims.map((g, i) => g.kind === "keepers"
               ? `<button class="glimmer glimmer--keeper${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.9).toFixed(1)}s" data-g="${i}"${found(g) ? ` data-near="${esc(g.name)}"` : ""} aria-label="${found(g) ? esc(g.name) : "Someone hiding"}"><img src="assets/keepers/${g.id}-face.png" alt=""></button>`
               : `<button class="glimmer${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.7).toFixed(1)}s" data-g="${i}"${found(g) ? ` data-near="${esc(g.name)}"` : ""} aria-label="${found(g) ? esc(g.name) : "A hidden glimmer"}"><span></span></button>`).join("")}
           </div>
         </div>
-        <div class="scene__fore" aria-hidden="true" style="background-image:url('${esc(r.image)}')"></div>
+        <div class="scene__fore" aria-hidden="true" style="background-image:url('${esc(sceneImage(r))}')"></div>
         <canvas class="scene__life" aria-hidden="true"></canvas>
         <header class="scene__head">
           <div class="realm__num">${r.number ? "REALM " + r.number : "THE CENTRE OF THE ATLAS"}</div>
@@ -646,6 +647,19 @@
       raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
+  }
+
+  /* Words lifted off each realm's title scroll float back above it. */
+  const SCROLLS = window.SCROLL_TEXT || {};
+  const sceneImage = (r) => SCROLLS[r.id] ? r.image.replace(/\.jpg$/, "-clean.jpg") : r.image;
+  function scrollWords(r) {
+    const sc = SCROLLS[r.id]; if (!sc) return "";
+    const [l, t, rr, b] = sc.box, W = 1536, H = 1024;
+    return `<div class="scroll-words" style="left:${(l / W * 100).toFixed(2)}%;top:${(t / H * 100).toFixed(2)}%;width:${((rr - l) / W * 100).toFixed(2)}%;height:${((b - t) / H * 100).toFixed(2)}%;--ink:${sc.ink}" aria-hidden="true">
+      <p class="scroll-words__title">${sc.title.map(esc).join("<br>")}</p>
+      <span class="scroll-words__rule">✦</span>
+      ${sc.body.map(([txt, kind]) => `<p class="scroll-words__body${kind === "plain" ? " is-plain" : ""}">${esc(txt)}</p>`).join('<span class="scroll-words__rule is-small">❧</span>')}
+    </div>`;
   }
 
   function realmTally(r) { const g = glimmersFor(r); return { found: g.filter(isFound).length, total: g.length }; }
