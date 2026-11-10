@@ -4,6 +4,9 @@
 (function () {
   "use strict";
   const W = window.WORLD;
+  // Bump when realm paintings change, so browsers fetch the new ones.
+  const ART_V = "2";
+  W.realms.forEach((r) => { r.image += "?v=" + ART_V; });
   const $ = (s, el = document) => el.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const realmById = Object.fromEntries(W.realms.map((r) => [r.id, r]));
@@ -145,7 +148,7 @@
   /* The clean, unlabelled Atlas painting ("Without Bake"); realm names float
      above it as living labels. x, y are percentages of the painting. */
   const ATLAS = {
-    src: "assets/atlas-home.jpg",
+    src: "assets/atlas-home.jpg?v=2",
     spots: {
       "sunlight-realms": { x: 26, y: 14 }, "bubble-coast-realm": { x: 66, y: 13 },
       "living-harvest-realm": { x: 22, y: 36 }, "crystal-conservatory-realm": { x: 84, y: 33 },
