@@ -6,16 +6,16 @@
 window.HIDING = {
   "sunlight-realms": {
     strains: {
-      "lusty-lady": { x: 41, y: 45, riddle: "Where blossom spills like laughter down a stair, / one flower blooms too loudly to stay hidden." },
-      "strawberry-akeil": { x: 52, y: 56, riddle: "A roof of green, a ring of song: / beneath the dome, the meadow sings along." },
-      "honey-melon-kush": { x: 46, y: 66, riddle: "Below the music, in the grass, / an afternoon has drifted off to sleep." },
+      "lusty-lady": { x: 46, y: 28, riddle: "Where blossom spills like laughter down a stair, / one flower blooms too loudly to stay hidden." },
+      "strawberry-akeil": { x: 61, y: 62, riddle: "A roof of green, a ring of song: / beneath the dome, the meadow sings along." },
+      "honey-melon-kush": { x: 63, y: 75, riddle: "Below the music, in the grass, / an afternoon has drifted off to sleep." },
     },
     keepers: {
-      "coco": { x: 25, y: 71, riddle: "Where low walls hold the warmth of noon, / the oldest hands rest in sun-baked stone." },
-      "kasper": { x: 26, y: 48, riddle: "Four sails that turn but never sail; / a wanderer is counting the wind." },
-      "lila": { x: 64, y: 84, riddle: "Ringed by sea on a small green isle, / someone is listening to the tide." },
-      "dnine": { x: 77, y: 70, riddle: "Where one lone tower keeps watch on the waves, / an old inventor studies the light." },
-      "raptor": { x: 6, y: 66, riddle: "Where a tall ship rests at the western edge, / one who carries others waits to cross." },
+      "coco": { x: 28, y: 78, riddle: "Where low walls hold the warmth of noon, / the oldest hands rest in sun-baked stone." },
+      "kasper": { x: 28, y: 38, riddle: "Four sails that turn but never sail; / a wanderer is counting the wind." },
+      "lila": { x: 85, y: 50, riddle: "Ringed by sea on a small green isle, / someone is listening to the tide." },
+      "dnine": { x: 93, y: 30, riddle: "Where one lone tower keeps watch on the waves, / an old inventor studies the light." },
+      "raptor": { x: 7, y: 52, riddle: "Where a tall ship rests at the western edge, / one who carries others waits to cross." },
     },
   },
   "bubble-coast-realm": {
