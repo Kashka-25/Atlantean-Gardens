@@ -94,6 +94,11 @@ from the originals with Pillow.
   particles move at different speeds as the pointer moves (or, on Android, as
   the phone tilts). This fakes depth without splitting the paintings; true
   layered depth would need each painting separated into layers.
+- **Clean Atlas with living labels:** the map is now the unlabelled Atlas
+  painting ("Without Bake.png"). Realm names float above it as gently bobbing,
+  glowing labels (with each realm's found tally) that open the realm when
+  clicked; positions are in `ATLAS.spots` in `js/atlas.js`. The title floats
+  over the painting's blank parchment edge.
 - **Glass navigation:** the side rail is a floating translucent panel, and the
   Atlas and realm scenes run full-bleed beneath it. The bottom bars are glass
   too, and tuck away into the tree emblem (and open again from it); the

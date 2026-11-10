@@ -115,20 +115,21 @@
 
   /* ── Views ─────────────────────────────────────────────── */
   function viewAtlas(stage) {
-    const pins = W.realms.map((r) => { const t = realmTally(r); return `
-      <button class="pin${journey.realms.includes(r.id) ? " is-visited" : ""}${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${r.pin.x}%;top:${r.pin.y}%" data-realm="${r.id}" aria-label="Open ${esc(r.name)}, ${t.found} of ${t.total} found">
-        <span class="pin__label">${esc(r.name)}${t.total ? ` · ${t.found}/${t.total}` : ""}</span>
+    const pins = W.realms.map((r, i) => { const t = realmTally(r), at = ATLAS.spots[r.id] || r.pin; return `
+      <button class="pin${journey.realms.includes(r.id) ? " is-visited" : ""}${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${at.y}%" data-realm="${r.id}" aria-label="Open ${esc(r.name)}, ${t.found} of ${t.total} found"></button>
+      <button class="realm-label${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${at.y}%;--d:${(i * 0.6).toFixed(1)}s" data-realm="${r.id}" tabindex="-1" aria-hidden="true">
+        ${r.number ? `<i>${r.number}</i>` : `<i>✦</i>`}<b>${esc(r.name.replace(/^The /, ""))}</b>${t.total ? `<small>${t.found} of ${t.total} found</small>` : ""}
       </button>`; }).join("");
     const bar = W.realms.map((r) => { const t = realmTally(r); return `<button data-realm="${r.id}"${journey.bloomed.includes(r.id) ? ' class="is-bloomed"' : ""}>${r.number ? `<b>${r.number}</b>` : "✦ "}${esc(r.name.replace(/ Realms?$/, ""))}${t.total ? `<small>${t.found}/${t.total}</small>` : ""}</button>`; }).join("");
     stage.innerHTML = `
       <section class="atlas view">
         <div class="atlas__viewport" id="atlas-vp">
           <div class="atlas__map">
-            <img src="assets/atlas-map.jpg" alt="The Living Atlas of Atlantean Gardens: seven realms around the Heart of Atlantis" draggable="false">
+            <img src="${ATLAS.src}" alt="The Living Atlas of Atlantean Gardens: seven realms around the Heart of Atlantis" draggable="false">
             ${pins}
           </div>
         </div>
-        <h1 class="sr-only">The Living Atlas</h1>
+        <header class="atlas__float-title"><img src="assets/logo-emblem.png" alt=""><div><h1>The Living Atlas</h1><p>of Atlantean Gardens</p><em>No map has ever captured the whole of Atlantis. This one is simply where today's journey begins.</em></div></header>
         <div class="atlas__hint">Curiosity has always been the truest map of Atlantis. Touch a glowing light to enter.</div>
         <div class="atlas__bar dockable" role="toolbar" aria-label="Realms"><button class="dock-toggle" aria-expanded="true" aria-label="Tuck the bar away"><img src="assets/logo-emblem.png" alt=""></button><div class="dockable__items">${bar}</div></div>
       </section>`;
@@ -140,6 +141,18 @@
     requestAnimationFrame(() => { vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2; vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2; });
     enableDragPan(vp);
   }
+
+  /* The clean, unlabelled Atlas painting ("Without Bake"); realm names float
+     above it as living labels. x, y are percentages of the painting. */
+  const ATLAS = {
+    src: "assets/atlas-clean.jpg",
+    spots: {
+      "sunlight-realms": { x: 42, y: 15 }, "bubble-coast-realm": { x: 69, y: 17 },
+      "living-harvest-realm": { x: 31, y: 36 }, "crystal-conservatory-realm": { x: 83, y: 36 },
+      "heart-of-atlantis": { x: 57, y: 38 }, "hearthlands-realm": { x: 37, y: 61 },
+      "verdant-wilds-realm": { x: 80, y: 60 }, "celestial-realm": { x: 58, y: 79 },
+    },
+  };
 
   function enableDragPan(vp) {
     let down = false, sx = 0, sy = 0, sl = 0, st = 0, moved = false;
