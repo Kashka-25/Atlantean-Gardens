@@ -664,15 +664,17 @@ button { font: inherit; color: inherit; }
 .navlink.is-active { border-color: rgba(240,213,149,.55); background: linear-gradient(90deg, rgba(210,171,98,.22), rgba(210,171,98,.04)); box-shadow: inset 0 0 18px rgba(240,213,149,.08); }
 /* the Atlas and realm scenes run beneath the glass */
 .app[data-view="atlas"] .stage, .app[data-view="realm"] .stage { margin-left: 0; }
-.stage { margin-left: 252px; }
+.app { --rail-space: 252px; }
+.app.rail-tucked { --rail-space: 96px; }
+.stage { margin-left: var(--rail-space); transition: margin-left .5s var(--ease); }
 
 .atlas__bar, .scene__bar, .scene__head, .atlas__hint, .seek, .cardstage__controls {
   background: var(--glass-bg); border-color: var(--glass-line); box-shadow: var(--glass-shadow);
   -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
 }
-.app[data-view="atlas"] .atlas__bar, .app[data-view="realm"] .scene__bar { left: calc(50% + 126px); }
-.app[data-view="realm"] .scene__hint { left: calc(50% + 126px); }
-.app[data-view="realm"] .seek { left: 252px; }
+.app[data-view="atlas"] .atlas__bar, .app[data-view="realm"] .scene__bar { left: calc(50% + var(--rail-space) / 2); }
+.app[data-view="realm"] .scene__hint { left: calc(50% + var(--rail-space) / 2); }
+.app[data-view="realm"] .seek { left: var(--rail-space); }
 
 /* tuck-away bars: the tree emblem opens and closes them */
 .dockable { display: flex; align-items: center; gap: .4rem; flex-wrap: nowrap; max-width: calc(100% - 300px); transition: padding .4s var(--ease); }
@@ -734,7 +736,7 @@ button { font: inherit; color: inherit; }
 @keyframes labelFloat { 0%, 100% { transform: translate(-50%, 22px); } 50% { transform: translate(-50%, 15px); } }
 .pin:hover ~ .realm-label { animation-play-state: paused; }
 
-.atlas__float-title { position: absolute; z-index: 3; top: 22px; left: 268px; display: flex; gap: .9rem; align-items: center; pointer-events: none; max-width: 420px; }
+.atlas__float-title { position: absolute; z-index: 3; top: 22px; left: calc(var(--rail-space) + 16px); transition: left .5s var(--ease); display: flex; gap: .9rem; align-items: center; pointer-events: none; max-width: 420px; }
 .atlas__float-title img { width: 58px; height: 58px; border-radius: 50%; box-shadow: 0 0 24px rgba(240,213,149,.45); animation: breathe 6s ease-in-out infinite; }
 .atlas__float-title h1 { margin: 0; font-family: var(--display); font-weight: 600; font-size: 1.6rem; letter-spacing: .04em; color: #fff6dc; text-shadow: 0 2px 14px rgba(0,0,0,.85); }
 .atlas__float-title p { margin: 0; font-family: var(--display); font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-2); text-shadow: 0 1px 8px rgba(0,0,0,.9); }
@@ -748,3 +750,20 @@ button { font: inherit; color: inherit; }
   .realm-label small { font-size: .74rem; }
 }
 @media (prefers-reduced-motion: reduce) { .realm-label { animation: none; } }
+
+/* side menu that tucks into the emblem */
+.rail { transition: width .5s var(--ease), height .5s var(--ease), border-radius .5s var(--ease), padding .5s var(--ease), bottom .5s var(--ease); overflow: hidden; }
+.rail__brand { display: flex; gap: .7rem; align-items: center; padding: .1rem .2rem 1rem; }
+.rail__toggle { flex: none; width: 48px; height: 48px; padding: 0; border: 0; border-radius: 50%; background: none; cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(240,213,149,.5), 0 0 16px rgba(240,213,149,.25); transition: transform .4s var(--ease), box-shadow .3s; }
+.rail__toggle img { width: 100%; height: 100%; border-radius: 50%; }
+.rail__toggle:hover { transform: rotate(-12deg) scale(1.05); box-shadow: 0 0 0 1px var(--gold-2), 0 0 24px rgba(240,213,149,.5); }
+.rail__name { text-decoration: none; transition: opacity .3s; }
+.rail__name strong { display: block; font-family: var(--display); font-weight: 600; font-size: .95rem; color: var(--parch); }
+.rail__name em { font-size: .9rem; color: var(--gold); }
+.rail__body { display: flex; flex-direction: column; gap: 1.2rem; flex: 1; min-height: 0; transition: opacity .3s; }
+.rail__body .rail__journey { margin-top: auto; }
+.app.rail-tucked .rail { width: 64px; bottom: auto; height: 64px; padding: 7px; border-radius: 50%; }
+.app.rail-tucked .rail__brand { padding: 0; border: 0; }
+.app.rail-tucked .rail__name, .app.rail-tucked .rail__body { opacity: 0; pointer-events: none; visibility: hidden; }
+.app.rail-tucked .rail__toggle { animation: breathe 6s ease-in-out infinite; }

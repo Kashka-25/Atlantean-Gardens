@@ -754,6 +754,17 @@
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && $("#drawer").classList.contains("is-open")) { if (location.hash.startsWith("#/realm/")) closeDrawer(); else location.hash = "#/atlas"; }
   });
+  /* The side menu tucks away into the tree emblem and opens again from it. */
+  (function railToggle() {
+    const KEY = "ag-rail-tucked", app = $("#app"), btn = $("#rail-toggle");
+    const apply = (t) => {
+      app.classList.toggle("rail-tucked", t);
+      btn.setAttribute("aria-expanded", String(!t)); btn.setAttribute("aria-label", t ? "Open the menu" : "Tuck the menu away");
+    };
+    let t = false; try { t = localStorage.getItem(KEY) === "1"; } catch (e) { /* ignore */ }
+    apply(t);
+    btn.addEventListener("click", () => { t = !t; apply(t); try { localStorage.setItem(KEY, t ? "1" : "0"); } catch (e) { /* ignore */ } });
+  })();
   window.addEventListener("hashchange", route);
   threshold();
 })();
