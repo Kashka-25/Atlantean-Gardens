@@ -644,6 +644,7 @@
     const back = art && art.back;
     const title = g.kind === "keepers" ? `${g.k.pillar} · ${g.k.virtue}` : (g.s.cardTitle || g.s.title || "");
     const link = g.kind === "keepers" ? `#/keepers/${g.id}` : `#/cards/${g.id}`;
+    const msg = g.kind === "keepers" ? ((window.KEEPER_MESSAGES || {})[g.key.split(":")[0]] || {})[g.id] : null;
     const el = document.createElement("div");
     el.className = "reveal"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-label", g.name);
     el.style.setProperty("--fx", (fb.left + fb.width / 2 - innerWidth / 2) + "px");
@@ -657,6 +658,7 @@
         <p class="eyebrow">${g.kind === "keepers" ? "You spotted a Keeper" : "You found a strain"}</p>
         <h2>${esc(g.name)}</h2>
         ${title ? `<p class="reveal__title">${esc(title)}</p>` : ""}
+        ${msg ? `<div class="reveal__message"><p class="reveal__says">${esc(g.name)} whispers</p>${passageHTML(msg)}</div>` : ""}
         ${back ? '<p class="reveal__hint">Tap the card to turn it over</p>' : ""}
         <div class="reveal__actions"><a class="btn btn--gold" href="${link}">${g.kind === "keepers" ? "Meet them" : "Read its story"}</a><button class="btn" data-shut>Keep wandering</button></div>
       </div>`;

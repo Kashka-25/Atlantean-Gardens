@@ -84,6 +84,10 @@ from the originals with Pillow.
   as tiny half-hidden faces cut from the Hall of Living Portraits. Spotting one
   counts as a sighting on Your Journey. Spots and riddles live in
   `js/hiding.js`.
+- **Keeper messages** (`js/messages.js`): every Keeper sighting carries its own
+  whispered message, 40 in all, one per Keeper per realm. Each is quoted word
+  for word from the manuscripts or the Character Bible (checked automatically)
+  and chosen to fit both the Keeper and the realm.
 - **Riddles:** every hiding place has a two-line riddle describing what is
   painted there, without naming it outright.
 - **2.5D depth:** the painting, a soft out-of-focus foreground and the drifting

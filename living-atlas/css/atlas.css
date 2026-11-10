@@ -633,3 +633,16 @@ button { font: inherit; color: inherit; }
 .bloom__line { font-family: var(--display); font-weight: 600; font-size: 1.35rem; color: var(--parch); margin: .2rem 0; }
 .bloom__card small { display: block; font-family: var(--display); font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
 .bloom__note { color: var(--text-dim); font-style: italic; margin: .9rem 0 1rem; }
+
+/* a Keeper's whispered message */
+.reveal__body { width: min(380px, 90vw); }
+.reveal__message { margin: 1rem auto 0; padding: .9rem 1rem; border-radius: 12px; border: 1px solid var(--gold-dim);
+  background: radial-gradient(ellipse at 50% 0%, rgba(210,171,98,.18), transparent 70%), rgba(9,24,31,.75); max-width: 340px; }
+.reveal__says { margin: 0 0 .4rem; font-family: var(--display); font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.reveal__message .passage { margin: 0; }
+.reveal__message .passage blockquote { font-size: 1.08rem; color: var(--parch); }
+.reveal__message .passage figcaption { font-size: .54rem; }
+@media (max-height: 760px) { .reveal__card { width: min(170px, 44vw); } }
+
+.reveal { overflow-y: auto; }
+@media (max-width: 860px) { .reveal__card { width: min(200px, 52vw); } }
