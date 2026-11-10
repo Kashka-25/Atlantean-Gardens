@@ -575,3 +575,27 @@ button { font: inherit; color: inherit; }
   .seg { padding: .45rem .7rem; font-size: .56rem; }
   .herbarium { margin-top: 0; }
 }
+
+/* Keepers hiding in the paintings: tiny faces, half-hidden */
+.glimmer--keeper { width: 34px; height: 34px; margin: -17px 0 0 -17px; }
+.glimmer--keeper img { width: 100%; height: 100%; border-radius: 50%; opacity: .62; filter: saturate(.7) brightness(.95);
+  box-shadow: 0 0 0 1px rgba(240,213,149,.35); transition: opacity .3s, transform .35s var(--ease), box-shadow .3s, filter .3s;
+  animation: peek 7s ease-in-out infinite; animation-delay: var(--d, 0s); }
+@keyframes peek { 0%, 100% { transform: translateY(0) scale(1); } 45% { transform: translateY(-2px) scale(1.04); } 55% { transform: translateY(1px) scale(.98); } }
+.glimmer--keeper:hover img, .glimmer--keeper:focus-visible img { opacity: 1; filter: none; transform: scale(1.35); box-shadow: 0 0 0 2px var(--gold-2), 0 0 18px rgba(240,213,149,.8); animation: none; }
+.glimmer--keeper.is-found img { opacity: 1; filter: none; box-shadow: 0 0 0 2px var(--sky), 0 0 14px rgba(143,211,224,.7); }
+.seek__sub { margin: -.3rem 0 .8rem; font-size: .92rem; color: var(--text-dim); font-style: italic; }
+.seek .riddle { font-style: italic; }
+.seek__thumb--face { width: 44px; height: 44px; border-radius: 50%; align-self: center; }
+@media (max-width: 860px) { .glimmer--keeper { width: 38px; height: 38px; margin: -19px 0 0 -19px; } }
+
+/* 2.5D depth */
+.scene__vp { perspective: 1400px; }
+.scene__art { will-change: transform; transform-origin: 50% 50%; }
+.scene__fore { position: absolute; inset: -8%; z-index: 1; pointer-events: none; background-size: cover; background-position: center;
+  filter: blur(7px) brightness(.8) saturate(1.1); opacity: .9; will-change: transform;
+  -webkit-mask-image: radial-gradient(ellipse 62% 58% at 50% 48%, transparent 58%, #000 92%);
+          mask-image: radial-gradient(ellipse 62% 58% at 50% 48%, transparent 58%, #000 92%); }
+.scene__life { will-change: transform; }
+.scene__head, .scene__hint, .scene__bar, .seek { z-index: 4; }
+@media (prefers-reduced-motion: reduce) { .scene__fore { display: none; } }

@@ -80,6 +80,16 @@ from the originals with Pillow.
   of The Baked Leaf, Lilac Diesel × Grape Diamonds among the vineyard
   terraces, Raptor by the road signposts, and so on. Each one has a seeker's
   clue describing what is painted there.
+- **Keepers in hiding:** all five Keepers hide in every realm (38 spots), shown
+  as tiny half-hidden faces cut from the Hall of Living Portraits. Spotting one
+  counts as a sighting on Your Journey. Spots and riddles live in
+  `js/hiding.js`.
+- **Riddles:** every hiding place has a two-line riddle describing what is
+  painted there, without naming it outright.
+- **2.5D depth:** the painting, a soft out-of-focus foreground and the drifting
+  particles move at different speeds as the pointer moves (or, on Android, as
+  the phone tilts). This fakes depth without splitting the paintings; true
+  layered depth would need each painting separated into layers.
 - **Seek panel:** a "Clues" list in every scene, like a Where's Wally card.
   Portraits stay shadowed until found; touching a found one shows its card
   again.

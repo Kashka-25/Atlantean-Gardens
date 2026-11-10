@@ -45,7 +45,7 @@
 
   /* ── Journey (per-browser only) ────────────────────────── */
   const KEY = "ag-living-atlas-journey-v1";
-  let journey = { realms: [], cards: [], keepers: [], scrolls: [] };
+  let journey = { realms: [], cards: [], keepers: [], scrolls: [], sightings: [] };
   try { const j = JSON.parse(localStorage.getItem(KEY) || "null"); if (j) journey = Object.assign(journey, j); } catch (e) { /* storage unavailable */ }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(journey)); } catch (e) { /* ignore */ } };
   function discover(kind, id, label) {
@@ -53,11 +53,13 @@
     journey[kind].push(id); save(); renderRailJourney();
     toast(`✦ Discovered: ${label}`);
   }
-  const totals = () => ({ realms: W.realms.length, cards: W.strains.length, keepers: W.keepers.length, scrolls: W.manuscripts.length });
+  const HIDING = window.HIDING || {};
+  const SIGHTINGS = Object.values(HIDING).reduce((n, h) => n + Object.keys(h.keepers || {}).length, 0);
+  const totals = () => ({ realms: W.realms.length, cards: W.strains.length, keepers: W.keepers.length, scrolls: W.manuscripts.length, sightings: SIGHTINGS });
   function progress() {
     const t = totals();
-    const got = journey.realms.length + journey.cards.length + journey.keepers.length + journey.scrolls.length;
-    const all = t.realms + t.cards + t.keepers + t.scrolls;
+    const got = journey.realms.length + journey.cards.length + journey.keepers.length + journey.scrolls.length + journey.sightings.length;
+    const all = t.realms + t.cards + t.keepers + t.scrolls + t.sightings;
     return { got, all, pct: Math.round((got / all) * 100) };
   }
   function renderRailJourney() {
@@ -376,6 +378,7 @@
           <div class="stat"><b>${journey.realms.length}/${t.realms}</b><span>Realms entered</span></div>
           <div class="stat"><b>${journey.cards.length}/${t.cards}</b><span>Strains met</span></div>
           <div class="stat"><b>${journey.keepers.length}/${t.keepers}</b><span>Keepers met</span></div>
+          <div class="stat"><b>${journey.sightings.length}/${t.sightings}</b><span>Keepers spotted in hiding</span></div>
           <div class="stat"><b>${journey.scrolls.length}/${t.scrolls}</b><span>Manuscripts opened</span></div>
           <div class="stat"><b>${p.pct}%</b><span>of the charted Atlas</span></div>
         </div>
@@ -386,41 +389,14 @@
         ${demoStrip()}
       </section>`;
     stage.querySelectorAll("[data-realm]").forEach((b) => b.addEventListener("click", () => { location.hash = `#/realm/${b.dataset.realm}`; }));
-    $("#reset").addEventListener("click", () => { journey = { realms: [], cards: [], keepers: [], scrolls: [] }; save(); renderRailJourney(); viewJourney(stage); toast("The mist settles back over the Atlas."); });
+    $("#reset").addEventListener("click", () => { journey = { realms: [], cards: [], keepers: [], scrolls: [], sightings: [] }; save(); renderRailJourney(); viewJourney(stage); toast("The mist settles back over the Atlas."); });
   }
 
   const demoStrip = () => `<div class="demo-strip"><b>A work in progress.</b> Every name, story, verse and image here grows from Cassidy's Atlantean Archives; nothing has been invented. Where a page is still blank, the Garden is still growing. Your journey is kept only in this browser.</div>`;
 
   /* ── Realm portals and hidden glimmers ──────────────────── */
   const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  // Hiding places: each strain or Keeper sits where its Atlas district
-  // appears in its realm painting (x, y in percent of the 3:2 painting),
-  // with a seeker's clue that describes what is painted there.
-  const HIDING = {
-    "sunlight-realms": {
-      "coco": { x: 25, y: 71, clue: "In the sun-baked courtyard of low stone walls, just west of the arched aqueduct." },
-      "lusty-lady": { x: 41, y: 45, clue: "Where pink blossom trees crowd the terraced steps above the waterfalls." },
-      "strawberry-akeil": { x: 52, y: 56, clue: "Beneath the little green-domed pavilion, the kind of place a bard would play." },
-      "honey-melon-kush": { x: 46, y: 66, clue: "Dozing on the sunny meadow just below the green-domed pavilion." },
-    },
-    "bubble-coast-realm": {
-      "ice-cream": { x: 47, y: 71, clue: "At the end of the long wooden pier, drifting slowly beside the great glass bubble-dome." },
-    },
-    "living-harvest-realm": {
-      "lilac-diesel-grape-diamonds": { x: 66, y: 32, clue: "Among the terraced rows of vines beneath the glass-domed hall." },
-      "lila": { x: 52, y: 37, clue: "Under the leafy arbor walkway that wanders through the vineyard terraces." },
-    },
-    "crystal-conservatory-realm": {
-      "dnine": { x: 12, y: 68, clue: "Among the crowded bookshelves of the little glass study on the left." },
-      "alien-mints-permanent-marker": { x: 18, y: 86, clue: "On the cluttered desk beside the brass telescope, among the open books." },
-      "chemical-bride": { x: 88, y: 70, clue: "Inside the glass gazebo on the right, where a table is laid among the crystals." },
-    },
-    "hearthlands-realm": {
-      "glookies": { x: 19, y: 58, clue: "In the glowing doorway of The Baked Leaf, where the ovens never cool." },
-      "permanent-marker": { x: 30, y: 77, clue: "Around the fire circle, where friends sit close and stories linger." },
-      "raptor": { x: 91, y: 82, clue: "By the wooden signposts that point every traveller down the road." },
-    },
-  };
+  // Hiding places and riddles live in js/hiding.js (window.HIDING).
   // Fallback spots for anyone not yet given a hiding place.
   const GLIMMER_SPOTS = [[58, 38], [76, 60], [45, 70], [86, 32], [64, 82], [36, 52], [70, 44], [52, 56]];
   let arrivingFrom = null;
@@ -449,16 +425,16 @@
   function leaveRealm(id) { arrivingFrom = id; location.hash = "#/atlas"; }
 
   function glimmersFor(r) {
-    const keepers = W.keepers.filter((k) => k.realm === r.id).map((k) => ({ kind: "keepers", id: k.id, name: k.name, k }));
-    const strains = W.strains.filter((s) => s.realm === r.id).map((s) => ({ kind: "cards", id: s.id, name: s.name, s }));
+    const hide = HIDING[r.id] || { strains: {}, keepers: {} };
+    const strains = W.strains.filter((s) => s.realm === r.id).map((s) => ({ kind: "cards", id: s.id, key: s.id, name: s.name, s, h: (hide.strains || {})[s.id] }));
+    const keepers = W.keepers.filter((k) => (hide.keepers || {})[k.id]).map((k) => ({ kind: "keepers", id: k.id, key: `${r.id}:${k.id}`, name: k.name, k, h: hide.keepers[k.id] }));
     const shift = (r.order || 0) % GLIMMER_SPOTS.length;
-    const hide = HIDING[r.id] || {};
-    return keepers.concat(strains).map((g, i) => Object.assign(g, {
-      spot: hide[g.id] ? [hide[g.id].x, hide[g.id].y] : GLIMMER_SPOTS[(i + shift) % GLIMMER_SPOTS.length],
-      clue: hide[g.id] ? hide[g.id].clue : "",
-      near: (g.kind === "cards" ? districtName(g.s) : r.districtIds[g.k.district]) || "",
+    return strains.concat(keepers).map((g, i) => Object.assign(g, {
+      spot: g.h ? [g.h.x, g.h.y] : GLIMMER_SPOTS[(i + shift) % GLIMMER_SPOTS.length],
+      riddle: g.h ? g.h.riddle : "",
     }));
   }
+  const isFound = (g) => g.kind === "keepers" ? journey.sightings.includes(g.key) : journey.cards.includes(g.id);
 
   /* Ambient life: each realm breathes with the "visual identity" from
      The Atlas 7 Worlds (bubbles rising on the Bubble Coast, embers in the
@@ -526,15 +502,18 @@
     const r = realmById[id]; if (!r) return viewAtlas(stage);
     discover("realms", r.id, r.name);
     const glims = glimmersFor(r);
-    const found = (g) => journey[g.kind].includes(g.id);
+    const found = isFound;
     stage.innerHTML = `
       <section class="scene view" aria-label="${esc(r.name)}">
         <div class="scene__vp" id="scene-vp">
           <div class="scene__art">
             <img src="${esc(r.image)}" alt="Painting of ${esc(r.name)}" draggable="false">
-            ${glims.map((g, i) => `<button class="glimmer${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.7).toFixed(1)}s" data-g="${i}"${g.near ? ` data-near="${esc(found(g) ? g.name : "Near " + g.near)}"` : ""} aria-label="${found(g) ? esc(g.name) : "A hidden glimmer" + (g.near ? " near " + esc(g.near) : "")}"><span></span></button>`).join("")}
+            ${glims.map((g, i) => g.kind === "keepers"
+              ? `<button class="glimmer glimmer--keeper${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.9).toFixed(1)}s" data-g="${i}"${found(g) ? ` data-near="${esc(g.name)}"` : ""} aria-label="${found(g) ? esc(g.name) : "Someone hiding"}"><img src="assets/keepers/${g.id}-face.png" alt=""></button>`
+              : `<button class="glimmer${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.7).toFixed(1)}s" data-g="${i}"${found(g) ? ` data-near="${esc(g.name)}"` : ""} aria-label="${found(g) ? esc(g.name) : "A hidden glimmer"}"><span></span></button>`).join("")}
           </div>
         </div>
+        <div class="scene__fore" aria-hidden="true" style="background-image:url('${esc(r.image)}')"></div>
         <canvas class="scene__life" aria-hidden="true"></canvas>
         <header class="scene__head">
           <div class="realm__num">${r.number ? "REALM " + r.number : "THE CENTRE OF THE ATLAS"}</div>
@@ -547,15 +526,15 @@
         <div class="scene__bar">
           <button class="btn" data-leave>${svg(ICON.back).replace("<svg", '<svg width="16" height="16"')} The Atlas</button>
           <button class="btn" data-tale>Read the tale</button>
-          ${glims.length ? `<button class="btn" data-seek aria-expanded="true" aria-controls="seek">Clues</button><span class="scene__count" id="scene-count"></span>` : ""}
+          ${glims.length ? `<button class="btn btn--gold" data-seek aria-expanded="false" aria-controls="seek">Riddles</button><span class="scene__count" id="scene-count"></span>` : ""}
         </div>
-        ${glims.length ? `<aside class="seek is-open" id="seek" aria-label="Who is hiding here">
-          <p class="seek__title">Seek in ${esc(r.name)}</p>
+        ${glims.length ? `<aside class="seek" id="seek" aria-label="Who is hiding here">
+          <p class="seek__title">Seek in ${esc(r.name)}</p><p class="seek__sub">${glims.filter((g) => g.kind === "cards").length ? "A strain card and the five Keepers hide here. " : "The five Keepers hide here. "}Read each riddle, then search the painting.</p>
           <ol>${glims.map((g, i) => {
-            const thumb = g.kind === "keepers" ? g.k.portrait : (g.s.art && g.s.art.front);
+            const thumb = g.kind === "keepers" ? `assets/keepers/${g.id}-face.png` : (g.s.art && g.s.art.front);
             return `<li class="${found(g) ? "is-found" : ""}" data-gi="${i}">
-              ${thumb ? `<img class="seek__thumb" src="${esc(thumb)}" alt="" loading="lazy">` : `<span class="seek__thumb seek__thumb--blank">✦</span>`}
-              <div><b>${esc(g.name)}</b><span>${esc(g.clue || (g.near ? "Somewhere near " + g.near + "." : "Somewhere in this realm."))}</span></div>
+              ${thumb ? `<img class="seek__thumb${g.kind === "keepers" ? " seek__thumb--face" : ""}" src="${esc(thumb)}" alt="" loading="lazy">` : `<span class="seek__thumb seek__thumb--blank">✦</span>`}
+              <div><b>${esc(g.name)}</b><span class="riddle">${(g.riddle || "Somewhere in this realm.").split(" / ").map(esc).join("<br>")}</span></div>
             </li>`; }).join("")}</ol>
         </aside>` : ""}
       </section>`;
@@ -566,12 +545,11 @@
     stage.querySelectorAll(".glimmer").forEach((b) => b.addEventListener("click", () => {
       const g = glims[+b.dataset.g];
       revealGlimmer(g, b, () => {
-        b.classList.add("is-found"); b.setAttribute("aria-label", g.name); if (b.dataset.near) b.dataset.near = g.name; updateCount();
+        b.classList.add("is-found"); b.setAttribute("aria-label", g.name); b.dataset.near = g.name; updateCount();
         const li = stage.querySelector(`.seek li[data-gi="${b.dataset.g}"]`); if (li) li.classList.add("is-found");
       });
     }));
     const seek = $("#seek"), seekBtn = stage.querySelector("[data-seek]");
-    if (seek && window.matchMedia("(max-width: 860px)").matches) { seek.classList.remove("is-open"); seekBtn.setAttribute("aria-expanded", "false"); }
     if (seekBtn) seekBtn.addEventListener("click", () => { const o = seek.classList.toggle("is-open"); seekBtn.setAttribute("aria-expanded", String(o)); });
     stage.querySelectorAll(".seek li").forEach((li) => li.addEventListener("click", () => {
       const b = stage.querySelector(`.glimmer[data-g="${li.dataset.gi}"]`);
@@ -579,9 +557,33 @@
       li.classList.add("is-seeking"); setTimeout(() => li.classList.remove("is-seeking"), 1200);
     }));
     startAmbience(stage.querySelector(".scene__life"), r.id);
+    startDepth(stage.querySelector(".scene"));
     const vp = $("#scene-vp");
     requestAnimationFrame(() => { vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2; vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2; });
     enableDragPan(vp);
+  }
+
+  /* 2.5D: the painting, a soft out-of-focus foreground and the drifting
+     particles move at different speeds as the pointer (or a tilted phone)
+     moves, so the flat painting reads as layered depth. */
+  function startDepth(scene) {
+    if (!scene || reduceMotion()) return;
+    const art = scene.querySelector(".scene__art"), fore = scene.querySelector(".scene__fore"), life = scene.querySelector(".scene__life");
+    let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+    const onMove = (e) => { const b = scene.getBoundingClientRect(); tx = (e.clientX - b.left) / b.width - .5; ty = (e.clientY - b.top) / b.height - .5; };
+    const onTilt = (e) => { if (e.gamma == null) return; tx = Math.max(-.5, Math.min(.5, e.gamma / 40)); ty = Math.max(-.5, Math.min(.5, (e.beta - 45) / 40)); };
+    scene.addEventListener("pointermove", onMove);
+    scene.addEventListener("pointerleave", () => { tx = 0; ty = 0; });
+    window.addEventListener("deviceorientation", onTilt);
+    const frame = () => {
+      if (!scene.isConnected) { window.removeEventListener("deviceorientation", onTilt); return; }
+      x += (tx - x) * .06; y += (ty - y) * .06;
+      art.style.transform = `translate3d(${-x * 18}px, ${-y * 12}px, 0) rotateY(${x * 2.2}deg) rotateX(${-y * 1.6}deg) scale(1.03)`;
+      if (fore) fore.style.transform = `translate3d(${-x * 46}px, ${-y * 30}px, 0) scale(1.18)`;
+      if (life) life.style.transform = `translate3d(${x * 26}px, ${y * 18}px, 0)`;
+      raf = requestAnimationFrame(frame);
+    };
+    raf = requestAnimationFrame(frame);
   }
 
   function revealGlimmer(g, from, done) {
@@ -601,7 +603,7 @@
         ${front
           ? `<button class="flip reveal__card" aria-label="${back ? "Turn the card over" : esc(g.name)}"><span class="flip__inner"><span class="flip__side"><img src="${esc(front)}" alt="${esc(g.name)}"></span>${back ? `<span class="flip__side flip__back"><img src="${esc(back)}" alt="${esc(g.name)}, card back"></span>` : ""}</span></button>`
           : `<div class="reveal__card ccard ccard--type">${cardHTML(g.s).replace(/^<a[^>]*>|<\/a>$/g, "")}</div>`}
-        <p class="eyebrow">${g.kind === "keepers" ? "A Keeper tends this place" : "You found a strain"}</p>
+        <p class="eyebrow">${g.kind === "keepers" ? "You spotted a Keeper" : "You found a strain"}</p>
         <h2>${esc(g.name)}</h2>
         ${title ? `<p class="reveal__title">${esc(title)}</p>` : ""}
         ${back ? '<p class="reveal__hint">Tap the card to turn it over</p>' : ""}
@@ -615,7 +617,8 @@
     document.addEventListener("keydown", onKey);
     el.querySelectorAll("[data-shut]").forEach((x) => x.addEventListener("click", shut));
     el.querySelector(".reveal__actions a").addEventListener("click", () => { document.removeEventListener("keydown", onKey); el.remove(); });
-    discover(g.kind, g.id, g.name); done();
+    if (g.kind === "keepers") discover("sightings", g.key, `${g.name} in the ${(realmById[g.key.split(":")[0]] || {}).name || "Garden"}`); else discover("cards", g.id, g.name);
+    done();
     setTimeout(() => el.querySelector(".reveal__actions a").focus(), 400);
   }
 
