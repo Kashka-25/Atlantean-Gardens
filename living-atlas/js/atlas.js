@@ -129,7 +129,7 @@
             ${pins}
           </div>
         </div>
-        <header class="atlas__float-title"><img src="assets/logo-emblem.png" alt=""><div><h1>The Living Atlas</h1><p>of Atlantean Gardens</p><em>No map has ever captured the whole of Atlantis. This one is simply where today's journey begins.</em></div></header>
+        <button class="atlas__float-title" data-rail-toggle aria-label="Open or close the menu"><img src="assets/logo-emblem.png" alt=""><div><h1>The Living Atlas</h1><p>of Atlantean Gardens</p><em>No map has ever captured the whole of Atlantis. This one is simply where today's journey begins.</em></div></button>
         <div class="atlas__hint">Curiosity has always been the truest map of Atlantis. Touch a glowing light to enter.</div>
         <div class="atlas__bar dockable" role="toolbar" aria-label="Realms"><button class="dock-toggle" aria-expanded="true" aria-label="Tuck the bar away"><img src="assets/logo-emblem.png" alt=""></button><div class="dockable__items">${bar}</div></div>
       </section>`;
@@ -645,10 +645,10 @@
     }
     const frame = () => {
       if (!scene.isConnected) { window.removeEventListener("deviceorientation", onTilt); return; }
-      x += (tx - x) * .06; y += (ty - y) * .06;
-      art.style.transform = `translate(${-x * 18}px, ${-y * 12}px) scale(1.03)`;
-      if (fore) fore.style.transform = `translate3d(${-x * 46}px, ${-y * 30}px, 0) scale(1.18)`;
-      if (life) life.style.transform = `translate3d(${x * 26}px, ${y * 18}px, 0)`;
+      x += (tx - x) * .025; y += (ty - y) * .025;
+      art.style.transform = `translate(${-x * 5}px, ${-y * 3}px) scale(1.01)`;
+      if (fore) fore.style.transform = `translate3d(${-x * 9}px, ${-y * 6}px, 0) scale(1.18)`;
+      if (life) life.style.transform = `translate3d(${x * 5}px, ${y * 3}px, 0)`;
       raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
@@ -769,7 +769,9 @@
     };
     let t = false; try { t = localStorage.getItem(KEY) === "1"; } catch (e) { /* ignore */ }
     apply(t);
-    btn.addEventListener("click", () => { t = !t; apply(t); try { localStorage.setItem(KEY, t ? "1" : "0"); } catch (e) { /* ignore */ } });
+    const toggle = () => { t = !t; apply(t); try { localStorage.setItem(KEY, t ? "1" : "0"); } catch (e) { /* ignore */ } };
+    btn.addEventListener("click", toggle);
+    document.addEventListener("click", (e) => { if (e.target.closest("[data-rail-toggle]")) toggle(); });
   })();
   window.addEventListener("hashchange", route);
   threshold();

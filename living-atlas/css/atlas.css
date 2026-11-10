@@ -445,7 +445,7 @@ button { font: inherit; color: inherit; }
 .scene__vp { position: absolute; inset: 0; overflow: auto; scrollbar-width: none; }
 .scene__vp::-webkit-scrollbar { display: none; }
 .scene__art { position: relative; width: max(100%, calc(100vh * 1.5)); aspect-ratio: 3 / 2; min-height: 100%; margin: auto; }
-.scene__art > img { width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; animation: breatheArt 30s ease-in-out infinite alternate; }
+.scene__art > img { width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; }
 @keyframes breatheArt { to { transform: scale(1.04); } }
 .scene__art::after { content: ""; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 180px 40px rgba(7,18,26,.75); }
 .scene__head { position: absolute; top: 1.4rem; right: 1.6rem; z-index: 3; max-width: 380px; text-align: right; pointer-events: none;
@@ -733,7 +733,7 @@ button { font: inherit; color: inherit; }
 .realm-label:hover::before, .realm-label:focus-visible::before { opacity: 1; background: radial-gradient(closest-side, rgba(60,44,12,.55), rgba(240,213,149,.16) 60%, rgba(240,213,149,0)); }
 .realm-label:hover b { color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.95), 0 0 24px rgba(255,236,180,.9); }
 .realm-label.is-bloomed b::after { content: " ✿"; color: var(--gold-2); }
-@keyframes labelFloat { 0%, 100% { transform: translate(-50%, 22px); } 50% { transform: translate(-50%, 15px); } }
+@keyframes labelFloat { 0%, 100% { transform: translate(-50%, 22px); } 50% { transform: translate(-50%, 19px); } }
 .pin:hover ~ .realm-label { animation-play-state: paused; }
 
 .atlas__float-title { position: absolute; z-index: 3; top: 22px; left: calc(var(--rail-space) + 16px); transition: left .5s var(--ease); display: flex; gap: .9rem; align-items: center; pointer-events: none; max-width: 420px; }
@@ -763,7 +763,17 @@ button { font: inherit; color: inherit; }
 .rail__name em { font-size: .9rem; color: var(--gold); }
 .rail__body { display: flex; flex-direction: column; gap: 1.2rem; flex: 1; min-height: 0; transition: opacity .3s; }
 .rail__body .rail__journey { margin-top: auto; }
-.app.rail-tucked .rail { width: 64px; bottom: auto; height: 64px; padding: 7px; border-radius: 50%; }
-.app.rail-tucked .rail__brand { padding: 0; border: 0; }
+.app.rail-tucked .rail { width: 64px; bottom: auto; height: 64px; padding: 0; border-radius: 50%; display: grid; place-items: center; }
+.app.rail-tucked .rail__brand { padding: 0; border: 0; gap: 0; width: 48px; height: 48px; display: grid; place-items: center; }
+.app.rail-tucked .rail__name { display: none; }
 .app.rail-tucked .rail__name, .app.rail-tucked .rail__body { opacity: 0; pointer-events: none; visibility: hidden; }
 .app.rail-tucked .rail__toggle { animation: breathe 6s ease-in-out infinite; }
+
+/* the Atlas title is the menu button on the home screen */
+.atlas__float-title { pointer-events: auto; cursor: pointer; border: 0; background: none; padding: 0; text-align: left; color: inherit; font: inherit; }
+.atlas__float-title:hover img { box-shadow: 0 0 0 2px var(--gold-2), 0 0 30px rgba(240,213,149,.6); }
+.app[data-view="atlas"].rail-tucked .rail { display: none; }
+.app[data-view="atlas"].rail-tucked .atlas__float-title { left: 22px; }
+.app[data-view="atlas"]:not(.rail-tucked) .atlas__float-title img { display: none; }
+
+.app.rail-tucked .rail__body { display: none; }
