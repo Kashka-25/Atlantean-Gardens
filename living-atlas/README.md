@@ -104,8 +104,9 @@ from the originals with Pillow.
   (Celestial), golden motes (Heart of Atlantis).
 - Hovering a glimmer whispers the place it hides near, using the strain's or
   Keeper's district from the Atlas data (for example "Near Coco's Old Table").
-- The Celestial Realm and Heart of Atlantis now use clean crops of the
-  unlabelled Atlas painting ("Without Bake.png") in place of the labelled map.
+- The Celestial Realm has its own painting (made by Cassidy with ChatGPT, 10 Nov
+  2026, in the series style). The Heart of Atlantis still uses a crop of the
+  unlabelled Atlas painting ("Without Bake.png").
 - Respects reduced motion: no zoom and no ambient particles; it goes straight
   into the scene.
 - Source of truth is now `site/living-atlas/`; the older local

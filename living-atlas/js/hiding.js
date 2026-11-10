@@ -81,11 +81,11 @@ window.HIDING = {
   "celestial-realm": {
     strains: {},
     keepers: {
-      "kasper": { x: 45, y: 27, riddle: "Where a great fish swims from forest into stars, / a dreamer has hitched a ride." },
-      "lila": { x: 52, y: 37, riddle: "Beside the moon afloat upon the dark lake, / someone is listening to the night." },
-      "coco": { x: 85, y: 88, riddle: "Upon the shell of the slowest traveller, / an old gardener is in no hurry at all." },
-      "dnine": { x: 68, y: 70, riddle: "On an island that forgot to touch the ground, / an inventor is wondering why." },
-      "raptor": { x: 14, y: 75, riddle: "At the farthest floating tower, / someone stands guard over sleeping dreams." },
+      "kasper": { x: 57, y: 86, riddle: "A small white sail on a sea of galaxies; / an explorer is steering by the stars." },
+      "lila": { x: 15, y: 70, riddle: "Where pale lotus flowers open to the night, / she rests among the petals of the moon." },
+      "coco": { x: 46, y: 25, riddle: "At the roots of the tree whose blossoms become stars, / an old gardener tends the oldest light." },
+      "dnine": { x: 83, y: 21, riddle: "Under the glass dome where the great lens points skyward, / an inventor counts what cannot be counted." },
+      "raptor": { x: 66, y: 27, riddle: "On the long bridge strung between floating isles, / someone makes sure every crossing holds." },
     },
   },
   "heart-of-atlantis": {
