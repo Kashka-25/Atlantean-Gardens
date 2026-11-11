@@ -1125,7 +1125,7 @@ window.WORLD = {
    "relations": [
     "coco"
    ],
-   "body": "A strain that lingers exactly as long as its name implies. Coco tells this one herself.",
+   "body": "A strain that lingers exactly as long as its name implies. Coco tells this one himself.",
    "quote": "Some things are written in ink that never fully dries.",
    "flavor": "",
    "aroma": "",
