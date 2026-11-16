@@ -287,7 +287,7 @@
             <button role="tab" aria-selected="false" data-tab="grow">Grow notes</button>
           </div>
           <div data-pane="story">
-            ${s.body ? `<p>${esc(s.body)}</p>` : `<p class="empty">${art && art.back ? "This strain's tale is written on the back of its card. Turn it over above." : EMPTY}</p>`}
+            ${s.body ? s.body.split(/\n\s*\n/).map((p) => `<p>${esc(p)}</p>`).join("") : `<p class="empty">${art && art.back ? "This strain's tale is written on the back of its card. Turn it over above." : EMPTY}</p>`}
             <aside class="plant-ask">${passageHTML(PLANT_ASK)}</aside>
             <dl class="kv"><dt>Atlas realm</dt><dd>${r ? esc(r.name) : "Still finding its realm"}</dd>${districtName(s) ? `<dt>District</dt><dd>${esc(districtName(s))}</dd>` : ""}${s.printedRealm ? `<dt>On the card</dt><dd>${esc(s.printedRealm)}</dd>` : ""}</dl>
           </div>
