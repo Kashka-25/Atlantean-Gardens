@@ -1491,9 +1491,11 @@ window.WORLD = {
    "realm": null,
    "district": "",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
+   "relations": [
+    "coco"
+   ],
+   "body": "Every gardener knows the Garden keeps its own plans. Some days, Coco keeps none at all.\n\nOn those days you'll find him barefoot among the mango trees, juggling the ripest fruit while parrots, toucans and a little monkey gather to watch. Something always drops. Nobody minds.\n\nCoco has spent a lifetime tending what must endure. Puro Loco is his reminder that roots and wings belong to the same tree, and that a little beautiful chaos is part of how a garden grows.\n\nSo set the shears down for an afternoon, and laugh until the air changes.",
+   "quote": "Nature plans. Coco plays.",
    "flavor": "",
    "aroma": "",
    "effects": "",
