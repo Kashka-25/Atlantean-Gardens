@@ -1380,8 +1380,8 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/xxx-og-front.jpg",
-    "back": "assets/cards/xxx-og-back.jpg"
+    "front": "assets/cards/xxx-og-front.jpg?v=2",
+    "back": "assets/cards/xxx-og-back.jpg?v=2"
    },
    "printedRealm": "The Pine Crown Peaks"
   },
