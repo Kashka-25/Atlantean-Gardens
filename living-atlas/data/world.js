@@ -998,7 +998,7 @@ window.WORLD = {
   {
    "id": "honey-melon-kush",
    "name": "Honey Melon Kush",
-   "code": "",
+   "code": "AG-027",
    "title": "The Afternoon Nap",
    "category": "Indica",
    "realm": "sunlight-realms",
@@ -1007,10 +1007,11 @@ window.WORLD = {
     "peace"
    ],
    "relations": [
+    "kasper",
     "strawberry-akeil"
    ],
-   "body": "Slow, syrup-thick, unhurried — the kind of strain that turns a bench into a place you fall asleep on purpose.",
-   "quote": "Some afternoons are meant to be lost.",
+   "body": "Honey Melon Kush reminds us that sweetness and strength can live together in perfect harmony.",
+   "quote": "The sweetest gifts are the ones the earth and sky create together.",
    "flavor": "",
    "aroma": "",
    "effects": "",
@@ -1018,10 +1019,10 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/honey-melon-kush-front.jpg",
-    "back": "assets/cards/honey-melon-kush-back.jpg"
+    "front": "assets/cards/honey-melon-kush-front.jpg?v=2",
+    "back": "assets/cards/honey-melon-kush-back.jpg?v=2"
    },
-   "printedRealm": "The Orchard",
+   "printedRealm": "The Living Harvest Realm",
    "cardTitle": "The Sunkissed Sweetie"
   },
   {
@@ -1164,8 +1165,8 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/strawberry-akeil-front.jpg",
-    "back": "assets/cards/strawberry-akeil-back.jpg"
+    "front": "assets/cards/strawberry-akeil-front.jpg?v=2",
+    "back": "assets/cards/strawberry-akeil-back.jpg?v=2"
    },
    "printedRealm": "The Sunlit Fields"
   },
@@ -1188,7 +1189,7 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/mango-kush-front.jpg",
+    "front": "assets/cards/mango-kush-front.jpg?v=2",
     "back": null
    },
    "printedRealm": "Sun Realm"
@@ -1212,8 +1213,8 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/grandpa-cookies-front.jpg",
-    "back": "assets/cards/grandpa-cookies-back.jpg"
+    "front": "assets/cards/grandpa-cookies-front.jpg?v=2",
+    "back": "assets/cards/grandpa-cookies-back.jpg?v=2"
    },
    "printedRealm": "The Orchard"
   },
@@ -1236,8 +1237,8 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/white-wedding-rbx-front.jpg",
-    "back": "assets/cards/white-wedding-rbx-back.jpg"
+    "front": "assets/cards/white-wedding-rbx-front.jpg?v=2",
+    "back": "assets/cards/white-wedding-rbx-back.jpg?v=2"
    },
    "printedRealm": "The Garden"
   },
@@ -1260,8 +1261,8 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/chocolate-diesel-front.jpg",
-    "back": "assets/cards/chocolate-diesel-back.jpg"
+    "front": "assets/cards/chocolate-diesel-front.jpg?v=2",
+    "back": "assets/cards/chocolate-diesel-back.jpg?v=2"
    },
    "printedRealm": "The Foundry"
   },
