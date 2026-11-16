@@ -912,7 +912,7 @@ window.WORLD = {
    "id": "alien-mints-permanent-marker",
    "name": "Alien Mints × Permanent Marker",
    "code": "AG-021",
-   "title": "guest-narrated by D'nine",
+   "title": "guest-narrated by Kasper",
    "category": "Hybrid",
    "realm": "crystal-conservatory-realm",
    "district": "dnines-cabinet",
@@ -920,11 +920,11 @@ window.WORLD = {
     "wonder"
    ],
    "relations": [
-    "dnine",
+    "kasper",
     "chemical-bride"
    ],
-   "body": "D'nine's latest introduction — something borrowed from a farther garden, grafted gently onto something familiar.",
-   "quote": "Every answer I bring home arrives with three new questions.",
+   "body": "When cosmic wanderings meet inspired imagination, new worlds are born. Alien Mints × Permanent Marker is the perfect union of exploration and creation.",
+   "quote": "Every line I draw today could guide a soul tomorrow.",
    "flavor": "",
    "aroma": "",
    "effects": "",
@@ -1364,7 +1364,7 @@ window.WORLD = {
   {
    "id": "xxx-og",
    "name": "XXX OG",
-   "code": "AG-020",
+   "code": "AG-025",
    "title": "The Silent Mountain King",
    "category": "",
    "realm": null,
@@ -1626,8 +1626,7 @@ window.WORLD = {
    "district": "dnines-cabinet",
    "relations": [
     "coco",
-    "chemical-bride",
-    "alien-mints-permanent-marker"
+    "chemical-bride"
    ]
   },
   {

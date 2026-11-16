@@ -50,12 +50,13 @@ from the originals with Pillow.
 
 ## Canon questions for Cassidy (not resolved here)
 
-- **Duplicate codes:** AG-020 is printed on both XXX OG and Pineapple Diesel.
-  AG-006 is on Grandpa Cookies and on an older Lusty Lady card, while the
-  newer Lusty Lady card is AG-014.
+- **Duplicate codes:** AG-006 is on Grandpa Cookies and on an older Lusty
+  Lady card, while the newer Lusty Lady card is AG-014. (Resolved: AG-020
+  stays with Pineapple Diesel, and XXX OG is now AG-025.)
 - **Keepers:** the Atlas data's keeper notes differ from the Character Bible.
-  For example, Coco is "The Founding Gardener", and one entry calls Coco
-  "she". This preview follows the Bible.
+  For example, Coco is "The Founding Gardener". This preview follows the
+  Bible. (Resolved: Coco is he/him, and Kasper narrates Alien Mints ×
+  Permanent Marker, as its card says.)
 - **Realm names:** realms printed on cards ("The Orchard", "The Foundry",
   "Sun Realm"…) aren't among the seven Atlas realms. That's why 14 cards sit
   under "Not yet on the Atlas".
