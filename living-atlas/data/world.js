@@ -912,7 +912,7 @@ window.WORLD = {
    "id": "alien-mints-permanent-marker",
    "name": "Alien Mints × Permanent Marker",
    "code": "AG-021",
-   "title": "guest-narrated by D'nine",
+   "title": "guest-narrated by Kasper",
    "category": "Hybrid",
    "realm": "crystal-conservatory-realm",
    "district": "dnines-cabinet",
@@ -920,11 +920,11 @@ window.WORLD = {
     "wonder"
    ],
    "relations": [
-    "dnine",
+    "kasper",
     "chemical-bride"
    ],
-   "body": "D'nine's latest introduction — something borrowed from a farther garden, grafted gently onto something familiar.",
-   "quote": "Every answer I bring home arrives with three new questions.",
+   "body": "When cosmic wanderings meet inspired imagination, new worlds are born. Alien Mints × Permanent Marker is the perfect union of exploration and creation.",
+   "quote": "Every line I draw today could guide a soul tomorrow.",
    "flavor": "",
    "aroma": "",
    "effects": "",
@@ -998,7 +998,7 @@ window.WORLD = {
   {
    "id": "honey-melon-kush",
    "name": "Honey Melon Kush",
-   "code": "",
+   "code": "AG-027",
    "title": "The Afternoon Nap",
    "category": "Indica",
    "realm": "sunlight-realms",
@@ -1007,10 +1007,11 @@ window.WORLD = {
     "peace"
    ],
    "relations": [
+    "kasper",
     "strawberry-akeil"
    ],
-   "body": "Slow, syrup-thick, unhurried — the kind of strain that turns a bench into a place you fall asleep on purpose.",
-   "quote": "Some afternoons are meant to be lost.",
+   "body": "Honey Melon Kush reminds us that sweetness and strength can live together in perfect harmony.",
+   "quote": "The sweetest gifts are the ones the earth and sky create together.",
    "flavor": "",
    "aroma": "",
    "effects": "",
@@ -1018,10 +1019,10 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/honey-melon-kush-front.jpg",
-    "back": "assets/cards/honey-melon-kush-back.jpg"
+    "front": "assets/cards/honey-melon-kush-front.jpg?v=2",
+    "back": "assets/cards/honey-melon-kush-back.jpg?v=2"
    },
-   "printedRealm": "The Orchard",
+   "printedRealm": "The Living Harvest Realm",
    "cardTitle": "The Sunkissed Sweetie"
   },
   {
@@ -1125,7 +1126,7 @@ window.WORLD = {
    "relations": [
     "coco"
    ],
-   "body": "A strain that lingers exactly as long as its name implies. Coco tells this one herself.",
+   "body": "A strain that lingers exactly as long as its name implies. Coco tells this one himself.",
    "quote": "Some things are written in ink that never fully dries.",
    "flavor": "",
    "aroma": "",
@@ -1164,8 +1165,8 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/strawberry-akeil-front.jpg",
-    "back": "assets/cards/strawberry-akeil-back.jpg"
+    "front": "assets/cards/strawberry-akeil-front.jpg?v=2",
+    "back": "assets/cards/strawberry-akeil-back.jpg?v=2"
    },
    "printedRealm": "The Sunlit Fields"
   },
@@ -1188,7 +1189,7 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/mango-kush-front.jpg",
+    "front": "assets/cards/mango-kush-front.jpg?v=2",
     "back": null
    },
    "printedRealm": "Sun Realm"
@@ -1212,8 +1213,8 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/grandpa-cookies-front.jpg",
-    "back": "assets/cards/grandpa-cookies-back.jpg"
+    "front": "assets/cards/grandpa-cookies-front.jpg?v=2",
+    "back": "assets/cards/grandpa-cookies-back.jpg?v=2"
    },
    "printedRealm": "The Orchard"
   },
@@ -1236,8 +1237,8 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/white-wedding-rbx-front.jpg",
-    "back": "assets/cards/white-wedding-rbx-back.jpg"
+    "front": "assets/cards/white-wedding-rbx-front.jpg?v=2",
+    "back": "assets/cards/white-wedding-rbx-back.jpg?v=2"
    },
    "printedRealm": "The Garden"
   },
@@ -1260,8 +1261,8 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/chocolate-diesel-front.jpg",
-    "back": "assets/cards/chocolate-diesel-back.jpg"
+    "front": "assets/cards/chocolate-diesel-front.jpg?v=2",
+    "back": "assets/cards/chocolate-diesel-back.jpg?v=2"
    },
    "printedRealm": "The Foundry"
   },
@@ -1364,7 +1365,7 @@ window.WORLD = {
   {
    "id": "xxx-og",
    "name": "XXX OG",
-   "code": "AG-020",
+   "code": "AG-025",
    "title": "The Silent Mountain King",
    "category": "",
    "realm": null,
@@ -1380,8 +1381,8 @@ window.WORLD = {
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/xxx-og-front.jpg",
-    "back": "assets/cards/xxx-og-back.jpg"
+    "front": "assets/cards/xxx-og-front.jpg?v=2",
+    "back": "assets/cards/xxx-og-back.jpg?v=2"
    },
    "printedRealm": "The Pine Crown Peaks"
   },
@@ -1626,8 +1627,7 @@ window.WORLD = {
    "district": "dnines-cabinet",
    "relations": [
     "coco",
-    "chemical-bride",
-    "alien-mints-permanent-marker"
+    "chemical-bride"
    ]
   },
   {
