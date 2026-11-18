@@ -293,6 +293,7 @@ button { font: inherit; color: inherit; }
 .kv { display: grid; grid-template-columns: max-content 1fr; gap: .35rem 1.2rem; margin: 0; }
 .kv dt { font-family: var(--display); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: #9a7432; padding-top: .3rem; }
 .kv dd { margin: 0; }
+.kv-note { margin: .9rem 0 0; font-size: .82rem; font-style: italic; line-height: 1.45; color: #7a6443; }
 .kin { display: flex; flex-wrap: wrap; gap: .7rem; }
 .kin a { display: flex; align-items: center; gap: .55rem; text-decoration: none; padding: .3rem .8rem .3rem .3rem; border-radius: 999px; background: rgba(255,255,255,.4); border: 1px solid rgba(120,85,35,.25); }
 .kin img, .kin .dot { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; }

@@ -252,7 +252,10 @@
            ${art.back ? `<span class="flip__side flip__back"><img src="${esc(art.back)}" alt="${esc(s.name)} card back"><i class="glare"></i></span>` : ""}</span>
          </button></div>`
       : `<div class="ccard ccard--type cardstage__flip" style="aspect-ratio:2/3">${cardHTML(s).replace(/^<a[^>]*>|<\/a>$/g, "")}</div>`;
-    const profile = [["Flavour", s.flavor], ["Aroma", s.aroma], ["Effects", s.effects], ["May relieve", s.mayRelieve]].filter(([, v]) => v);
+    // "Users report relief from": these are what people who've tried the strain report, not medical claims (Cassidy, 18 Nov 2026).
+    const profile = [["Type", s.typeDetail ? (s.category ? `${s.category} (${s.typeDetail})` : s.typeDetail) : s.category], ["THC", s.thc], ["Lineage", s.lineage],
+      ["Flavour", s.flavor], ["Aroma", s.aroma], ["Effects", s.effects], ["Users report relief from", s.mayRelieve], ["Best time", s.bestTime], ["Best for", s.bestFor]].filter(([, v]) => v);
+    const reportNote = s.mayRelieve ? `<p class="kv-note">Shared from what people who have tried it report. Everyone responds differently, and this isn't medical advice.</p>` : "";
     const where = r ? `${esc(r.name)}${districtName(s) ? " · " + esc(districtName(s)) : ""}` : "Still finding its realm";
     stage.innerHTML = `
       <section class="cardstage view">
@@ -291,7 +294,7 @@
             <aside class="plant-ask">${passageHTML(PLANT_ASK)}</aside>
             <dl class="kv"><dt>Atlas realm</dt><dd>${r ? esc(r.name) : "Still finding its realm"}</dd>${districtName(s) ? `<dt>District</dt><dd>${esc(districtName(s))}</dd>` : ""}${s.printedRealm ? `<dt>On the card</dt><dd>${esc(s.printedRealm)}</dd>` : ""}</dl>
           </div>
-          <div data-pane="effects" hidden>${profile.length ? `<dl class="kv">${profile.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>` : `<div class="empty">${art && art.back ? "Turn the card over: its flavour and effects are written on its back." : EMPTY}</div>`}</div>
+          <div data-pane="effects" hidden>${profile.length ? `<dl class="kv">${profile.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>${reportNote}` :`<div class="empty">${art && art.back ? "Turn the card over: its flavour and effects are written on its back." : EMPTY}</div>`}</div>
           <div data-pane="terpenes" hidden>${s.terpenes.length ? `<div class="chips">${s.terpenes.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>` : `<div class="empty">${EMPTY}</div>`}</div>
           <div data-pane="pairs" hidden>${kin ? `<div class="kin">${kin}</div>` : `<div class="empty">${EMPTY}</div>`}</div>
           <div data-pane="grow" hidden>${s.growNotes ? `<p>${esc(s.growNotes)}</p>` : `<div class="empty">${EMPTY}</div>`}</div>
