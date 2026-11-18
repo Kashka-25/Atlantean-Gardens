@@ -9,6 +9,9 @@ window.HIDING = {
       "lusty-lady": { x: 46, y: 28, riddle: "Where blossom spills like laughter down a stair, / one flower blooms too loudly to stay hidden." },
       "strawberry-akeil": { x: 61, y: 62, riddle: "A roof of green, a ring of song: / beneath the dome, the meadow sings along." },
       "honey-melon-kush": { x: 63, y: 75, riddle: "Below the music, in the grass, / an afternoon has drifted off to sleep." },
+      "acapulco-gold": { x: 56, y: 38, riddle: "Where orange trees ripen on terraces facing the sun, / a seed is planted for someone not yet met." },
+      "og-kush": { x: 12, y: 74, riddle: "By the cottage door where the potted flowers wait, / the oldest root grows steady in its stone." },
+      "mango-kush": { x: 49, y: 76, riddle: "In the shade of a fruit tree heavy with gold, / someone shares the harvest and asks for nothing back." },
     },
     keepers: {
       "coco": { x: 28, y: 78, riddle: "Where low walls hold the warmth of noon, / the oldest hands rest in sun-baked stone." },
@@ -46,6 +49,7 @@ window.HIDING = {
     strains: {
       "alien-mints-permanent-marker": { x: 26, y: 74, riddle: "Where a brass eye stares at the stars and the pages lie open, / something borrowed waits to be returned." },
       "chemical-bride": { x: 89, y: 65, riddle: "Wed to the glass where the table is laid, / she introduces chaos to patience." },
+      "mega-mind": { x: 49, y: 13, riddle: "Under the highest glass dome where the light is gathered, / ideas drift like fireflies." },
     },
     keepers: {
       "dnine": { x: 12, y: 60, riddle: "Among shelves that lean with borrowed books, / the cabinet keeps its keeper." },
@@ -59,6 +63,9 @@ window.HIDING = {
     strains: {
       "glookies": { x: 22, y: 66, riddle: "Where warm bread breathes through an open door, / nothing good is ever rushed." },
       "permanent-marker": { x: 56, y: 78, riddle: "Around the flames where friends sit close, / a tale is written in ink that never dries." },
+      "fire-og": { x: 63, y: 86, riddle: "Where two cups wait on a stump beside the fire, / everyone has eaten before the keeper sits down." },
+      "bubblegum": { x: 48, y: 45, riddle: "On the little arched bridge below the falls, / a sweet memory bubbles in the breeze." },
+      "bubblegum-og": { x: 7, y: 75, riddle: "Where the sunflower leans toward the lavender, / two sweet ideas grow into one." },
     },
     keepers: {
       "raptor": { x: 65, y: 60, riddle: "Where wooden arrows point every way, / the keeper of roads remembers which one lets you through." },
@@ -69,7 +76,9 @@ window.HIDING = {
     },
   },
   "verdant-wilds-realm": {
-    strains: {},
+    strains: {
+      "purple-ayahuasca": { x: 34, y: 32, riddle: "Where mossy arches stand in ruin above the falls, / a traveller journeys without taking a step." },
+    },
     keepers: {
       "kasper": { x: 85, y: 17, riddle: "High in the branches where small windows glow, / a journal is being written by lamplight." },
       "lila": { x: 80, y: 60, riddle: "Through the stone arch where the green gem hangs, / the Garden remembers itself." },
@@ -79,7 +88,10 @@ window.HIDING = {
     },
   },
   "celestial-realm": {
-    strains: {},
+    strains: {
+      "northern-lights": { x: 19, y: 42, riddle: "On the far isle where a pink tree catches the first light, / a wonderer stops to look up." },
+      "dream-weaver": { x: 8, y: 73, riddle: "Where the largest lotus opens at the water's edge, / the day's worries are stitched into something soft." },
+    },
     keepers: {
       "kasper": { x: 57, y: 86, riddle: "A small white sail on a sea of galaxies; / an explorer is steering by the stars." },
       "lila": { x: 15, y: 70, riddle: "Where pale lotus flowers open to the night, / she rests among the petals of the moon." },

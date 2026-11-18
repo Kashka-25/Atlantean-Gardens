@@ -125,7 +125,8 @@ window.WORLD = {
     "cocos-courtyard": "Coco's Courtyard",
     "the-floral-steps": "The Floral Steps",
     "the-bards-meadow": "The Bard's Meadow",
-    "seedling-nursery": "Seedling Nursery"
+    "seedling-nursery": "Seedling Nursery",
+    "morning-orchard": "Morning Orchard"
    },
    "pin": {
     "x": 34.5,
@@ -467,7 +468,8 @@ window.WORLD = {
    "districtIds": {
     "the-alchemists-greenhouse": "The Alchemist's Greenhouse",
     "dnines-cabinet": "D'nine's Cabinet",
-    "the-glass-atrium": "The Glass Atrium"
+    "the-glass-atrium": "The Glass Atrium",
+    "observatory": "Observatory"
    },
    "pin": {
     "x": 77.5,
@@ -594,7 +596,8 @@ window.WORLD = {
    "districtIds": {
     "the-oven-room": "The Oven Room",
     "cocos-old-table": "Coco's Old Table",
-    "raptors-supply-road": "Raptor's Supply Road"
+    "raptors-supply-road": "Raptor's Supply Road",
+    "the-hearth-circle": "The Hearth Circle"
    },
    "pin": {
     "x": 27.5,
@@ -716,7 +719,8 @@ window.WORLD = {
    "districtIds": {
     "journal-grove": "Journal Grove",
     "forgotten-paths": "Forgotten Paths",
-    "echo-woods": "Echo Woods"
+    "echo-woods": "Echo Woods",
+    "moss-temple": "Moss Temple"
    },
    "pin": {
     "x": 76.0,
@@ -842,7 +846,8 @@ window.WORLD = {
    "districtIds": {
     "the-dreaming-sea": "The Dreaming Sea",
     "the-astral-arbor": "The Astral Arbor",
-    "moonpetal-sanctuary": "Moonpetal Sanctuary"
+    "moonpetal-sanctuary": "Moonpetal Sanctuary",
+    "garden-of-first-light": "Garden of First Light"
    },
    "pin": {
     "x": 52.5,
@@ -1173,26 +1178,32 @@ window.WORLD = {
   {
    "id": "mango-kush",
    "name": "Mango Kush",
-   "code": "AG-002",
-   "title": "The Sunlit Wanderer",
-   "category": "",
-   "realm": null,
+   "code": "AG-053",
+   "title": "The Guardian at Rest",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "sunlight-realms",
    "district": "",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "raptor"
+   ],
+   "body": "In the warmest corner of the Sunlight Realms grows an orchard that never loses its light. Raptor works harder than anyone in the Garden, but here, half-hidden in the low branches, he naps more than he walks, and walks more than he hurries. Some say the orchard grew around him because he refused to leave; others say he's simply where the sun decided to rest.\n\nHe shares mangoes with anyone who wanders by — tired fairies, lost travelers, gnomes with sore feet — and never asks for anything back. Locals claim an afternoon in his shade lasts three hours longer than it should, though no one minds.\n\nRaptor sometimes mistakes rest for laziness. Mango Kush reminds him, and all of us, that rest is not laziness. It is its own kind of ripening.",
+   "quote": "Love is a verb.",
+   "flavor": "Mango, Tropical Citrus, Earthy Pine, Sweet Herb",
+   "aroma": "Ripe mango, Sweet, Earthy",
+   "effects": "Relaxed, Content, Sleepy, Warm-bodied",
+   "mayRelieve": "Stress, Anxiety, Low mood",
    "terpenes": [],
    "growNotes": "",
    "art": {
-    "front": "assets/cards/mango-kush-front.jpg?v=2",
-    "back": null
+    "front": "assets/cards/mango-kush-front.jpg?v=3",
+    "back": "assets/cards/mango-kush-back.jpg?v=3"
    },
-   "printedRealm": "Sun Realm"
+   "printedRealm": "Sunlight Realms",
+   "typeDetail": "80/20",
+   "thc": "~17%",
+   "lineage": "Mango x Hindu Kush",
+   "bestTime": "Afternoon"
   },
   {
    "id": "grandpa-cookies",
@@ -1485,7 +1496,7 @@ window.WORLD = {
   {
    "id": "puro-loco",
    "name": "Puro Loco",
-   "code": "",
+   "code": "AG-005",
    "title": "The Keeper of Beautiful Chaos",
    "category": "",
    "realm": null,
@@ -1507,6 +1518,264 @@ window.WORLD = {
     "back": null
    },
    "printedRealm": ""
+  },
+  {
+   "id": "northern-lights",
+   "name": "Northern Lights",
+   "code": "AG-001",
+   "title": "The Wonderer",
+   "category": "Indica",
+   "realm": "celestial-realm",
+   "district": "garden-of-first-light",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "Every journey through Atlantean Gardens begins the same way: with someone willing to look up.\n\nOn a quiet night in the Garden of First Light, Kasper sits beneath a sky the Atlanteans believed was a garden too. Ribbons of green and violet light ripple overhead, and the trees answer with blossoms that glow like stars.\n\nHe opens his journal and begins to write. Not a record of what he sees, but a love letter to the Garden.\n\nKasper believes he has come to explore the Garden. He has not yet realised that the Garden has quietly been cultivating him all along.",
+   "quote": "The world doesn't need more people who have all the answers. It needs more people willing to keep learning.",
+   "flavor": "Pine, Earthy, Sweet, Spicy",
+   "aroma": "Sweet, Spicy, Earthy",
+   "effects": "Relaxed, Sleepy, Happy",
+   "mayRelieve": "Stress, Insomnia, Pain",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/northern-lights-front.jpg",
+    "back": "assets/cards/northern-lights-back.jpg"
+   },
+   "printedRealm": "Celestial Realm",
+   "thc": "~16–22%",
+   "lineage": "Afghani x Thai",
+   "bestTime": "Night"
+  },
+  {
+   "id": "acapulco-gold",
+   "name": "Acapulco Gold",
+   "code": "AG-002",
+   "title": "The Keeper of the Garden",
+   "category": "Sativa",
+   "realm": "sunlight-realms",
+   "district": "morning-orchard",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "When the last lights of the night fade over the Garden, Coco is already awake.\n\nWhere Kasper discovers wonder, Coco helps it endure.\n\nHe walks the Morning Orchard as the first gold of sunrise touches the leaves, with seeds in every pocket. Acapulco Gold is one of the oldest seeds he carries. He plants seeds whose flowers he may never see, for people he may never meet.\n\nLove is rarely loud. It is found in cups of tea left waiting, and in paths swept before sunrise.",
+   "quote": "The tallest tree is not the one that reached the sky first, but the one that never stopped deepening its roots.",
+   "flavor": "Honey, Chestnut, Coffee, Earthy",
+   "aroma": "Earthy, Tea leaves, Chestnut",
+   "effects": "Energetic, Focused, Creative",
+   "mayRelieve": "Fatigue, Stress, Low mood",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/acapulco-gold-front.jpg",
+    "back": "assets/cards/acapulco-gold-back.jpg"
+   },
+   "printedRealm": "Sunlight Realms",
+   "thc": "~18–23%",
+   "lineage": "Landrace from Acapulco, Mexico",
+   "bestTime": "Morning"
+  },
+  {
+   "id": "dream-weaver",
+   "name": "Dream Weaver",
+   "code": "AG-003",
+   "title": "The Keeper of Moonlit Gardens",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "celestial-realm",
+   "district": "moonpetal-sanctuary",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "Lila tends the gardens that only bloom after dark. She walks slow, speaks softly, and stitches the day's worries into something you can finally set down.\n\nEach evening she quietly thanks the Garden for another day of shared life. Sometimes she sings. Sometimes she simply sits beneath the stars. Listening.\n\nWhere she goes, the night gets a little kinder and sleep comes a little easier.",
+   "quote": "Everything blooms in its own season. Love simply creates the conditions.",
+   "flavor": "Lavender, Berry, Earth",
+   "aroma": "Soft lavender, Dark berry, Damp moss",
+   "effects": "Rest, Release, Stillness",
+   "mayRelieve": "Insomnia, Racing thoughts, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/dream-weaver-front.jpg",
+    "back": "assets/cards/dream-weaver-back.jpg"
+   },
+   "printedRealm": "Celestial Realm",
+   "bestTime": "Night"
+  },
+  {
+   "id": "bubblegum",
+   "name": "Bubblegum",
+   "code": "AG-004",
+   "title": "The Sweet Remembering",
+   "category": "Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "I found Bubblegum on a delivery route near the old Hearthlands caravansary. A cluster of pink-kissed blooms bubbled in the breeze, filling the air with a sweetness I hadn't felt in many seasons.\n\nOne soft inhale, and I was somewhere else—laughing, racing through sunlit days with sticky pink smiles and no worries at all.\n\nI don't always say it out loud, but some memories are like rare seeds. You don't question them. You just keep them safe.\n\nNow I carry a little piece of that sweetness with me, to share with those who need a reminder that joy is never far away.",
+   "quote": "Not every treasure needs protecting. Some only need to be remembered.",
+   "flavor": "Sweet bubblegum with creamy vanilla and a hint of berry candy.",
+   "aroma": "Candied blossoms, sugary fruit, and a touch of cream.",
+   "effects": "A happy, easy calm that softens the mind while keeping creativity and focus afloat.",
+   "mayRelieve": "Stress, low mood, restlessness, and overthinking.",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/bubblegum-front.jpg",
+    "back": "assets/cards/bubblegum-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "typeDetail": "60% Indica / 40% Sativa",
+   "thc": "18–24%",
+   "bestFor": "Uplifting Evenings, Creative Moments, Kind Hearted Company"
+  },
+  {
+   "id": "bubblegum-og",
+   "name": "Bubblegum OG",
+   "code": "AG-026",
+   "title": "The Grafted Sweetness",
+   "category": "Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "",
+   "tags": [],
+   "relations": [
+    "dnine"
+   ],
+   "body": "I loved Bubblegum. Its sweetness was a hug from the Garden. But I wondered... what if we gave that sweetness a stronger root?\n\nSo I took the bold, grounding wisdom of an OG elder and grafted it with care. It was a delicate dance—sweet and earthy, soft and strong.\n\nPatience, light, and a little mischief later... this was born. Bubblegum OG. A balanced creation. A sweet memory with backbone. A friend for both heart and mind.",
+   "quote": "I don't just mix plants. I listen. I watch. I wait. Then I trust the Garden to show me what the world needs.",
+   "flavor": "Classic bubblegum sweetness with creamy vanilla and a touch of earthy kush.",
+   "aroma": "Sweet candy and floral notes layered with pine, earth, and a hint of spice.",
+   "effects": "Uplifting happiness meets deep, calm relaxation. A clear mind in a calm body.",
+   "mayRelieve": "Stress, restlessness, tension, and low mood. Supports relaxation without heaviness.",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/bubblegum-og-front.jpg",
+    "back": "assets/cards/bubblegum-og-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "typeDetail": "Cross of Bubblegum & OG Lineage",
+   "thc": "20–26%",
+   "bestFor": "Uplifting Evenings, Creative Moments, Deep Connection, Grounded Calm"
+  },
+  {
+   "id": "purple-ayahuasca",
+   "name": "Purple Ayahuasca",
+   "code": "AG-028",
+   "title": "The Dream Jumper",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "moss-temple",
+   "tags": [],
+   "relations": [
+    "kasper",
+    "lila"
+   ],
+   "body": "Deep in the Verdant Wilds, where the Moss Temple sleeps beneath the oldest trees, Kasper sits in stillness and listens.\n\nSome journeys need no footsteps. Long ago, in deep meditation, Kasper passed into another realm, and he returned with a scar where his third eye opened.\n\nLila sits beside him whenever he travels, keeping him aligned with the Garden and his highest path.\n\nHe welcomes the night as a time for introspection and communion with mystery. He talks to plants and to unseen realms, and he writes down what they show him, not to solve the mystery but to remember it.\n\nNot every doorway should be opened. Some are simply sat beside.",
+   "quote": "Every flower has a story. Every creature has a lesson. Every journey changes the traveller.",
+   "flavor": "Tropical fruit, Nutty, Earthy",
+   "aroma": "Sour fruit, Pepper, Fresh earth",
+   "effects": "Relaxed, Happy, Tingly",
+   "mayRelieve": "Stress, Insomnia, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/purple-ayahuasca-front.jpg",
+    "back": "assets/cards/purple-ayahuasca-back.jpg"
+   },
+   "printedRealm": "Verdant Wilds Realm",
+   "thc": "~19–22%",
+   "lineage": "Master Kush x Red River Delta",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "og-kush",
+   "name": "OG Kush",
+   "code": "AG-029",
+   "title": "The Original Gardener",
+   "category": "Hybrid",
+   "realm": "sunlight-realms",
+   "district": "cocos-courtyard",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "Before sunrise, Coco walks the Garden. He notices which flowers opened overnight, which leaves need tending, which paths need sweeping. He greets the Garden before speaking to anyone else.\n\nIn Coco's Courtyard, where every journey begins, grows his oldest companion: OG Kush, the root from which so many other strains have grown. Coco tends it the way he tends everything, season after season, with patience.\n\nTravellers come and go, and new flowers bloom every spring. OG Kush remains, steady as the hands that planted it.\n\nRoots grow long before flowers bloom.",
+   "quote": "The strongest roots are grown in quiet seasons.",
+   "flavor": "Pine, Woody, Lemon",
+   "aroma": "Earthy, Pine, Fuel",
+   "effects": "Relaxed, Happy, Euphoric",
+   "mayRelieve": "Stress, Pain, Insomnia",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/og-kush-front.jpg",
+    "back": "assets/cards/og-kush-back.jpg"
+   },
+   "printedRealm": "Sunlight Realms",
+   "typeDetail": "Indica-leaning",
+   "thc": "~19–26%",
+   "lineage": "Chemdawg x Hindu Kush",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "fire-og",
+   "name": "Fire OG",
+   "code": "AG-030",
+   "title": "The Firekeeper",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "the-hearth-circle",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "When the day's work is done in the Hearthlands, Raptor lights the fire at the Hearth Circle. Before he sits down himself, he makes sure everyone has eaten.\n\nFire OG is a child of OG Kush, Coco's oldest companion, and Raptor tends it the way Coco taught him: with strong hands and an open heart.\n\nAround his fire, strangers become family. Songs rise with the sparks, and every burden grows lighter when it is carried together.",
+   "quote": "Strength is not measured by what you can carry alone. It is measured by what you are willing to carry together.",
+   "flavor": "Lemon, Earthy, Pine",
+   "aroma": "Earthy, Diesel, Citrus",
+   "effects": "Relaxed, Euphoric, Happy",
+   "mayRelieve": "Stress, Pain, Insomnia",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/fire-og-front.jpg",
+    "back": "assets/cards/fire-og-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "thc": "~20–28%",
+   "lineage": "OG Kush x SFV OG Kush",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "mega-mind",
+   "name": "Mega Mind",
+   "code": "AG-034",
+   "title": "The Inventor of Possibilities",
+   "category": "Hybrid",
+   "realm": "crystal-conservatory-realm",
+   "district": "observatory",
+   "tags": [],
+   "relations": [
+    "dnine"
+   ],
+   "body": "Long before Atlantis faded beneath the waves, there existed a hidden observatory where ideas drifted through the air like fireflies. There, among ancient books and celestial maps, lives D'nine, the Inventor of Possibilities. Rather than chasing answers, he collects questions.\n\nEach evening he climbs atop his tower of forgotten tomes and watches the stars rearrange themselves into new possibilities. Some say the glowing sparks around his fingertips are unfinished inventions waiting to be born. Others believe they are dreams searching for a dreamer.\n\nVisitors who spend time in his observatory often leave with lighter hearts, clearer thoughts, and the strange feeling that a solution has quietly found its way to them.\n\nMega Mind reminds us that wisdom does not come from knowing everything. It comes from remaining curious.",
+   "quote": "Every masterpiece began as someone wondering... 'What happens if...?'",
+   "flavor": "Citrus, Pine, Earthy",
+   "aroma": "Bright citrus, Pine forest floor",
+   "effects": "Focus, Creativity, Energy",
+   "mayRelieve": "Low motivation, Mental fog, Fatigue",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/mega-mind-front.jpg",
+    "back": "assets/cards/mega-mind-back.jpg"
+   },
+   "printedRealm": "Crystal Conservatory Realm"
   }
  ],
  "keepers": [

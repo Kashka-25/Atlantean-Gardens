@@ -23,7 +23,7 @@ because there is no fetch; the data loads from `data/world.js`.
 | Threshold | New tree emblem, trident wordmark and the introduction's closing lines | logo files from Cassidy (9 Nov 2026), `INTRODUCTION Page.docx` |
 | Atlas | Painted map, 8 glowing realm pins | `Seven Realm Atlas.png` |
 | Realm drawer | Painting, tagline, themes, **the tale** (verses quoted from the manuscripts, ending on a reflective nudge), places (20 with their own verse), look and feel, keepers and strains | 6 realm paintings, `The Atlas 7 Worlds.docx`, `living-atlas-prototype/data/realms` |
-| Strains | 23 collector cards (fronts and backs): 9 placed on the Atlas, 14 "not yet on the Atlas" | `AG Cards/`, `Mango Kush/`, `Character Cards/`, `living-atlas-prototype/data/characters` |
+| Strains | 32 collector cards (fronts and backs): 19 placed on the Atlas, 13 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
 | Keepers | Hall of Living Portraits, 5 keeper pages | `The Hll Of Living Portraits.png`, `Character BIBLE.docx` |
 | Lore | 13 manuscripts with provenance and opening inscription | `13 Manuscripts/*.docx` |
 | Journey | Discovery progress, saved only in the visitor's browser | none |
@@ -47,6 +47,14 @@ Manuscript V: "The Herbarium shall therefore never be complete."
 
 Realm paintings, keeper crops and the map are in `assets/`. They were resized
 from the originals with Pillow.
+
+Cards finished in the card studio (18 Nov 2026: AG-001 to AG-004, AG-026,
+AG-028 to AG-030, AG-034 and the redone Mango Kush, AG-053) were added to
+`data/world.js` directly, not through `build_data.py`, so a rebuild would drop
+them. Their text is copied from `card-studio/strains.xlsx`; their art is the
+finished front and the clean back from `card-studio/out/` (never the
+`-back-qr.png` print version), resized to 560 px wide. The QR code on each
+printed back opens `#/cards/<web id>`.
 
 ## Canon questions for Cassidy (not resolved here)
 

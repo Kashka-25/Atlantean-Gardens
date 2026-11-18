@@ -252,7 +252,8 @@
            ${art.back ? `<span class="flip__side flip__back"><img src="${esc(art.back)}" alt="${esc(s.name)} card back"><i class="glare"></i></span>` : ""}</span>
          </button></div>`
       : `<div class="ccard ccard--type cardstage__flip" style="aspect-ratio:2/3">${cardHTML(s).replace(/^<a[^>]*>|<\/a>$/g, "")}</div>`;
-    const profile = [["Flavour", s.flavor], ["Aroma", s.aroma], ["Effects", s.effects], ["May relieve", s.mayRelieve]].filter(([, v]) => v);
+    const profile = [["Type", s.typeDetail && (s.category ? `${s.category} (${s.typeDetail})` : s.typeDetail)], ["THC", s.thc], ["Lineage", s.lineage],
+      ["Flavour", s.flavor], ["Aroma", s.aroma], ["Effects", s.effects], ["May relieve", s.mayRelieve], ["Best time", s.bestTime], ["Best for", s.bestFor]].filter(([, v]) => v);
     const where = r ? `${esc(r.name)}${districtName(s) ? " · " + esc(districtName(s)) : ""}` : "Still finding its realm";
     stage.innerHTML = `
       <section class="cardstage view">
