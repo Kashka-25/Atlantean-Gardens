@@ -23,7 +23,7 @@ because there is no fetch; the data loads from `data/world.js`.
 | Threshold | New tree emblem, trident wordmark and the introduction's closing lines | logo files from Cassidy (9 Nov 2026), `INTRODUCTION Page.docx` |
 | Atlas | Painted map, 8 glowing realm pins | `Seven Realm Atlas.png` |
 | Realm drawer | Painting, tagline, themes, **the tale** (verses quoted from the manuscripts, ending on a reflective nudge), places (20 with their own verse), look and feel, keepers and strains | 6 realm paintings, `The Atlas 7 Worlds.docx`, `living-atlas-prototype/data/realms` |
-| Strains | 52 collector cards (fronts and backs): 38 placed on the Atlas, 14 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
+| Strains | 72 collector cards (fronts and backs): 59 placed on the Atlas, 13 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
 | Keepers | Hall of Living Portraits, 5 keeper pages | `The Hll Of Living Portraits.png`, `Character BIBLE.docx` |
 | Lore | 13 manuscripts with provenance and opening inscription | `13 Manuscripts/*.docx` |
 | Journey | Discovery progress, saved only in the visitor's browser | none |
@@ -54,14 +54,17 @@ For every row marked "Card done" in `card-studio/strains.xlsx` it writes the
 finished front and the clean back from `card-studio/out/` (never the
 `-back-qr.png` print version) at 560 px wide; refreshes type, THC and lineage
 on pages that came from the studio; and adds a page, in the sheet's realm and
-district, for any card the Atlas doesn't have yet. These pages live in
+district, for any card the Atlas doesn't have yet. When Cassidy has a card
+redone, `--refill <web id>` rebuilds that page from the sheet (new story,
+realm and profile) in the same place. These pages live in
 `data/world.js` directly, not through `build_data.py`, so a rebuild would drop
 them: re-run the sync after any rebuild. The QR code on each printed back opens
 `#/cards/<web id>`.
 
 Type, THC and lineage were fact-checked against breeders' statements,
 competition records and lab data (18 Nov 2026; the evidence is in
-`card-studio/data/lineage-factcheck.json` and `lineage-factcheck-set2.json`).
+`card-studio/data/lineage-factcheck.json` and `lineage-factcheck-set2.json`
+to `-set4.json`).
 Uncertain lineages say "reported", "disputed" or "breeder's account", and
 untested THC figures say "estimate". "Users report relief from" lists what
 people who have tried a strain report, with a note that it isn't medical

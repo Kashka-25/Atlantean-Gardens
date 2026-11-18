@@ -8,11 +8,13 @@ For every row marked "Card done" in the card studio's strains.xlsx:
   get those fields refreshed from the sheet, so the site never says more than
   the fact-checked sheet does;
 - a strain that isn't on the Atlas yet gets a page, placed in the realm and
-  district the sheet names (no realm if the sheet names none).
+  district the sheet names (no realm if the sheet names none);
+- a strain named after --refill (a card Cassidy had redone) has its page
+  rebuilt from the sheet like a new one, in the same place in the list.
 
 Words come only from the sheet (Cassidy's approved card text).
 
-Usage: python tools/sync_studio_cards.py <card-studio dir>
+Usage: python tools/sync_studio_cards.py <card-studio dir> [--refill id ...]
 Run from living-atlas/. Needs Node (to read the sheet with the studio's own
 reader) and Pillow.
 """
@@ -25,6 +27,7 @@ import sys
 from PIL import Image
 
 STUDIO = os.path.abspath(sys.argv[1])
+REFILL = set(sys.argv[sys.argv.index("--refill") + 1:]) if "--refill" in sys.argv else set()
 WORLD = os.path.join("data", "world.js")
 CARDS = os.path.join("assets", "cards")
 KEEPER_IDS = {"Kasper": "kasper", "Lila": "lila", "Coco": "coco", "D'nine": "dnine", "Raptor": "raptor"}
@@ -54,7 +57,7 @@ world = json.loads(body.rstrip().rstrip(";"))
 by_id = {s["id"]: s for s in world["strains"]}
 realm_by_name = {r["name"]: r for r in world["realms"]}
 
-added, refreshed, art = [], [], 0
+added, refreshed, refilled, art = [], [], [], 0
 for r in sheet():
     if r["status"] != "Card done":
         continue
@@ -74,7 +77,7 @@ for r in sheet():
         "category": r["type"], "typeDetail": r["typeDetail"], "thc": r["thc"], "lineage": r["lineage"],
     }
     s = by_id.get(sid)
-    if s:
+    if s and sid not in REFILL:
         s["art"] = paths
         if any(k in s for k in ("typeDetail", "thc", "lineage")):
             changed = [k for k in PROFILE if (s.get(k) or "") != (values[k] or "")]
@@ -110,11 +113,18 @@ for r in sheet():
         s["bestFor"] = ", ".join(x.strip() for x in best.split(";") if x.strip())
     elif best:
         s["bestTime"] = best
-    world["strains"].append(s)
+    if sid in by_id:  # --refill: replace the old page where it stands
+        world["strains"][world["strains"].index(by_id[sid])] = s
+        refilled.append(sid)
+    else:
+        world["strains"].append(s)
+        added.append(sid)
     by_id[sid] = s
-    added.append(sid)
 
 open(WORLD, "w", encoding="utf-8", newline="\n").write(head + "window.WORLD = " + json.dumps(world, ensure_ascii=False, indent=1) + ";\n")
 print(f"card art written for {art} cards")
 print(f"profile refreshed: {', '.join(refreshed) or 'none'}")
 print(f"pages added ({len(added)}): {', '.join(added) or 'none'}")
+print(f"pages rebuilt from the sheet: {', '.join(refilled) or 'none'}")
+for sid in REFILL - set(refilled):
+    print(f"  ! --refill {sid}: not a Card done row, left alone")

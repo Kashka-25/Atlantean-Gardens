@@ -232,7 +232,9 @@ window.WORLD = {
     "moonlit-pier": "Moonlit Pier",
     "bubble-bay": "Bubble Bay",
     "the-glass-lagoon": "The Glass Lagoon",
-    "whispering-wharf": "Whispering Wharf"
+    "whispering-wharf": "Whispering Wharf",
+    "the-pearl-steps": "The Pearl Steps",
+    "coral-gardens": "Coral Gardens"
    },
    "pin": {
     "x": 63.5,
@@ -357,7 +359,8 @@ window.WORLD = {
     "tea-terrace": "Tea Terrace",
     "lavender-fields": "Lavender Fields",
     "the-old-press": "The Old Press",
-    "bakers-row": "Bakers' Row"
+    "bakers-row": "Bakers' Row",
+    "honey-hollow": "Honey Hollow"
    },
    "pin": {
     "x": 27.0,
@@ -476,7 +479,8 @@ window.WORLD = {
     "the-glass-atrium": "The Glass Atrium",
     "observatory": "Observatory",
     "the-living-laboratory": "The Living Laboratory",
-    "prism-gardens": "Prism Gardens"
+    "prism-gardens": "Prism Gardens",
+    "crystal-nursery": "Crystal Nursery"
    },
    "pin": {
     "x": 77.5,
@@ -606,7 +610,8 @@ window.WORLD = {
     "raptors-supply-road": "Raptor's Supply Road",
     "the-hearth-circle": "The Hearth Circle",
     "lantern-square": "Lantern Square",
-    "festival-green": "Festival Green"
+    "festival-green": "Festival Green",
+    "songkeepers-hall": "Songkeeper's Hall"
    },
    "pin": {
     "x": 27.5,
@@ -731,7 +736,8 @@ window.WORLD = {
     "echo-woods": "Echo Woods",
     "moss-temple": "Moss Temple",
     "butterfly-vale": "Butterfly Vale",
-    "elder-tree-hollow": "Elder Tree Hollow"
+    "elder-tree-hollow": "Elder Tree Hollow",
+    "hidden-springs": "Hidden Springs"
    },
    "pin": {
     "x": 76.0,
@@ -859,7 +865,8 @@ window.WORLD = {
     "the-astral-arbor": "The Astral Arbor",
     "moonpetal-sanctuary": "Moonpetal Sanctuary",
     "garden-of-first-light": "Garden of First Light",
-    "the-observatory-of-becoming": "The Observatory of Becoming"
+    "the-observatory-of-becoming": "The Observatory of Becoming",
+    "the-constellation-orchard": "The Constellation Orchard"
    },
    "pin": {
     "x": 52.5,
@@ -1510,26 +1517,29 @@ window.WORLD = {
    "name": "Puro Loco",
    "code": "AG-005",
    "title": "The Keeper of Beautiful Chaos",
-   "category": "",
-   "realm": null,
-   "district": "",
+   "category": "Hybrid",
+   "realm": "bubble-coast-realm",
+   "district": "coral-gardens",
    "tags": [],
    "relations": [
     "coco"
    ],
-   "body": "Every gardener knows the Garden keeps its own plans. Some days, Coco keeps none at all.\n\nOn those days you'll find him barefoot among the mango trees, juggling the ripest fruit while parrots, toucans and a little monkey gather to watch. Something always drops. Nobody minds.\n\nCoco has spent a lifetime tending what must endure. Puro Loco is his reminder that roots and wings belong to the same tree, and that a little beautiful chaos is part of how a garden grows.\n\nSo set the shears down for an afternoon, and laugh until the air changes.",
+   "body": "Every gardener knows the Garden keeps its own plans. Some days, Coco keeps none at all.\n\nOn those nights you'll find him barefoot among the moonlit fruit trees of the Coral Gardens, juggling the ripest mangoes and papayas while parrots, toucans and a curious water sprite gather to watch. Something always drops. Nobody minds.\n\nCoco has spent a lifetime tending what must endure. Puro Loco is his reminder that roots and wings belong to the same tree, and that a little beautiful chaos is part of how a garden grows.\n\nSo set the shears down for an evening, and laugh until the air changes.",
    "quote": "Nature plans. Coco plays.",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "flavor": "Citrus, Mango, Diesel, Earthy",
+   "aroma": "Gassy, Fruity, Earthy",
+   "effects": "Relaxed, Euphoric, Hungry",
+   "mayRelieve": "Insomnia, Anxiety, Depression",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/puro-loco-front.jpg",
-    "back": null
+    "back": "assets/cards/puro-loco-back.jpg"
    },
-   "printedRealm": ""
+   "printedRealm": "Bubble Coast Realm",
+   "thc": "~20–31%",
+   "lineage": "Papaya × Moonbow #75 (breeder's account)",
+   "bestTime": "Night"
   },
   {
    "id": "northern-lights",
@@ -2372,6 +2382,592 @@ window.WORLD = {
    "thc": "~21–25%",
    "lineage": "Triangle Kush × Animal Mints (breeder's account)",
    "bestTime": "Evening"
+  },
+  {
+   "id": "g13",
+   "name": "G13",
+   "code": "AG-052",
+   "title": "The Keeper of Secrets",
+   "category": "Indica",
+   "realm": "crystal-conservatory-realm",
+   "district": "dnines-cabinet",
+   "tags": [],
+   "relations": [
+    "dnine"
+   ],
+   "body": "Deep in D'nine's Cabinet, behind a round brass door he keeps forgetting to lock, lives a plant with no proper name. Just a letter and two numbers.\n\nSome say it came from a locked laboratory far beyond the Garden. The old catalogues only ever said \"reputedly\", and D'nine likes it that way. A mystery, he says, is just a question that hasn't finished growing.\n\nHe visits it late at night when the workshop is quiet, and sits with it until his eyelids grow heavy and the questions grow soft.",
+   "quote": "The Garden isn't his laboratory. He's merely fortunate enough to work in Nature's.",
+   "flavor": "Earthy, Pine, Woody",
+   "aroma": "Earthy, Woody, Skunky",
+   "effects": "Sleepy, Euphoric, Relaxed",
+   "mayRelieve": "Stress, Pain, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/g13-front.jpg",
+    "back": "assets/cards/g13-back.jpg"
+   },
+   "printedRealm": "Crystal Conservatory Realm",
+   "thc": "~18–24%",
+   "lineage": "Unknown (reputedly an Afghan indica clone)",
+   "bestTime": "Night"
+  },
+  {
+   "id": "afghan-kush",
+   "name": "Afghan Kush",
+   "code": "AG-054",
+   "title": "The Keeper of Old Seeds",
+   "category": "Indica",
+   "realm": "living-harvest-realm",
+   "district": "honey-hollow",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "Coco has carried seeds in every pocket for as long as anyone can remember. The oldest came from high mountains far away, on journeys no one ever wrote down.\n\nOn cold evenings in Honey Hollow, he tucks himself under his big crocheted blanket with bread and honey close by, and sorts his old seed pouches one by one.\n\nHe rarely finishes. Somewhere between the third pouch and the fourth, the blanket wins.\n\nHe believes the greatest journeys often happen without taking a single step.",
+   "quote": "Every season deserves gratitude.",
+   "flavor": "Earthy, Woody, Tar, Spicy",
+   "aroma": "Earthy, Pine, Hashy",
+   "effects": "Sleepy, Relaxed, Hungry",
+   "mayRelieve": "Stress, Anxiety, Pain",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/afghan-kush-front.jpg",
+    "back": "assets/cards/afghan-kush-back.jpg"
+   },
+   "printedRealm": "Living Harvest Realm",
+   "thc": "~15%",
+   "lineage": "Landrace (Hindu Kush, Afghanistan)",
+   "bestTime": "Bedtime"
+  },
+  {
+   "id": "purple-punch",
+   "name": "Purple Punch",
+   "code": "AG-055",
+   "title": "The Festival Host",
+   "category": "Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "songkeepers-hall",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "Every harvest festival in the Hearthlands ends the same way. The music slows, the lanterns dim, and Raptor is still at the punch bowl, making sure everyone has had a cup.\n\nOnly when the last guest has gone does he pour one for himself, kick off his boots, and let the evening settle over him like a warm blanket.\n\nStrong hearts know when to rest, too.",
+   "quote": "Feeling safe enough to soften is sometimes the strongest thing one can learn.",
+   "flavor": "Grape, Berry, Plum, Sweet",
+   "aroma": "Grape, Blueberry, Sweet",
+   "effects": "Sleepy, Relaxed, Hungry",
+   "mayRelieve": "Anxiety, Stress, Pain",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/purple-punch-front.jpg",
+    "back": "assets/cards/purple-punch-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "thc": "~18–26%",
+   "lineage": "Reported: Granddaddy Purple × Larry OG",
+   "bestTime": "Night"
+  },
+  {
+   "id": "sunset-sherbet",
+   "name": "Sunset Sherbert",
+   "code": "AG-056",
+   "title": "The Keeper of Evening Colours",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "bubble-coast-realm",
+   "district": "moonlit-pier",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "At the end of the Moonlit Pier, where the Bubble Coast meets the evening, Lila sits with her bare feet above the water and watches the sky melt into the colours of sherbert: tangerine, raspberry and lemon, swirling into lavender.\n\nShe brings a bowl of the real thing, of course. It would be rude not to.\n\nSometimes she laughs before anyone has told the joke, because she can already feel the joy arriving. Tonight it arrives with the first star.",
+   "quote": "The stars never rush the sunrise.",
+   "flavor": "Citrus, Sweet, Berry, Tropical",
+   "aroma": "Citrus, Berry, Skunky",
+   "effects": "Relaxed, Happy, Tingly",
+   "mayRelieve": "Stress, Anxiety, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/sunset-sherbet-front.jpg",
+    "back": "assets/cards/sunset-sherbet-back.jpg"
+   },
+   "printedRealm": "Bubble Coast Realm",
+   "thc": "~15–24%",
+   "lineage": "Girl Scout Cookies × Pink Panties (breeder's account)",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "stardawg",
+   "name": "Star Dawg",
+   "code": "AG-057",
+   "title": "The Star Watcher",
+   "category": "Hybrid",
+   "realm": "celestial-realm",
+   "district": "the-constellation-orchard",
+   "tags": [],
+   "relations": [
+    "dnine"
+   ],
+   "body": "D'nine's conversations often begin with, \"I have a ridiculous question...\" Tonight's was: what if the stars got lonely?\n\nHe set up his telescope in the Constellation Orchard and began joining the dots in a brand-new way. By midnight, a shape had appeared that no star chart had ever shown: a playful dog leaping across the sky, its tail made of comets.\n\nNobody knows where its name first came from. D'nine likes to think the stars named it themselves.",
+   "quote": "Stars are born from impossible conditions.",
+   "flavor": "Diesel, Chemical, Earthy, Pepper",
+   "aroma": "Diesel, Earthy, Pine",
+   "effects": "Happy, Focused, Tingly",
+   "mayRelieve": "Depression, Stress, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/stardawg-front.jpg",
+    "back": "assets/cards/stardawg-back.jpg"
+   },
+   "printedRealm": "Celestial Realm",
+   "thc": "~20–26%",
+   "lineage": "Chemdawg 4 × Tres Dawg (breeder's account)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "tangie",
+   "name": "Tangie",
+   "code": "AG-058",
+   "title": "The Tree Climber",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "living-harvest-realm",
+   "district": "orchard-walk",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "Kasper is lightly athletic from years of climbing, and no tree on Orchard Walk is safe from him.\n\nThis morning it was the tallest tangerine tree, heavy with fruit so bright it looked lit from inside. He climbed to the very top, peeled one in a single spiral, and laughed as the juice ran down his chin.\n\nHe gets excited over tiny discoveries. Today's: the sweetest tangerine always grows where the sun reaches first.",
+   "quote": "The smallest discoveries often become the most meaningful.",
+   "flavor": "Orange, Citrus, Apricot, Earthy",
+   "aroma": "Tangerine, Citrus peel, Skunk",
+   "effects": "Energetic, Focused, Uplifted",
+   "mayRelieve": "Stress, Depression, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/tangie-front.jpg",
+    "back": "assets/cards/tangie-back.jpg"
+   },
+   "printedRealm": "Living Harvest Realm",
+   "typeDetail": "70% Sativa / 30% Indica, per the breeder",
+   "thc": "~17–24%",
+   "lineage": "California Orange × Skunk hybrid (breeders' account)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "master-kush",
+   "name": "Master Kush",
+   "code": "AG-059",
+   "title": "The Master Craftsman",
+   "category": "Indica",
+   "realm": "sunlight-realms",
+   "district": "seedling-nursery",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "In the Seedling Nursery, the young gardeners call him master. Coco just smiles and hands them a trowel.\n\nHis hands are marked by soil, wood and time. He works slowly, never urgently, shaping each plant only as much as it asks, then sits back to watch the evening light settle over the rows.\n\nMastery, he says, is mostly patience. The rest is listening.",
+   "quote": "His joy comes from knowing that because he cared, someone else found a place where they could bloom.",
+   "flavor": "Earthy, Pungent, Floral, Hash",
+   "aroma": "Earthy, Citrus, Incense",
+   "effects": "Relaxed, Sleepy, Tingly",
+   "mayRelieve": "Stress, Anxiety, Pain",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/master-kush-front.jpg",
+    "back": "assets/cards/master-kush-back.jpg"
+   },
+   "printedRealm": "Sunlight Realms",
+   "typeDetail": "95% Indica / 5% Sativa, per White Label",
+   "thc": "~17–22%",
+   "lineage": "Reported: Hindu Kush landrace cross (disputed)",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "grape-ape",
+   "name": "Grape Ape",
+   "code": "AG-060",
+   "title": "The Gentle Giant",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "living-harvest-realm",
+   "district": "the-vineyard",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "Raptor is the strongest monkey in the Garden, and the gentlest. At harvest he carries the heaviest baskets up from the Vineyard, two at a time, until every vine is picked clean.\n\nThen he lies back in the soft leaves at the end of the rows, pops one fat grape after another into his mouth, and does absolutely nothing at all.\n\nHe calls it the rest that comes as a reward for a well-directed day.",
+   "quote": "He leaves every person feeling a little safer than when he found them.",
+   "flavor": "Grape, Berry, Sweet, Earthy",
+   "aroma": "Grape, Earthy, Skunk",
+   "effects": "Relaxed, Sleepy, Hungry",
+   "mayRelieve": "Pain, Stress, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/grape-ape-front.jpg",
+    "back": "assets/cards/grape-ape-back.jpg"
+   },
+   "printedRealm": "Living Harvest Realm",
+   "thc": "~18–27%",
+   "lineage": "Mendocino Purps × Skunk × Afghani (breeder's account)",
+   "bestTime": "Night"
+  },
+  {
+   "id": "cherry-pie",
+   "name": "Cherry Pie",
+   "code": "AG-061",
+   "title": "The Keeper of Shared Tables",
+   "category": "Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "the-oven-room",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "Shared meals are among Lila's favourite things, and nothing gathers a table faster than her cherry pie.\n\nShe bakes it in the Oven Room with cherries picked that morning, weaving the lattice slowly, the way she does everything. When it comes out bubbling and golden, she sets it on the windowsill to cool.\n\nThen she notices the cherry juice on her own nose, and giggles, because she can already hear footsteps coming.",
+   "quote": "Whether this is magic, or simply love, no one knows.",
+   "flavor": "Cherry, Sweet, Berry, Woody",
+   "aroma": "Sweet cherry, Sour, Earthy",
+   "effects": "Relaxed, Happy, Giggly",
+   "mayRelieve": "Stress, Anxiety, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/cherry-pie-front.jpg",
+    "back": "assets/cards/cherry-pie-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "thc": "~16–26%",
+   "lineage": "Reported: Granddaddy Purple × F1 Durb",
+   "bestTime": "Afternoon"
+  },
+  {
+   "id": "super-silver-haze",
+   "name": "Super Silver Haze",
+   "code": "AG-062",
+   "title": "The Ever-Curious Elder",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "crystal-conservatory-realm",
+   "district": "crystal-nursery",
+   "tags": [],
+   "relations": [
+    "dnine"
+   ],
+   "body": "D'nine is an elder whose curiosity never retired.\n\nAt dawn in the Crystal Nursery he uncorks his newest invention, and a silvery haze spills out across the glass, shimmering like moonlight that forgot to go home. He laughs, spins, and chases it between the crystals with his notebook, as quick on his feet as a child.\n\nHis eyes belong to a child discovering the world for the first time.",
+   "quote": "Why should people stop experimenting simply because they grow older?",
+   "flavor": "Citrus, Skunk, Earthy, Woody",
+   "aroma": "Skunk, Citrus, Spice",
+   "effects": "Energetic, Uplifted, Focused",
+   "mayRelieve": "Stress, Anxiety, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/super-silver-haze-front.jpg",
+    "back": "assets/cards/super-silver-haze-back.jpg"
+   },
+   "printedRealm": "Crystal Conservatory Realm",
+   "typeDetail": "70% Sativa / 30% Indica, per the breeder",
+   "thc": "~19–24%",
+   "lineage": "Skunk × Northern Lights × Haze (breeders' account)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "amnesia-haze",
+   "name": "Amnesia Haze",
+   "code": "AG-063",
+   "title": "The Page I Almost Forgot",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "journal-grove",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "This morning the mist in Journal Grove was so thick and silver that, for a moment, I couldn't remember how I had come to be there. Not the path. Not the day. Not even the song I'd been humming.\n\nSo I did what I always do. I opened my journal, and page by page it all came back: Coco's tea, Lila's laugh, the Garden at first light. I laughed so hard the birds joined in.\n\nMy greatest fear has never been danger. It is forgetting. That is why I write everything down.\n\nIf you are reading this, the haze has lifted. I remembered.",
+   "quote": "Where others see ruins, he sees forgotten stories.",
+   "flavor": "Citrus, Lemon, Lime, Earthy",
+   "aroma": "Earthy, Lemon, Pepper",
+   "effects": "Euphoric, Giggly, Talkative",
+   "mayRelieve": "Stress, Depression, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/amnesia-haze-front.jpg",
+    "back": "assets/cards/amnesia-haze-back.jpg"
+   },
+   "printedRealm": "Verdant Wilds Realm",
+   "typeDetail": "80% Sativa / 20% Indica, per the breeder",
+   "thc": "~19–26%",
+   "lineage": "Jamaican × SE Asian × Afghani-Hawaiian (breeder's account)",
+   "bestTime": "Morning"
+  },
+  {
+   "id": "skunk-1",
+   "name": "Skunk #1",
+   "code": "AG-064",
+   "title": "The Root of Many",
+   "category": "Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "elder-tree-hollow",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "Long before most of the Garden's flowers had names, there was one seed that many others would grow from. Coco planted it among the roots of the oldest tree in Elder Tree Hollow, and its family has been branching out ever since.\n\nA cheeky little skunk lives among those roots. Coco shares his lunch with it every afternoon, and neither of them has ever minded the smell.\n\nRoots before flowers, Coco says. Always roots before flowers.",
+   "quote": "Every tree is an old friend. Every stone remembers.",
+   "flavor": "Skunk, Earthy, Pungent, Pine",
+   "aroma": "Skunk, Sour, Earthy",
+   "effects": "Happy, Euphoric, Hungry",
+   "mayRelieve": "Stress, Anxiety, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/skunk-1-front.jpg",
+    "back": "assets/cards/skunk-1-back.jpg"
+   },
+   "printedRealm": "Verdant Wilds Realm",
+   "thc": "~17–24%",
+   "lineage": "Afghani × Colombian × Acapulco Gold (breeder's account)",
+   "bestTime": "Afternoon"
+  },
+  {
+   "id": "big-bud",
+   "name": "Big Bud",
+   "code": "AG-065",
+   "title": "The Heavy Lifter",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "sunlight-realms",
+   "district": "the-floral-steps",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "On the Floral Steps grows a flower so enormous that its bud alone is taller than Raptor. When it was ready to move to the high terrace, there was only one gardener strong enough to carry it.\n\nHe carried it up all ninety-nine steps without stopping. Then he set it down, sat against it, and fell fast asleep in its shade before anyone could say thank you.\n\nRaptor makes sure everything ends up where it belongs. Then, at last, so does he.",
+   "quote": "He doesn't seek danger. He simply refuses to abandon what he loves.",
+   "flavor": "Earthy, Woody, Spicy, Sweet",
+   "aroma": "Earthy, Spicy, Sweet fruit",
+   "effects": "Relaxed, Sleepy, Hungry",
+   "mayRelieve": "Stress, Pain, Insomnia",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/big-bud-front.jpg",
+    "back": "assets/cards/big-bud-back.jpg"
+   },
+   "printedRealm": "Sunlight Realms",
+   "typeDetail": "85% Indica / 15% Sativa, per the breeder",
+   "thc": "~14–26%",
+   "lineage": "Reported: Afghani × Skunk × Northern Lights (disputed)",
+   "bestTime": "Night"
+  },
+  {
+   "id": "strawberry-cough",
+   "name": "Strawberry Cough",
+   "code": "AG-066",
+   "title": "The Keeper of Wild Strawberries",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "living-harvest-realm",
+   "district": "lilas-arbor",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "In Lila's Arbor the wild strawberries ripen all at once, and when they do, the whole hillside smells of summer.\n\nLila bends down to breathe it in, and a puff of pink blossom dust catches her by surprise. She coughs, then laughs, then coughs again, and the strawberries seem to laugh with her.\n\nThen she fills her basket, hums her way back down the hill, and leaves the best patch for the birds.",
+   "quote": "A seed sprouting can be as breathtaking as discovering an ancient kingdom.",
+   "flavor": "Strawberry, Sweet, Berry, Herbal",
+   "aroma": "Strawberry, Sweet berry, Skunk",
+   "effects": "Uplifted, Energetic, Happy",
+   "mayRelieve": "Stress, Anxiety, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/strawberry-cough-front.jpg",
+    "back": "assets/cards/strawberry-cough-back.jpg"
+   },
+   "printedRealm": "Living Harvest Realm",
+   "thc": "~18–26%",
+   "lineage": "Unknown (often listed as Haze × Strawberry Fields)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "chocolope",
+   "name": "Chocolope",
+   "code": "AG-067",
+   "title": "The Cocoa Inventor",
+   "category": "Sativa",
+   "realm": "crystal-conservatory-realm",
+   "district": "the-alchemists-greenhouse",
+   "tags": [],
+   "relations": [
+    "dnine"
+   ],
+   "body": "D'nine's best experiments begin before sunrise, with something warm in a mug.\n\nThis morning it was hot chocolate, a ripe melon, and a ridiculous question: what if breakfast could be both? By the time the sun rose over the Alchemist's Greenhouse, the whole workshop smelled of cocoa, coffee and sweet melon, and D'nine was wide awake, scribbling in three notebooks at once.\n\nHe hasn't decided what it is yet. He's having far too much fun finding out.",
+   "quote": "Play is how life discovers what is possible.",
+   "flavor": "Coffee, Chocolate, Earthy, Nutty",
+   "aroma": "Coffee, Cocoa, Sweet melon",
+   "effects": "Energetic, Uplifted, Focused",
+   "mayRelieve": "Stress, Depression, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/chocolope-front.jpg",
+    "back": "assets/cards/chocolope-back.jpg"
+   },
+   "printedRealm": "Crystal Conservatory Realm",
+   "typeDetail": "95% Sativa / 5% Indica, per the breeder",
+   "thc": "~18–24%",
+   "lineage": "Chocolate Thai × Cannalope Haze (breeder's account)",
+   "bestTime": "Morning"
+  },
+  {
+   "id": "pineapple-express",
+   "name": "Pineapple Express",
+   "code": "AG-068",
+   "title": "The Express Traveller",
+   "category": "Hybrid",
+   "realm": "bubble-coast-realm",
+   "district": "the-pearl-steps",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "The Pineapple Express never keeps a timetable. It simply appears, golden and humming, whenever someone is ready for an adventure.\n\nKasper is always ready. This morning he swung aboard at the Pearl Steps and rode it out over the sea, waving hello to every creature he passed and giggling at absolutely everything.\n\nSome journeys are about where you're going. This one was all about the ride.",
+   "quote": "He leaves every place, every person, and every moment a little better than he found it.",
+   "flavor": "Pineapple, Tropical, Citrus, Pine",
+   "aroma": "Pineapple, Citrus, Earthy",
+   "effects": "Happy, Giggly, Energetic",
+   "mayRelieve": "Stress, Depression, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/pineapple-express-front.jpg",
+    "back": "assets/cards/pineapple-express-back.jpg"
+   },
+   "printedRealm": "Bubble Coast Realm",
+   "thc": "~17–22%",
+   "lineage": "Reported: Trainwreck × Hawaiian (disputed)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "blue-cheese",
+   "name": "Blue Cheese",
+   "code": "AG-069",
+   "title": "The Patient Cheesemaker",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "living-harvest-realm",
+   "district": "the-old-press",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "Some things cannot be hurried. Coco knows this better than anyone.\n\nIn the cool stone cellars beneath the Old Press, he keeps rows of round cheeses, turning each one by hand, week after week, until the blue veins run through them like rivers on a map.\n\nWhen one is finally ready, he cuts a slice, lays it on fresh bread with a few blueberries, and sits down to taste it. He is usually asleep before the second slice.",
+   "quote": "Beautiful things aren't built in a day. They are cultivated season after season.",
+   "flavor": "Cheese, Berry, Sweet, Pungent",
+   "aroma": "Berry, Cheese, Musky",
+   "effects": "Sleepy, Relaxed, Hungry",
+   "mayRelieve": "Stress, Anxiety, Pain",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/blue-cheese-front.jpg",
+    "back": "assets/cards/blue-cheese-back.jpg"
+   },
+   "printedRealm": "Living Harvest Realm",
+   "thc": "~18–20%",
+   "lineage": "Blueberry × UK Cheese (breeder's account)",
+   "bestTime": "Night"
+  },
+  {
+   "id": "tahoe-og",
+   "name": "Tahoe OG",
+   "code": "AG-070",
+   "title": "The Still-Water Guardian",
+   "category": "Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "hidden-springs",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "High in the Verdant Wilds, the Hidden Springs pool into a lake so clear that the mountains seem to grow downwards into it.\n\nAfter a long week of building, Raptor rows out to the middle, pulls in the oars, lies back in his little boat and lets the water decide where to take him.\n\nIt usually decides he needs a nap.",
+   "quote": "Strength is measured by what we protect, not what we conquer.",
+   "flavor": "Earthy, Pine, Lemon, Woody",
+   "aroma": "Lemon, Pine, Fuel",
+   "effects": "Sleepy, Relaxed, Hungry",
+   "mayRelieve": "Stress, Pain, Insomnia",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/tahoe-og-front.jpg",
+    "back": "assets/cards/tahoe-og-back.jpg"
+   },
+   "printedRealm": "Verdant Wilds Realm",
+   "thc": "~18–26%",
+   "lineage": "Reported: a clone-only OG Kush cut",
+   "bestTime": "Night"
+  },
+  {
+   "id": "forbidden-fruit",
+   "name": "Forbidden Fruit",
+   "code": "AG-071",
+   "title": "The Keeper of Secret Orchards",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "forgotten-paths",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "Deep along the Forgotten Paths grows a tree that no one remembers planting. Its fruit glows softly at dusk, cherry-red and tangerine-gold, and the old stories say it should be left alone.\n\nLila has always listened to the old stories. Tonight, though, one fruit fell right into her lap.\n\nShe thanked it, took a single bite, and smiled so sleepily that the fireflies came to tuck her in.",
+   "quote": "Nothing in nature struggles to become what it already is.",
+   "flavor": "Cherry, Grapefruit, Tropical, Berry",
+   "aroma": "Cherry, Citrus, Mango",
+   "effects": "Relaxed, Sleepy, Tingly",
+   "mayRelieve": "Stress, Anxiety, Pain",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/forbidden-fruit-front.jpg",
+    "back": "assets/cards/forbidden-fruit-back.jpg"
+   },
+   "printedRealm": "Verdant Wilds Realm",
+   "thc": "~15–26%",
+   "lineage": "Cherry Pie × Tangie (breeder's account)",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "cinex",
+   "name": "Cinex",
+   "code": "AG-072",
+   "title": "The Midnight Sketcher",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "crystal-conservatory-realm",
+   "district": "the-living-laboratory",
+   "tags": [],
+   "relations": [
+    "dnine"
+   ],
+   "body": "When the great clock of the Living Laboratory strikes midnight, most of Atlantis is asleep. D'nine is just getting started.\n\nTonight's sketch is a carriage that runs on starlight, with wheels that spin like a whirlpool and a door shaped like a glass slipper. He has drawn it eleven times. The twelfth will be perfect.\n\nNobody quite knows who first made this strain, or where. D'nine likes that. The best ideas, he says, arrive at midnight and never say where they came from.",
+   "quote": "If someone says, \"That's impossible...\", he immediately becomes interested.",
+   "flavor": "Citrus, Earthy, Sweet, Pungent",
+   "aroma": "Citrus, Pine, Skunk",
+   "effects": "Focused, Energetic, Creative",
+   "mayRelieve": "Stress, Depression, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/cinex-front.jpg",
+    "back": "assets/cards/cinex-back.jpg"
+   },
+   "printedRealm": "Crystal Conservatory Realm",
+   "thc": "~15–25%",
+   "lineage": "Reported: Cinderella 99 × Vortex",
+   "bestTime": "Daytime"
   }
  ],
  "keepers": [
