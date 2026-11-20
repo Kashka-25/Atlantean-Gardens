@@ -23,7 +23,7 @@ because there is no fetch; the data loads from `data/world.js`.
 | Threshold | New tree emblem, trident wordmark and the introduction's closing lines | logo files from Cassidy (9 Nov 2026), `INTRODUCTION Page.docx` |
 | Atlas | Painted map, 8 glowing realm pins | `Seven Realm Atlas.png` |
 | Realm drawer | Painting, tagline, themes, **the tale** (verses quoted from the manuscripts, ending on a reflective nudge), places (22 with their own verse), look and feel, keepers and strains | 6 realm paintings, `The Atlas 7 Worlds.docx`, `living-atlas-prototype/data/realms` |
-| Strains | 90 collector cards (fronts and backs): 77 placed on the Atlas, 13 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
+| Strains | 100 collector cards (fronts and backs): 86 placed on the Atlas, 14 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
 | Keepers | Hall of Living Portraits, 5 keeper pages | `The Hll Of Living Portraits.png`, `Character BIBLE.docx` |
 | Lore | 13 manuscripts with provenance and opening inscription | `13 Manuscripts/*.docx` |
 | Journey | Discovery progress, saved only in the visitor's browser | none |
@@ -81,7 +81,7 @@ sync adds these places back each time it runs.
 Type, THC and lineage were fact-checked against breeders' statements,
 competition records and lab data (18 Nov 2026; the evidence is in
 `card-studio/data/lineage-factcheck.json`, `lineage-factcheck-set2.json`
-to `-set5.json`, and `-set7.json`).
+to `-set7.json`).
 Uncertain lineages say "reported", "disputed" or "breeder's account", and
 untested THC figures say "estimate". "Users report relief from" lists what
 people who have tried a strain report, with a note that it isn't medical

@@ -3535,6 +3535,299 @@ window.WORLD = {
    "thc": "~18–24%",
    "lineage": "Clementine × Purple Punch (breeder's account)",
    "bestTime": "Daytime"
+  },
+  {
+   "id": "moby-dick",
+   "name": "Moby Dick",
+   "code": "AG-083",
+   "title": "The Friend Beneath the Waves",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "bubble-coast-realm",
+   "district": "whispering-wharf",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "In the old book, a captain chased a great white whale across every ocean in the world and never once said hello.\n\nSo when an enormous white whale rose beside the Whispering Wharf one bright morning, Kasper didn't reach for a harpoon or a map. He sat down on the edge of the pier and introduced himself.\n\nThey talked all day: about tides and storms, about ships long sunk and songs too deep for land. By sunset Kasper had filled eleven pages, and the whale had a new friend.\n\nSome say it still surfaces at the wharf whenever someone sits still long enough to listen.",
+   "quote": "Where others see strangers, he sees friends he simply hasn't met yet.",
+   "flavor": "Citrus, Flowery, Earthy, Pine",
+   "aroma": "Lemon, Incense, Cedar",
+   "effects": "Talkative, Focused, Euphoric",
+   "mayRelieve": "Stress, Depression, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/moby-dick-front.jpg",
+    "back": "assets/cards/moby-dick-back.jpg"
+   },
+   "printedRealm": "Bubble Coast Realm",
+   "typeDetail": "60% Sativa / 40% Indica, per the breeder",
+   "thc": "~17–22%",
+   "lineage": "Haze × White Widow (breeder's account)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "platinum-og",
+   "name": "Platinum OG",
+   "code": "AG-084",
+   "title": "The Silver Keeper",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "celestial-realm",
+   "district": "the-astral-arbor",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "Every night before bed, Coco walks the Garden, singing softly and wishing each flower, bird and creature a grateful rest.\n\nHis last stop is always the Astral Arbor, where the leaves are frosted with tiny crystals that shine like platinum under the moon. Nobody remembers who planted the first silver tree there. Coco thinks it planted itself.\n\nHis hair has turned the same colour over the years. He doesn't mind. \"Silver is just green that has learned to be patient,\" he likes to say, and then he yawns, and sits, and lets the moonlight do the rest.",
+   "quote": "Nothing is permanent. Neither joy nor sorrow.",
+   "flavor": "Earthy, Pine, Pungent, Woody",
+   "aroma": "Pine, Herbal, Spicy",
+   "effects": "Sleepy, Relaxed, Tingly",
+   "mayRelieve": "Stress, Anxiety, Pain",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/platinum-og-front.jpg",
+    "back": "assets/cards/platinum-og-back.jpg"
+   },
+   "printedRealm": "Celestial Realm",
+   "thc": "~19–24%",
+   "lineage": "Unknown (often listed as Master Kush × OG Kush)",
+   "bestTime": "Bedtime"
+  },
+  {
+   "id": "triangle-kush",
+   "name": "Triangle Kush",
+   "code": "AG-085",
+   "title": "The Strongest Shape",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "crystal-conservatory-realm",
+   "district": "the-glass-atrium",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "D'nine wanted a greenhouse that no storm could ever knock down. He drew squares. They wobbled. He drew circles. They rolled.\n\nRaptor watched for a while, then picked up three beams and leaned them together. \"Three sides,\" he said. \"Nothing wobbles.\"\n\nBy midnight they had built a great glass pyramid of triangles, with the strongest kush plants in the Garden growing safe inside. Then the two of them sat down against it, and fell asleep before either could say who had thought of it first.",
+   "quote": "Practicality and imagination are stronger together.",
+   "flavor": "Earthy, Skunk, Woody, Pungent",
+   "aroma": "Fuel, Pine, Lemon",
+   "effects": "Relaxed, Sleepy, Tingly",
+   "mayRelieve": "Anxiety, Stress, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/triangle-kush-front.jpg",
+    "back": "assets/cards/triangle-kush-back.jpg"
+   },
+   "printedRealm": "Crystal Conservatory Realm",
+   "thc": "~20–28%",
+   "lineage": "Emerald Triangle × Hindu Kush (one grower's account, disputed)",
+   "bestTime": "Night"
+  },
+  {
+   "id": "lemon-cherry-gelato",
+   "name": "Lemon Cherry Gelato",
+   "code": "AG-086",
+   "title": "The Lucky Seed",
+   "category": "Hybrid",
+   "realm": "living-harvest-realm",
+   "district": "lilas-arbor",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "Nobody knows where the seed came from. Lila found it at the bottom of an old basket, alone, with no name and no story.\n\nShe planted it anyway. She always does.\n\nOne warm evening it bloomed: petals swirled lemon yellow and cherry red, as soft and sweet as scoops of gelato. Lila laughed out loud, rang the tiny bell Kasper gave her, and declared it a celebration.\n\nBy the time the others arrived, she was already giggling. She had felt the joy coming before the first petal opened.",
+   "quote": "Sometimes she laughs before anyone has told the joke, because she can already feel the joy arriving.",
+   "flavor": "Lemon, Citrus, Berry, Sweet",
+   "aroma": "Sour cherry, Lime, Berry",
+   "effects": "Tingly, Relaxed, Giggly",
+   "mayRelieve": "Anxiety, Depression, Stress",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/lemon-cherry-gelato-front.jpg",
+    "back": "assets/cards/lemon-cherry-gelato-back.jpg"
+   },
+   "printedRealm": "Living Harvest Realm",
+   "thc": "~20–28%",
+   "lineage": "Gelato #33 bag seed, father unknown (breeder's account)",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "lsd",
+   "name": "LSD",
+   "code": "AG-087",
+   "title": "The Kaleidoscope Experiment",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "crystal-conservatory-realm",
+   "district": "prism-gardens",
+   "tags": [],
+   "relations": [
+    "dnine"
+   ],
+   "body": "D'nine wanted to see the Garden the way a bee does. So he built a kaleidoscope big enough to look through with both eyes.\n\nThe moment he looked, the Prism Gardens folded into patterns: flowers inside flowers, spirals inside spirals, every colour repeating itself like a song that wouldn't end.\n\nHe laughed so hard his goggles slipped. Then he sat down and sketched until midnight.\n\n\"The Garden hasn't changed,\" he wrote at the bottom of the page. \"I've just remembered how to look.\"",
+   "quote": "He leaves every mind a little more open than he found it.",
+   "flavor": "Skunk, Earthy, Citrus, Pungent",
+   "aroma": "Sweet musk, Herbal, Roasted chestnut",
+   "effects": "Euphoric, Tingly, Creative",
+   "mayRelieve": "Stress, Anxiety, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/lsd-front.jpg",
+    "back": "assets/cards/lsd-back.jpg"
+   },
+   "printedRealm": "Crystal Conservatory Realm",
+   "typeDetail": "70% Indica / 30% Sativa, per the breeder",
+   "thc": "~18–24%",
+   "lineage": "Skunk #1 × Mazar-i-Sharif (breeder's account)",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "panama-red",
+   "name": "Panama Red",
+   "code": "AG-088",
+   "title": "The Red That Got Away",
+   "category": "Sativa",
+   "realm": null,
+   "district": "",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "After the mountains, I followed the old stories south, to the narrow land where two oceans almost touch.\n\nThe old growers spoke of a plant with fiery red hairs that made people laugh and talk all night. Some said it grew best in the soil of the Pearl Islands. Some said it was gone long before I was born.\n\nI searched for weeks. I found red sunsets, scarlet macaws, trees on fire with red flowers, and a hundred people who knew someone who knew someone. I never found the plant.\n\nPerhaps it is still out there. Perhaps some treasures are meant to stay a story. Either way, I have never laughed so much on a journey.",
+   "quote": "Wonder leads his feet.",
+   "flavor": "Earthy, Pepper, Tea, Lemon",
+   "aroma": "Sweet, Fruity, Earthy",
+   "effects": "Energetic, Talkative, Happy",
+   "mayRelieve": "Depression, Stress, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/panama-red-front.jpg",
+    "back": "assets/cards/panama-red-back.jpg"
+   },
+   "printedRealm": "Panama",
+   "thc": "~16–22%",
+   "lineage": "Reported: Panamanian landrace (modern seed unproven)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "northern-lights-skunk-1",
+   "name": "Northern Lights × Skunk #1",
+   "code": "AG-089",
+   "title": "Roots and Wings",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "elder-tree-hollow",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "Coco believes strength comes from putting down roots. Kasper believes seeds are meant to ride the wind into new places. They have argued about it, gently, for years.\n\nOne evening in Elder Tree Hollow, the northern lights spread across the sky. Coco sat down among the roots of the oldest tree, and Kasper climbed up into its branches. A little skunk wandered over and curled up between them as if it had always belonged there.\n\nThey watched in silence for a long time. Then Coco said, \"Same tree.\" And Kasper said, \"Same tree.\"\n\nRoots and wings were never opposites.",
+   "quote": "Wisdom grows through relationship, not agreement.",
+   "flavor": "Skunk, Sweet, Pear, Tea",
+   "aroma": "Musky, Citrus, Berry",
+   "effects": "Relaxed, Happy, Sleepy",
+   "mayRelieve": "Stress, Pain, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/northern-lights-skunk-1-front.jpg",
+    "back": "assets/cards/northern-lights-skunk-1-back.jpg"
+   },
+   "printedRealm": "Verdant Wilds Realm",
+   "typeDetail": "85% Indica / 15% Sativa, per the breeder",
+   "thc": "~13–20%",
+   "lineage": "Northern Lights #5 × Skunk #1 (breeder's account)",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "green-crack",
+   "name": "Green Crack",
+   "code": "AG-090",
+   "title": "The Crack in the Wall",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "raptors-supply-road",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "Raptor fixes things before anyone asks. So when he found a long crack running through the old wall on the Supply Road one morning, he had his trowel out before the sun was over the hill.\n\nThen he saw what was in it: a bright green shoot, pushing its way out of the stone toward the light.\n\nRaptor laughed, put the trowel down, and rebuilt the wall around it instead. He talked to it all morning while he worked.\n\nBy summer it had flowered, and the wall was stronger than ever.",
+   "quote": "Strength and flexibility belong together.",
+   "flavor": "Mango, Citrus, Earthy, Skunk",
+   "aroma": "Mango, Citrus, Pine",
+   "effects": "Energetic, Focused, Talkative",
+   "mayRelieve": "Stress, Depression, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/green-crack-front.jpg",
+    "back": "assets/cards/green-crack-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "thc": "~13–25%",
+   "lineage": "Reported: Skunk #1 × unknown indica",
+   "bestTime": "Morning"
+  },
+  {
+   "id": "cinderella-99",
+   "name": "Cinderella 99",
+   "code": "AG-091",
+   "title": "The Seed in the Cinders",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "the-hearth-circle",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "Long ago, after a great feast, Lila found a single seed lying in the cold cinders of the Hearth Circle. It was small and grey with ash, and nobody else had noticed it.\n\nShe brushed it off and planted it in the sunniest spot she knew. Then she believed in it.\n\nIt grew slowly, then gracefully, then all at once, into the most elegant flower in the Hearthlands, crowned with petals like a princess's gown.\n\nSome say it took ninety-nine seasons. Lila says it took exactly as long as it needed.",
+   "quote": "Everything already knows how to become itself. Sometimes it simply needs someone to believe in it.",
+   "flavor": "Citrus, Grapefruit, Fruit punch, Floral",
+   "aroma": "Fruity, Floral, Funky",
+   "effects": "Energetic, Uplifted, Focused",
+   "mayRelieve": "Stress, Depression, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/cinderella-99-front.jpg",
+    "back": "assets/cards/cinderella-99-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "thc": "~16–22%",
+   "lineage": "Jack Herer seedling × Shiva Skunk, backcrossed (breeder's account)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "cereal-milk",
+   "name": "Cereal Milk",
+   "code": "AG-092",
+   "title": "The Last Sweet Drop",
+   "category": "Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "the-oven-room",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "Kasper has eaten breakfast in mountain temples, on windy cliffs and once on the back of a very patient turtle. His favourite part is still the same: the sweet milk left at the bottom of the bowl.\n\nTonight he had cereal for supper, just because.\n\nHe tipped the bowl up with both hands, drank every last drop, and laughed so hard the milk nearly went up his nose.\n\nSome would call that silly. Kasper calls it paying attention.",
+   "quote": "He laughs loudly, gets excited over tiny discoveries, and celebrates the smallest victories.",
+   "flavor": "Sweet, Vanilla, Butter, Berry",
+   "aroma": "Sweet milk, Vanilla, Berry",
+   "effects": "Relaxed, Happy, Giggly",
+   "mayRelieve": "Anxiety, Stress, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/cereal-milk-front.jpg",
+    "back": "assets/cards/cereal-milk-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "thc": "~21–31%",
+   "lineage": "Y Life × Snowman (Cookies' account)",
+   "bestTime": "Evening"
   }
  ],
  "keepers": [
