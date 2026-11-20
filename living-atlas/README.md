@@ -23,7 +23,7 @@ because there is no fetch; the data loads from `data/world.js`.
 | Threshold | New tree emblem, trident wordmark and the introduction's closing lines | logo files from Cassidy (9 Nov 2026), `INTRODUCTION Page.docx` |
 | Atlas | Painted map, 8 glowing realm pins | `Seven Realm Atlas.png` |
 | Realm drawer | Painting, tagline, themes, **the tale** (verses quoted from the manuscripts, ending on a reflective nudge), places (22 with their own verse), look and feel, keepers and strains | 6 realm paintings, `The Atlas 7 Worlds.docx`, `living-atlas-prototype/data/realms` |
-| Strains | 100 collector cards (fronts and backs): 86 placed on the Atlas, 14 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
+| Strains | 100 collector cards (fronts and backs): 87 placed on the Atlas, 13 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
 | Keepers | Hall of Living Portraits, 5 keeper pages | `The Hll Of Living Portraits.png`, `Character BIBLE.docx` |
 | Lore | 13 manuscripts with provenance and opening inscription | `13 Manuscripts/*.docx` |
 | Journey | Discovery progress, saved only in the visitor's browser | none |
@@ -67,16 +67,18 @@ Some places come from the card studio rather than from Cassidy's original
 canon. Cassidy decided (20 Nov 2026) that these are "places within already
 existed places", so `tools/extra_places.py` adds each one to its realm's Places:
 The Sky Peaks in the Sunlight Realms (Golden Goat), and The Frostveil Expanse in
-the Hearthlands (White Rhino). Both stay "hidden in mist" (not charted on the
+the Hearthlands (White Rhino), and Panama off the Bubble Coast (Panama Red).
+All stay "hidden in mist" (not charted on the
 map). Opening one shows Cassidy's own painting of it (`assets/places/<id>.jpg`,
 made with ChatGPT from the prompts in `card-studio/data/far-lands-image-prompts.md`;
 originals in `card-studio/art/far-lands/`) and its verse, quoted from the card.
-Each is also attached to the distant mountains in its realm's painting. A soft
+Each is also attached to a far spot in its realm's painting: distant mountains,
+or for Panama the land across the sea. A soft
 light glows there in the realm scene, with no name, so finding it is a surprise.
 Touching it teleports the visitor: the place's painting bursts out of the light
 to fill the screen, and only then is the place named, with its verse. Its `spot`
-in `extra_places.py` gives the position. The
-sync adds these places back each time it runs.
+in `extra_places.py` gives the position. A place's light only appears once its
+painting is in `assets/places/`. The sync adds these places back each time it runs.
 
 Type, THC and lineage were fact-checked against breeders' statements,
 competition records and lab data (18 Nov 2026; the evidence is in

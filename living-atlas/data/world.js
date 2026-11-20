@@ -214,6 +214,16 @@ window.WORLD = {
      "name": "The Glass Lagoon",
      "charted": true,
      "verse": null
+    },
+    {
+     "name": "Panama",
+     "charted": false,
+     "verse": {
+      "source": "Panama Red · AG-088",
+      "lines": [
+       "After the mountains, I followed the old stories south, to the narrow land where two oceans almost touch."
+      ]
+     }
     }
    ],
    "tale": [
@@ -252,7 +262,8 @@ window.WORLD = {
     "whispering-wharf": "Whispering Wharf",
     "the-pearl-steps": "The Pearl Steps",
     "coral-gardens": "Coral Gardens",
-    "tidekeepers-cove": "Tidekeeper's Cove"
+    "tidekeepers-cove": "Tidekeeper's Cove",
+    "panama": "Panama"
    },
    "pin": {
     "x": 63.5,
@@ -3689,8 +3700,8 @@ window.WORLD = {
    "code": "AG-088",
    "title": "The Red That Got Away",
    "category": "Sativa",
-   "realm": null,
-   "district": "",
+   "realm": "bubble-coast-realm",
+   "district": "panama",
    "tags": [],
    "relations": [
     "kasper"
