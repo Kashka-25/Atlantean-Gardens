@@ -952,8 +952,8 @@ window.WORLD = {
    ],
    "districtIds": {},
    "pin": {
-    "x": 85.5,
-    "y": 77
+    "x": 52.5,
+    "y": 6.5
    },
    "image": "assets/realms/sky-peaks.jpg",
    "medallion": "assets/realms/sky-peaks-medallion.jpg"
@@ -980,8 +980,8 @@ window.WORLD = {
    ],
    "districtIds": {},
    "pin": {
-    "x": 74.5,
-    "y": 77
+    "x": 27,
+    "y": 79
    },
    "image": "assets/realms/frostveil-expanse.jpg",
    "medallion": "assets/realms/frostveil-expanse-medallion.jpg"

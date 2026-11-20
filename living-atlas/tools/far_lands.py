@@ -1,8 +1,12 @@
 """The far lands: places beyond the seven realms that cards are set in.
 
-Cassidy, 20 Nov 2026: add the places to the map "off in one of the corners".
-Each far land shows on the Atlas as a small round painting in the bottom-right
-corner, with its own glowing pin. Its words come only from the approved card
+Cassidy, 20 Nov 2026: the new places should "emerge off different sections of
+the map": the Sky Peaks in the distance beyond the Sunlight Realms, the
+Frostveil Expanse out in the distance of the Hearthlands. Each far land shows
+on the Atlas as a small, soft-edged round painting rising out of the map at
+that spot, with its own glowing pin. (The far-left edge beyond the Hearthlands
+sits under the menu panel on computers, so the Frostveil Expanse rises just
+beyond the Hearthlands' lower shore instead.) Its words come only from the approved card
 that names it, and its paintings are cut from that card's chosen front (no new
 art). The card studio's sheet names the place in the card's Realm column, so
 the sync places the card there.
@@ -20,14 +24,14 @@ FAR_LANDS = [
         "tagline": "Where the paths become cliffs and the cliffs become cloud.",
         "tale": [{"source": "Golden Goat · AG-075", "lines": [
             "High above the Garden, where the paths become cliffs and the cliffs become cloud, lie the Sky Peaks, hidden in mist."]}],
-        "pin": {"x": 85.5, "y": 77},
+        "pin": {"x": 52.5, "y": 6.5},  # on the distant mountains on the horizon beyond the Sunlight Realms
     },
     {
         "id": "frostveil-expanse", "name": "The Frostveil Expanse",
         "tagline": "Far beyond the Garden, where the snow never melts.",
         "tale": [{"source": "White Rhino · AG-094", "lines": [
             "Far beyond the Garden, where the snow never melts, lies the Frostveil Expanse."]}],
-        "pin": {"x": 74.5, "y": 77},
+        "pin": {"x": 27, "y": 79},  # in the mist beyond the Hearthlands' lower shore
     },
 ]
 

@@ -119,11 +119,11 @@
 
   /* ── Views ─────────────────────────────────────────────── */
   function viewAtlas(stage) {
-    // Far lands (tools/far_lands.py) sit off in the bottom-right corner as small round paintings,
-    // with the pin on the painting and the name just below it.
+    // Far lands (tools/far_lands.py) rise out of the map in the distance beyond their neighbouring realm,
+    // as small soft-edged paintings, with the pin on the painting and the name just below it.
     const lands = W.realms.filter((r) => r.far && r.medallion).map((r) => { const at = ATLAS.spots[r.id] || r.pin; return `
       <span class="farland" style="left:${at.x}%;top:${at.y}%;--glow:${REALM_GLOW[r.id] || "rgba(240,213,149,.35)"}" aria-hidden="true"><img src="${esc(r.medallion)}" alt="" draggable="false"></span>`; }).join("");
-    const pins = W.realms.map((r, i) => { const t = realmTally(r), at = ATLAS.spots[r.id] || r.pin, ly = r.far ? at.y + 4.5 : at.y; return `
+    const pins = W.realms.map((r, i) => { const t = realmTally(r), at = ATLAS.spots[r.id] || r.pin, ly = r.far ? at.y + 3.6 : at.y; return `
       <button class="pin${journey.realms.includes(r.id) ? " is-visited" : ""}${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${at.y}%" data-realm="${r.id}" aria-label="Open ${esc(r.name)}, ${t.found} of ${t.total} found"></button>
       <button class="realm-label${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${ly}%;--d:${(i * 0.6).toFixed(1)}s" data-realm="${r.id}" tabindex="-1" aria-hidden="true">
         ${r.number ? `<i>${r.number}</i>` : `<i>✦</i>`}<b>${esc(r.name.replace(/^The /, ""))}</b>${t.total ? `<small>${t.found} of ${t.total} found</small>` : ""}
