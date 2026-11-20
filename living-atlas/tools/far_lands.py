@@ -7,9 +7,11 @@ on the Atlas as a small, soft-edged round painting rising out of the map at
 that spot, with its own glowing pin. (The far-left edge beyond the Hearthlands
 sits under the menu panel on computers, so the Frostveil Expanse rises just
 beyond the Hearthlands' lower shore instead.) Its words come only from the approved card
-that names it, and its paintings are cut from that card's chosen front (no new
-art). The card studio's sheet names the place in the card's Realm column, so
-the sync places the card there.
+that names it. Its painting (assets/realms/<id>.jpg) is Cassidy's own location
+painting (made with ChatGPT from card-studio/data/far-lands-image-prompts.md,
+20 Nov 2026; originals in card-studio/art/far-lands/), and the round map
+picture (<id>-medallion.jpg) is cut from it. The card studio's sheet names the
+place in the card's Realm column, so the sync places the card there.
 
 data/world.js is rebuilt by build_data.py from Cassidy's own canon, which
 doesn't include these places, so sync_studio_cards.py adds them back each time
