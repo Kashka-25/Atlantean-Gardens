@@ -3332,6 +3332,209 @@ window.WORLD = {
    "thc": "~18–28%",
    "lineage": "Sour Apple × Animal Cookies (breeder's account)",
    "bestTime": "Evening"
+  },
+  {
+   "id": "autumn-cider",
+   "name": "Autumn Cider",
+   "code": "AG-093",
+   "title": "The Harvest Press",
+   "category": "",
+   "realm": "living-harvest-realm",
+   "district": "the-old-press",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "Every autumn, when the last apples fall, the whole Garden comes down to the Old Press.\n\nRaptor carries the heaviest baskets. D'nine brings a contraption that promises to press twice as fast, and it does, until it doesn't. Kasper sketches everything. Lila sings the old harvest songs, and everyone joins in on the chorus, even the ones who say they can't sing.\n\nCoco turns the great wooden wheel slowly, one creak at a time, until the cider runs gold.\n\nThe first cup always goes to the Garden, poured at the roots of the oldest apple tree. The second goes round the circle, hand to hand, until it comes back to Coco empty. He laughs, and pours another.",
+   "quote": "Only together does the Garden truly bloom.",
+   "flavor": "",
+   "aroma": "",
+   "effects": "",
+   "mayRelieve": "",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/autumn-cider-front.jpg",
+    "back": "assets/cards/autumn-cider-back.jpg"
+   },
+   "printedRealm": "Living Harvest Realm",
+   "lineage": "A Garden original"
+  },
+  {
+   "id": "white-rhino",
+   "name": "White Rhino",
+   "code": "AG-094",
+   "title": "The Quiet Giant",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "the-frostveil-expanse",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "Far beyond the Garden, where the snow never melts, lies the Frostveil Expanse. Travellers whispered of a great white rhino there, so pale it vanished into the drifts. Everyone said it was shy.\n\nSo Kasper did what he always does. He sat down in the snow beside a quiet hot spring, said hello, introduced himself, and waited.\n\nIt took three nights. On the fourth, the rhino lay down beside him, old and gentle as a snowy hill, and let out a sigh so warm it melted the frost on his scarf.\n\nKasper meant to sketch it. By midnight they were both asleep beneath the northern lights, his journal open on his chest and a drawing of a horn only half finished.",
+   "quote": "Sometimes silence is his wisest response.",
+   "flavor": "Woody, Earthy, Pungent",
+   "aroma": "Earthy, Pine, Musky",
+   "effects": "Sleepy, Relaxed, Tingly",
+   "mayRelieve": "Stress, Pain, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/white-rhino-front.jpg",
+    "back": "assets/cards/white-rhino-back.jpg"
+   },
+   "printedRealm": "The Frostveil Expanse",
+   "typeDetail": "80% Indica / 20% Sativa, per the breeder",
+   "thc": "~11–20%",
+   "lineage": "White Widow × Afghan Indica (breeder's account)",
+   "bestTime": "Night"
+  },
+  {
+   "id": "papaya",
+   "name": "Papaya",
+   "code": "AG-095",
+   "title": "The Count of Stars",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "bubble-coast-realm",
+   "district": "tidekeepers-cove",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "D'nine hadn't slept in three days. He had seven experiments bubbling and an eighth idea he hadn't written down yet.\n\nLila didn't argue. She took his hand, walked him down to Tidekeeper's Cove, and cut a ripe papaya in two. Inside, the shiny black seeds glittered like a sky full of stars.\n\n\"Count them for me,\" she said.\n\nHe got to forty-one. By the time the tide came in, he was fast asleep in the hammock, smiling, his notebook rising and falling on his chest. Lila stayed beside him until the moon came up.",
+   "quote": "She gently reminds him to rest. He gently reminds her to keep playing.",
+   "flavor": "Tree Fruit, Tropical, Apricot",
+   "aroma": "Papaya, Tropical, Peppery",
+   "effects": "Relaxed, Sleepy, Hungry",
+   "mayRelieve": "Anxiety, Stress, Pain",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/papaya-front.jpg",
+    "back": "assets/cards/papaya-back.jpg"
+   },
+   "printedRealm": "Bubble Coast Realm",
+   "thc": "~15–22%",
+   "lineage": "Citral × Ice or KC 33 × Afghani (breeder's accounts differ)",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "tropicanna-cookies",
+   "name": "Tropicanna Cookies",
+   "code": "AG-096",
+   "title": "Sunshine in Every Bite",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "sunlight-realms",
+   "district": "sunpetal-market",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "Kasper came home from the Sunpetal Market with an orange in each hand, a third balanced on his head, and a story he couldn't tell fast enough.\n\nAt the end of the market, he said, there was a stall that sold cookies with sunshine baked into them: orange peel, honey and something tropical he couldn't name.\n\nHe talked about them all afternoon. He talked about them all through supper. He was still talking about them when Coco quietly asked whether he'd brought any home.\n\nHe hadn't. He'd eaten every last one on the way back.",
+   "quote": "When excited, his words tumble out faster than his thoughts.",
+   "flavor": "Orange, Tropical, Citrus",
+   "aroma": "Orange Peel, Citrus, Cookie Dough",
+   "effects": "Focused, Energetic, Uplifted",
+   "mayRelieve": "Anxiety, Stress, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/tropicanna-cookies-front.jpg",
+    "back": "assets/cards/tropicanna-cookies-back.jpg"
+   },
+   "printedRealm": "Sunlight Realms",
+   "thc": "~15–20%",
+   "lineage": "GSC × Tangie (breeder's account)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "fat-banana",
+   "name": "Fat Banana",
+   "code": "AG-097",
+   "title": "Nobody Goes Hungry",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "raptors-supply-road",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "Kasper had been sketching the same flower since sunrise. His father, Coco, had been tending the seedlings since before that, looking after every plant in the Garden except himself. Between them, they had forgotten breakfast, lunch and most of yesterday's supper.\n\nRaptor came up the Supply Road carrying a bunch of bananas as big as a sack of flour. He didn't say a word. He just peeled the two fattest ones and held them out.\n\nBy sunset the three of them were lying back against the crates, too full to move, laughing at nothing, banana peels everywhere.\n\nRaptor never keeps count of the meals he shares. He just makes sure no one goes without.",
+   "quote": "He makes sure everyone has eaten.",
+   "flavor": "Sweet, Citrus, Tropical, Honey",
+   "aroma": "Banana, Fruity, Kush, Earthy",
+   "effects": "Happy, Uplifted, Talkative, Calming",
+   "mayRelieve": "Pain, Stress, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/fat-banana-front.jpg",
+    "back": "assets/cards/fat-banana-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "typeDetail": "70% Indica / 30% Sativa, per Royal Queen Seeds",
+   "thc": "~19–25%",
+   "lineage": "OG Kush × Chiquita Banana (breeder's account)",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "gsc",
+   "name": "GSC",
+   "code": "AG-099",
+   "title": "The Long Way Round",
+   "category": "Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "butterfly-vale",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "Every trail in the Wilds has a little stitched badge for whoever walks it to the very end. I have been collecting them since I was small. Today I earned the last one: the badge of the Long Way Round.\n\nTo celebrate, I opened the tin of cookies Lila packed for me. The forest smelled them before I did. A fox came first, then three rabbits and one very bold squirrel.\n\nSome say these cookies began with two old plants, one my father tends and one I do. Nobody can prove it, and I rather like that.\n\nI shared every last one. That, I think, is the real badge.",
+   "quote": "My journal entries aren't records of events. They are love letters to all that makes me, Me.",
+   "flavor": "Mint, Sweet, Earthy",
+   "aroma": "Sweet, Mint, Cherry, Lemon",
+   "effects": "Euphoric, Relaxed, Happy, Hungry",
+   "mayRelieve": "Stress, Anxiety, Depression, Pain",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/gsc-front.jpg",
+    "back": "assets/cards/gsc-back.jpg"
+   },
+   "printedRealm": "Verdant Wilds Realm",
+   "thc": "~20–25%",
+   "lineage": "Reported: OG Kush × F1 Durban (disputed)",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "mimosa",
+   "name": "Mimosa",
+   "code": "AG-100",
+   "title": "A Toast to the Dawn",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "sunlight-realms",
+   "district": "morning-orchard",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "Lila was up before the sun, as always, walking barefoot through the Morning Orchard to greet every tree.\n\nAt the orchard gate she found a small brass lantern with deep-blue glass, still glowing, hung there as if for her. Far down the road, a stranger was walking away into the sunrise. He didn't look back.\n\nLila laughed, picked the ripest clementines, and squeezed them into a glass that fizzed and sparkled like the morning itself. She raised it to the dawn, to the road, and to whoever he was.\n\nSome say he'll return when the mimosa blooms again. Lila hasn't asked. She just leaves the gate open.",
+   "quote": "She greets every living thing she encounters. Not out of routine. Out of genuine relationship.",
+   "flavor": "Citrus, Orange, Grapefruit",
+   "aroma": "Citrus, Sweet Fruit, Earthy",
+   "effects": "Uplifted, Energetic, Focused, Happy",
+   "mayRelieve": "Stress, Anxiety, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/mimosa-front.jpg",
+    "back": "assets/cards/mimosa-back.jpg"
+   },
+   "printedRealm": "Sunlight Realms",
+   "thc": "~18–24%",
+   "lineage": "Clementine × Purple Punch (breeder's account)",
+   "bestTime": "Daytime"
   }
  ],
  "keepers": [
