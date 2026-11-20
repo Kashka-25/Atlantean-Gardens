@@ -3273,6 +3273,65 @@ window.WORLD = {
    "thc": "~18–26%",
    "lineage": "East Coast Sour Diesel × Tangie (breeder's account)",
    "bestTime": "Morning"
+  },
+  {
+   "id": "jealousy",
+   "name": "Jealousy",
+   "code": "AG-081",
+   "title": "The Green-Eyed Season",
+   "category": "Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "echo-woods",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "One spring, a little water sprite in Echo Woods turned the colour of new leaves. Not from the sunlight. From watching the moonflower that everyone came to admire.\n\nLila didn't scold it, and she didn't tell it to stop feeling that way. She sat down beside it and asked what it wished for.\n\n\"To be admired,\" it whispered.\n\nSo Lila gave it a seed of its very own to tend. By summer the sprite was blue again, and its own small flower was blooming right beside the moonflower.",
+   "quote": "None are mistakes. All deserve compassion.",
+   "flavor": "Plum, Apricot, Pepper, Diesel",
+   "aroma": "Sweet, Fuel, Earthy",
+   "effects": "Relaxed, Giggly, Talkative",
+   "mayRelieve": "Anxiety, Depression, Stress",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/jealousy-front.jpg",
+    "back": "assets/cards/jealousy-back.jpg"
+   },
+   "printedRealm": "Verdant Wilds Realm",
+   "thc": "~22–30%",
+   "lineage": "Sherbert Bx1 × Gelato (breeder's account)",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "apple-fritter",
+   "name": "Apple Fritter",
+   "code": "AG-082",
+   "title": "The Delicious Mistake",
+   "category": "Hybrid",
+   "realm": "living-harvest-realm",
+   "district": "bakers-row",
+   "tags": [],
+   "relations": [
+    "dnine"
+   ],
+   "body": "D'nine was trying to invent a way to keep apples warm all winter. Nobody is quite sure how it ended with a pot of bubbling oil, a bowl of batter and an explosion of cinnamon. What came out was golden, crackled and glazed, with apple tucked into every fold.\n\nThe next evening he brought Coco to the bakery on Bakers' Row to teach him. \"First,\" said D'nine, \"you must make a mistake.\" Coco, who likes his recipes careful and his kitchens tidy, raised an eyebrow.\n\nThen the apples went up, the batter went everywhere, and the first fritter landed right on Coco's apron. Coco shook his head. Then he laughed until he had to sit down, and asked to try again.\n\nBakers' Row has been making them ever since.",
+   "quote": "Coco grounds D'nine. D'nine stretches Coco's imagination.",
+   "flavor": "Apple, Sweet, Butter, Earthy",
+   "aroma": "Baked apple, Vanilla, Cinnamon",
+   "effects": "Relaxed, Tingly, Giggly",
+   "mayRelieve": "Anxiety, Stress, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/apple-fritter-front.jpg",
+    "back": "assets/cards/apple-fritter-back.jpg"
+   },
+   "printedRealm": "Living Harvest Realm",
+   "typeDetail": "Indica-leaning, per the breeder",
+   "thc": "~18–28%",
+   "lineage": "Sour Apple × Animal Cookies (breeder's account)",
+   "bestTime": "Evening"
   }
  ],
  "keepers": [
