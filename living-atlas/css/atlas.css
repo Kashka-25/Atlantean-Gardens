@@ -418,6 +418,9 @@ button { font: inherit; color: inherit; }
 .districts details summary::after { content: " ❧"; color: var(--gold); }
 .districts details[open] { background: rgba(210,171,98,.1); border-radius: 10px; }
 .districts details .passage { padding: 0 .8rem .7rem; margin: 0; }
+/* A place with its own painting opens across the whole row, painting first. */
+.districts li.has-art:has(details[open]) { grid-column: 1 / -1; }
+.districts .district__art { display: block; width: calc(100% - 1.6rem); margin: 0 .8rem .6rem; border-radius: 8px; aspect-ratio: 3 / 2; object-fit: cover; box-shadow: 0 6px 18px rgba(0,0,0,.35); }
 .districts details .passage blockquote { font-size: 1rem; }
 .districts li.has-verse:has(details[open]) { grid-column: 1 / -1; }
 
@@ -734,14 +737,6 @@ button { font: inherit; color: inherit; }
 .realm-label:hover::before, .realm-label:focus-visible::before { opacity: 1; background: radial-gradient(closest-side, rgba(60,44,12,.55), rgba(240,213,149,.16) 60%, rgba(240,213,149,0)); }
 .realm-label:hover b { color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.95), 0 0 24px rgba(255,236,180,.9); }
 .realm-label.is-bloomed b::after { content: " ✿"; color: var(--gold-2); }
-/* Far lands (tools/far_lands.py): small, soft-edged paintings rising out of the map in the distance,
-   beyond the realm they lie past. The edge fades into mist instead of a hard frame. */
-.farland { position: absolute; z-index: 1; width: 5.6%; aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none; }
-.farland::before { content: ""; position: absolute; inset: -22%; border-radius: 50%; z-index: -1;
-  background: radial-gradient(closest-side, var(--glow, rgba(240,213,149,.35)), rgba(255,255,255,.18) 55%, rgba(255,255,255,0)); }
-.farland img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%; user-select: none; -webkit-user-drag: none;
-  -webkit-mask-image: radial-gradient(circle closest-side, #000 58%, rgba(0,0,0,.6) 80%, transparent 100%);
-  mask-image: radial-gradient(circle closest-side, #000 58%, rgba(0,0,0,.6) 80%, transparent 100%); }
 @keyframes labelFloat { 0%, 100% { transform: translate(-50%, 22px); } 50% { transform: translate(-50%, 19px); } }
 .pin:hover ~ .realm-label { animation-play-state: paused; }
 

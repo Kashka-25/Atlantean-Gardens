@@ -21,8 +21,8 @@ because there is no fetch; the data loads from `data/world.js`.
 | Screen | Content | Source |
 |---|---|---|
 | Threshold | New tree emblem, trident wordmark and the introduction's closing lines | logo files from Cassidy (9 Nov 2026), `INTRODUCTION Page.docx` |
-| Atlas | Painted map, 8 glowing realm pins, and 2 far lands rising in the distance (The Sky Peaks beyond the Sunlight Realms, The Frostveil Expanse beyond the Hearthlands) | `Seven Realm Atlas.png`; far lands named by the Golden Goat and White Rhino cards, painted by Cassidy (20 Nov 2026) |
-| Realm drawer | Painting, tagline, themes, **the tale** (verses quoted from the manuscripts, ending on a reflective nudge), places (20 with their own verse), look and feel, keepers and strains | 6 realm paintings, `The Atlas 7 Worlds.docx`, `living-atlas-prototype/data/realms` |
+| Atlas | Painted map, 8 glowing realm pins | `Seven Realm Atlas.png` |
+| Realm drawer | Painting, tagline, themes, **the tale** (verses quoted from the manuscripts, ending on a reflective nudge), places (22 with their own verse), look and feel, keepers and strains | 6 realm paintings, `The Atlas 7 Worlds.docx`, `living-atlas-prototype/data/realms` |
 | Strains | 73 collector cards (fronts and backs): 60 placed on the Atlas, 13 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
 | Keepers | Hall of Living Portraits, 5 keeper pages | `The Hll Of Living Portraits.png`, `Character BIBLE.docx` |
 | Lore | 13 manuscripts with provenance and opening inscription | `13 Manuscripts/*.docx` |
@@ -63,19 +63,15 @@ Atlas. These pages live in
 them: re-run the sync after any rebuild. The QR code on each printed back opens
 `#/cards/<web id>`.
 
-Some cards are set in places beyond the seven realms. Cassidy asked for these
-to "emerge off different sections of the map" (20 Nov 2026), so
-`tools/far_lands.py` adds each one as a far land: a small, soft-edged round
-painting rising out of the map in the distance, with its own pin, labelled
-"Beyond the seven realms" on its page. The Sky Peaks (Golden Goat) sit on the
-horizon beyond the Sunlight Realms. The Frostveil Expanse (White Rhino) lies in
-the mist beyond the Hearthlands' lower shore, because the far-left edge is under
-the menu panel on computers. Their words are quoted from the cards. Their
-paintings (`assets/realms/<id>.jpg`) are Cassidy's own location paintings, made
-with ChatGPT from the prompts in `card-studio/data/far-lands-image-prompts.md`
-(originals in `card-studio/art/far-lands/`). The round map pictures
-(`<id>-medallion.jpg`) are cut from them. The sync adds the far lands back each
-time it runs, so cards set there find their place.
+Some places come from the card studio rather than from Cassidy's original
+canon. Cassidy decided (20 Nov 2026) that these are "places within already
+existed places", so `tools/extra_places.py` adds each one to its realm's Places:
+The Sky Peaks in the Sunlight Realms (Golden Goat), and The Frostveil Expanse in
+the Hearthlands (White Rhino). Both stay "hidden in mist" (not charted on the
+map). Opening one shows Cassidy's own painting of it (`assets/places/<id>.jpg`,
+made with ChatGPT from the prompts in `card-studio/data/far-lands-image-prompts.md`;
+originals in `card-studio/art/far-lands/`) and its verse, quoted from the card.
+The sync adds these places back each time it runs.
 
 Type, THC and lineage were fact-checked against breeders' statements,
 competition records and lab data (18 Nov 2026; the evidence is in
