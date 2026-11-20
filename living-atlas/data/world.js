@@ -929,6 +929,62 @@ window.WORLD = {
     "y": 50.5
    },
    "image": "assets/realms/heart-of-atlantis.jpg"
+  },
+  {
+   "id": "sky-peaks",
+   "name": "The Sky Peaks",
+   "order": 8,
+   "number": "",
+   "far": true,
+   "icon": "star",
+   "tagline": "Where the paths become cliffs and the cliffs become cloud.",
+   "themes": [],
+   "visual": [],
+   "notes": [],
+   "districts": [],
+   "tale": [
+    {
+     "source": "Golden Goat · AG-075",
+     "lines": [
+      "High above the Garden, where the paths become cliffs and the cliffs become cloud, lie the Sky Peaks, hidden in mist."
+     ]
+    }
+   ],
+   "districtIds": {},
+   "pin": {
+    "x": 85.5,
+    "y": 77
+   },
+   "image": "assets/realms/sky-peaks.jpg",
+   "medallion": "assets/realms/sky-peaks-medallion.jpg"
+  },
+  {
+   "id": "frostveil-expanse",
+   "name": "The Frostveil Expanse",
+   "order": 9,
+   "number": "",
+   "far": true,
+   "icon": "star",
+   "tagline": "Far beyond the Garden, where the snow never melts.",
+   "themes": [],
+   "visual": [],
+   "notes": [],
+   "districts": [],
+   "tale": [
+    {
+     "source": "White Rhino · AG-094",
+     "lines": [
+      "Far beyond the Garden, where the snow never melts, lies the Frostveil Expanse."
+     ]
+    }
+   ],
+   "districtIds": {},
+   "pin": {
+    "x": 74.5,
+    "y": 77
+   },
+   "image": "assets/realms/frostveil-expanse.jpg",
+   "medallion": "assets/realms/frostveil-expanse-medallion.jpg"
   }
  ],
  "strains": [

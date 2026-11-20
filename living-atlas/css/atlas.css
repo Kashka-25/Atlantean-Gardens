@@ -734,6 +734,10 @@ button { font: inherit; color: inherit; }
 .realm-label:hover::before, .realm-label:focus-visible::before { opacity: 1; background: radial-gradient(closest-side, rgba(60,44,12,.55), rgba(240,213,149,.16) 60%, rgba(240,213,149,0)); }
 .realm-label:hover b { color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.95), 0 0 24px rgba(255,236,180,.9); }
 .realm-label.is-bloomed b::after { content: " ✿"; color: var(--gold-2); }
+/* Far lands: small round paintings off in the bottom-right corner of the Atlas (tools/far_lands.py). */
+.farland { position: absolute; z-index: 1; width: 6.6%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; overflow: hidden; pointer-events: none;
+  box-shadow: 0 0 0 2px #f0d595, 0 0 0 5px rgba(8,22,29,.7), 0 0 0 6.5px rgba(210,171,98,.75), 0 0 28px 10px var(--glow, rgba(240,213,149,.35)); }
+.farland img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; -webkit-user-drag: none; }
 @keyframes labelFloat { 0%, 100% { transform: translate(-50%, 22px); } 50% { transform: translate(-50%, 19px); } }
 .pin:hover ~ .realm-label { animation-play-state: paused; }
 

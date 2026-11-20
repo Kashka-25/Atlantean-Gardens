@@ -44,6 +44,7 @@
     "living-harvest-realm": "rgba(170,140,210,.4)", "crystal-conservatory-realm": "rgba(185,160,240,.45)",
     "hearthlands-realm": "rgba(235,140,80,.42)", "verdant-wilds-realm": "rgba(120,190,110,.4)",
     "celestial-realm": "rgba(120,130,240,.5)", "heart-of-atlantis": "rgba(150,200,120,.4)",
+    "sky-peaks": "rgba(240,205,120,.45)", "frostveil-expanse": "rgba(180,225,245,.45)",
   };
 
   /* Card frames take the exact shape of their own artwork, so no card or
@@ -118,9 +119,13 @@
 
   /* ── Views ─────────────────────────────────────────────── */
   function viewAtlas(stage) {
-    const pins = W.realms.map((r, i) => { const t = realmTally(r), at = ATLAS.spots[r.id] || r.pin; return `
+    // Far lands (tools/far_lands.py) sit off in the bottom-right corner as small round paintings,
+    // with the pin on the painting and the name just below it.
+    const lands = W.realms.filter((r) => r.far && r.medallion).map((r) => { const at = ATLAS.spots[r.id] || r.pin; return `
+      <span class="farland" style="left:${at.x}%;top:${at.y}%;--glow:${REALM_GLOW[r.id] || "rgba(240,213,149,.35)"}" aria-hidden="true"><img src="${esc(r.medallion)}" alt="" draggable="false"></span>`; }).join("");
+    const pins = W.realms.map((r, i) => { const t = realmTally(r), at = ATLAS.spots[r.id] || r.pin, ly = r.far ? at.y + 4.5 : at.y; return `
       <button class="pin${journey.realms.includes(r.id) ? " is-visited" : ""}${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${at.y}%" data-realm="${r.id}" aria-label="Open ${esc(r.name)}, ${t.found} of ${t.total} found"></button>
-      <button class="realm-label${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${at.y}%;--d:${(i * 0.6).toFixed(1)}s" data-realm="${r.id}" tabindex="-1" aria-hidden="true">
+      <button class="realm-label${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${ly}%;--d:${(i * 0.6).toFixed(1)}s" data-realm="${r.id}" tabindex="-1" aria-hidden="true">
         ${r.number ? `<i>${r.number}</i>` : `<i>✦</i>`}<b>${esc(r.name.replace(/^The /, ""))}</b>${t.total ? `<small>${t.found} of ${t.total} found</small>` : ""}
       </button>`; }).join("");
     const bar = W.realms.map((r) => { const t = realmTally(r); return `<button data-realm="${r.id}"${journey.bloomed.includes(r.id) ? ' class="is-bloomed"' : ""}>${r.number ? `<b>${r.number}</b>` : "✦ "}${esc(r.name.replace(/ Realms?$/, ""))}${t.total ? `<small>${t.found}/${t.total}</small>` : ""}</button>`; }).join("");
@@ -129,6 +134,7 @@
         <div class="atlas__viewport" id="atlas-vp">
           <div class="atlas__map">
             <img src="${ATLAS.src}" alt="The Living Atlas of Atlantean Gardens: seven realms around the Heart of Atlantis" draggable="false">
+            ${lands}
             ${pins}
           </div>
         </div>
@@ -175,7 +181,7 @@
       <button class="drawer__close" data-close aria-label="Close realm">${svg(ICON.close).replace("<svg", '<svg width="20" height="20"')}</button>
       <div class="realm__hero"><img src="${esc(r.image)}" alt="Painting of ${esc(r.name)}"></div>
       <div class="realm__body">
-        <div class="realm__num">${r.number ? "REALM " + r.number : "THE CENTRE OF THE ATLAS"}</div>
+        <div class="realm__num">${r.number ? "REALM " + r.number : r.far ? "BEYOND THE SEVEN REALMS" : "THE CENTRE OF THE ATLAS"}</div>
         <h2 id="drawer-title">${esc(r.name)}</h2>
         <p class="realm__tag">“${esc(r.tagline)}”</p>
         ${r.themes.length ? `<div class="chips">${r.themes.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>` : ""}
@@ -496,6 +502,9 @@
     "verdant-wilds-realm": { kind: "fireflies", n: 30, colors: ["#e8ff9c", "#c5f27a"] },
     "celestial-realm": { kind: "stars", n: 70, colors: ["#ffffff", "#dcd3ff", "#bfe6ff"] },
     "heart-of-atlantis": { kind: "heart", n: 46, colors: ["#c9a7ff", "#b48ef0", "#e6d0ff"], sparks: ["#ffe9a8", "#ffd36b", "#fff6d6"] },
+    // Far lands: starlight over the Sky Peaks, falling snow in the Frostveil Expanse.
+    "sky-peaks": { kind: "stars", n: 60, colors: ["#ffffff", "#fff1c9", "#ffd36b"] },
+    "frostveil-expanse": { kind: "petals", n: 50, colors: ["#ffffff", "#eef8ff", "#dff1ff"] },
   };
   function startAmbience(canvas, realmId) {
     const cfg = AMBIENCE[realmId]; if (!cfg || reduceMotion()) return;
@@ -570,7 +579,7 @@
         <div class="scene__fore" aria-hidden="true" style="background-image:url('${esc(r.image)}')"></div>
         <canvas class="scene__life" aria-hidden="true"></canvas>
         <header class="scene__head sr-only">
-          <div class="realm__num">${r.number ? "REALM " + r.number : "THE CENTRE OF THE ATLAS"}</div>
+          <div class="realm__num">${r.number ? "REALM " + r.number : r.far ? "BEYOND THE SEVEN REALMS" : "THE CENTRE OF THE ATLAS"}</div>
           <h1>${esc(r.name)}</h1>
           <p>“${esc(r.tagline)}”</p>
         </header>

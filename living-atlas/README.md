@@ -21,7 +21,7 @@ because there is no fetch; the data loads from `data/world.js`.
 | Screen | Content | Source |
 |---|---|---|
 | Threshold | New tree emblem, trident wordmark and the introduction's closing lines | logo files from Cassidy (9 Nov 2026), `INTRODUCTION Page.docx` |
-| Atlas | Painted map, 8 glowing realm pins | `Seven Realm Atlas.png` |
+| Atlas | Painted map, 8 glowing realm pins, and 2 far lands in the bottom-right corner (The Sky Peaks, The Frostveil Expanse) | `Seven Realm Atlas.png`; far lands from the Golden Goat and White Rhino cards |
 | Realm drawer | Painting, tagline, themes, **the tale** (verses quoted from the manuscripts, ending on a reflective nudge), places (20 with their own verse), look and feel, keepers and strains | 6 realm paintings, `The Atlas 7 Worlds.docx`, `living-atlas-prototype/data/realms` |
 | Strains | 73 collector cards (fronts and backs): 60 placed on the Atlas, 13 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
 | Keepers | Hall of Living Portraits, 5 keeper pages | `The Hll Of Living Portraits.png`, `Character BIBLE.docx` |
@@ -62,6 +62,16 @@ Atlas. These pages live in
 `data/world.js` directly, not through `build_data.py`, so a rebuild would drop
 them: re-run the sync after any rebuild. The QR code on each printed back opens
 `#/cards/<web id>`.
+
+Some cards are set in places beyond the seven realms. Cassidy asked for these
+on the map "off in one of the corners" (20 Nov 2026), so `tools/far_lands.py`
+adds each one as a far land: a small round painting in the bottom-right
+corner with its own pin, labelled "Beyond the seven realms" on its page. Its
+words are quoted from the card that names it, and its paintings
+(`assets/realms/<id>.jpg` and `<id>-medallion.jpg`) are cut from that card's
+front, with no new art. The sync adds the far lands back each time it runs, so
+cards set there find their place: The Sky Peaks (Golden Goat) and The
+Frostveil Expanse (White Rhino).
 
 Type, THC and lineage were fact-checked against breeders' statements,
 competition records and lab data (18 Nov 2026; the evidence is in
