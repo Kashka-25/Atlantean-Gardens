@@ -12,9 +12,12 @@ For every row marked "Card done" in the card studio's strains.xlsx:
 - a strain named after --refill (a card Cassidy had redone) has its page
   rebuilt from the sheet like a new one, in the same place in the list.
 
+With --only, just the cards named after it are brought in, so cards Cassidy
+hasn't checked yet stay off the Atlas even when they are "Card done".
+
 Words come only from the sheet (Cassidy's approved card text).
 
-Usage: python tools/sync_studio_cards.py <card-studio dir> [--refill id ...]
+Usage: python tools/sync_studio_cards.py <card-studio dir> [--only id ...] [--refill id ...]
 Run from living-atlas/. Needs Node (to read the sheet with the studio's own
 reader) and Pillow.
 """
@@ -26,8 +29,21 @@ import sys
 
 from PIL import Image
 
+def ids_after(flag):
+    """The Web IDs listed after a flag, up to the next flag."""
+    if flag not in sys.argv:
+        return set()
+    ids = []
+    for a in sys.argv[sys.argv.index(flag) + 1:]:
+        if a.startswith("--"):
+            break
+        ids.append(a)
+    return set(ids)
+
+
 STUDIO = os.path.abspath(sys.argv[1])
-REFILL = set(sys.argv[sys.argv.index("--refill") + 1:]) if "--refill" in sys.argv else set()
+REFILL = ids_after("--refill")
+ONLY = ids_after("--only")
 WORLD = os.path.join("data", "world.js")
 CARDS = os.path.join("assets", "cards")
 KEEPER_IDS = {"Kasper": "kasper", "Lila": "lila", "Coco": "coco", "D'nine": "dnine", "Raptor": "raptor"}
@@ -57,10 +73,11 @@ world = json.loads(body.rstrip().rstrip(";"))
 by_id = {s["id"]: s for s in world["strains"]}
 realm_by_name = {r["name"]: r for r in world["realms"]}
 
-added, refreshed, refilled, art = [], [], [], 0
+added, refreshed, refilled, art, seen = [], [], [], 0, set()
 for r in sheet():
-    if r["status"] != "Card done":
+    if r["status"] != "Card done" or (ONLY and r["id"] not in ONLY):
         continue
+    seen.add(r["id"])
     sid, stem = r["id"], f'{r["code"] or "AG-new"}-{r["id"]}'
     front, back = (os.path.join(STUDIO, "out", f"{stem}-{side}.png") for side in ("front", "back"))
     if not os.path.exists(front):
@@ -128,3 +145,5 @@ print(f"pages added ({len(added)}): {', '.join(added) or 'none'}")
 print(f"pages rebuilt from the sheet: {', '.join(refilled) or 'none'}")
 for sid in REFILL - set(refilled):
     print(f"  ! --refill {sid}: not a Card done row, left alone")
+for sid in ONLY - seen:
+    print(f"  ! --only {sid}: not a Card done row, left alone")
