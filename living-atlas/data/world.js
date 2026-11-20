@@ -143,7 +143,8 @@ window.WORLD = {
     "seedling-nursery": "Seedling Nursery",
     "morning-orchard": "Morning Orchard",
     "sunpetal-market": "Sunpetal Market",
-    "the-sky-peaks": "The Sky Peaks"
+    "the-sky-peaks": "The Sky Peaks",
+    "story-circle": "Story Circle"
    },
    "pin": {
     "x": 34.5,
@@ -250,7 +251,8 @@ window.WORLD = {
     "the-glass-lagoon": "The Glass Lagoon",
     "whispering-wharf": "Whispering Wharf",
     "the-pearl-steps": "The Pearl Steps",
-    "coral-gardens": "Coral Gardens"
+    "coral-gardens": "Coral Gardens",
+    "tidekeepers-cove": "Tidekeeper's Cove"
    },
    "pin": {
     "x": 63.5,
@@ -3036,6 +3038,241 @@ window.WORLD = {
    "thc": "~22–28%",
    "lineage": "Reported: Bubba Kush × Animal Mints",
    "bestTime": "Evening"
+  },
+  {
+   "id": "ghost-train-haze",
+   "name": "Ghost Train Haze",
+   "code": "AG-073",
+   "title": "The Midnight Train to Elsewhere",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "forgotten-paths",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "Some nights, when I sit very still and breathe very slowly, I hear a whistle where no railway has ever run.\n\nTonight I followed it. Out of the haze on the Forgotten Paths came a train made of silver mist, its lanterns glowing, its carriages warm and empty. No driver. No ticket. Only an open door.\n\nThe first time I rode it, long ago, I came home with a scar between my eyes. Now I come home with pages.\n\nI still don't know where it goes. If you ever hear the whistle, don't be afraid. Bring a journal.",
+   "quote": "He simply trusts every step is carrying him exactly where he is needed.",
+   "flavor": "Citrus, Lime, Sage, Earthy",
+   "aroma": "Citrus, Sour, Spicy",
+   "effects": "Focused, Energetic, Uplifted",
+   "mayRelieve": "Depression, Stress, Pain",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/ghost-train-haze-front.jpg",
+    "back": "assets/cards/ghost-train-haze-back.jpg"
+   },
+   "printedRealm": "Verdant Wilds Realm",
+   "thc": "~19–27%",
+   "lineage": "Ghost OG × Nevil's Wreck (breeder's account)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "lemon-tree",
+   "name": "Lemon Tree",
+   "code": "AG-074",
+   "title": "The Planter of Shade",
+   "category": "Hybrid",
+   "realm": "sunlight-realms",
+   "district": "story-circle",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "In the middle of the Story Circle stands a lemon tree so old and so generous that nobody can remember the circle without it.\n\nCoco planted it as a seedling, long before there was anyone to sit beneath it. He watered it through dry summers and wrapped it through cold winters, never knowing who its shade was for.\n\nNow storytellers gather under its branches, children climb it, and its lemons glow like little lanterns in the sun. Coco sits among them, laughing, a basket of lemons at his feet, already planting the next one.",
+   "quote": "Adventure is planting a seed whose flower you may never see.",
+   "flavor": "Lemon, Citrus, Diesel, Sour",
+   "aroma": "Lemon, Diesel, Earthy",
+   "effects": "Relaxed, Happy, Focused",
+   "mayRelieve": "Anxiety, Depression, Stress",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/lemon-tree-front.jpg",
+    "back": "assets/cards/lemon-tree-back.jpg"
+   },
+   "printedRealm": "Sunlight Realms",
+   "thc": "~17–25%",
+   "lineage": "Reported: Lemon Skunk × Sour Diesel",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "golden-goat",
+   "name": "Golden Goat",
+   "code": "AG-075",
+   "title": "The Summit Keeper",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "sunlight-realms",
+   "district": "the-sky-peaks",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "High above the Garden, where the paths become cliffs and the cliffs become cloud, lie the Sky Peaks, hidden in mist. Legend says a goat with a coat of living gold walks there, and that it shows itself only to those who keep climbing after everyone else has turned back.\n\nRaptor never went looking for it. He was carrying supplies to the high monastery, one load at a time, as he had every week for a year.\n\nOn the last night of that year, the golden goat stepped onto the path ahead of him, lowered its gilded horns, and led him to the summit by starlight.\n\nSome treasures can't be chased. They come to those who keep showing up.",
+   "quote": "Not fearless courage. Faithful courage.",
+   "flavor": "Citrus, Tropical, Sweet, Lemon",
+   "aroma": "Tropical, Sour, Spicy",
+   "effects": "Energetic, Uplifted, Happy",
+   "mayRelieve": "Stress, Depression, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/golden-goat-front.jpg",
+    "back": "assets/cards/golden-goat-back.jpg"
+   },
+   "printedRealm": "The Sky Peaks",
+   "thc": "~16–23%",
+   "lineage": "Island Sweet Skunk × Hawaiian-Romulan (grower's account)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "watermelon-z",
+   "name": "Watermelon Z",
+   "code": "AG-076",
+   "title": "The Rainbow Rain",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "sunlight-realms",
+   "district": "the-bards-meadow",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "After the longest summer anyone could remember, the Bard's Meadow was dry and still. The watermelons were sweet, but the flowers were tired.\n\nLila lay down in the warm grass among the melons and waited. She didn't ask for rain. She simply listened for it.\n\nWhen it came, it came in every colour: drops of red, orange, gold, green and violet, sparkling like scattered sweets. The meadow drank and drank, and Lila laughed with her face turned to the sky.\n\nSome say she brings the rain. She says she only noticed it first.",
+   "quote": "It is slowing down enough to witness miracles most people walk straight past.",
+   "flavor": "Watermelon, Tropical, Sweet, Berry",
+   "aroma": "Watermelon, Candy, Citrus",
+   "effects": "Sleepy, Relaxed, Giggly",
+   "mayRelieve": "Anxiety, Depression, Stress",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/watermelon-z-front.jpg",
+    "back": "assets/cards/watermelon-z-back.jpg"
+   },
+   "printedRealm": "Sunlight Realms",
+   "thc": "~21–28%",
+   "lineage": "Watermelon Zum Zum #3 × Zkittlez (breeder's account)",
+   "aka": "(Watermelon Zkittlez)",
+   "bestTime": "Night"
+  },
+  {
+   "id": "biscotti",
+   "name": "Biscotti",
+   "code": "AG-077",
+   "title": "The Twice-Baked Friendship",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "cocos-old-table",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "Coco bakes the biscotti. D'nine dunks them. It has been that way for as long as anyone can remember.\n\nLong after the Garden has gone to bed, the two old friends sit at Coco's Old Table with a pot of tea and a plate of almond biscotti, baked twice, slowly, the way Coco does everything.\n\nD'nine always has a new theory about crumbs. Tonight his biscotti snapped clean in half mid-dunk, and he laughed with delight, because now he could see how it worked. Coco shook his head, smiled, and passed him another.\n\nThen they sat in a long, easy silence, watching the moon, and neither felt the need to fill it. Some things are even better the second time round.",
+   "quote": "Their friendship is a beautiful dance between practicality and possibility.",
+   "flavor": "Butter, Vanilla, Honey, Coffee",
+   "aroma": "Cocoa, Toasted Dough, Pepper",
+   "effects": "Tingly, Relaxed, Euphoric",
+   "mayRelieve": "Anxiety, Stress, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/biscotti-front.jpg",
+    "back": "assets/cards/biscotti-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "thc": "~20–25%",
+   "lineage": "Gelato #25 × South Florida OG (breeder's account)",
+   "bestTime": "Evening"
+  },
+  {
+   "id": "candyland",
+   "name": "Candyland",
+   "code": "AG-078",
+   "title": "The Sweetness Hiding in Plain Sight",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "festival-green",
+   "tags": [],
+   "relations": [
+    "kasper"
+   ],
+   "body": "Kasper once spent a whole afternoon in a meadow everyone else called ordinary.\n\nHe found mushrooms like gumdrops, flowers striped like peppermints, berries that shone like boiled sweets and dandelion clocks spun like sugar. He didn't eat a single one. He didn't need to.\n\n\"It was always like this,\" he wrote that night. \"I just hadn't looked properly.\"\n\nThe Garden has never been short of sweetness. Only of people slowing down long enough to see it.",
+   "quote": "The ordinary becomes extraordinary when viewed with open eyes and an open heart.",
+   "flavor": "Sweet, Floral, Honey, Berry",
+   "aroma": "Berry, Floral, Earthy",
+   "effects": "Uplifted, Energetic, Happy",
+   "mayRelieve": "Stress, Depression, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/candyland-front.jpg",
+    "back": "assets/cards/candyland-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "typeDetail": "75% Sativa / 25% Indica, per the breeder",
+   "thc": "~19–23%",
+   "lineage": "Granddaddy Purple × Bay Platinum Cookies (breeder's account)",
+   "bestTime": "Daytime"
+  },
+  {
+   "id": "mendo-breath",
+   "name": "Mendo Breath",
+   "code": "AG-079",
+   "title": "The Slow Exhale",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "bubble-coast-realm",
+   "district": "tidekeepers-cove",
+   "tags": [],
+   "relations": [
+    "coco"
+   ],
+   "body": "On cold evenings the fog rolls into Tidekeeper's Cove so thick that the sea disappears.\n\nCoco doesn't mind. He wraps himself in his old wool blanket, sets a warm loaf of vanilla sweetbread by the fire and pours two cups of tea: one for himself, and one for whoever wanders in from the mist.\n\nThen he breathes out, slow and long, and watches his breath drift away to join the fog. For a moment the whole cove seems to breathe with him.\n\nSomebody always wanders in.",
+   "quote": "Love is rarely loud. It is found in cups of tea left waiting.",
+   "flavor": "Vanilla, Caramel, Pepper, Earthy",
+   "aroma": "Vanilla, Caramel, Earthy",
+   "effects": "Sleepy, Relaxed, Tingly",
+   "mayRelieve": "Anxiety, Stress, Pain",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/mendo-breath-front.jpg",
+    "back": "assets/cards/mendo-breath-back.jpg"
+   },
+   "printedRealm": "Bubble Coast Realm",
+   "thc": "~17–28%",
+   "lineage": "OGKB × Mendo Montage (breeder's account)",
+   "bestTime": "Night"
+  },
+  {
+   "id": "sour-tangie",
+   "name": "Sour Tangie",
+   "code": "AG-080",
+   "title": "The First Bite of Morning",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "sunlight-realms",
+   "district": "morning-orchard",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "Every morning, before the sun is fully up, Raptor is already in the Morning Orchard with an empty crate on his shoulder.\n\nToday he stopped to taste the first tangerine of the season, and his whole face folded up like a paper fan. Sour! Wonderfully, ridiculously sour. The birds laughed. So did he.\n\nThen he picked the next one, and the next, until every crate was full and the hills were gold.\n\nThe sweetest harvests often begin with a sour first bite. You just have to come back tomorrow.",
+   "quote": "Adventure is commitment. Showing up. Doing the work. Returning tomorrow.",
+   "flavor": "Orange, Citrus, Diesel, Sweet",
+   "aroma": "Tangerine, Orange peel, Diesel",
+   "effects": "Energetic, Focused, Uplifted",
+   "mayRelieve": "Depression, Stress, Anxiety",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/sour-tangie-front.jpg",
+    "back": "assets/cards/sour-tangie-back.jpg"
+   },
+   "printedRealm": "Sunlight Realms",
+   "typeDetail": "80% Sativa / 20% Indica, per the breeder",
+   "thc": "~18–26%",
+   "lineage": "East Coast Sour Diesel × Tangie (breeder's account)",
+   "bestTime": "Morning"
   }
  ],
  "keepers": [
