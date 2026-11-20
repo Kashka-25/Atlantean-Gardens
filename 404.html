@@ -4,10 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Atlantean Gardens · The Living Atlas</title>
-  <!-- The members page is retired (20 Nov 2026); it is in git history. -->
-  <script>location.replace("living-atlas/" + location.search + location.hash);</script>
-  <meta http-equiv="refresh" content="0; url=living-atlas/">
-  <link rel="canonical" href="https://kashka-25.github.io/Atlantean-Gardens/living-atlas/">
+  <!-- GitHub Pages shows this page for any address that doesn't exist, such as the retired
+       about, shop and members pages. It sends visitors to the Living Atlas, keeping any #hash.
+       On github.io the site lives under /<repo>/; on a custom domain, at /. -->
+  <meta name="robots" content="noindex">
+  <script>
+    var home = /\.github\.io$/.test(location.hostname) ? "/" + location.pathname.split("/")[1] + "/" : "/";
+    location.replace(home + location.search + location.hash);
+  </script>
   <style>
     :root { color-scheme: dark; }
     body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px; box-sizing: border-box;
@@ -16,6 +20,6 @@
   </style>
 </head>
 <body>
-  <p><a href="living-atlas/">Enter the Living Atlas</a></p>
+  <p><a href="/Atlantean-Gardens/">Enter the Living Atlas</a></p>
 </body>
 </html>

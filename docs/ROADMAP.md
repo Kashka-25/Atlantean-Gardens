@@ -8,8 +8,10 @@ prototype READMEs). Nothing here adds story or world content.
       (pending merge; the merge push triggers a fresh build).
 - [x] **The Living Atlas is the home** (Cassidy, 20 Nov 2026): "I want the home page
       to be the living atlas. This is our discovery. the shop i want us to eventually
-      buuild into it later down the track". The site root opens `living-atlas/`;
-      the members, shop and about pages are retired and redirect there.
+      buuild into it later down the track". Then: "I think we should get rid of
+      the main site compeltely and make this atlas experience the new main site".
+      The Atlas now lives at the site root, and the old main site (about, shop,
+      members) is deleted.
 
 ## Later
 - [ ] Build the shop into the Living Atlas.
@@ -31,6 +33,7 @@ prototype READMEs). Nothing here adds story or world content.
       to `/characters` — tidy the README.
 
 ### The public site
-- [x] How `site/` relates to the Atlas: the root opens the Living Atlas, and the
-      members, shop and about pages redirect to it (20 Nov 2026). Cassidy: "The
-      Atlas and the expereince itself is the about page."
+- [x] How `site/` relates to the Atlas: the Atlas *is* the site, at the root
+      (20 Nov 2026). Cassidy on the about page: "The Atlas and the expereince
+      itself is the about page." `living-atlas/` keeps a small redirect for card
+      links and QR codes, and `404.html` sends unknown addresses to the root.

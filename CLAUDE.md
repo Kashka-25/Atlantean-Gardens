@@ -3,22 +3,27 @@
 ## This repo (`site/`)
 Public static site for Atlantean Gardens ("Atlantis Rising: Myth Made Medicine"),
 served by GitHub Pages from `main` at https://kashka-25.github.io/Atlantean-Gardens/.
-Plain HTML/CSS/JS, no build step:
-- `living-atlas/` — the Living Atlas, the home and main experience (see its README).
-- `index.html` — redirects to `living-atlas/`, carrying over any `?search` and
-  `#hash`, so old links and QR codes keep working.
-- `members.html`, `shop.html`, `about.html` — retired (20 Nov 2026); each
-  redirects to the Atlas. Cassidy on the about page: "The Atlas and the
-  expereince itself is the about page." The old pages, `members.js`,
-  `members.css`, `styles.css` and `script.js` are in git history.
-- `logo-white.png`, `tea-ceremony.png` — no page uses them now; kept in case
-  other sites link to them.
+Plain HTML/CSS/JS, no build step. The site *is* the Living Atlas (see `README.md`):
+- `index.html`, `css/`, `js/`, `data/` (`data/world.js`), `assets/`, `tools/` —
+  the Living Atlas, at the site root.
+- `living-atlas/index.html` — card links and QR codes point at
+  `/living-atlas/#/cards/<id>`, so this sends them on to the root, keeping any
+  `?search` and `#hash`.
+- `404.html` — GitHub Pages shows it for any address that doesn't exist (such
+  as the retired about, shop and members pages); it sends visitors to the root.
+- `idea/` — the 9 Nov vision page.
 - `.nojekyll` — tells Pages to publish files as-is (no Jekyll pass).
 
-**The Living Atlas is the home (Cassidy, 20 Nov 2026):** "I want the home page
-to be the living atlas. This is our discovery. the shop i want us to eventually
-buuild into it later down the track". So the Living Atlas is the experience, and
-the shop will be built into it later.
+**The Living Atlas is the site (Cassidy, 20 Nov 2026):**
+- "I want the home page to be the living atlas. This is our discovery. the shop
+  i want us to eventually buuild into it later down the track"
+- "I think we should get rid of the main site compeltely and make this atlas
+  experience the new main site"
+- On the about page: "The Atlas and the expereince itself is the about page."
+
+So the old main site is deleted: the about, shop and members pages, and their
+stylesheet, scripts and two images. It's all in git history. The shop will be
+built into the Atlas later.
 
 Pages uses the "deploy from branch" (legacy) source, so every push to `main`
 rebuilds and redeploys. Never push `main` directly; work on a branch and open a PR.
@@ -39,7 +44,7 @@ Local folder `C:\Users\cassi\Projects\Atlantean-Gardens\` also holds:
   one entity). README plans Supabase, Printify, Stripe, Cloudflare R2 and Netlify;
   `.env.example` lists those keys, none are wired up.
 
-The Living Atlas grew from the first prototype and now lives in `site/living-atlas/`.
+The Living Atlas grew from the first prototype and is now the site itself (`site/`).
 Whether the Next.js MVP is kept hasn't been decided; don't change it, merge it
 or port content from it without Cassidy's say-so.
 
