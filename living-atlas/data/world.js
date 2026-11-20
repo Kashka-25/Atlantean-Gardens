@@ -100,7 +100,11 @@ window.WORLD = {
        "High above the Garden, where the paths become cliffs and the cliffs become cloud, lie the Sky Peaks, hidden in mist."
       ]
      },
-     "image": "assets/places/sky-peaks.jpg"
+     "image": "assets/places/sky-peaks.jpg",
+     "spot": {
+      "x": 33,
+      "y": 11
+     }
     }
    ],
    "tale": [
@@ -597,7 +601,11 @@ window.WORLD = {
        "Far beyond the Garden, where the snow never melts, lies the Frostveil Expanse."
       ]
      },
-     "image": "assets/places/frostveil-expanse.jpg"
+     "image": "assets/places/frostveil-expanse.jpg",
+     "spot": {
+      "x": 54,
+      "y": 23.5
+     }
     }
    ],
    "tale": [

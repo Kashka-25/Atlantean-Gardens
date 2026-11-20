@@ -9,6 +9,14 @@ card-studio/data/far-lands-image-prompts.md; originals in
 card-studio/art/far-lands/) and its verse, quoted from the card that names it.
 Both stay "hidden in mist" (not charted on the Atlas map).
 
+Each is also attached to a spot in its realm's painting (Cassidy: "I want these
+two locations to be attached to a certain place in these realms. The frostveil
+Expanse, attached to the mountains in the distance of the Hearthland Realms").
+A soft light glows on that spot in the realm scene, and touching it opens the
+place's painting. "spot" is x, y in percent of the 3:2 realm painting: the
+Frostveil Expanse sits on the violet peaks behind the Hearthlands' aqueduct,
+and the Sky Peaks on the snowy peaks behind the Sunlight Realms' palace.
+
 The card studio's sheet names the realm and this place in the card's Realm and
 District columns, so the sync places the card here.
 
@@ -23,11 +31,13 @@ import re
 EXTRA_PLACES = [
     {
         "realm": "sunlight-realms", "name": "The Sky Peaks", "image": "assets/places/sky-peaks.jpg",
+        "spot": {"x": 33, "y": 11},  # the snowy peaks in the distance behind the palace
         "verse": {"source": "Golden Goat · AG-075", "lines": [
             "High above the Garden, where the paths become cliffs and the cliffs become cloud, lie the Sky Peaks, hidden in mist."]},
     },
     {
         "realm": "hearthlands-realm", "name": "The Frostveil Expanse", "image": "assets/places/frostveil-expanse.jpg",
+        "spot": {"x": 54, "y": 23.5},  # the mountains in the distance, behind the aqueduct
         "verse": {"source": "White Rhino · AG-094", "lines": [
             "Far beyond the Garden, where the snow never melts, lies the Frostveil Expanse."]},
     },
@@ -40,16 +50,19 @@ def slug(s):
 
 
 def add_extra_places(world):
-    """Adds each extra place to its realm's places if it isn't there yet. Returns the names added."""
+    """Adds each extra place to its realm's places, or brings it up to date if it's there. Returns the names added."""
     realms = {r["id"]: r for r in world["realms"]}
     added = []
     for place in EXTRA_PLACES:
         realm = realms[place["realm"]]
-        if any(d["name"] == place["name"] for d in realm["districts"]):
-            continue
-        realm["districts"].append({"name": place["name"], "charted": False, "verse": place["verse"], "image": place["image"]})
+        fields = {"name": place["name"], "charted": False, "verse": place["verse"], "image": place["image"], "spot": place["spot"]}
+        have = next((d for d in realm["districts"] if d["name"] == place["name"]), None)
+        if have:
+            have.update(fields)
+        else:
+            realm["districts"].append(fields)
+            added.append(f'{place["name"]} ({realm["name"]})')
         realm.setdefault("districtIds", {})[slug(place["name"])] = place["name"]
-        added.append(f'{place["name"]} ({realm["name"]})')
     return added
 
 

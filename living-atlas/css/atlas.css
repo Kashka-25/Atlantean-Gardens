@@ -490,6 +490,20 @@ button { font: inherit; color: inherit; }
 .reveal__title { margin: .2rem 0 0; font-style: italic; color: var(--gold-2); }
 .reveal__hint { margin: .4rem 0 0; font-size: .9rem; color: var(--text-dim); font-style: italic; }
 .reveal__actions { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+/* A place glimpsed in the distance of a realm painting (tools/extra_places.py): a soft breathing light with its name. */
+.vista { position: absolute; z-index: 2; width: 70px; height: 70px; margin: -35px 0 0 -35px; border: 0; padding: 0; background: none; cursor: pointer; }
+.vista__glow { position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.75) 0 12%, rgba(214,232,255,.45) 34%, rgba(214,232,255,0) 70%);
+  animation: vistaBreathe 5s ease-in-out infinite; }
+.vista__name { position: absolute; left: 50%; top: calc(100% - 10px); transform: translateX(-50%); white-space: nowrap; pointer-events: none;
+  font-family: var(--display); font-size: .78rem; letter-spacing: .1em; color: #fff6dc; background: rgba(8,22,29,.5); padding: .18rem .65rem; border-radius: 999px;
+  text-shadow: 0 1px 6px rgba(0,0,0,.9); opacity: .85; transition: opacity .3s; }
+.vista:hover .vista__name, .vista:focus-visible .vista__name { opacity: 1; }
+@keyframes vistaBreathe { 0%, 100% { transform: scale(.85); opacity: .65; } 50% { transform: scale(1.12); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .vista__glow { animation: none; } }
+.reveal--vista .reveal__body { width: min(860px, 92vw); }
+.reveal__vista { display: block; width: auto; max-width: 100%; max-height: 62vh; aspect-ratio: 3 / 2; object-fit: cover; margin: 0 auto 1rem; border-radius: 12px; box-shadow: 0 18px 48px rgba(0,0,0,.55); }
+.reveal--vista .passage { max-width: 620px; margin: .4rem auto 0; }
 
 @media (max-width: 860px) {
   .scene { height: calc(100vh - 70px - env(safe-area-inset-bottom)); height: calc(100dvh - 70px - env(safe-area-inset-bottom)); }
