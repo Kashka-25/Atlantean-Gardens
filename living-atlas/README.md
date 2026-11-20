@@ -23,7 +23,7 @@ because there is no fetch; the data loads from `data/world.js`.
 | Threshold | New tree emblem, trident wordmark and the introduction's closing lines | logo files from Cassidy (9 Nov 2026), `INTRODUCTION Page.docx` |
 | Atlas | Painted map, 8 glowing realm pins | `Seven Realm Atlas.png` |
 | Realm drawer | Painting, tagline, themes, **the tale** (verses quoted from the manuscripts, ending on a reflective nudge), places (20 with their own verse), look and feel, keepers and strains | 6 realm paintings, `The Atlas 7 Worlds.docx`, `living-atlas-prototype/data/realms` |
-| Strains | 72 collector cards (fronts and backs): 59 placed on the Atlas, 13 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
+| Strains | 73 collector cards (fronts and backs): 60 placed on the Atlas, 13 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
 | Keepers | Hall of Living Portraits, 5 keeper pages | `The Hll Of Living Portraits.png`, `Character BIBLE.docx` |
 | Lore | 13 manuscripts with provenance and opening inscription | `13 Manuscripts/*.docx` |
 | Journey | Discovery progress, saved only in the visitor's browser | none |
@@ -56,7 +56,9 @@ finished front and the clean back from `card-studio/out/` (never the
 on pages that came from the studio; and adds a page, in the sheet's realm and
 district, for any card the Atlas doesn't have yet. When Cassidy has a card
 redone, `--refill <web id>` rebuilds that page from the sheet (new story,
-realm and profile) in the same place. These pages live in
+realm and profile) in the same place. `--only <web id> ...` brings in just
+those cards, so finished cards Cassidy hasn't checked yet stay off the
+Atlas. These pages live in
 `data/world.js` directly, not through `build_data.py`, so a rebuild would drop
 them: re-run the sync after any rebuild. The QR code on each printed back opens
 `#/cards/<web id>`.

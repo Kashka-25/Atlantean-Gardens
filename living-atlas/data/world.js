@@ -1305,20 +1305,23 @@ window.WORLD = {
    "realm": null,
    "district": "",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "kasper"
+   ],
+   "body": "I found the forest by accident. Or perhaps it found me. The stars looked different there. Constellations drifted where they pleased, and great celestial whales swam silently through the darkness between worlds. Ancient ruins stood beneath violet moons, wrapped in roots older than memory itself.\n\nAt first, I searched for answers. But the forest offered none. Only stillness.\n\nThe kind that settles over a traveler after a long journey. The kind that quiets questions that no longer need asking.\n\nAs I wandered beneath the purple canopy, the noise inside my mind began to soften. Worries unraveled like old vines. Thoughts drifted away like falling leaves.\n\nAnd for a moment, the universe felt impossibly vast… yet somehow safe.\n\nI realized then that not every mystery exists to be solved. Some are meant to be experienced.\n\nSome are meant to remind us how small we are beneath the stars. And how beautiful that can be.",
+   "quote": "A dreamy companion for star-gazing souls and wandering minds.",
+   "flavor": "Lemon, Pine, Earth",
+   "aroma": "Fresh Forest, Citrus Rind, Subtle Fuel",
+   "effects": "Euphoric, Calming, Expansive",
+   "mayRelieve": "Stress, Tension, Overthinking",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/purple-alien-og-front.jpg",
     "back": "assets/cards/purple-alien-og-back.jpg"
    },
-   "printedRealm": "The Celestial Expanse"
+   "printedRealm": "The Celestial Expanse",
+   "lineage": "Reported: Alien Kush x Tahoe OG"
   },
   {
    "id": "godfather-og",
@@ -1493,24 +1496,28 @@ window.WORLD = {
    "name": "Blue Dream",
    "code": "AG-024",
    "title": "The Tidewatcher's Journal",
-   "category": "",
+   "category": "Sativa-Dominant Hybrid",
    "realm": null,
    "district": "",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "kasper"
+   ],
+   "body": "Tonight I climbed the old cliffs above the Sapphire Sea, hoping to understand why the elders always returned here when their hearts grew heavy.\n\nAt first I heard only the waves. Then, slowly, I began to notice something else. The tide never fought the shore. It simply arrived… retreated… and returned again.\n\nWatching it, I realised that perhaps peace isn't something we find. Perhaps it is something we allow to return.\n\nNearby, clusters of Blue Dream blossoms grew from the cliffside, their sweet berry fragrance drifting through the salt air. The old gardeners say these flowers carry the calm of the ocean and the imagination of the stars. After sharing their gentle medicine, even the busiest thoughts seemed to settle like birds at dusk.\n\nTomorrow I continue north toward the Celestial Gardens. Tonight, I am content simply to watch the tide.",
+   "quote": "The tide remembers every shore it has ever touched. Perhaps our hearts do too.",
+   "flavor": "Blueberry, Sweet, Earthy",
+   "aroma": "Berry, Herbal, Citrus",
+   "effects": "Uplifting, Relaxing, Creative",
+   "mayRelieve": "Stress, Pain, Depression",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/blue-dream-front.jpg",
     "back": "assets/cards/blue-dream-back.jpg"
    },
-   "printedRealm": "The Sapphire Sea"
+   "printedRealm": "The Sapphire Sea",
+   "thc": "~17–24%",
+   "lineage": "Reported: Blueberry x Haze"
   },
   {
    "id": "puro-loco",
@@ -2968,6 +2975,35 @@ window.WORLD = {
    "thc": "~15–25%",
    "lineage": "Reported: Cinderella 99 × Vortex",
    "bestTime": "Daytime"
+  },
+  {
+   "id": "kush-mints",
+   "name": "Kush Mints",
+   "code": "AG-098",
+   "title": "A Cup for the Stranger",
+   "category": "Hybrid",
+   "realm": "living-harvest-realm",
+   "district": "tea-terrace",
+   "tags": [],
+   "relations": [
+    "lila"
+   ],
+   "body": "On the coolest night of the year, Lila picked mint from between the frosted kush rows of the Tea Terrace, brewed a pot of tea and set out a little dish of peppermints, cool as frost.\n\nShe poured two cups. She didn't know why.\n\nThen footsteps came up the terrace steps, and a stranger stopped at the gate, his face lost in shadow behind the glow of a small blue lantern. Lila didn't ask his name. She simply held out the second cup.\n\nHe drank it slowly, bowed his thanks, and was gone before the moon had moved. No one else saw him. Only a faint blue light, winding away down the hill.",
+   "quote": "She makes everyone feel they have all the time in the world.",
+   "flavor": "Mint, Menthol, Herbal",
+   "aroma": "Mint, Cookie, Gas, Pine",
+   "effects": "Relaxed, Euphoric, Happy",
+   "mayRelieve": "Stress, Anxiety, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/kush-mints-front.jpg",
+    "back": "assets/cards/kush-mints-back.jpg"
+   },
+   "printedRealm": "Living Harvest Realm",
+   "thc": "~22–28%",
+   "lineage": "Reported: Bubba Kush × Animal Mints",
+   "bestTime": "Evening"
   }
  ],
  "keepers": [
