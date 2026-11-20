@@ -11,7 +11,6 @@ Plain HTML/CSS/JS, no build step. The site *is* the Living Atlas (see `README.md
   `?search` and `#hash`.
 - `404.html` — GitHub Pages shows it for any address that doesn't exist (such
   as the retired about, shop and members pages); it sends visitors to the root.
-- `idea/` — the 9 Nov vision page.
 - `.nojekyll` — tells Pages to publish files as-is (no Jekyll pass).
 
 **The Living Atlas is the site (Cassidy, 20 Nov 2026):**
@@ -22,7 +21,8 @@ Plain HTML/CSS/JS, no build step. The site *is* the Living Atlas (see `README.md
 - On the about page: "The Atlas and the expereince itself is the about page."
 
 So the old main site is deleted: the about, shop and members pages, and their
-stylesheet, scripts and two images. It's all in git history. The shop will be
+stylesheet, scripts and two images. The 9 Nov idea page (`idea/`) went too
+(Cassidy: "Remove it"). It's all in git history. The shop will be
 built into the Atlas later.
 
 Pages uses the "deploy from branch" (legacy) source, so every push to `main`
