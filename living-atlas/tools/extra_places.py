@@ -6,7 +6,9 @@ Realms, and the Frostveil Expanse lives out in the distance of the Hearthlands.
 So each is a place (district) of that realm, listed under the realm's Places.
 Opening it shows Cassidy's own painting of it (made with ChatGPT from
 card-studio/data/far-lands-image-prompts.md; originals in
-card-studio/art/far-lands/) and its verse, quoted from the card that names it.
+card-studio/art/far-lands/) and its verse: a line quoted from the card that names
+it, or for the Horizon Isles the line Cassidy chose, its painting's scroll line
+("Use the scroll line", 20 Nov 2026), shown without a source.
 Both stay "hidden in mist" (not charted on the Atlas map).
 
 The Horizon Isles joined them the same day: Cassidy said Panama Red "belongs off
@@ -55,8 +57,7 @@ EXTRA_PLACES = [
     {
         "realm": "bubble-coast-realm", "name": "The Horizon Isles", "image": "assets/places/horizon-isles.jpg",
         "spot": {"x": 56.5, "y": 18.3},  # the far blue land across the sea, on the horizon off the coast
-        "verse": {"source": "Panama Red · AG-088", "lines": [
-            "After the mountains, I followed the old stories south, to the narrow land where two oceans almost touch."]},
+        "verse": {"lines": ["Faraway islands at the very edge of the sea."]},  # the painting's scroll line, Cassidy's choice
     },
 ]
 

@@ -219,9 +219,8 @@ window.WORLD = {
      "name": "The Horizon Isles",
      "charted": false,
      "verse": {
-      "source": "Panama Red · AG-088",
       "lines": [
-       "After the mountains, I followed the old stories south, to the narrow land where two oceans almost touch."
+       "Faraway islands at the very edge of the sea."
       ]
      }
     }

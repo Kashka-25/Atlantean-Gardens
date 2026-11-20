@@ -113,7 +113,7 @@
          </span>`;
     return `<a class="ccard${art ? "" : " ccard--type"}" href="#/cards/${esc(s.id)}" aria-label="${esc(s.name)}${s.title ? ", " + esc(s.title) : ""}">${seen ? "" : '<span class="badge">New</span>'}${inner}</a>`;
   }
-  const passageHTML = (p) => `<figure class="passage"><blockquote>${p.lines.map((l) => `<span>${esc(l)}</span>`).join("")}</blockquote><figcaption>${esc(p.source)}</figcaption></figure>`;
+  const passageHTML = (p) => `<figure class="passage"><blockquote>${p.lines.map((l) => `<span>${esc(l)}</span>`).join("")}</blockquote>${p.source ? `<figcaption>${esc(p.source)}</figcaption>` : ""}</figure>`;
   const districtName = (s) => (realmById[s.realm] && realmById[s.realm].districtIds[s.district]) || "";
 
   /* ── Views ─────────────────────────────────────────────── */

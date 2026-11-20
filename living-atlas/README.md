@@ -71,7 +71,8 @@ the Hearthlands (White Rhino), and The Horizon Isles off the Bubble Coast (Panam
 All stay "hidden in mist" (not charted on the
 map). Opening one shows Cassidy's own painting of it (`assets/places/<id>.jpg`,
 made with ChatGPT from the prompts in `card-studio/data/far-lands-image-prompts.md`;
-originals in `card-studio/art/far-lands/`) and its verse, quoted from the card.
+originals in `card-studio/art/far-lands/`) and its verse, quoted from the card (for the Horizon Isles, the
+scroll line of its painting, with no source).
 Each is also attached to a far spot in its realm's painting: distant mountains,
 or for the Horizon Isles the far land across the sea. A soft
 light glows there in the realm scene, with no name, so finding it is a surprise.
