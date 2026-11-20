@@ -970,23 +970,20 @@ window.WORLD = {
    "id": "alien-mints-permanent-marker",
    "name": "Alien Mints × Permanent Marker",
    "code": "AG-021",
-   "title": "guest-narrated by Kasper",
-   "category": "Hybrid",
+   "title": "The Dream Cartographer",
+   "category": "Indica-Dominant Hybrid",
    "realm": "crystal-conservatory-realm",
    "district": "dnines-cabinet",
-   "tags": [
-    "wonder"
-   ],
+   "tags": [],
    "relations": [
-    "kasper",
-    "chemical-bride"
+    "kasper"
    ],
-   "body": "When cosmic wanderings meet inspired imagination, new worlds are born. Alien Mints × Permanent Marker is the perfect union of exploration and creation.",
+   "body": "When cosmic wanderings meet inspired imagination, new worlds are born. Alien Mints × Permanent Marker is the perfect union of exploration and creation.\n\nKasper charts the unseen. With a minty quill dipped in the Living Archive's never-fading ink, and a mind full of stardust, he maps dreams into reality and turns them into paths for others to follow.\n\nSweet mint and candy spark the journey. Gassy waves carry you beyond the ordinary. Uplifting, euphoric, and soothing—this is your map to the stars.",
    "quote": "Every line I draw today could guide a soul tomorrow.",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "flavor": "Sweet Mint, Candy, Gas",
+   "aroma": "Minty, Soapy, Gassy",
+   "effects": "Uplifting, Euphoric, Relaxing",
+   "mayRelieve": "Stress, Chronic Pain, Low Mood",
    "terpenes": [],
    "growNotes": "",
    "art": {
@@ -994,64 +991,67 @@ window.WORLD = {
     "back": "assets/cards/alien-mints-permanent-marker-back.jpg"
    },
    "printedRealm": "The Celestial Archive",
-   "cardTitle": "The Dream Cartographer"
+   "thc": "Not published",
+   "lineage": "Alien Mints x Permanent Marker"
   },
   {
    "id": "chemical-bride",
    "name": "Chemical Bride",
    "code": "AG-013",
    "title": "The Alchemical Bride",
-   "category": "Hybrid",
+   "category": "Indica-Dominant Hybrid",
    "realm": "crystal-conservatory-realm",
    "district": "the-alchemists-greenhouse",
-   "tags": [
-    "wonder",
-    "mystery"
-   ],
+   "tags": [],
    "relations": [
     "dnine"
    ],
-   "body": "She was married to the greenhouse itself, or so the story goes.",
-   "quote": "I don't marry chaos. I introduce it to patience.",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "body": "Beneath moonlit glass and living crystal, where rare blooms whisper ancient secrets, D'nine keeps his most beautiful experiment: The Alchemical Bride, guardian of balance and transformation.\n\nShe is a flower he grew to unite opposites (sweet and sharp, calm and spark, earth and ether), for D'nine believes true magic is born when all parts of ourselves are welcomed with love.\n\nTravelers come to the Conservatory seeking relief from life's heavy burdens. Beside her blossoms, tension softens, hearts lift, and creative light begins to flow once more.",
+   "quote": "When we honor every part of ourselves, we become the most beautiful alchemy.",
+   "flavor": "Creamy vanilla, Sour diesel, Earthy pine",
+   "aroma": "Sweet cream, Gassy notes, Subtle earthiness",
+   "effects": "Relaxing, Uplifting, Creative",
+   "mayRelieve": "Stress, Anxiety, Muscle tension",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/chemical-bride-front.jpg",
     "back": "assets/cards/chemical-bride-back.jpg"
    },
-   "printedRealm": "The Crystal Conservatory"
+   "printedRealm": "The Crystal Conservatory",
+   "typeDetail": "70% Indica / 30% Sativa",
+   "thc": "~23%",
+   "bestTime": "Evening and nighttime"
   },
   {
    "id": "glookies",
    "name": "Glookies",
    "code": "AG-011",
    "title": "The Hearth Baker",
-   "category": "Hybrid",
+   "category": "Indica-Dominant Hybrid",
    "realm": "hearthlands-realm",
    "district": "the-oven-room",
-   "tags": [
-    "healing"
-   ],
+   "tags": [],
    "relations": [
-    "raptor"
+    "coco"
    ],
-   "body": "Warm, a little smoky, unhurried. Glookies keeps the ovens going long after everyone else has gone to bed.",
-   "quote": "Nothing good ever finished before it was ready.",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "body": "In the heart of Atlantis, where the ovens never cool and the air is sweet with magic, lives Coco, the Hearth Baker.\n\nWith a bowl of dreams and a dash of mischief, Coco turns simple ingredients into creations that warm the soul and lift the spirit.\n\nEach cookie is baked with care, laughter, and a sprinkle of stardust—meant to bring comfort, spark creativity, and melt worries away.\n\nStep into the kitchen, take a bite, and let the warmth within remind you that life is always better when shared.",
+   "quote": "Good things take time. Great things are baked with love.",
+   "flavor": "Nutty cookie, Chocolate, Diesel",
+   "aroma": "Earthy, Spicy, Chocolate",
+   "effects": "Creative, Euphoric, Warming",
+   "mayRelieve": "Chronic pain, Insomnia, Stress",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/glookies-front.jpg",
     "back": "assets/cards/glookies-back.jpg"
    },
-   "printedRealm": "The Hearth"
+   "printedRealm": "The Hearth",
+   "typeDetail": "70% Indica / 30% Sativa",
+   "thc": "~22–25%",
+   "lineage": "GG4 x Thin Mint GSC (breeder's account)",
+   "bestTime": "Evening and nighttime"
   },
   {
    "id": "honey-melon-kush",
@@ -1088,27 +1088,29 @@ window.WORLD = {
    "name": "Ice Cream",
    "code": "AG-012",
    "title": "The Gelato Dreamer",
-   "category": "Indica",
+   "category": "Indica-Dominant Hybrid",
    "realm": "bubble-coast-realm",
    "district": "moonlit-pier",
-   "tags": [
-    "stillness",
-    "peace"
+   "tags": [],
+   "relations": [
+    "raptor"
    ],
-   "relations": [],
-   "body": "She drifts along the pier slower than anyone else, as if trying not to melt the moment.",
-   "quote": "Stillness is just cold enough to notice.",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "body": "Deep along The Frosted Coast, where vanilla clouds drift above sparkling waves and sweet breezes carry laughter across the shore, lives Raptor, The Gelato Dreamer.\n\nKnown for crafting the realm's most enchanting frozen treats, Raptor believes every scoop should bring a little joy to the world. Travelers often gather beside his colorful cart to share stories, watch the sunset, and forget their worries for a while.\n\nIn his company, restless thoughts begin to melt away. The heart feels lighter, the mind grows calmer, and even the longest day ends on a sweeter note.",
+   "quote": "Happiness,” Raptor says with a grin, “is best enjoyed one scoop at a time.",
+   "flavor": "Sweet cream, Vanilla, Subtle earthiness",
+   "aroma": "Fragrant, Sweet, Hints of skunk",
+   "effects": "Soothing, Calming, Euphoric",
+   "mayRelieve": "Stress, Depression, Anxiety, Insomnia",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/ice-cream-front.jpg",
     "back": "assets/cards/ice-cream-back.jpg"
    },
-   "printedRealm": "The Frosted Coast"
+   "printedRealm": "The Frosted Coast",
+   "typeDetail": "60% Indica / 40% Sativa",
+   "thc": "~15–23%",
+   "bestTime": "Evening and bedtime"
   },
   {
    "id": "lilac-diesel-grape-diamonds",
@@ -1118,78 +1120,72 @@ window.WORLD = {
    "category": "Hybrid",
    "realm": "living-harvest-realm",
    "district": "the-vineyard",
-   "tags": [
-    "wonder",
-    "healing"
-   ],
+   "tags": [],
    "relations": [
     "lila"
    ],
-   "body": "Playful, a little sharp, never quite serious for long — the Realm's favourite trick.",
-   "quote": "I promise nothing except a good story after.",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "body": "Deep within The Vineyard, where crystal grapes shimmer beneath twilight skies and laughter drifts between the vines, lives Lila, The Vineyard Jester.\n\nKnown for gathering travelers beneath the glowing trellises, Lila turns ordinary evenings into joyful celebrations. Her stories grow taller with every telling, and her infectious laughter often spreads from one end of the vineyard to the other.\n\nThose who spend time in her company often find worries becoming lighter and spirits lifting higher. Even weary travelers leave feeling refreshed, smiling, and ready for whatever adventures await.",
+   "quote": "Life is sweeter when shared,” Lila says. “Especially under the stars.",
+   "flavor": "Grape, Citrus, Diesel",
+   "aroma": "Lilac, Berry, Fuel",
+   "effects": "Euphoric, Giggly, Relaxing",
+   "mayRelieve": "Stress, Mood swings, Fatigue",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/lilac-diesel-grape-diamonds-front.jpg",
     "back": "assets/cards/lilac-diesel-grape-diamonds-back.jpg"
    },
-   "printedRealm": "The Vineyard"
+   "printedRealm": "The Vineyard",
+   "thc": "Not published",
+   "bestTime": "Evening and nighttime"
   },
   {
    "id": "lusty-lady",
    "name": "Lusty Lady",
    "code": "AG-014",
    "title": "The Floral Siren",
-   "category": "Sativa",
+   "category": "Hybrid",
    "realm": "sunlight-realms",
    "district": "the-floral-steps",
-   "tags": [
-    "peace",
-    "wonder"
-   ],
+   "tags": [],
    "relations": [
-    "coco",
-    "strawberry-akeil"
+    "lila"
    ],
-   "body": "She arrived with the first warm wind of the season, trailing a scent that made even the quietest gardens turn to look.",
-   "quote": "I don't ask to be noticed. I simply bloom loudly.",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "body": "In the sun-drenched gardens of Atlantis, where roses climb marble arches and lilacs perfume the sea breeze, lives Lila, The Floral Siren.\n\nShe is a muse of joy, creativity, and calm. With a heart as warm as the golden sunset, she inspires everyone around her to dance, dream, and let beauty in.\n\nLila believes pleasure is sacred—a celebration of life, love, and the little moments that make the heart bloom.\n\nVisit her terrace, breathe in the blossoms, and let her sweet song lift your spirits and soften your soul.",
+   "quote": "Life is meant to be savored. Let your heart blossom without apology.",
+   "flavor": "Sweet floral, Citrus, Diesel",
+   "aroma": "Rose, Lilac, Pine",
+   "effects": "Euphoric, Creative, Calming",
+   "mayRelieve": "Stress, Low mood, Tension",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/lusty-lady-front.jpg",
     "back": "assets/cards/lusty-lady-back.jpg"
    },
-   "printedRealm": "The Sunlit Terraces"
+   "printedRealm": "The Sunlit Terraces",
+   "thc": "~22–27%",
+   "lineage": "Reported: Bahama Mama x Red Runtz"
   },
   {
    "id": "permanent-marker",
    "name": "Permanent Marker",
    "code": "AG-016",
-   "title": "guest-narrated by Coco",
+   "title": "The Storykeeper",
    "category": "Hybrid",
-   "realm": "hearthlands-realm",
-   "district": "cocos-old-table",
-   "tags": [
-    "healing",
-    "mystery"
-   ],
+   "realm": "verdant-wilds-realm",
+   "district": "journal-grove",
+   "tags": [],
    "relations": [
-    "coco"
+    "kasper"
    ],
-   "body": "A strain that lingers exactly as long as its name implies. Coco tells this one himself.",
-   "quote": "Some things are written in ink that never fully dries.",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "body": "In the Living Archive of Atlantis, where memories drift like ink in water and stories bloom into constellations, lives Kasper, The Storykeeper.\n\nHe records every legend, every journey, every discovery—so none are ever lost.\n\nWith a quill that writes in starlight and ink that never fades, he captures the beauty, the lessons, and the magic of all who wander here.\n\nSit with the Storykeeper, share your tale, and let your story become part of the ever-growing legend.\n\nAnd when the archive's stories rise into new constellations, Kasper takes his ink to the stars and maps them.",
+   "quote": "The stories we write today, become the legends of tomorrow.",
+   "flavor": "Candy, Gas, Citrus",
+   "aroma": "Floral, Soapy, Pungent",
+   "effects": "Euphoric, Creative, Relaxing",
+   "mayRelieve": "Chronic Pain, PTSD, Stress, Low Mood",
    "terpenes": [],
    "growNotes": "",
    "art": {
@@ -1197,36 +1193,39 @@ window.WORLD = {
     "back": "assets/cards/permanent-marker-back.jpg"
    },
    "printedRealm": "The Living Archive",
-   "cardTitle": "The Storykeeper"
+   "typeDetail": "Indica-leaning",
+   "thc": "~25–30%",
+   "lineage": "Biscotti x Jealousy x Sherb BX"
   },
   {
    "id": "strawberry-akeil",
-   "name": "Strawberry Akeil",
+   "name": "Strawberry AKeil",
    "code": "AG-009",
    "title": "The Sunshine Bard",
-   "category": "Sativa",
+   "category": "Sativa-Dominant Hybrid",
    "realm": "sunlight-realms",
    "district": "the-bards-meadow",
-   "tags": [
-    "peace"
-   ],
+   "tags": [],
    "relations": [
-    "lusty-lady",
     "lila"
    ],
-   "body": "Every meadow has a storyteller, and this one sings in fruit and sunlight.",
-   "quote": "Sweetness is just joy that decided to stay.",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "body": "In The Sunlit Fields, where strawberries grow as big as hearts and juicy with laughter, lives Lila, The Sunshine Bard.\n\nWith a tune for every mood and a smile for every traveler, Lila fills the fields with music that lifts the spirit and paints the day in brighter colors.\n\nHer melodies spark ideas, awaken imagination, and turn any moment into an adventure worth remembering.\n\nThose who listen often find their worries drifting away like clouds on the breeze, leaving behind calm hearts and joyful dreams.",
+   "quote": "Let your heart be light, your mind be wild, and your song be yours.",
+   "flavor": "Strawberry, Blueberry, Sweet",
+   "aroma": "Sweet berry, Fruity",
+   "effects": "Euphoric, Creative, Relaxing",
+   "mayRelieve": "Stress, Pain, Insomnia",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/strawberry-akeil-front.jpg",
     "back": "assets/cards/strawberry-akeil-back.jpg"
    },
-   "printedRealm": "The Sunlit Fields"
+   "printedRealm": "The Sunlit Fields",
+   "typeDetail": "60% Sativa / 40% Indica",
+   "thc": "~12–22%",
+   "lineage": "AK-47 x Bubble Gum",
+   "bestTime": "Daytime and early evening"
   },
   {
    "id": "mango-kush",
@@ -1263,72 +1262,85 @@ window.WORLD = {
    "name": "Grandpa Cookies",
    "code": "AG-006",
    "title": "The Gentle Gardener",
-   "category": "",
-   "realm": null,
-   "district": "",
+   "category": "Hybrid",
+   "realm": "living-harvest-realm",
+   "district": "orchard-walk",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "coco"
+   ],
+   "body": "Deep within The Orchard, where the oldest trees bend low with fruit and the air smells faintly of fresh-baked sweets, lives Coco, The Gentle Gardener.\n\nCoco tends the ancient groves with patient hands and a gentle smile. Travelers often find him resting beneath the branches, sharing stories and warm treats with anyone who wanders by.\n\nWhen life feels rushed or heavy, he offers a quiet place to sit and watch the leaves dance in the breeze. In his company, worries soften, shoulders relax, and the world seems a little kinder.",
+   "quote": "The trees don't hurry,” Coco says. “And they still bear fruit.",
+   "flavor": "Sweet cookie dough, ripe melon, hints of caramel and vanilla.",
+   "aroma": "Warm baked cookies, sweet melon, vanilla cream, and a touch of earthy spice.",
+   "effects": "Deep Relaxation, Happy & Content, Calming Euphoria, Sleepy & Peaceful",
+   "mayRelieve": "Stress, Anxiety, Insomnia, Muscle Tension, Pain",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/grandpa-cookies-front.jpg",
     "back": "assets/cards/grandpa-cookies-back.jpg"
    },
-   "printedRealm": "The Orchard"
+   "printedRealm": "The Orchard",
+   "thc": "22–26%"
   },
   {
    "id": "white-wedding-rbx",
    "name": "White Wedding RBX",
    "code": "AG-007",
    "title": "The Blossom Keeper",
-   "category": "",
-   "realm": null,
-   "district": "",
+   "category": "Hybrid",
+   "realm": "celestial-realm",
+   "district": "moonpetal-sanctuary",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "lila"
+   ],
+   "body": "Deep within The Garden, where moonlit blossoms bloom throughout every season and fragrant petals drift upon the evening breeze, lives Lila, The Blossom Keeper.\n\nLila tends the realm's sacred flowers, gathering blossoms said to carry wishes, memories, and quiet hopes from one heart to another. Travelers often seek this peaceful sanctuary when life's burdens feel heavy or their thoughts become tangled.\n\nIn Lila's presence, the mind begins to wander less and dream more. Creativity returns like birdsong at dawn, while tension loosens its grip and melts gently into the earth beneath their feet.",
+   "quote": "The finest flowers bloom when given time,” Lila says. “So do we.",
+   "flavor": "Sour gas, Mandarin, Cherry",
+   "aroma": "Pine, Incense, Citrus",
+   "effects": "Relaxing, Creative, Euphoric",
+   "mayRelieve": "Muscle tension, Stress, Chronic pain",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/white-wedding-rbx-front.jpg",
     "back": "assets/cards/white-wedding-rbx-back.jpg"
    },
-   "printedRealm": "The Garden"
+   "printedRealm": "The Garden",
+   "thc": "~25–30%",
+   "lineage": "Wedding Cake x Mandarin Cookies x Crescendo (breeder's account)",
+   "bestTime": "Evening and nighttime"
   },
   {
    "id": "chocolate-diesel",
    "name": "Chocolate Diesel",
    "code": "AG-010",
    "title": "The Forge Artisan",
-   "category": "",
-   "realm": null,
-   "district": "",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "crystal-conservatory-realm",
+   "district": "the-living-laboratory",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "dnine"
+   ],
+   "body": "In The Foundry, where ancient machines hum and molten magic flows, lives The Forge Artisan.\n\nD'nine crafts more than just tools—each creation is a spark of inspiration, shaped with care, heat, and a touch of mischief.\n\nHis workshop is filled with the rich aromas of dark chocolate, bold coffee, and earthy resins, swirling together like a recipe only the Artisan truly understands.\n\nThose who visit leave with minds awakened, hearts lifted, and a fire within them ready to create.",
+   "quote": "Fuel the spark. Follow the flow. Great things are forged within.",
+   "flavor": "Dark chocolate, Diesel, Coffee",
+   "aroma": "Skunky, Earthy, Pungent",
+   "effects": "Euphoric, Energizing, Creative",
+   "mayRelieve": "Stress, Fatigue, Depression",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/chocolate-diesel-front.jpg",
     "back": "assets/cards/chocolate-diesel-back.jpg"
    },
-   "printedRealm": "The Foundry"
+   "printedRealm": "The Foundry",
+   "thc": "~20%+, varies",
+   "lineage": "Reported: Sour Diesel x Chocolate Thai",
+   "bestTime": "Daytime and early afternoon"
   },
   {
    "id": "purple-alien-og",
@@ -1362,168 +1374,203 @@ window.WORLD = {
    "name": "Godfather OG",
    "code": "AG-017",
    "title": "The Orchard Patriarch",
-   "category": "",
-   "realm": null,
-   "district": "",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "living-harvest-realm",
+   "district": "orchard-walk",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "coco"
+   ],
+   "body": "Long before the Garden flourished, before the first seeds were planted among the ruins of Atlantis, there stood a single fig tree at the heart of the Orchard.\n\nBeneath its branches sat Coco. Year after year he listened—to the wind, to the roots, to the stories carried home by wanderers.\n\nOver time the Garden grew around him. Not because he commanded it, but because everything naturally leaned toward his wisdom.\n\nThey say every path in the Orchard eventually leads to his stone bench. And every weary traveler leaves lighter than they arrived.",
+   "quote": "In this Garden, we don't chase power. We grow wisdom. We share love. And we leave things better than we found them.",
+   "flavor": "Grape, Earthy, Spice",
+   "aroma": "Pungent, Pine, Kush",
+   "effects": "Relaxing, Euphoric, Sedating",
+   "mayRelieve": "Insomnia, Chronic Pain, Stress",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/godfather-og-front.jpg",
     "back": "assets/cards/godfather-og-back.jpg"
    },
-   "printedRealm": "The Ancient Orchard"
+   "printedRealm": "The Ancient Orchard",
+   "typeDetail": "60% Indica / 40% Sativa",
+   "thc": "~22–28%",
+   "lineage": "XXX OG x Alpha OG (disputed)"
   },
   {
    "id": "pineapple-pucker",
    "name": "Pineapple Pucker",
    "code": "AG-018",
    "title": "The Tropical Trickster",
-   "category": "",
-   "realm": null,
-   "district": "",
+   "category": "Hybrid",
+   "realm": "bubble-coast-realm",
+   "district": "bubble-bay",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "kasper"
+   ],
+   "body": "On the Sunlit Isles of Atlantis, where the waves sparkle like diamonds and the fruit glows with golden magic, there lives Kasper, The Tropical Trickster.\n\nHe's always in search of the next adventure, the next hidden waterfall, the next secret nobody else has found (yet).\n\nWith a heart full of wonder and a laugh as bright as the sun, Kasper turns every moment into an unforgettable memory.\n\nFollow his lead, take the plunge, and let the good vibes carry you to your own island of joy.",
+   "quote": "Life's sweeter when you say yes to the adventure.",
+   "flavor": "Piña Colada, Pineapple, Tropical",
+   "aroma": "Sweet, Tropical, Tangy",
+   "effects": "Uplifting, Euphoric, Energizing",
+   "mayRelieve": "Fatigue, Low Mood, Stress",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/pineapple-pucker-front.jpg",
     "back": "assets/cards/pineapple-pucker-back.jpg"
    },
-   "printedRealm": "The Sunlit Isles"
+   "printedRealm": "The Sunlit Isles",
+   "thc": "~24–28%",
+   "lineage": "Pucker Up x Last Supper",
+   "bestTime": "Daytime, Sunshine, Adventures"
   },
   {
    "id": "lung-buster",
    "name": "Lung Buster",
    "code": "AG-019",
    "title": "The Timberheart Giant",
-   "category": "",
-   "realm": null,
-   "district": "",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "elder-tree-hollow",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "coco"
+   ],
+   "body": "In the heart of the Evergreen Grove stands Coco, the Timberheart Giant. His strength moves mountains, but his heart plants forests.\n\nHe clears the fallen so new growth can rise. This morning Raptor took the other end of the log, and Kasper followed behind them, planting saplings where it had lain.\n\nWhen the work was done, the three of them stood beneath the pines and breathed in the ancient air as deep as it would go. Kasper laughed first. Raptor held on longest.\n\nSome call him a buster. Those who know him call him protector.\n\nWhen the world feels heavy, find Coco beneath the pines. He'll help you lift what you carry and show you how to grow something beautiful in its place.",
+   "quote": "Strong roots. Open lungs. Clear mind. Kind heart.",
+   "flavor": "Citrus, Pine, Diesel",
+   "aroma": "Citrus, Pine, Diesel, Earthy",
+   "effects": "Creative, Energizing, Relaxing",
+   "mayRelieve": "Stress, Muscle Tension, Low Mood",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/lung-buster-front.jpg",
     "back": "assets/cards/lung-buster-back.jpg"
    },
-   "printedRealm": "The Evergreen Grove"
+   "printedRealm": "The Evergreen Grove",
+   "thc": "~20–25%",
+   "lineage": "Don Mega x Udder Madness"
   },
   {
    "id": "xxx-og",
    "name": "XXX OG",
    "code": "AG-025",
    "title": "The Silent Mountain King",
-   "category": "",
-   "realm": null,
-   "district": "",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "moss-temple",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "coco"
+   ],
+   "body": "High above the clouds, where the pines whisper ancient songs, sits Coco, the Silent Mountain King. He has walked these peaks since before the first Atlantean sunrise.\n\nTravelers come to him when the world is too loud and the heart too heavy. He offers no lectures, only tea, wisdom, and a place to rest.\n\nHis presence is calm. His touch is gentle. His knowledge runs deep as the roots of the oldest trees.\n\nWhen the night grows long, Coco reminds us…",
+   "quote": "Stillness is the greatest healer. Let go, and let the mountains hold you.",
+   "flavor": "Lemon, Pine, Spice",
+   "aroma": "Earthy, Pine, Citrus",
+   "effects": "Euphoric, Relaxing, Sedating",
+   "mayRelieve": "Chronic Pain, Insomnia, Stress, Anxiety",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/xxx-og-front.jpg",
     "back": "assets/cards/xxx-og-back.jpg"
    },
-   "printedRealm": "The Pine Crown Peaks"
+   "printedRealm": "The Pine Crown Peaks",
+   "thc": "~12–21%",
+   "lineage": "Reported: OG Kush x XXX"
   },
   {
    "id": "pineapple-diesel",
    "name": "Pineapple Diesel",
    "code": "AG-020",
    "title": "The Tropical Inventor",
-   "category": "",
-   "realm": null,
-   "district": "",
+   "category": "Hybrid",
+   "realm": "crystal-conservatory-realm",
+   "district": "the-living-laboratory",
    "tags": [],
-   "relations": [],
-   "body": "",
+   "relations": [
+    "dnine"
+   ],
+   "body": "Today the Sunshine Engines hummed a little louder. The air was thick with the scent of ripe pineapple and something wild—sharp, diesel, alive.\n\nI followed the trail of golden spores and found this hybrid beauty thriving where sun and storm shake hands.\n\nIts energy is bright, focused, and ready to build—like the first spark before a great invention.\n\nI've captured a seed, pressed some resin, and sketched the structure of its trichomes.\n\nTomorrow, I'll test its oils in the vapor distillery.\n\nCuriosity is the key. Imagination is the engine.\n\nThe Garden provides the rest.",
    "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "flavor": "Pineapple, Citrus, Sweet Diesel, Tropical Spice",
+   "aroma": "Tropical, Citrus Rind, Pine, Fuel",
+   "effects": "Creative, Focused, Energizing, Uplifting",
+   "mayRelieve": "Stress, Fatigue, Low Mood, Mental Blocks",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/pineapple-diesel-front.jpg",
     "back": "assets/cards/pineapple-diesel-back.jpg"
    },
-   "printedRealm": "The Sunlit Isles"
+   "printedRealm": "The Sunlit Isles",
+   "typeDetail": "60% Sativa / 40% Indica",
+   "thc": "~20–26% (estimate)",
+   "lineage": "Pineapple x Sour Diesel (reported)",
+   "bestTime": "Daytime, New Projects, Adventure"
   },
   {
    "id": "runtz-layer-cake",
-   "name": "Runtz Layer Cake",
+   "name": "Runtz × Layer Cake",
    "code": "AG-022",
    "title": "The Festival Baker",
-   "category": "",
-   "realm": null,
-   "district": "",
+   "category": "Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "festival-green",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "coco"
+   ],
+   "body": "In the Sugar Blossom Market, every season is a reason to celebrate. Coco crafts confections of joy—layer upon layer of color, flavor, and love—sharing sweetness with all who wander into Atlantis.\n\nRuntz × Layer Cake is his signature creation: a perfect balance of bright citrus, creamy vanilla, and candied fruits that lifts the spirit and melts worry away like frosting in the sun.",
+   "quote": "Life is short—make it sweet and share it often.",
+   "flavor": "Sweet, Creamy, Fruity",
+   "aroma": "Citrus, Vanilla, Candy",
+   "effects": "Euphoric, Relaxing, Uplifting",
+   "mayRelieve": "Stress, Anxiety, Mild Pain",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/runtz-layer-cake-front.jpg",
     "back": "assets/cards/runtz-layer-cake-back.jpg"
    },
-   "printedRealm": "Sugar Blossom Market"
+   "printedRealm": "Sugar Blossom Market",
+   "typeDetail": "50% Indica / 50% Sativa",
+   "thc": "~18–27%",
+   "lineage": "Runtz x Layer Cake"
   },
   {
    "id": "gorilla-zkittlez",
-   "name": "Gorilla Zkittlez",
+   "name": "Gorilla Z",
    "code": "AG-023",
    "title": "The Fruit Grove Guardian",
-   "category": "",
-   "realm": null,
-   "district": "",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "verdant-wilds-realm",
+   "district": "butterfly-vale",
    "tags": [],
-   "relations": [],
-   "body": "",
-   "quote": "",
-   "flavor": "",
-   "aroma": "",
-   "effects": "",
-   "mayRelieve": "",
+   "relations": [
+    "raptor"
+   ],
+   "body": "Deep in the Rainbow Canopy, where ancient trees bear fruit in every color of the spectrum, Raptor watches over a grove that feeds both body and spirit.\n\nGorilla Z is a bold fusion of genetics and nature—powerful, vibrant, and grounded. With tropical sweetness and earthy depth, it fuels the mind while easing the body.\n\nRaptor believes balance is the sweetest harvest of all. Share generously, rest deeply, and let joy take root.",
+   "quote": "Strong roots. Sweet fruit. Clear mind. Open heart.",
+   "flavor": "Tropical Fruit, Woody, Sweet",
+   "aroma": "Fruity, Earthy, Herbal",
+   "effects": "Focused, Euphoria, Relaxing",
+   "mayRelieve": "Stress, Fatigue, Pain",
    "terpenes": [],
    "growNotes": "",
    "art": {
     "front": "assets/cards/gorilla-zkittlez-front.jpg",
     "back": "assets/cards/gorilla-zkittlez-back.jpg"
    },
-   "printedRealm": "The Rainbow Canopy"
+   "printedRealm": "The Rainbow Canopy",
+   "typeDetail": "60% Indica / 40% Sativa",
+   "thc": "~20–24%",
+   "lineage": "Gorilla Glue #4 x Zkittlez",
+   "aka": "(Gorilla Zkittlez)"
   },
   {
    "id": "blue-dream",
@@ -1758,7 +1805,7 @@ window.WORLD = {
    "id": "og-kush",
    "name": "OG Kush",
    "code": "AG-029",
-   "title": "The Original Gardener",
+   "title": "Where It All Started",
    "category": "Hybrid",
    "realm": "sunlight-realms",
    "district": "cocos-courtyard",
@@ -1766,8 +1813,8 @@ window.WORLD = {
    "relations": [
     "coco"
    ],
-   "body": "Before sunrise, Coco walks the Garden. He notices which flowers opened overnight, which leaves need tending, which paths need sweeping. He greets the Garden before speaking to anyone else.\n\nIn Coco's Courtyard, where every journey begins, grows his oldest companion: OG Kush, the root from which so many other strains have grown. Coco tends it the way he tends everything, season after season, with patience.\n\nTravellers come and go, and new flowers bloom every spring. OG Kush remains, steady as the hands that planted it.\n\nRoots grow long before flowers bloom.",
-   "quote": "The strongest roots are grown in quiet seasons.",
+   "body": "Before sunrise, Coco walks the Garden. He notices which flowers opened overnight, which leaves need tending, which paths need sweeping. This morning, Kasper walked beside him.\n\nTogether, father and son, they planted the Garden's first seeds. In Coco's Courtyard still grows their oldest companion: OG Kush, the root from which so many other strains have grown.\n\nCoco kneels to tend its roots. Kasper lets its seeds ride the wind to places neither of them has seen. Each thinks the other is a little bit wrong, and each is a little bit right.\n\nRoots and wings are not opposites. They belong to the same tree.",
+   "quote": "Coco believes strength comes from putting down roots. Kasper believes seeds fulfil their purpose by riding the wind into new places.",
    "flavor": "Pine, Woody, Lemon",
    "aroma": "Earthy, Pine, Fuel",
    "effects": "Relaxed, Happy, Euphoric",
