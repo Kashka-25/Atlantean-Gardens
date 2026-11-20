@@ -9,7 +9,7 @@ prototype READMEs). Nothing here adds story or world content.
 - [x] **The Living Atlas is the home** (Cassidy, 20 Nov 2026): "I want the home page
       to be the living atlas. This is our discovery. the shop i want us to eventually
       buuild into it later down the track". The site root opens `living-atlas/`;
-      the members and shop pages are retired and redirect there.
+      the members, shop and about pages are retired and redirect there.
 
 ## Later
 - [ ] Build the shop into the Living Atlas.
@@ -32,5 +32,5 @@ prototype READMEs). Nothing here adds story or world content.
 
 ### The public site
 - [x] How `site/` relates to the Atlas: the root opens the Living Atlas, and the
-      members and shop pages redirect to it (20 Nov 2026). `about.html` stays
-      for now.
+      members, shop and about pages redirect to it (20 Nov 2026). Cassidy: "The
+      Atlas and the expereince itself is the about page."

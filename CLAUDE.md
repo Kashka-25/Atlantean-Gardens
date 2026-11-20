@@ -7,10 +7,12 @@ Plain HTML/CSS/JS, no build step:
 - `living-atlas/` — the Living Atlas, the home and main experience (see its README).
 - `index.html` — redirects to `living-atlas/`, carrying over any `?search` and
   `#hash`, so old links and QR codes keep working.
-- `members.html`, `shop.html` — retired (20 Nov 2026); both redirect to the Atlas.
-  The old pages, `members.js` and `members.css` are in git history.
-- `about.html` with `styles.css` and `script.js` — the brand story page.
-- `logo-white.png`, `tea-ceremony.png`
+- `members.html`, `shop.html`, `about.html` — retired (20 Nov 2026); each
+  redirects to the Atlas. Cassidy on the about page: "The Atlas and the
+  expereince itself is the about page." The old pages, `members.js`,
+  `members.css`, `styles.css` and `script.js` are in git history.
+- `logo-white.png`, `tea-ceremony.png` — no page uses them now; kept in case
+  other sites link to them.
 - `.nojekyll` — tells Pages to publish files as-is (no Jekyll pass).
 
 **The Living Atlas is the home (Cassidy, 20 Nov 2026):** "I want the home page
