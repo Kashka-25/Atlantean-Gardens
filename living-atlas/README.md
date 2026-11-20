@@ -71,9 +71,11 @@ the Hearthlands (White Rhino). Both stay "hidden in mist" (not charted on the
 map). Opening one shows Cassidy's own painting of it (`assets/places/<id>.jpg`,
 made with ChatGPT from the prompts in `card-studio/data/far-lands-image-prompts.md`;
 originals in `card-studio/art/far-lands/`) and its verse, quoted from the card.
-Each is also attached to the distant mountains in its realm's painting: a soft
-light with its name glows there in the realm scene, and touching it opens the
-place like a window. Its `spot` in `extra_places.py` gives the position. The
+Each is also attached to the distant mountains in its realm's painting. A soft
+light glows there in the realm scene, with no name, so finding it is a surprise.
+Touching it teleports the visitor: the place's painting bursts out of the light
+to fill the screen, and only then is the place named, with its verse. Its `spot`
+in `extra_places.py` gives the position. The
 sync adds these places back each time it runs.
 
 Type, THC and lineage were fact-checked against breeders' statements,

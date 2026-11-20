@@ -568,7 +568,7 @@
             ${glims.map((g, i) => g.kind === "keepers"
               ? `<button class="glimmer glimmer--keeper${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.9).toFixed(1)}s" data-g="${i}"${found(g) ? ` data-near="${esc(g.name)}"` : ""} aria-label="${found(g) ? esc(g.name) : "Someone hiding"}"><img src="assets/keepers/${g.id}-face.png" alt=""></button>`
               : `<button class="glimmer${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.7).toFixed(1)}s" data-g="${i}"${found(g) ? ` data-near="${esc(g.name)}"` : ""} aria-label="${found(g) ? esc(g.name) : "A hidden glimmer"}"><span></span></button>`).join("")}
-            ${vistas.map((d, i) => `<button class="vista" style="left:${d.spot.x}%;top:${d.spot.y}%" data-vista="${i}" aria-label="Look into ${esc(d.name)}"><span class="vista__glow"></span><span class="vista__name">${esc(d.name)}</span></button>`).join("")}
+            ${vistas.map((d, i) => `<button class="vista" style="left:${d.spot.x}%;top:${d.spot.y}%" data-vista="${i}" aria-label="A distant light"><span class="vista__glow"></span></button>`).join("")}
           </div>
         </div>
         <div class="scene__fore" aria-hidden="true" style="background-image:url('${esc(r.image)}')"></div>
@@ -686,29 +686,28 @@
     toast(`✦ ${r.name} has bloomed`);
   }
 
-  /* A place glimpsed in the distance of a realm painting opens like a window: its own painting, name and verse. */
+  /* A light glimpsed in the distance of a realm painting is a way through: touching it teleports the visitor.
+     The place's painting bursts out of the light to fill the screen (the same portal as diving into a realm),
+     and only then is the place named, with its verse and a way back. */
   function openVista(d, r, from) {
     const fb = from.getBoundingClientRect();
     const el = document.createElement("div");
-    el.className = "reveal reveal--vista"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-label", d.name);
-    el.style.setProperty("--fx", (fb.left + fb.width / 2 - innerWidth / 2) + "px");
-    el.style.setProperty("--fy", (fb.top + fb.height / 2 - innerHeight / 2) + "px");
-    el.innerHTML = `
-      <div class="reveal__scrim" data-shut></div>
-      <div class="reveal__body">
-        <img class="reveal__vista" src="${esc(d.image)}" alt="Painting of ${esc(d.name)}">
-        <p class="eyebrow">A place in the ${esc(r.name.replace(/^The /, ""))}</p>
+    el.className = "portal portal--vista"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-label", d.name);
+    el.style.setProperty("--x", (fb.left + fb.width / 2) + "px"); el.style.setProperty("--y", (fb.top + fb.height / 2) + "px");
+    el.innerHTML = `<span class="portal__ring"></span><span class="portal__art" role="img" aria-label="Painting of ${esc(d.name)}" style="background-image:url('${esc(d.image)}')"></span>
+      <div class="vista__arrival">
+        <p class="eyebrow">You have found a place in the ${esc(r.name.replace(/^The /, ""))}</p>
         <h2>${esc(d.name)}</h2>
         ${d.verse ? passageHTML(d.verse) : ""}
-        <div class="reveal__actions"><button class="btn" data-shut>Keep wandering</button></div>
+        <button class="btn btn--gold" data-shut>Keep wandering</button>
       </div>`;
     document.body.appendChild(el);
-    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("is-in")));
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("is-open")));
+    const arrive = setTimeout(() => { el.classList.add("is-arrived"); el.querySelector("[data-shut]").focus(); }, reduceMotion() ? 0 : 1300);
     const onKey = (e) => { if (e.key === "Escape") shut(); };
-    const shut = () => { el.classList.remove("is-in"); setTimeout(() => el.remove(), 450); document.removeEventListener("keydown", onKey); };
+    const shut = () => { clearTimeout(arrive); el.classList.add("is-done"); setTimeout(() => el.remove(), 650); document.removeEventListener("keydown", onKey); };
     document.addEventListener("keydown", onKey);
-    el.querySelectorAll("[data-shut]").forEach((x) => x.addEventListener("click", shut));
-    setTimeout(() => el.querySelector(".reveal__actions button").focus(), 400);
+    el.querySelector("[data-shut]").addEventListener("click", shut);
   }
 
   function revealGlimmer(g, from, done) {
