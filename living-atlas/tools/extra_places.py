@@ -52,7 +52,7 @@ EXTRA_PLACES = [
     },
     {
         "realm": "bubble-coast-realm", "name": "Panama", "image": "assets/places/panama.jpg",
-        "spot": {"x": 50.5, "y": 19.2},  # the far blue land across the sea, on the horizon off the coast
+        "spot": {"x": 56.5, "y": 18.3},  # the far blue land across the sea, on the horizon off the coast
         "verse": {"source": "Panama Red · AG-088", "lines": [
             "After the mountains, I followed the old stories south, to the narrow land where two oceans almost touch."]},
     },
