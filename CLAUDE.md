@@ -3,11 +3,27 @@
 ## This repo (`site/`)
 Public static site for Atlantean Gardens ("Atlantis Rising: Myth Made Medicine"),
 served by GitHub Pages from `main` at https://kashka-25.github.io/Atlantean-Gardens/.
-Plain HTML/CSS/JS, no build step:
-- `index.html`, `about.html`, `shop.html`, `members.html`
-- `styles.css`, `members.css`, `script.js`, `members.js`
-- `logo-white.png`, `tea-ceremony.png`
+Plain HTML/CSS/JS, no build step. The site *is* the Living Atlas (see `README.md`):
+- `index.html`, `css/`, `js/`, `data/` (`data/world.js`), `assets/`, `tools/` —
+  the Living Atlas, at the site root.
+- `living-atlas/index.html` — card links and QR codes point at
+  `/living-atlas/#/cards/<id>`, so this sends them on to the root, keeping any
+  `?search` and `#hash`.
+- `404.html` — GitHub Pages shows it for any address that doesn't exist (such
+  as the retired about, shop and members pages); it sends visitors to the root.
 - `.nojekyll` — tells Pages to publish files as-is (no Jekyll pass).
+
+**The Living Atlas is the site (Cassidy, 20 Nov 2026):**
+- "I want the home page to be the living atlas. This is our discovery. the shop
+  i want us to eventually buuild into it later down the track"
+- "I think we should get rid of the main site compeltely and make this atlas
+  experience the new main site"
+- On the about page: "The Atlas and the expereince itself is the about page."
+
+So the old main site is deleted: the about, shop and members pages, and their
+stylesheet, scripts and two images. The 9 Nov idea page (`idea/`) went too
+(Cassidy: "Remove it"). It's all in git history. The shop will be
+built into the Atlas later.
 
 Pages uses the "deploy from branch" (legacy) source, so every push to `main`
 rebuilds and redeploys. Never push `main` directly; work on a branch and open a PR.
@@ -28,9 +44,9 @@ Local folder `C:\Users\cassi\Projects\Atlantean-Gardens\` also holds:
   one entity). README plans Supabase, Printify, Stripe, Cloudflare R2 and Netlify;
   `.env.example` lists those keys, none are wired up.
 
-**OPEN DECISION (Cassidy's call):** which prototype the real Atlantean Gardens
-experience grows from — the Living Atlas, the Next.js MVP, or a combination.
-Do not pick one, merge them, or port content between them without Cassidy's say-so.
+The Living Atlas grew from the first prototype and is now the site itself (`site/`).
+Whether the Next.js MVP is kept hasn't been decided; don't change it, merge it
+or port content from it without Cassidy's say-so.
 
 ## Brand and story material
 Lives in `C:\Users\cassi\OneDrive\Documents\Atlantean Gardens\` (Manuscripts,

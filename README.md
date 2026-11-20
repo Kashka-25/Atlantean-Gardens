@@ -5,15 +5,19 @@ A static, single-page preview of the full Atlantean Gardens experience, built
 `OneDrive\Documents\Atlantean Gardens\Atlas World\`.
 
 Every name, story, quote and image comes from Cassidy's own material. Nothing
-is invented: empty fields quote Manuscript V instead of being filled in. Published as a work in progress at `/living-atlas/` on the Atlantean Gardens site.
+is invented: empty fields quote Manuscript V instead of being filled in. Since 20 Nov 2026 it is the Atlantean Gardens site itself, at the site root
+(https://kashka-25.github.io/Atlantean-Gardens/). Cassidy: "I think we should get
+rid of the main site compeltely and make this atlas experience the new main site".
+`living-atlas/index.html` sends old links and QR codes (`/living-atlas/#/cards/<id>`)
+on to the root, and `404.html` sends any other unknown address there.
 
 ## Run it
 
 ```bash
-python -m http.server 8765 --directory dream-experience
+python -m http.server 8768 --directory site
 ```
 
-Then open http://localhost:8765. Opening `index.html` directly also works,
+Then open http://localhost:8768. Opening `index.html` directly also works,
 because there is no fetch; the data loads from `data/world.js`.
 
 ## What's in it
@@ -49,7 +53,7 @@ Realm paintings, keeper crops and the map are in `assets/`. They were resized
 from the originals with Pillow.
 
 Cards finished in the card studio are brought in by
-`python tools/sync_studio_cards.py <card-studio dir>` (run from `living-atlas/`).
+`python tools/sync_studio_cards.py <card-studio dir>` (run from the site root).
 For every row marked "Card done" in `card-studio/strains.xlsx` it writes the
 finished front and the clean back from `card-studio/out/` (never the
 `-back-qr.png` print version) at 560 px wide; refreshes type, THC and lineage
@@ -162,5 +166,6 @@ advice; it never states a medical effect.
   locations now have a dedicated painting.
 - Respects reduced motion: no zoom and no ambient particles; it goes straight
   into the scene.
-- Source of truth is now `site/living-atlas/`; the older local
+- Source of truth is now `site/` (the Atlas moved there from `site/living-atlas/`
+  on 20 Nov 2026); the older local
   `dream-experience/` folder is superseded.

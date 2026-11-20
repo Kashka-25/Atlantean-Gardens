@@ -18,7 +18,7 @@ hasn't checked yet stay off the Atlas even when they are "Card done".
 Words come only from the sheet (Cassidy's approved card text).
 
 Usage: python tools/sync_studio_cards.py <card-studio dir> [--only id ...] [--refill id ...]
-Run from living-atlas/. Needs Node (to read the sheet with the studio's own
+Run from the site root. Needs Node (to read the sheet with the studio's own
 reader) and Pillow.
 """
 import json

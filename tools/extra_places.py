@@ -22,7 +22,7 @@ District columns, so the sync places the card here.
 
 data/world.js is rebuilt by build_data.py from Cassidy's own canon, which
 doesn't include these places, so sync_studio_cards.py adds them back each time
-it runs. To add them on their own: python tools/extra_places.py (from living-atlas/).
+it runs. To add them on their own: python tools/extra_places.py (from the site root).
 """
 import json
 import os
