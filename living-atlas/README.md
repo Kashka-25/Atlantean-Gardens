@@ -66,14 +66,14 @@ them: re-run the sync after any rebuild. The QR code on each printed back opens
 Some places come from the card studio rather than from Cassidy's original
 canon. Cassidy decided (20 Nov 2026) that these are "places within already
 existed places", so `tools/extra_places.py` adds each one to its realm's Places:
-The Sky Peaks in the Sunlight Realms (Golden Goat), and The Frostveil Expanse in
-the Hearthlands (White Rhino), and Panama off the Bubble Coast (Panama Red).
+The Sky Peaks in the Sunlight Realms (Golden Goat), The Frostveil Expanse in
+the Hearthlands (White Rhino), and The Horizon Isles off the Bubble Coast (Panama Red).
 All stay "hidden in mist" (not charted on the
 map). Opening one shows Cassidy's own painting of it (`assets/places/<id>.jpg`,
 made with ChatGPT from the prompts in `card-studio/data/far-lands-image-prompts.md`;
 originals in `card-studio/art/far-lands/`) and its verse, quoted from the card.
 Each is also attached to a far spot in its realm's painting: distant mountains,
-or for Panama the land across the sea. A soft
+or for the Horizon Isles the far land across the sea. A soft
 light glows there in the realm scene, with no name, so finding it is a surprise.
 Touching it teleports the visitor: the place's painting bursts out of the light
 to fill the screen, and only then is the place named, with its verse. Its `spot`

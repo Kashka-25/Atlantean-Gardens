@@ -216,7 +216,7 @@ window.WORLD = {
      "verse": null
     },
     {
-     "name": "Panama",
+     "name": "The Horizon Isles",
      "charted": false,
      "verse": {
       "source": "Panama Red · AG-088",
@@ -263,7 +263,7 @@ window.WORLD = {
     "the-pearl-steps": "The Pearl Steps",
     "coral-gardens": "Coral Gardens",
     "tidekeepers-cove": "Tidekeeper's Cove",
-    "panama": "Panama"
+    "the-horizon-isles": "The Horizon Isles"
    },
    "pin": {
     "x": 63.5,
@@ -3701,7 +3701,7 @@ window.WORLD = {
    "title": "The Red That Got Away",
    "category": "Sativa",
    "realm": "bubble-coast-realm",
-   "district": "panama",
+   "district": "the-horizon-isles",
    "tags": [],
    "relations": [
     "kasper"

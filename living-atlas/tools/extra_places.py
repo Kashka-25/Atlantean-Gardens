@@ -9,9 +9,11 @@ card-studio/data/far-lands-image-prompts.md; originals in
 card-studio/art/far-lands/) and its verse, quoted from the card that names it.
 Both stay "hidden in mist" (not charted on the Atlas map).
 
-Panama joined them the same day: Cassidy said Panama Red "belongs off the coast"
-of the Bubble Coast, and chose a new place off the coast over The Pearl Steps.
-So Panama is a far place of the Bubble Coast Realm, done the same way.
+The Horizon Isles joined them the same day: Cassidy said Panama Red "belongs off
+the coast" of the Bubble Coast, and chose a new place off the coast over The Pearl
+Steps. She named it The Horizon Isles, broad enough for other strains from faraway
+shores to live there too. So it is a far place of the Bubble Coast Realm, done the
+same way.
 
 Each is also attached to a spot in its realm's painting (Cassidy: "I want these
 two locations to be attached to a certain place in these realms. The frostveil
@@ -19,8 +21,8 @@ Expanse, attached to the mountains in the distance of the Hearthland Realms").
 A soft light glows on that spot in the realm scene, and touching it opens the
 place's painting. "spot" is x, y in percent of the 3:2 realm painting: the
 Frostveil Expanse sits on the violet peaks behind the Hearthlands' aqueduct,
-the Sky Peaks on the snowy peaks behind the Sunlight Realms' palace, and Panama on
-the far blue land across the sea on the Bubble Coast's horizon.
+the Sky Peaks on the snowy peaks behind the Sunlight Realms' palace, and the
+Horizon Isles on the far blue land across the sea on the Bubble Coast's horizon.
 
 A place's light and painting appear only once its painting is in assets/places/.
 Until then it is listed under the realm's Places with its verse, and its card
@@ -51,7 +53,7 @@ EXTRA_PLACES = [
             "Far beyond the Garden, where the snow never melts, lies the Frostveil Expanse."]},
     },
     {
-        "realm": "bubble-coast-realm", "name": "Panama", "image": "assets/places/panama.jpg",
+        "realm": "bubble-coast-realm", "name": "The Horizon Isles", "image": "assets/places/horizon-isles.jpg",
         "spot": {"x": 56.5, "y": 18.3},  # the far blue land across the sea, on the horizon off the coast
         "verse": {"source": "Panama Red · AG-088", "lines": [
             "After the mountains, I followed the old stories south, to the narrow land where two oceans almost touch."]},
