@@ -196,7 +196,8 @@
         </div>
         <div data-pane="places" hidden>
           <ul class="districts">${r.districts.map((d) => d.verse
-            ? `<li class="has-verse${d.charted ? " is-charted" : ""}"><details><summary>${esc(d.name)}</summary>${passageHTML(d.verse)}</details></li>`
+            // A place with its own painting (tools/extra_places.py) shows it when opened, above its verse.
+            ? `<li class="has-verse${d.image ? " has-art" : ""}${d.charted ? " is-charted" : ""}"><details><summary>${esc(d.name)}</summary>${d.image ? `<img class="district__art" src="${esc(d.image)}" alt="Painting of ${esc(d.name)}" loading="lazy">` : ""}${passageHTML(d.verse)}</details></li>`
             : `<li class="${d.charted ? "is-charted" : ""}">${esc(d.name)}</li>`).join("")}</ul>
           <p class="legend">✦ charted on the Atlas · ❧ open a place to hear its verse · dashed: still hidden in mist</p>
         </div>
@@ -557,6 +558,8 @@
     discover("realms", r.id, r.name);
     const glims = glimmersFor(r);
     const found = isFound;
+    // Places attached to a spot in this realm's painting (tools/extra_places.py): a soft light there opens the place.
+    const vistas = r.districts.filter((d) => d.image && d.spot);
     stage.innerHTML = `
       <section class="scene view" aria-label="${esc(r.name)}">
         <div class="scene__vp" id="scene-vp">
@@ -565,6 +568,7 @@
             ${glims.map((g, i) => g.kind === "keepers"
               ? `<button class="glimmer glimmer--keeper${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.9).toFixed(1)}s" data-g="${i}"${found(g) ? ` data-near="${esc(g.name)}"` : ""} aria-label="${found(g) ? esc(g.name) : "Someone hiding"}"><img src="assets/keepers/${g.id}-face.png" alt=""></button>`
               : `<button class="glimmer${found(g) ? " is-found" : ""}" style="left:${g.spot[0]}%;top:${g.spot[1]}%;--d:${(i * 0.7).toFixed(1)}s" data-g="${i}"${found(g) ? ` data-near="${esc(g.name)}"` : ""} aria-label="${found(g) ? esc(g.name) : "A hidden glimmer"}"><span></span></button>`).join("")}
+            ${vistas.map((d, i) => `<button class="vista" style="left:${d.spot.x}%;top:${d.spot.y}%" data-vista="${i}" aria-label="A distant light"><span class="vista__glow"></span></button>`).join("")}
           </div>
         </div>
         <div class="scene__fore" aria-hidden="true" style="background-image:url('${esc(r.image)}')"></div>
@@ -603,6 +607,7 @@
     updateCount();
     stage.querySelector("[data-leave]").addEventListener("click", () => leaveRealm(r.id));
     stage.querySelector("[data-tale]").addEventListener("click", () => openRealm(r.id));
+    stage.querySelectorAll(".vista").forEach((b) => b.addEventListener("click", () => openVista(vistas[+b.dataset.vista], r, b)));
     stage.querySelectorAll(".glimmer").forEach((b) => b.addEventListener("click", () => {
       const g = glims[+b.dataset.g];
       revealGlimmer(g, b, () => {
@@ -679,6 +684,30 @@
     el.querySelector("[data-bloom-ok]").addEventListener("click", close);
     setTimeout(close, 9000);
     toast(`✦ ${r.name} has bloomed`);
+  }
+
+  /* A light glimpsed in the distance of a realm painting is a way through: touching it teleports the visitor.
+     The place's painting bursts out of the light to fill the screen (the same portal as diving into a realm),
+     and only then is the place named, with its verse and a way back. */
+  function openVista(d, r, from) {
+    const fb = from.getBoundingClientRect();
+    const el = document.createElement("div");
+    el.className = "portal portal--vista"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-label", d.name);
+    el.style.setProperty("--x", (fb.left + fb.width / 2) + "px"); el.style.setProperty("--y", (fb.top + fb.height / 2) + "px");
+    el.innerHTML = `<span class="portal__ring"></span><span class="portal__art" role="img" aria-label="Painting of ${esc(d.name)}" style="background-image:url('${esc(d.image)}')"></span>
+      <div class="vista__arrival">
+        <p class="eyebrow">You have found a place in the ${esc(r.name.replace(/^The /, ""))}</p>
+        <h2>${esc(d.name)}</h2>
+        ${d.verse ? passageHTML(d.verse) : ""}
+        <button class="btn btn--gold" data-shut>Keep wandering</button>
+      </div>`;
+    document.body.appendChild(el);
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("is-open")));
+    const arrive = setTimeout(() => { el.classList.add("is-arrived"); el.querySelector("[data-shut]").focus(); }, reduceMotion() ? 0 : 1300);
+    const onKey = (e) => { if (e.key === "Escape") shut(); };
+    const shut = () => { clearTimeout(arrive); el.classList.add("is-done"); setTimeout(() => el.remove(), 650); document.removeEventListener("keydown", onKey); };
+    document.addEventListener("keydown", onKey);
+    el.querySelector("[data-shut]").addEventListener("click", shut);
   }
 
   function revealGlimmer(g, from, done) {

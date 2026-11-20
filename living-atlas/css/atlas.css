@@ -418,6 +418,9 @@ button { font: inherit; color: inherit; }
 .districts details summary::after { content: " ❧"; color: var(--gold); }
 .districts details[open] { background: rgba(210,171,98,.1); border-radius: 10px; }
 .districts details .passage { padding: 0 .8rem .7rem; margin: 0; }
+/* A place with its own painting opens across the whole row, painting first. */
+.districts li.has-art:has(details[open]) { grid-column: 1 / -1; }
+.districts .district__art { display: block; width: calc(100% - 1.6rem); margin: 0 .8rem .6rem; border-radius: 8px; aspect-ratio: 3 / 2; object-fit: cover; box-shadow: 0 6px 18px rgba(0,0,0,.35); }
 .districts details .passage blockquote { font-size: 1rem; }
 .districts li.has-verse:has(details[open]) { grid-column: 1 / -1; }
 
@@ -487,6 +490,24 @@ button { font: inherit; color: inherit; }
 .reveal__title { margin: .2rem 0 0; font-style: italic; color: var(--gold-2); }
 .reveal__hint { margin: .4rem 0 0; font-size: .9rem; color: var(--text-dim); font-style: italic; }
 .reveal__actions { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+/* A light glimpsed in the distance of a realm painting (tools/extra_places.py): no name, just a soft breathing light. */
+.vista { position: absolute; z-index: 2; width: 70px; height: 70px; margin: -35px 0 0 -35px; border: 0; padding: 0; background: none; cursor: pointer; }
+.vista__glow { position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.75) 0 12%, rgba(214,232,255,.45) 34%, rgba(214,232,255,0) 70%);
+  animation: vistaBreathe 5s ease-in-out infinite; }
+@keyframes vistaBreathe { 0%, 100% { transform: scale(.85); opacity: .65; } 50% { transform: scale(1.12); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .vista__glow { animation: none; } }
+/* Touching it teleports: the portal opens on the place's painting, then the place is named. */
+.portal--vista { pointer-events: auto; z-index: 55; }
+.portal--vista .portal__art { background-position: center top; } /* keeps the painted name scroll in view */
+.portal--vista .portal__ring { box-shadow: 0 0 30px 10px rgba(214,232,255,.65), inset 0 0 20px rgba(255,255,255,.7); border-color: #eef6ff; }
+.vista__arrival { position: absolute; left: 50%; bottom: max(1.2rem, env(safe-area-inset-bottom)); width: min(620px, calc(100% - 2rem)); transform: translate(-50%, 16px);
+  text-align: center; padding: 1rem 1.2rem 1.1rem; border-radius: 16px; background: rgba(8,22,29,.72); border: 1px solid var(--gold-dim); backdrop-filter: blur(8px);
+  opacity: 0; transition: opacity .6s, transform .6s cubic-bezier(.2,.8,.2,1); }
+.portal--vista.is-arrived .vista__arrival { opacity: 1; transform: translate(-50%, 0); }
+.vista__arrival h2 { font-family: var(--display); font-weight: 600; color: var(--parch); margin: .1rem 0 .3rem; font-size: 1.5rem; }
+.vista__arrival .passage { margin: 0 auto .8rem; max-width: 560px; }
+@media (prefers-reduced-motion: reduce) { .portal--vista .portal__art, .portal--vista .portal__ring, .vista__arrival { transition: none; } }
 
 @media (max-width: 860px) {
   .scene { height: calc(100vh - 70px - env(safe-area-inset-bottom)); height: calc(100dvh - 70px - env(safe-area-inset-bottom)); }

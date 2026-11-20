@@ -90,6 +90,21 @@ window.WORLD = {
        "Some simply stood in silence."
       ]
      }
+    },
+    {
+     "name": "The Sky Peaks",
+     "charted": false,
+     "verse": {
+      "source": "Golden Goat · AG-075",
+      "lines": [
+       "High above the Garden, where the paths become cliffs and the cliffs become cloud, lie the Sky Peaks, hidden in mist."
+      ]
+     },
+     "image": "assets/places/sky-peaks.jpg",
+     "spot": {
+      "x": 33,
+      "y": 11
+     }
     }
    ],
    "tale": [
@@ -127,7 +142,8 @@ window.WORLD = {
     "the-bards-meadow": "The Bard's Meadow",
     "seedling-nursery": "Seedling Nursery",
     "morning-orchard": "Morning Orchard",
-    "sunpetal-market": "Sunpetal Market"
+    "sunpetal-market": "Sunpetal Market",
+    "the-sky-peaks": "The Sky Peaks"
    },
    "pin": {
     "x": 34.5,
@@ -575,6 +591,21 @@ window.WORLD = {
        "Songs carried history farther than maps ever could."
       ]
      }
+    },
+    {
+     "name": "The Frostveil Expanse",
+     "charted": false,
+     "verse": {
+      "source": "White Rhino · AG-094",
+      "lines": [
+       "Far beyond the Garden, where the snow never melts, lies the Frostveil Expanse."
+      ]
+     },
+     "image": "assets/places/frostveil-expanse.jpg",
+     "spot": {
+      "x": 54,
+      "y": 23.5
+     }
     }
    ],
    "tale": [
@@ -611,7 +642,8 @@ window.WORLD = {
     "the-hearth-circle": "The Hearth Circle",
     "lantern-square": "Lantern Square",
     "festival-green": "Festival Green",
-    "songkeepers-hall": "Songkeeper's Hall"
+    "songkeepers-hall": "Songkeeper's Hall",
+    "the-frostveil-expanse": "The Frostveil Expanse"
    },
    "pin": {
     "x": 27.5,

@@ -29,6 +29,10 @@ import sys
 
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from extra_places import add_extra_places  # noqa: E402  (places within realms from the card studio)
+
+
 def ids_after(flag):
     """The Web IDs listed after a flag, up to the next flag."""
     if flag not in sys.argv:
@@ -70,6 +74,9 @@ def save_jpg(src, dst, width=560):
 raw = open(WORLD, encoding="utf-8").read()
 head, body = raw.split("window.WORLD = ", 1)
 world = json.loads(body.rstrip().rstrip(";"))
+places = add_extra_places(world)  # before cards are placed, so cards set there find their place
+if places:
+    print(f"places added: {', '.join(places)}")
 by_id = {s["id"]: s for s in world["strains"]}
 realm_by_name = {r["name"]: r for r in world["realms"]}
 
