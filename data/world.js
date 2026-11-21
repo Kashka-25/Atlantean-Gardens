@@ -915,7 +915,8 @@ window.WORLD = {
     "moonpetal-sanctuary": "Moonpetal Sanctuary",
     "garden-of-first-light": "Garden of First Light",
     "the-observatory-of-becoming": "The Observatory of Becoming",
-    "the-constellation-orchard": "The Constellation Orchard"
+    "the-constellation-orchard": "The Constellation Orchard",
+    "nebula-grove": "Nebula Grove"
    },
    "pin": {
     "x": 52.5,
@@ -1363,8 +1364,8 @@ window.WORLD = {
    "code": "AG-015",
    "title": "The Starswept Wanderer",
    "category": "",
-   "realm": null,
-   "district": "",
+   "realm": "celestial-realm",
+   "district": "nebula-grove",
    "tags": [],
    "relations": [
     "kasper"
@@ -1593,8 +1594,8 @@ window.WORLD = {
    "code": "AG-024",
    "title": "The Tidewatcher's Journal",
    "category": "Sativa-Dominant Hybrid",
-   "realm": null,
-   "district": "",
+   "realm": "bubble-coast-realm",
+   "district": "tidekeepers-cove",
    "tags": [],
    "relations": [
     "kasper"
@@ -2405,8 +2406,8 @@ window.WORLD = {
    "code": "AG-049",
    "title": "The Story Collector",
    "category": "Indica",
-   "realm": null,
-   "district": "",
+   "realm": "sunlight-realms",
+   "district": "the-sky-peaks",
    "tags": [],
    "relations": [
     "kasper"
