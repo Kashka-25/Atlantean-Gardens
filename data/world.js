@@ -214,6 +214,20 @@ window.WORLD = {
      "name": "The Glass Lagoon",
      "charted": true,
      "verse": null
+    },
+    {
+     "name": "The Horizon Isles",
+     "charted": false,
+     "verse": {
+      "lines": [
+       "Faraway islands at the very edge of the sea."
+      ]
+     },
+     "image": "assets/places/horizon-isles.jpg",
+     "spot": {
+      "x": 56.5,
+      "y": 18.3
+     }
     }
    ],
    "tale": [
@@ -252,7 +266,8 @@ window.WORLD = {
     "whispering-wharf": "Whispering Wharf",
     "the-pearl-steps": "The Pearl Steps",
     "coral-gardens": "Coral Gardens",
-    "tidekeepers-cove": "Tidekeeper's Cove"
+    "tidekeepers-cove": "Tidekeeper's Cove",
+    "the-horizon-isles": "The Horizon Isles"
    },
    "pin": {
     "x": 63.5,
@@ -3736,8 +3751,8 @@ window.WORLD = {
    "code": "AG-088",
    "title": "The Red That Got Away",
    "category": "Sativa",
-   "realm": null,
-   "district": "",
+   "realm": "bubble-coast-realm",
+   "district": "the-horizon-isles",
    "tags": [],
    "relations": [
     "kasper"

@@ -6,8 +6,16 @@ Realms, and the Frostveil Expanse lives out in the distance of the Hearthlands.
 So each is a place (district) of that realm, listed under the realm's Places.
 Opening it shows Cassidy's own painting of it (made with ChatGPT from
 card-studio/data/far-lands-image-prompts.md; originals in
-card-studio/art/far-lands/) and its verse, quoted from the card that names it.
+card-studio/art/far-lands/) and its verse: a line quoted from the card that names
+it, or for the Horizon Isles the line Cassidy chose, its painting's scroll line
+("Use the scroll line", 20 Nov 2026), shown without a source.
 Both stay "hidden in mist" (not charted on the Atlas map).
+
+The Horizon Isles joined them the same day: Cassidy said Panama Red "belongs off
+the coast" of the Bubble Coast, and chose a new place off the coast over The Pearl
+Steps. She named it The Horizon Isles, broad enough for other strains from faraway
+shores to live there too. So it is a far place of the Bubble Coast Realm, done the
+same way.
 
 Each is also attached to a spot in its realm's painting (Cassidy: "I want these
 two locations to be attached to a certain place in these realms. The frostveil
@@ -15,7 +23,12 @@ Expanse, attached to the mountains in the distance of the Hearthland Realms").
 A soft light glows on that spot in the realm scene, and touching it opens the
 place's painting. "spot" is x, y in percent of the 3:2 realm painting: the
 Frostveil Expanse sits on the violet peaks behind the Hearthlands' aqueduct,
-and the Sky Peaks on the snowy peaks behind the Sunlight Realms' palace.
+the Sky Peaks on the snowy peaks behind the Sunlight Realms' palace, and the
+Horizon Isles on the far blue land across the sea on the Bubble Coast's horizon.
+
+A place's light and painting appear only once its painting is in assets/places/.
+Until then it is listed under the realm's Places with its verse, and its card
+is placed there.
 
 The card studio's sheet names the realm and this place in the card's Realm and
 District columns, so the sync places the card here.
@@ -41,7 +54,14 @@ EXTRA_PLACES = [
         "verse": {"source": "White Rhino · AG-094", "lines": [
             "Far beyond the Garden, where the snow never melts, lies the Frostveil Expanse."]},
     },
+    {
+        "realm": "bubble-coast-realm", "name": "The Horizon Isles", "image": "assets/places/horizon-isles.jpg",
+        "spot": {"x": 56.5, "y": 18.3},  # the far blue land across the sea, on the horizon off the coast
+        "verse": {"lines": ["Faraway islands at the very edge of the sea."]},  # the painting's scroll line, Cassidy's choice
+    },
 ]
+
+HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def slug(s):
@@ -55,9 +75,13 @@ def add_extra_places(world):
     added = []
     for place in EXTRA_PLACES:
         realm = realms[place["realm"]]
-        fields = {"name": place["name"], "charted": False, "verse": place["verse"], "image": place["image"], "spot": place["spot"]}
+        fields = {"name": place["name"], "charted": False, "verse": place["verse"]}
+        if os.path.exists(os.path.join(HERE, "..", place["image"])):  # no light until the painting is in
+            fields.update(image=place["image"], spot=place["spot"])
         have = next((d for d in realm["districts"] if d["name"] == place["name"]), None)
         if have:
+            for k in ("image", "spot"):
+                have.pop(k, None)
             have.update(fields)
         else:
             realm["districts"].append(fields)
