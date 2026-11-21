@@ -222,6 +222,11 @@ window.WORLD = {
       "lines": [
        "Faraway islands at the very edge of the sea."
       ]
+     },
+     "image": "assets/places/horizon-isles.jpg",
+     "spot": {
+      "x": 56.5,
+      "y": 18.3
      }
     }
    ],
