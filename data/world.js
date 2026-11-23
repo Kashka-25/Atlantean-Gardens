@@ -3920,6 +3920,37 @@ window.WORLD = {
    "typeDetail": "50/50, per AllBud",
    "thc": "~19–26%",
    "lineage": "Sin N' Juice × Udder Madness (breeder's account)"
+  },
+  {
+   "id": "biskante",
+   "name": "Biskanté",
+   "code": "AG-102",
+   "title": "Unbelievably Flavourful Objects",
+   "category": "Sativa-Dominant Hybrid",
+   "realm": "hearthlands-realm",
+   "district": "the-oven-room",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "At the Old Table, Coco bakes his biscotti twice: once to set the dough, and once more so it lasts the journey.\n\nTonight, in the Oven Room, he let Raptor try. Raptor measured everything twice, frowning hard, as if the dough might wander off. And when Coco wasn't looking, he folded in a few spoonfuls of ripe, sweet melon.\n\nThey came out the wrong shape entirely: round and flat with a little dome in the middle, glowing faintly green, like tiny ships from somewhere very far away.\n\nRaptor stared. Coco stared. Then Raptor began to laugh, and couldn't stop, and Coco laughed with him until the whole room rang.\n\n\"Responsibility can be joyful,\" Coco said, wiping his eyes, and handed him another.\n\nIts makers say it is a child of Biscotti and Melonade. Out in the wider world it goes by Biskanté; in the Garden, everyone calls it Alien Biscotti.",
+   "quote": "Responsibility can be joyful rather than heavy.",
+   "flavor": "Grapefruit, Chestnut, Lemon",
+   "aroma": "Nutty, Citrus, Vanilla",
+   "effects": "Happy, Giggly, Euphoric",
+   "mayRelieve": "Stress, Anxiety, Depression",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/biskante-front.jpg",
+    "back": "assets/cards/biskante-back.jpg"
+   },
+   "printedRealm": "Hearthlands Realm",
+   "typeDetail": "70% Sativa / 30% Indica, per AllBud",
+   "thc": "~22–29%",
+   "lineage": "Melonade × Biscotti #6 (breeder's account)",
+   "aka": "(Alien Biscotti)",
+   "bestTime": "Daytime"
   }
  ],
  "keepers": [
