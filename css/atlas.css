@@ -152,24 +152,7 @@ button { font: inherit; color: inherit; }
 .atlas__map { position: relative; width: max(100%, calc(100vh * 1.5)); aspect-ratio: 3 / 2; margin: auto; min-height: 100%; }
 .atlas__map > img { width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; }
 .atlas__map::after { content: ""; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 160px 40px rgba(7,18,26,.85); }
-.pin {
-  position: absolute; transform: translate(-50%, -50%); z-index: 2;
-  width: 54px; height: 54px; border-radius: 50%; border: 0; padding: 0; cursor: pointer; background: transparent;
-}
-.pin::before, .pin::after { content: ""; position: absolute; inset: 0; border-radius: 50%; }
-.pin::before { inset: 17px; background: radial-gradient(circle, #fff6d8 0 30%, var(--gold) 60%, rgba(210,171,98,0) 72%); box-shadow: 0 0 18px 6px rgba(240,213,149,.7); }
-.pin::after { border: 1.5px solid rgba(240,213,149,.8); animation: ripple 2.8s ease-out infinite; }
-.pin:nth-child(3n)::after { animation-delay: .9s; }
-.pin:nth-child(3n+1)::after { animation-delay: 1.7s; }
 @keyframes ripple { from { transform: scale(.35); opacity: 1; } to { transform: scale(1.35); opacity: 0; } }
-.pin__label {
-  position: absolute; left: 50%; top: calc(100% - 6px); transform: translateX(-50%); white-space: nowrap;
-  font-family: var(--display); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
-  background: var(--glass); border: 1px solid var(--gold-dim); color: var(--parch); padding: .25rem .65rem; border-radius: 999px;
-  opacity: 0; transition: opacity .25s, transform .25s; pointer-events: none;
-}
-.pin:hover .pin__label, .pin:focus-visible .pin__label { opacity: 1; transform: translateX(-50%) translateY(4px); }
-.pin.is-visited::before { background: radial-gradient(circle, #fff 0 25%, var(--sky) 55%, rgba(143,211,224,0) 72%); box-shadow: 0 0 18px 6px rgba(143,211,224,.6); }
 
 .atlas__title {
   position: absolute; top: 1.4rem; left: 1.6rem; z-index: 3; pointer-events: none;
@@ -422,9 +405,6 @@ button { font: inherit; color: inherit; }
   .atlas__title p { font-size: .9rem; }
   .atlas__hint { display: none; }
   .atlas__bar { bottom: .7rem; }
-  .pin { width: 46px; height: 46px; }
-  .pin::before { inset: 14px; }
-  .pin__label { display: none; }
   .strain, .keeper { grid-template-columns: 1fr; }
   .strain__card, .keeper__portrait { position: static; width: 100%; max-width: 300px; margin: 0 auto; }
   .hall { grid-template-columns: repeat(2, 1fr); }
@@ -689,8 +669,6 @@ button { font: inherit; color: inherit; }
 .atlas__bar button small { margin-left: .4rem; color: var(--gold); font-family: var(--serif); letter-spacing: 0; font-size: .82rem; text-transform: none; }
 .atlas__bar button.is-bloomed { color: var(--gold-2); }
 .atlas__bar button.is-bloomed small::after { content: " ✿"; }
-.pin.is-bloomed::before { background: radial-gradient(circle, #fff 0 25%, #f0d595 50%, rgba(240,213,149,0) 72%); box-shadow: 0 0 22px 10px rgba(240,213,149,.85); }
-.pin.is-bloomed::after { border-color: #fff3c4; border-width: 2px; }
 .realm-tile.is-bloomed { border-color: var(--gold); box-shadow: 0 0 24px rgba(210,171,98,.35); }
 .realm-tile.is-bloomed span::after { content: "✿ bloomed"; display: block; font-family: var(--serif); font-style: italic; letter-spacing: 0; color: var(--gold-2); font-size: .85rem; }
 .bloom { position: absolute; inset: 0; z-index: 6; display: grid; place-items: center; pointer-events: none; opacity: 0; transition: opacity .6s; }
@@ -808,7 +786,6 @@ button { font: inherit; color: inherit; }
 .realm-label:hover b { color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.95), 0 0 24px rgba(255,236,180,.9); }
 .realm-label.is-bloomed b::after { content: " ✿"; color: var(--gold-2); }
 @keyframes labelFloat { 0%, 100% { transform: translate(-50%, 22px); } 50% { transform: translate(-50%, 19px); } }
-.pin:hover ~ .realm-label { animation-play-state: paused; }
 
 .atlas__float-title { position: absolute; z-index: 3; top: 22px; left: calc(var(--rail-space) + 16px); transition: left .5s var(--ease); display: flex; gap: .9rem; align-items: center; pointer-events: none; max-width: 420px; }
 .atlas__float-title img { width: 58px; height: 58px; border-radius: 50%; box-shadow: 0 0 24px rgba(240,213,149,.45); animation: breathe 6s ease-in-out infinite; }
@@ -854,7 +831,7 @@ button { font: inherit; color: inherit; }
 
 /* ── Doors beyond the Garden: the four corner archways (23 Nov 2026) ──
    Each door is a living symbol floating over its archway: it drifts, breathes a pale
-   silver glow (the realms' lights are gold) and sends out a slow ripple. Hover or
+   silver glow (the realms' medallions are gold) and sends out a slow ripple. Hover or
    focus it and the door's name opens out from it, inward from its corner. --oy nudges
    a symbol clear of the glass title, hint and realm bar that sit over the corners. */
 .door-mark {
@@ -903,19 +880,43 @@ button { font: inherit; color: inherit; }
 /* On phones the realm bar and the dock float over the map's foot; this room lets the
    bottom edge (and its two doors) be panned up into view. */
 @media (max-width: 860px) { .app[data-view="atlas"] .atlas__map { margin-bottom: 150px; } }
-/* Easier-to-read place names on the map (Cassidy, 23 Nov 2026: "I would also like all of
-   the locations on our map to become easier to read"). Each name sits on a small glass
-   plate instead of a soft shadow, with slightly larger lettering. */
-.realm-label { background: rgba(9,24,31,.72); border: 1px solid rgba(210,171,98,.4); border-radius: 12px; padding: .28rem .95rem .4rem;
-  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: 0 6px 18px rgba(0,0,0,.35); transition: border-color .3s, background .3s; }
-.realm-label::before { display: none; }
-.realm-label i { font-size: .66rem; color: var(--gold); }
-.realm-label b { font-size: clamp(.9rem, 1.25vw, 1.15rem); text-shadow: 0 1px 4px rgba(0,0,0,.6); }
-.realm-label small { font-size: .86rem; opacity: 1; text-shadow: none; }
-.realm-label:hover, .realm-label:focus-visible { border-color: var(--gold-2); background: rgba(9,24,31,.86); }
-.realm-label:hover b { text-shadow: 0 1px 4px rgba(0,0,0,.6), 0 0 16px rgba(255,236,180,.6); }
-@media (max-width: 860px) {
-  .realm-label { padding: .2rem .65rem .3rem; }
-  .realm-label b { font-size: .9rem; }
-  .realm-label small { font-size: .78rem; }
+/* Compact place names that open like the doors (Cassidy, 23 Nov 2026: "make the floating
+   banners of each location more compact please and open like you have done with the 4
+   corner doors"). Each realm is a small glass medallion with its numeral (✦ for the
+   Heart), the same numerals as the realm bar below; the glowing lights that used to sit
+   above them are gone ("Can you please remove the glowing blue sphere from each
+   location"). Hover or focus a medallion and the realm's name and "found" count open out
+   beside it: rightward on the left of the map, leftward on its right side. */
+.realm-label {
+  flex-direction: row; align-items: center; gap: 0; height: 40px; padding: 0; text-align: left;
+  transform: none; translate: -20px 20px; animation: realmFloat 6s ease-in-out infinite; animation-delay: var(--d, 0s);
+  background: rgba(9,24,31,.72); border: 1px solid rgba(210,171,98,.45); border-radius: 999px;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  transition: border-color .3s, background .3s;
 }
+.realm-label--left { flex-direction: row-reverse; text-align: right; translate: calc(-100% + 20px) 20px; }
+.realm-label::before { display: none; }
+.realm-label i { flex: none; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%;
+  font-size: .8rem; font-weight: 600; letter-spacing: .02em; color: var(--gold-2); text-shadow: 0 0 8px rgba(240,213,149,.65);
+  background: radial-gradient(circle at 50% 42%, rgba(240,213,149,.3), rgba(210,171,98,.1) 55%, rgba(9,24,31,0) 75%); }
+.realm-label__name { display: flex; flex-direction: column; justify-content: center; overflow: hidden; white-space: nowrap;
+  max-width: 0; opacity: 0; padding: 0; line-height: 1.2; transition: max-width .5s var(--ease), opacity .3s, padding .5s var(--ease); }
+.realm-label--left .realm-label__name { align-items: flex-end; }
+.realm-label b { font-size: .95rem; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+.realm-label small { font-size: .82rem; opacity: 1; text-shadow: none; }
+.realm-label:hover, .realm-label:focus-visible {
+  z-index: 5; border-color: var(--gold-2); background: rgba(9,24,31,.88); animation-play-state: paused; }
+.realm-label:hover .realm-label__name, .realm-label:focus-visible .realm-label__name {
+  max-width: 18em; opacity: 1; padding: 0 1rem 0 .15rem; }
+.realm-label--left:hover .realm-label__name, .realm-label--left:focus-visible .realm-label__name {
+  padding: 0 .15rem 0 1rem; }
+.realm-label.is-bloomed i { color: #fff3c4; box-shadow: inset 0 0 0 1.5px rgba(255,243,196,.65); }
+@keyframes realmFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@media (max-width: 860px) {
+  .realm-label { height: 36px; translate: -18px 16px; }
+  .realm-label--left { translate: calc(-100% + 18px) 16px; }
+  .realm-label i { width: 34px; height: 34px; font-size: .74rem; }
+  .realm-label b { font-size: .88rem; }
+  .realm-label small { font-size: .76rem; }
+}
+@media (prefers-reduced-motion: reduce) { .realm-label { animation: none; } }
