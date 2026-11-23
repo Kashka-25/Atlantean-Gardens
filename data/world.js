@@ -3891,6 +3891,35 @@ window.WORLD = {
    "thc": "~21–31%",
    "lineage": "Y Life × Snowman (Cookies' account)",
    "bestTime": "Evening"
+  },
+  {
+   "id": "terpgasm",
+   "name": "Terpgasm",
+   "code": "AG-101",
+   "title": "The Burst of Bliss",
+   "category": "Hybrid",
+   "realm": "living-harvest-realm",
+   "district": "honey-hollow",
+   "tags": [],
+   "relations": [
+    "raptor"
+   ],
+   "body": "Raptor carries extra supplies everywhere, just in case. Rope, bandages, a spare lantern, three kinds of seed, and a biscuit for whoever forgot to eat.\n\nKasper is always telling him to slow down and say hello to a flower. So this evening in Honey Hollow, with Kasper grinning beside him, Raptor set down his heavy pack, feeling a little silly, knelt beside one small, ordinary-looking bloom, and leaned in.\n\nIt answered all at once: a great burst of blossom and grapefruit and sweet wild green that tipped the big, sensible Raptor right over backwards into the clover, laughing so hard the bees went quiet to listen. Kasper laughed so hard he fell over too.\n\n\"Terpenes,\" Kasper wheezed, when he could breathe again. \"A flower's own perfume.\" Raptor just lay there a while longer, supplies scattered all around him, smiling at the sky.\n\nSome say this one came from misty hills far away, with a little Mimosa sunrise somewhere in its family.",
+   "quote": "He knows emotions deserve space.",
+   "flavor": "Grapefruit, Floral, Citrus",
+   "aroma": "Floral, Grapefruit, Sweet",
+   "effects": "Euphoric, Relaxed, Creative, Focused",
+   "mayRelieve": "Stress, Pain, Fatigue",
+   "terpenes": [],
+   "growNotes": "",
+   "art": {
+    "front": "assets/cards/terpgasm-front.jpg",
+    "back": "assets/cards/terpgasm-back.jpg"
+   },
+   "printedRealm": "Living Harvest Realm",
+   "typeDetail": "50/50, per AllBud",
+   "thc": "~19–26%",
+   "lineage": "Sin N' Juice × Udder Madness (breeder's account)"
   }
  ],
  "keepers": [
