@@ -13,6 +13,10 @@ prototype READMEs). Nothing here adds story or world content.
       The Atlas now lives at the site root, and the old main site (about, shop,
       members) is deleted.
 
+- [ ] **The site's domain is atlanteangardens.org** (Cassidy, 23 Nov 2026: "We now own:
+      atlanteangardens.org"). `CNAME` sets it as the Pages custom domain once
+      DNS resolves; then turn on Enforce HTTPS. QR codes on the card backs point there.
+
 ## Later
 - [ ] Build the shop into the Living Atlas.
 

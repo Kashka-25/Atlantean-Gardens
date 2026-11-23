@@ -2,7 +2,11 @@
 
 ## This repo (`site/`)
 Public static site for Atlantean Gardens ("Atlantis Rising: Myth Made Medicine"),
-served by GitHub Pages from `main` at https://kashka-25.github.io/Atlantean-Gardens/.
+served by GitHub Pages from `main` at https://atlanteangardens.org/ (Cassidy's domain, 23 Nov 2026:
+"We now own: atlanteangardens.org"). The `CNAME` file sets it as the Pages custom domain;
+GitHub sends the old https://kashka-25.github.io/Atlantean-Gardens/ addresses there.
+DNS at the registrar: apex A/AAAA records to GitHub Pages, `www` CNAME to
+`kashka-25.github.io`. Card QR codes point at `https://atlanteangardens.org/#/cards/<id>`.
 Plain HTML/CSS/JS, no build step. The site *is* the Living Atlas (see `README.md`):
 - `index.html`, `css/`, `js/`, `data/` (`data/world.js`), `assets/`, `tools/` —
   the Living Atlas, at the site root.
