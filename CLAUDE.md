@@ -13,8 +13,12 @@ Plain HTML/CSS/JS, no build step. The site *is* the Living Atlas (see `README.md
 - `living-atlas/index.html` — card links and QR codes point at
   `/living-atlas/#/cards/<id>`, so this sends them on to the root, keeping any
   `?search` and `#hash`.
-- `404.html` — GitHub Pages shows it for any address that doesn't exist (such
-  as the retired about, shop and members pages); it sends visitors to the root.
+- `404.html` — GitHub Pages shows it for any address that doesn't exist. Card
+  short links from the printed QR codes, `/C/<WEB ID>` in capitals (e.g.
+  `/C/TERPGASM`; `/c/terpgasm` works too), open that card at `/#/cards/<web id>`,
+  and an ID the Atlas doesn't have opens the Strains list. New cards need
+  nothing added. Any other unknown address (such as the retired about, shop and
+  members pages) goes to the root.
 - `.nojekyll` — tells Pages to publish files as-is (no Jekyll pass).
 
 **The Living Atlas is the site (Cassidy, 20 Nov 2026):**
