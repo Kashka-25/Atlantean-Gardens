@@ -20,6 +20,25 @@ prototype READMEs). Nothing here adds story or world content.
 ## Later
 - [ ] Build the shop into the Living Atlas.
 
+### Doors beyond the Garden (Cassidy, 23 Nov 2026)
+The four archways painted in the corners of the Atlas home map lead *beyond* the
+Garden, to worlds that teach about other natural plant medicines. The seven realms
+stay as they are. On the map now: a pale light at each archway and a banner saying
+the door is "A work in progress". Opening it shows a "Work in progress" panel
+(`DOORS` in `js/atlas.js`).
+- [ ] **The Kingdom of Fungi** (mushroom arch, bottom right; Cassidy's own pick).
+- [ ] **The Realm of Ritual** (moonlit ruins, bottom left): "cacao, blue lotus, and
+      other alternatives like that". Cassidy: "majorly important to for reminding
+      people about the sacredness of life".
+- [ ] **The Deep** (crystal sea cave, top right): medicines of the sea.
+- [ ] **From Plant to Pharmacy** (sunlit flowering arch, top left): where today's
+      medicines began.
+- Psychedelic plants have no door of their own. Cassidy: "it is best if it is split
+  into all the doors as it is present in so many different realms".
+- Still open: the corners other than Fungi (Claude's suggestion); whether The Deep
+  covers sea plants and algae only, or sea creatures too; each world's guide, art
+  and content.
+
 ### The Living Atlas (first prototype notes)
 - [ ] Add per-realm background art to `assets/realms/` (README: placeholder gradient today).
 - [ ] Add strain card and keeper portrait art; the detail panel is text-only so far.
