@@ -276,28 +276,33 @@ button { font: inherit; color: inherit; }
 .flip__side img { width: 100%; height: 100%; object-fit: cover; }
 .flip__back { transform: rotateY(180deg); }
 .flip__hint { text-align: center; color: var(--text-dim); font-size: .9rem; margin-top: .7rem; font-style: italic; }
-.parchment {
-  background: radial-gradient(ellipse at 30% 20%, #fbf2dc, var(--parch) 45%, var(--parch-2));
-  color: var(--parch-ink); border-radius: var(--radius); padding: clamp(1.3rem, 3vw, 2.2rem);
-  box-shadow: 0 20px 60px rgba(0,0,0,.4), inset 0 0 60px rgba(150,110,50,.18); border: 1px solid #d9c08c;
-}
-.parchment h1 { font-family: var(--display); font-weight: 600; font-size: clamp(1.7rem, 3.4vw, 2.5rem); margin: .1rem 0 0; color: #2c4a3c; line-height: 1.15; }
-.parchment .sub { font-style: italic; color: var(--ink-soft); font-size: 1.15rem; margin: .1rem 0 .9rem; }
-.parchment .eyebrow { color: #9a7432; }
-.parchment .chip { color: #5b4220; border-color: rgba(120,85,35,.35); background: rgba(255,255,255,.35); }
-.parchment blockquote { margin: 1.2rem 0; padding: .2rem 0 .2rem 1.1rem; border-left: 3px solid #c39b52; font-style: italic; font-size: 1.25rem; color: #4b3a20; }
-.parchment .empty { color: #7a6443; border-color: rgba(120,85,35,.35); background: rgba(255,255,255,.25); }
-.ptabs { display: flex; flex-wrap: wrap; gap: .2rem; border-bottom: 1px solid rgba(120,85,35,.25); margin: 1.2rem 0 1rem; }
-.ptabs button { border: 0; background: none; cursor: pointer; padding: .5rem .75rem; color: var(--ink-soft); font-family: var(--display); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; border-bottom: 2px solid transparent; }
-.ptabs button[aria-selected="true"] { color: #2c4a3c; border-color: #b68a3e; }
-.kv { display: grid; grid-template-columns: max-content 1fr; gap: .35rem 1.2rem; margin: 0; }
-.kv dt { font-family: var(--display); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: #9a7432; padding-top: .3rem; }
-.kv dd { margin: 0; }
-.kv-note { margin: .9rem 0 0; font-size: .82rem; font-style: italic; line-height: 1.45; color: #7a6443; }
+/* A strain's Herbarium panel: dark glass like the Keeper pages, lit in its realm's own light
+   (--light, set on .herbarium). It used to be bright parchment. */
+.parchment { --light: var(--gold);
+  background: linear-gradient(180deg, rgba(14,34,40,.88), rgba(8,22,29,.92)); color: var(--text);
+  border-radius: 18px; padding: clamp(1.3rem, 3vw, 2.4rem); border: 1px solid rgba(210,171,98,.28);
+  box-shadow: 0 24px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(240,213,149,.12); backdrop-filter: blur(10px);
+  font-size: 1.12rem; line-height: 1.65; }
+.herbarium .parchment { --light: inherit; }
+.parchment p { color: rgba(243,234,214,.92); }
+.parchment h1 { font-family: var(--display); font-weight: 600; font-size: clamp(1.7rem, 3.4vw, 2.5rem); margin: .1rem 0 0; color: var(--parch); line-height: 1.15; }
+.parchment .sub { font-style: italic; color: var(--gold-2); font-size: 1.15rem; margin: .1rem 0 .9rem; }
+.parchment .eyebrow { color: var(--light); }
+.parchment .chip { color: var(--parch); border-color: color-mix(in srgb, var(--light) 45%, transparent); background: color-mix(in srgb, var(--light) 10%, transparent); }
+.parchment blockquote { margin: 1.2rem 0; padding: .2rem 0 .2rem 1.1rem; border-left: 3px solid var(--light); font-style: italic; font-size: 1.25rem; color: var(--parch); }
+.ptabs { display: flex; flex-wrap: wrap; gap: .2rem; border-bottom: 1px solid rgba(210,171,98,.22); margin: 1.2rem 0 1.1rem; }
+.ptabs button { border: 0; background: none; cursor: pointer; padding: .6rem .8rem; color: rgba(243,234,214,.7); font-family: var(--display); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; border-bottom: 2px solid transparent; transition: color .25s, border-color .25s; }
+.ptabs button:hover { color: var(--parch); }
+.ptabs button[aria-selected="true"] { color: var(--gold-2); border-color: var(--light); }
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: .45rem 1.3rem; margin: 0; }
+.kv dt { font-family: var(--display); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); padding-top: .35rem; }
+.kv dd { margin: 0; color: var(--text); }
+.kv-note { margin: 1rem 0 0; font-size: .92rem; font-style: italic; line-height: 1.5; color: var(--text-dim); }
 .kin { display: flex; flex-wrap: wrap; gap: .7rem; }
-.kin a { display: flex; align-items: center; gap: .55rem; text-decoration: none; padding: .3rem .8rem .3rem .3rem; border-radius: 999px; background: rgba(255,255,255,.4); border: 1px solid rgba(120,85,35,.25); }
+.kin a { display: flex; align-items: center; gap: .55rem; text-decoration: none; color: var(--parch); padding: .3rem .85rem .3rem .3rem; border-radius: 999px; background: rgba(255,255,255,.04); border: 1px solid rgba(210,171,98,.28); transition: border-color .25s, background .25s; }
+.kin a:hover { border-color: var(--light); background: rgba(210,171,98,.08); }
 .kin img, .kin .dot { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; }
-.kin .dot { display: grid; place-items: center; background: #2c4a3c; color: var(--gold-2); font-family: var(--display); font-size: .7rem; }
+.kin .dot { display: grid; place-items: center; background: var(--tide-2); color: var(--gold-2); font-family: var(--display); font-size: .7rem; }
 .backlink { display: inline-flex; align-items: center; gap: .4rem; color: var(--gold-2); text-decoration: none; margin-bottom: 1.4rem; font-size: 1rem; }
 .crumbs { color: var(--text-dim); font-size: .95rem; margin-bottom: 1.2rem; }
 .crumbs a { color: var(--gold-2); text-decoration: none; }
@@ -452,12 +457,13 @@ button { font: inherit; color: inherit; }
 .nudge .passage blockquote { color: var(--gold-2); font-size: 1.2rem; }
 .nudge--page { max-width: 46rem; margin: 2.6rem auto 0; text-align: center; }
 .nudge--page .passage figcaption { text-align: center; }
-.plant-ask { margin: 1.2rem 0; padding: 1rem 1.1rem; border-radius: 12px; background: rgba(255,255,255,.3); border: 1px solid rgba(120,85,35,.22); }
+.plant-ask { margin: 1.4rem 0; padding: 1.1rem 1.2rem; border-radius: 12px; border: 1px solid var(--gold-dim);
+  background: radial-gradient(ellipse at 15% 0%, color-mix(in srgb, var(--light, var(--gold)) 14%, transparent), transparent 70%), rgba(243,231,204,.035); }
 .plant-ask .passage { margin: 0; }
-.plant-ask .passage blockquote { color: #4b3a20; font-size: 1.05rem; }
-.plant-ask .passage figcaption { color: #9a7432; }
+.plant-ask .passage blockquote { color: var(--gold-2); font-size: 1.1rem; border: 0; padding: 0; margin: 0; }
+.plant-ask .passage figcaption { color: var(--gold); }
 .empty small { display: block; margin-top: .45rem; font-style: normal; font-family: var(--display); font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
-.parchment .empty small { color: #9a7432; }
+.parchment .empty small { color: var(--gold); }
 .districts li.has-verse { padding: 0; }
 .districts details summary { cursor: pointer; padding: .5rem .75rem; list-style: none; }
 .districts details summary::-webkit-details-marker { display: none; }

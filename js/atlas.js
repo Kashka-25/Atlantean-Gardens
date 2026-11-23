@@ -49,6 +49,12 @@
      (Kasper's blue sprite, Lila's roses, Coco's moss, D'nine's violet flask, Raptor's warm courage). */
   const KEEPER_LIGHT = { kasper: "#8fd3e0", lila: "#e8a5c9", coco: "#a9c47f", dnine: "#b99cf0", raptor: "#e8ac62" };
   const byCode = (a, b) => (a.code || "~").localeCompare(b.code || "~");
+  /* Each realm's own light, the solid form of its glow above: it lights a strain's Herbarium panel. */
+  const REALM_LIGHT = {
+    "sunlight-realms": "#f0c86e", "bubble-coast-realm": "#7fd3e2", "living-harvest-realm": "#bca3e3",
+    "crystal-conservatory-realm": "#c2a8f5", "hearthlands-realm": "#ec9a62", "verdant-wilds-realm": "#8fcd7e",
+    "celestial-realm": "#97a2f5", "heart-of-atlantis": "#9dcd7e",
+  };
 
   /* Card frames take the exact shape of their own artwork, so no card or
      Keeper portrait is ever trimmed (Keeper portraits are taller than the
@@ -283,7 +289,7 @@
           </div>
         </div>
       </section>
-      <section class="page view herbarium">
+      <section class="page view herbarium" style="--light:${(r && REALM_LIGHT[r.id]) || "var(--gold)"}">
         <article class="parchment">
           <p class="eyebrow">From the Herbarium</p>
           <div class="chips">${s.tags.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div>
