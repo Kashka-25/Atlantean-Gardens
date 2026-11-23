@@ -58,6 +58,18 @@ def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower().replace("&", "and").replace("'", "").replace("’", "")).strip("-")
 
 
+def card_keepers(r, place_names):
+    """The card's Gardeners: the sheet's Keeper first (the one the card belongs to), then any other
+    Gardener its scene names, as the card studio's painter paints them too (e.g. Raptor beside Coco
+    on Biskanté). Place names like "Coco's Courtyard" don't count."""
+    lead = [k.strip() for k in re.split(r"[,&]| and ", r["keeper"] or "") if k.strip() in KEEPER_IDS]
+    scene = r.get("scene") or ""
+    for p in place_names:
+        scene = scene.replace(p, "")
+    guests = [n for n in KEEPER_IDS if n not in lead and re.search(r"\b" + re.escape(n) + r"\b", scene)]
+    return [KEEPER_IDS[n] for n in lead + guests]
+
+
 def sheet():
     js = "require(process.argv[1] + '/scripts/lib').readSheet().then(r => process.stdout.write(JSON.stringify(r)))"
     out = subprocess.run(["node", "-e", js, STUDIO], capture_output=True, text=True, encoding="utf-8", check=True, cwd=STUDIO)
@@ -78,6 +90,7 @@ places = add_extra_places(world)  # before cards are placed, so cards set there 
 if places:
     print(f"places added: {', '.join(places)}")
 by_id = {s["id"]: s for s in world["strains"]}
+place_names = [d["name"] for x in world["realms"] for d in x["districts"] if "'" in d["name"] or "’" in d["name"]]
 realm_by_name = {r["name"]: r for r in world["realms"]}
 
 added, refreshed, refilled, art, seen = [], [], [], 0, set()
@@ -123,7 +136,7 @@ for r in sheet():
     s = {
         "id": sid, "name": r["name"], "code": r["code"], "title": r["title"], "category": r["type"],
         "realm": realm["id"] if realm else None, "district": district, "tags": [],
-        "relations": [KEEPER_IDS[k.strip()] for k in re.split(r"[,&]| and ", r["keeper"] or "") if k.strip() in KEEPER_IDS],
+        "relations": card_keepers(r, place_names),
         "body": r["story"], "quote": r["quote"], "flavor": r["flavor"], "aroma": r["aroma"], "effects": r["effects"],
         "mayRelieve": r["mayRelieve"], "terpenes": [], "growNotes": "", "art": paths,
         "printedRealm": r["printedRealm"] or r["realm"],

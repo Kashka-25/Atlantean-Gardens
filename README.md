@@ -27,7 +27,7 @@ because there is no fetch; the data loads from `data/world.js`.
 | Threshold | New tree emblem, trident wordmark and the introduction's closing lines | logo files from Cassidy (9 Nov 2026), `INTRODUCTION Page.docx` |
 | Atlas | Painted map, 8 glowing realm pins | `Seven Realm Atlas.png` |
 | Realm drawer | Painting, tagline, themes, **the tale** (verses quoted from the manuscripts, ending on a reflective nudge), places (22 with their own verse), look and feel, keepers and strains | 6 realm paintings, `The Atlas 7 Worlds.docx`, `living-atlas-prototype/data/realms` |
-| Strains | 101 collector cards (fronts and backs), all placed on the Atlas | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
+| Strains | 102 collector cards (fronts and backs), all placed on the Atlas | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
 | Keepers | Hall of Living Portraits, 5 keeper pages | `The Hll Of Living Portraits.png`, `Character BIBLE.docx` |
 | Lore | 13 manuscripts with provenance and opening inscription | `13 Manuscripts/*.docx` |
 | Journey | Discovery progress, saved only in the visitor's browser | none |
@@ -58,7 +58,9 @@ For every row marked "Card done" in `card-studio/strains.xlsx` it writes the
 finished front and the clean back from `card-studio/out/` (never the
 `-back-qr.png` print version) at 560 px wide; refreshes type, THC and lineage
 on pages that came from the studio; and adds a page, in the sheet's realm and
-district, for any card the Atlas doesn't have yet. When Cassidy has a card
+district, for any card the Atlas doesn't have yet. A new page's Keepers are the
+sheet's Keeper first, then any other Gardener the card's scene names (as the
+card studio's painter paints them), e.g. Coco then Raptor on Biskanté. When Cassidy has a card
 redone, `--refill <web id>` rebuilds that page from the sheet (new story,
 realm and profile) in the same place. `--only <web id> ...` brings in just
 those cards, so finished cards Cassidy hasn't checked yet stay off the
