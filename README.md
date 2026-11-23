@@ -58,7 +58,9 @@ For every row marked "Card done" in `card-studio/strains.xlsx` it writes the
 finished front and the clean back from `card-studio/out/` (never the
 `-back-qr.png` print version) at 560 px wide; refreshes type, THC and lineage
 on pages that came from the studio; and adds a page, in the sheet's realm and
-district, for any card the Atlas doesn't have yet. When Cassidy has a card
+district, for any card the Atlas doesn't have yet. A new page's Keepers are the
+sheet's Keeper first, then any other Gardener the card's scene names (as the
+card studio's painter paints them), e.g. Coco then Raptor on Biskanté. When Cassidy has a card
 redone, `--refill <web id>` rebuilds that page from the sheet (new story,
 realm and profile) in the same place. `--only <web id> ...` brings in just
 those cards, so finished cards Cassidy hasn't checked yet stay off the

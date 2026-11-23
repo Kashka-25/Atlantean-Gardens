@@ -3931,6 +3931,7 @@ window.WORLD = {
    "district": "the-oven-room",
    "tags": [],
    "relations": [
+    "coco",
     "raptor"
    ],
    "body": "At the Old Table, Coco bakes his biscotti twice: once to set the dough, and once more so it lasts the journey.\n\nTonight, in the Oven Room, he let Raptor try. Raptor measured everything twice, frowning hard, as if the dough might wander off. And when Coco wasn't looking, he folded in a few spoonfuls of ripe, sweet melon.\n\nThey came out the wrong shape entirely: round and flat with a little dome in the middle, glowing faintly green, like tiny ships from somewhere very far away.\n\nRaptor stared. Coco stared. Then Raptor began to laugh, and couldn't stop, and Coco laughed with him until the whole room rang.\n\n\"Responsibility can be joyful,\" Coco said, wiping his eyes, and handed him another.\n\nIts makers say it is a child of Biscotti and Melonade. Out in the wider world it goes by Biskanté; in the Garden, everyone calls it Alien Biscotti.",
