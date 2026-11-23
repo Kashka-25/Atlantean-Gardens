@@ -1037,7 +1037,8 @@ window.WORLD = {
    "printedRealm": "The Crystal Conservatory",
    "typeDetail": "70% Indica / 30% Sativa",
    "thc": "~23%",
-   "bestTime": "Evening and nighttime"
+   "bestTime": "Evening and nighttime",
+   "lineage": "Chemdog x Wedding Cake (breeder's account)"
   },
   {
    "id": "glookies",
@@ -1125,7 +1126,8 @@ window.WORLD = {
    "printedRealm": "The Frosted Coast",
    "typeDetail": "60% Indica / 40% Sativa",
    "thc": "~15–23%",
-   "bestTime": "Evening and bedtime"
+   "bestTime": "Evening and bedtime",
+   "lineage": "Afghan Skunk x White Widow (breeder's account; other sources disagree)"
   },
   {
    "id": "lilac-diesel-grape-diamonds",
@@ -1153,7 +1155,8 @@ window.WORLD = {
    },
    "printedRealm": "The Vineyard",
    "thc": "Not published",
-   "bestTime": "Evening and nighttime"
+   "bestTime": "Evening and nighttime",
+   "lineage": "Grape Diamonds x Lilac Diesel (breeder's account)"
   },
   {
    "id": "lusty-lady",
@@ -1297,7 +1300,8 @@ window.WORLD = {
     "back": "assets/cards/grandpa-cookies-back.jpg"
    },
    "printedRealm": "The Orchard",
-   "thc": "22–26%"
+   "thc": "22–26%",
+   "lineage": "Disputed: two different strains share the name Grandpa's Cookies"
   },
   {
    "id": "white-wedding-rbx",
@@ -1362,7 +1366,7 @@ window.WORLD = {
    "name": "Purple Alien OG",
    "code": "AG-015",
    "title": "The Starswept Wanderer",
-   "category": "",
+   "category": "Hybrid",
    "realm": "celestial-realm",
    "district": "nebula-grove",
    "tags": [],
@@ -1382,7 +1386,9 @@ window.WORLD = {
     "back": "assets/cards/purple-alien-og-back.jpg"
    },
    "printedRealm": "The Celestial Expanse",
-   "lineage": "Reported: Alien Kush x Tahoe OG"
+   "lineage": "Reported: Alien Kush x Tahoe OG",
+   "typeDetail": "Reported; AllBud says mostly indica",
+   "thc": "~12–19% (reported)"
   },
   {
    "id": "godfather-og",
@@ -1755,7 +1761,8 @@ window.WORLD = {
    },
    "printedRealm": "Hearthlands Realm",
    "thc": "~16–22%",
-   "bestFor": "Uplifting Evenings, Creative Moments, Kind Hearted Company"
+   "bestFor": "Uplifting Evenings, Creative Moments, Kind Hearted Company",
+   "lineage": "Unknown: an Indiana selection from the 1980s (breeder's account)"
   },
   {
    "id": "bubblegum-og",
@@ -1784,7 +1791,8 @@ window.WORLD = {
    "printedRealm": "Hearthlands Realm",
    "typeDetail": "Cross of Bubblegum & OG Lineage",
    "thc": "20–26% (estimate)",
-   "bestFor": "Uplifting Evenings, Creative Moments, Deep Connection, Grounded Calm"
+   "bestFor": "Uplifting Evenings, Creative Moments, Deep Connection, Grounded Calm",
+   "lineage": "Unknown: no breeder record found"
   },
   {
    "id": "purple-ayahuasca",
