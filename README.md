@@ -9,7 +9,8 @@ is invented: empty fields quote Manuscript V instead of being filled in. Since 2
 (https://atlanteangardens.org/). Cassidy: "I think we should get
 rid of the main site compeltely and make this atlas experience the new main site".
 `living-atlas/index.html` sends old links and QR codes (`/living-atlas/#/cards/<id>`)
-on to the root, and `404.html` sends any other unknown address there.
+on to the root. `404.html` opens the printed QR codes' short links, `/C/<WEB ID>`
+(e.g. `/C/TERPGASM`), at that card, and sends any other unknown address to the root.
 
 ## Run it
 

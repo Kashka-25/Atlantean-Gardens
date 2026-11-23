@@ -4,13 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Atlantean Gardens · The Living Atlas</title>
-  <!-- GitHub Pages shows this page for any address that doesn't exist, such as the retired
-       about, shop and members pages. It sends visitors to the Living Atlas, keeping any #hash.
+  <!-- GitHub Pages shows this page for any address that doesn't exist. It sends visitors on into the
+       Living Atlas:
+       - Card short links from the printed QR codes, /C/<WEB ID> (e.g. /C/TERPGASM, in capitals so the
+         QR code stays small; /c/terpgasm works too), open that card: /#/cards/<web id>. A card the
+         Atlas doesn't have yet opens the Strains list instead.
+       - Anything else (e.g. the retired about, shop and members pages) goes to the Atlas, keeping any #hash.
        The site lives at / on atlanteangardens.org (and under /<repo>/ if ever served from github.io). -->
   <meta name="robots" content="noindex">
   <script>
-    var home = /\.github\.io$/.test(location.hostname) ? "/" + location.pathname.split("/")[1] + "/" : "/";
-    location.replace(home + location.search + location.hash);
+    (function () {
+      var path = location.pathname, home = "/";
+      if (/\.github\.io$/.test(location.hostname)) { home = "/" + path.split("/")[1] + "/"; path = path.slice(home.length - 1); }
+      var card = path.match(/^\/c\/([a-z0-9-]+)\/?$/i);
+      location.replace(card ? home + "#/cards/" + card[1].toLowerCase() : home + location.search + location.hash);
+    })();
   </script>
   <style>
     :root { color-scheme: dark; }
