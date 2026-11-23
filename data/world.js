@@ -1073,22 +1073,19 @@ window.WORLD = {
    "id": "honey-melon-kush",
    "name": "Honey Melon Kush",
    "code": "AG-027",
-   "title": "The Afternoon Nap",
-   "category": "Indica",
-   "realm": "sunlight-realms",
-   "district": "the-bards-meadow",
-   "tags": [
-    "peace"
-   ],
+   "title": "The Sunkissed Sweetie",
+   "category": "Indica-Dominant Hybrid",
+   "realm": "living-harvest-realm",
+   "district": "honey-hollow",
+   "tags": [],
    "relations": [
-    "kasper",
-    "strawberry-akeil"
+    "kasper"
    ],
-   "body": "Honey Melon Kush reminds us that sweetness and strength can live together in perfect harmony.",
+   "body": "In the warm orchards of the Living Harvest Realm, where golden vines drip with sunlight and the air hums with beesong, Kasper discovered a melon unlike any other. Legends said it was kissed by honey from sky hives and cradled in the roots of ancient Kush mountains. He cherished the seeds, nurturing them with care and gratitude. From this union bloomed a strain of pure comfort — sweet as nectar, smooth as morning dew, and grounded like the earth that raised it.\n\nHoney Melon Kush reminds us that sweetness and strength can live together in perfect harmony.",
    "quote": "The sweetest gifts are the ones the earth and sky create together.",
-   "flavor": "",
+   "flavor": "Honey Nectar, Juicy Melon, Creamy Vanilla, Woody Earth",
    "aroma": "",
-   "effects": "",
+   "effects": "Deep Relaxation, Calm Clarity, Euphoric Comfort, Stress Melt, Body Ease",
    "mayRelieve": "",
    "terpenes": [],
    "growNotes": "",
@@ -1097,7 +1094,9 @@ window.WORLD = {
     "back": "assets/cards/honey-melon-kush-back.jpg"
    },
    "printedRealm": "The Living Harvest Realm",
-   "cardTitle": "The Sunkissed Sweetie"
+   "typeDetail": "70% Indica / 30% Sativa",
+   "thc": "Avg 22%",
+   "lineage": "Blueberry x GSC (breeder's account)"
   },
   {
    "id": "ice-cream",
@@ -1250,7 +1249,7 @@ window.WORLD = {
    "title": "The Guardian at Rest",
    "category": "Indica-Dominant Hybrid",
    "realm": "sunlight-realms",
-   "district": "",
+   "district": "morning-orchard",
    "tags": [],
    "relations": [
     "raptor"
@@ -1737,7 +1736,7 @@ window.WORLD = {
    "title": "The Sweet Remembering",
    "category": "Hybrid",
    "realm": "hearthlands-realm",
-   "district": "",
+   "district": "raptors-supply-road",
    "tags": [],
    "relations": [
     "raptor"
@@ -1765,7 +1764,7 @@ window.WORLD = {
    "title": "The Grafted Sweetness",
    "category": "Hybrid",
    "realm": "hearthlands-realm",
-   "district": "",
+   "district": "raptors-supply-road",
    "tags": [],
    "relations": [
     "dnine"
