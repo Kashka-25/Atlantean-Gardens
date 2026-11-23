@@ -45,6 +45,10 @@
     "hearthlands-realm": "rgba(235,140,80,.42)", "verdant-wilds-realm": "rgba(120,190,110,.4)",
     "celestial-realm": "rgba(120,130,240,.5)", "heart-of-atlantis": "rgba(150,200,120,.4)",
   };
+  /* Each Keeper's own light on their page and in the Hall, taken from their portrait
+     (Kasper's blue sprite, Lila's roses, Coco's moss, D'nine's violet flask, Raptor's warm courage). */
+  const KEEPER_LIGHT = { kasper: "#8fd3e0", lila: "#e8a5c9", coco: "#a9c47f", dnine: "#b99cf0", raptor: "#e8ac62" };
+  const byCode = (a, b) => (a.code || "~").localeCompare(b.code || "~");
 
   /* Card frames take the exact shape of their own artwork, so no card or
      Keeper portrait is ever trimmed (Keeper portraits are taller than the
@@ -55,7 +59,7 @@
     if (img.classList.contains("ccard__art")) { const c = img.closest(".ccard"); if (c && c.classList.contains("ccard--portrait")) c.style.aspectRatio = ratio; return; }
     const side = img.closest(".flip__side");
     if (side && !side.classList.contains("flip__back")) { const f = side.closest(".flip"); if (f) f.style.aspectRatio = ratio; }
-    const portrait = img.closest(".portrait"); if (portrait) portrait.style.aspectRatio = ratio;
+    const portrait = img.closest(".portrait__frame"); if (portrait) portrait.style.aspectRatio = ratio;
   }, true);
 
   /* ── Journey (per-browser only) ────────────────────────── */
@@ -340,7 +344,7 @@
       <section class="page view">
         <header class="page__head"><p class="eyebrow">The Hall of Living Portraits</p><h1>The Keepers of the Garden</h1>
           <p>These portraits were never painted to preserve appearances, but to preserve spirit. Each Keeper brings a unique gift. None is greater than another.</p></header>
-        <div class="hall">${W.keepers.map((k) => `<a class="portrait" href="#/keepers/${k.id}" aria-label="${esc(k.name)}, ${esc(k.pillar)}: ${esc(k.virtue)}"><img src="${esc(k.portrait)}" alt="Portrait of ${esc(k.name)}" loading="lazy"></a>`).join("")}</div>
+        <div class="hall">${W.keepers.map((k) => `<a class="portrait" href="#/keepers/${k.id}" style="--light:${KEEPER_LIGHT[k.id] || "var(--gold)"}" aria-label="${esc(k.name)}, ${esc(k.pillar)}: ${esc(k.virtue)}"><span class="portrait__frame"><img src="${esc(k.portrait)}" alt="Portrait of ${esc(k.name)}" loading="lazy"></span><span class="portrait__name">${esc(k.name)}</span><span class="portrait__gift">${esc(k.pillar)} · ${esc(k.virtue)}</span></a>`).join("")}</div>
         <div class="together">
           <div><div class="section-label">The five pillars</div>
             <div class="pillars">${W.keepers.map((k) => `<a href="#/keepers/${k.id}"><img src="${esc(k.portrait)}" alt=""><span><b>${esc(k.name)}</b> · ${esc(k.pillar)} — ${esc(k.virtue)}<br><span>“${esc(k.question)}”</span></span></a>`).join("")}</div>
@@ -355,24 +359,34 @@
     const k = keeperById[id]; if (!k) return viewKeepers(stage);
     discover("keepers", k.id, k.name);
     const r = k.realm && realmById[k.realm];
-    const tends = W.strains.filter((s) => k.relations.includes(s.id) || s.relations.includes(k.id));
+    const tends = W.strains.filter((s) => k.relations.includes(s.id) || s.relations.includes(k.id)).sort(byCode);
+    const i = W.keepers.indexOf(k), n = W.keepers.length;
+    const prev = W.keepers[(i + n - 1) % n], next = W.keepers[(i + 1) % n];
+    const place = r && k.district && r.districtIds[k.district];
     stage.innerHTML = `
-      <section class="page view">
+      <section class="page view keeper-view" style="--light:${KEEPER_LIGHT[k.id] || "var(--gold)"}">
+        <div class="keeper-view__aura" style="background-image:url('${esc(k.portrait)}')" aria-hidden="true"></div>
         <a class="backlink" href="#/keepers">${svg(ICON.back).replace("<svg", '<svg width="18" height="18"')} The Hall of Living Portraits</a>
         <div class="keeper">
-          <div class="keeper__portrait"><img src="${esc(k.portrait)}" alt="Portrait of ${esc(k.name)}"></div>
-          <article class="parchment">
+          <figure class="keeper__portrait"><img src="${esc(k.portrait)}" alt="Portrait of ${esc(k.name)}"></figure>
+          <article class="keeper__panel">
             <p class="eyebrow">${esc(k.pillar)} · ${esc(k.virtue)}</p>
             <h1>${esc(k.name)}</h1>
             <p class="sub">${esc(k.epithet)}</p>
-            <blockquote>“${esc(k.motto)}”</blockquote>
+            <blockquote class="keeper__motto">“${esc(k.motto)}”</blockquote>
             <div class="essence">${k.essence.map((e) => `<p>${esc(e)}</p>`).join("")}</div>
             <div class="ornament">✦</div>
-            <p><em>${esc(k.philosophy)}</em></p>
-            <div class="section-label" style="color:#9a7432">Callings</div>
+            <p class="keeper__philosophy">${esc(k.philosophy)}</p>
+            <div class="section-label">Callings</div>
             <div class="roles chips">${k.roles.map((x) => `<span class="chip">${esc(x)}</span>`).join("")}</div>
-            ${r ? `<div class="section-label" style="color:#9a7432">Found in the Atlas</div><p><a href="#/atlas/${r.id}" style="color:#2c4a3c">${esc(r.name)}</a>${k.district && r.districtIds[k.district] ? " · " + esc(r.districtIds[k.district]) : ""}</p>` : ""}
-            ${tends.length ? `<div class="section-label" style="color:#9a7432">Kindred strains</div><div class="kin">${tends.map((s) => `<a href="#/cards/${s.id}"><span class="dot">${esc((s.code || "✦").replace("AG-", ""))}</span>${esc(s.name)}</a>`).join("")}</div>` : ""}
+            ${r ? `<div class="section-label">Found in the Atlas</div>
+              <a class="keeper__home" href="#/atlas/${r.id}"><img src="${esc(r.image)}" alt="" loading="lazy"><span><b>${esc(r.name)}</b>${place ? `<em>${esc(place)}</em>` : ""}</span></a>` : ""}
+            ${tends.length ? `<div class="section-label">Kindred strains <span class="keeper__count">${tends.length}</span></div>
+              <div class="keeper__kin">${tends.map((s) => cardHTML(s)).join("")}</div>` : ""}
+            <nav class="keeper__nav" aria-label="Other Keepers">
+              <a href="#/keepers/${prev.id}" style="--light:${KEEPER_LIGHT[prev.id] || "var(--gold)"}"><img src="assets/keepers/${prev.id}-face.png" alt=""><span><small>Previous Keeper</small>${esc(prev.name)}</span></a>
+              <a href="#/keepers/${next.id}" style="--light:${KEEPER_LIGHT[next.id] || "var(--gold)"}"><span><small>Next Keeper</small>${esc(next.name)}</span><img src="assets/keepers/${next.id}-face.png" alt=""></a>
+            </nav>
           </article>
         </div>
       </section>`;
