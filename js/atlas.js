@@ -177,8 +177,8 @@
   function viewAtlas(stage) {
     const pins = W.realms.map((r, i) => { const t = realmTally(r), at = ATLAS.spots[r.id] || r.pin; return `
       <button class="pin${journey.realms.includes(r.id) ? " is-visited" : ""}${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${at.y}%" data-realm="${r.id}" aria-label="Open ${esc(r.name)}, ${t.found} of ${t.total} found"></button>
-      <button class="realm-label${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${at.y}%;--d:${(i * 0.6).toFixed(1)}s" data-realm="${r.id}" tabindex="-1" aria-hidden="true">
-        ${r.number ? `<i>${r.number}</i>` : `<i>✦</i>`}<b>${esc(r.name.replace(/^The /, ""))}</b>${t.total ? `<small>${t.found} of ${t.total} found</small>` : ""}
+      <button class="realm-label${at.x >= 60 ? " realm-label--left" : ""}${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${at.y}%;--d:${(i * 0.6).toFixed(1)}s" data-realm="${r.id}" tabindex="-1" aria-hidden="true">
+        ${r.number ? `<i>${r.number}</i>` : `<i>✦</i>`}<span class="realm-label__name"><b>${esc(r.name.replace(/^The /, ""))}</b>${t.total ? `<small>${t.found} of ${t.total} found</small>` : ""}</span>
       </button>`; }).join("");
     // A living symbol floats over each archway; hovering (or focusing) it opens out the door's name.
     const doors = DOORS.map((d, i) => `
