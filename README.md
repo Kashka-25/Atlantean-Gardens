@@ -27,7 +27,7 @@ because there is no fetch; the data loads from `data/world.js`.
 | Threshold | New tree emblem, trident wordmark and the introduction's closing lines | logo files from Cassidy (9 Nov 2026), `INTRODUCTION Page.docx` |
 | Atlas | Painted map, 8 glowing realm pins | `Seven Realm Atlas.png` |
 | Realm drawer | Painting, tagline, themes, **the tale** (verses quoted from the manuscripts, ending on a reflective nudge), places (22 with their own verse), look and feel, keepers and strains | 6 realm paintings, `The Atlas 7 Worlds.docx`, `living-atlas-prototype/data/realms` |
-| Strains | 100 collector cards (fronts and backs): 97 placed on the Atlas, 3 "not yet on the Atlas" | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
+| Strains | 100 collector cards (fronts and backs), all placed on the Atlas | `AG Cards/`, `Character Cards/`, `living-atlas-prototype/data/characters`, and the card studio (`card-studio/strains.xlsx`, `card-studio/out/`) |
 | Keepers | Hall of Living Portraits, 5 keeper pages | `The Hll Of Living Portraits.png`, `Character BIBLE.docx` |
 | Lore | 13 manuscripts with provenance and opening inscription | `13 Manuscripts/*.docx` |
 | Journey | Discovery progress, saved only in the visitor's browser | none |
@@ -70,7 +70,7 @@ them: re-run the sync after any rebuild. The QR code on each printed back opens
 Some places come from the card studio rather than from Cassidy's original
 canon. Cassidy decided (20 Nov 2026) that these are "places within already
 existed places", so `tools/extra_places.py` adds each one to its realm's Places:
-The Sky Peaks in the Sunlight Realms (Golden Goat), The Frostveil Expanse in
+The Sky Peaks in the Sunlight Realms (Golden Goat and Hindu Kush), The Frostveil Expanse in
 the Hearthlands (White Rhino), and The Horizon Isles off the Bubble Coast (Panama Red).
 All stay "hidden in mist" (not charted on the
 map). Opening one shows Cassidy's own painting of it (`assets/places/<id>.jpg`,
