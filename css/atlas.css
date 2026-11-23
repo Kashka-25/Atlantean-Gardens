@@ -851,3 +851,34 @@ button { font: inherit; color: inherit; }
 .app[data-view="atlas"]:not(.rail-tucked) .atlas__float-title img { display: none; }
 
 .app.rail-tucked .rail__body { display: none; }
+
+/* ── Doors beyond the Garden: the four corner archways (23 Nov 2026) ──
+   Still opening, so their lights are a paler, slower silver than the realms' gold,
+   and each banner opens inward from its corner. */
+.pin--door::before { inset: 19px; background: radial-gradient(circle, #fff 0 28%, #bccbf2 58%, rgba(188,203,242,0) 72%); box-shadow: 0 0 16px 5px rgba(205,218,255,.55); }
+.pin--door::after { border: 1.5px dashed rgba(218,228,255,.75); animation-duration: 4.2s; }
+.door-label {
+  position: absolute; z-index: 3; display: flex; flex-direction: column; gap: .05rem; white-space: nowrap; text-align: left;
+  border: 1px solid rgba(210,171,98,.3); background: var(--glass); backdrop-filter: blur(6px); color: inherit;
+  padding: .3rem .75rem .4rem; border-radius: 10px; cursor: pointer; transition: border-color .25s;
+}
+.door-label b { font-family: var(--display); font-weight: 600; font-size: clamp(.72rem, .95vw, .9rem); letter-spacing: .06em; color: #fff6dc; white-space: normal; max-width: 11em; line-height: 1.25; }
+.door-label small { font-family: var(--serif); font-style: italic; font-size: .8rem; color: var(--gold-2); }
+.door-label:hover { border-color: var(--gold); }
+.door-label--tl { transform: translate(-14px, 84px); } /* clears the Atlas title above it */
+.door-label--tr { transform: translate(calc(-100% + 14px), 26px); align-items: flex-end; text-align: right; }
+.door-label--bl { transform: translate(-14px, calc(-100% - 26px)); }
+.door-label--br { transform: translate(calc(-100% + 14px), calc(-100% - 26px)); align-items: flex-end; text-align: right; }
+.door__hero { width: 100%; height: 100%; background-size: 460% auto; background-repeat: no-repeat; transform: scale(1.06); animation: settle 1.6s var(--ease) forwards; }
+.door__wip { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .7rem; margin: .4rem 0 1.1rem; padding: .6rem .9rem;
+  border: 1px dashed var(--gold-dim); border-radius: 10px; background: rgba(210,171,98,.08); color: var(--parch); font-style: italic; }
+.door__wip span { font-family: var(--display); font-style: normal; font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-2); }
+.door__holds { font-size: 1.15rem; color: var(--parch); margin: 0 0 1rem; }
+.door__soon { color: var(--text-dim); font-style: italic; margin-top: 1.2rem; }
+@media (prefers-reduced-motion: reduce) { .door__hero { animation: none; transform: none; } }
+/* With the menu open on a wide screen, the map runs beneath it; this extra room lets
+   its left edge (and the two left-hand doors) be panned out from under the menu. */
+@media (min-width: 861px) { .app[data-view="atlas"]:not(.rail-tucked) .atlas__map { margin-left: var(--rail-space); } }
+/* On phones the realm bar and the dock float over the map's foot; this room lets the
+   bottom edge (and its two doors) be panned up into view. */
+@media (max-width: 860px) { .app[data-view="atlas"] .atlas__map { margin-bottom: 150px; } }

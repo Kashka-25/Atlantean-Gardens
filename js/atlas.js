@@ -126,6 +126,44 @@
   const passageHTML = (p) => `<figure class="passage"><blockquote>${p.lines.map((l) => `<span>${esc(l)}</span>`).join("")}</blockquote>${p.source ? `<figcaption>${esc(p.source)}</figcaption>` : ""}</figure>`;
   const districtName = (s) => (realmById[s.realm] && realmById[s.realm].districtIds[s.district]) || "";
 
+  /* ── Doors beyond the Garden ───────────────────────────────
+     The four archways painted in the Atlas's corners lead to worlds of other
+     plant medicines, still being grown (Cassidy, 23 Nov 2026). Psychedelic
+     plants have no door of their own: "it is best if it is split into all the
+     doors as it is present in so many different realms". x, y are percentages
+     of the painting; corner says which way the door's banner opens. */
+  const DOORS = [
+    { id: "kingdom-of-fungi", name: "The Kingdom of Fungi", x: 96.3, y: 91, corner: "br",
+      holds: "Mushrooms of every kind: the healing, the visionary, and the hidden networks beneath the forest floor." },
+    { id: "realm-of-ritual", name: "The Realm of Ritual", x: 6.8, y: 86, corner: "bl",
+      holds: "Cacao, blue lotus and the sacred plants of ceremony, and what they teach about the sacredness of life." },
+    { id: "the-deep", name: "The Deep", x: 93.1, y: 9.6, corner: "tr",
+      holds: "Kelp forests, seagrass meadows, glowing algae and the medicines of the sea." },
+    { id: "plant-to-pharmacy", name: "From Plant to Pharmacy", x: 6.8, y: 9, corner: "tl",
+      holds: "How willow bark, foxglove and the poppy became medicines we still use today." },
+  ];
+  const doorById = Object.fromEntries(DOORS.map((d) => [d.id, d]));
+  const DOOR_HERO = { tl: "0% 0%", tr: "100% 0%", bl: "0% 100%", br: "100% 100%" };
+  const SLEEPING_SEEDS = { source: "Manuscript V · The Endless Herbarium", lines: ["Even now, seeds lie sleeping beneath the soil,", "waiting patiently for the day their stories are needed."] };
+
+  function openDoor(id) {
+    const d = doorById[id]; if (!d) return;
+    const panel = $("#drawer-panel");
+    panel.innerHTML = `
+      <button class="drawer__close" data-close aria-label="Close">${svg(ICON.close).replace("<svg", '<svg width="20" height="20"')}</button>
+      <div class="realm__hero"><div class="door__hero" role="img" aria-label="The archway to ${esc(d.name)}, painted in a corner of the Atlas" style="background-image:url('${ATLAS.src}');background-position:${DOOR_HERO[d.corner]}"></div></div>
+      <div class="realm__body">
+        <div class="realm__num">A DOOR BEYOND THE GARDEN</div>
+        <h2 id="drawer-title">${esc(d.name)}</h2>
+        <p class="door__wip"><span>✦ Work in progress</span> This door is still opening.</p>
+        <p class="door__holds">${esc(d.holds)}</p>
+        ${passageHTML(SLEEPING_SEEDS)}
+        <p class="door__soon">The Garden is always growing. Come back soon to see what has grown here.</p>
+      </div>`;
+    const dr = $("#drawer"); dr.classList.add("is-open"); dr.setAttribute("aria-hidden", "false");
+    panel.scrollTop = 0; setTimeout(() => panel.querySelector(".drawer__close").focus(), 50);
+  }
+
   /* ── Views ─────────────────────────────────────────────── */
   function viewAtlas(stage) {
     const pins = W.realms.map((r, i) => { const t = realmTally(r), at = ATLAS.spots[r.id] || r.pin; return `
@@ -133,6 +171,9 @@
       <button class="realm-label${journey.bloomed.includes(r.id) ? " is-bloomed" : ""}" style="left:${at.x}%;top:${at.y}%;--d:${(i * 0.6).toFixed(1)}s" data-realm="${r.id}" tabindex="-1" aria-hidden="true">
         ${r.number ? `<i>${r.number}</i>` : `<i>✦</i>`}<b>${esc(r.name.replace(/^The /, ""))}</b>${t.total ? `<small>${t.found} of ${t.total} found</small>` : ""}
       </button>`; }).join("");
+    const doors = DOORS.map((d) => `
+      <button class="pin pin--door" style="left:${d.x}%;top:${d.y}%" data-door="${d.id}" aria-label="${esc(d.name)}: a door still opening, a work in progress"></button>
+      <button class="door-label door-label--${d.corner}" style="left:${d.x}%;top:${d.y}%" data-door="${d.id}" tabindex="-1" aria-hidden="true"><b>${esc(d.name)}</b><small>A work in progress</small></button>`).join("");
     const bar = W.realms.map((r) => { const t = realmTally(r); return `<button data-realm="${r.id}"${journey.bloomed.includes(r.id) ? ' class="is-bloomed"' : ""}>${r.number ? `<b>${r.number}</b>` : "✦ "}${esc(r.name.replace(/ Realms?$/, ""))}${t.total ? `<small>${t.found}/${t.total}</small>` : ""}</button>`; }).join("");
     stage.innerHTML = `
       <section class="atlas view">
@@ -140,6 +181,7 @@
           <div class="atlas__map">
             <img src="${ATLAS.src}" alt="The Living Atlas of Atlantean Gardens: seven realms around the Heart of Atlantis" draggable="false">
             ${pins}
+            ${doors}
           </div>
         </div>
         <button class="atlas__float-title" data-rail-toggle aria-label="Open or close the menu"><img src="assets/logo-emblem.png" alt=""><div><h1>The Living Atlas</h1><p>of Atlantean Gardens</p><em>No map has ever captured the whole of Atlantis. This one is simply where today's journey begins.</em></div></button>
@@ -147,11 +189,19 @@
         <div class="atlas__bar dockable" role="toolbar" aria-label="Realms"><button class="dock-toggle" aria-expanded="true" aria-label="Tuck the bar away"><img src="assets/logo-emblem.png" alt=""></button><div class="dockable__items">${bar}</div></div>
       </section>`;
     stage.querySelectorAll("[data-realm]").forEach((b) => b.addEventListener("click", () => enterRealm(b.dataset.realm)));
+    stage.querySelectorAll("[data-door]").forEach((b) => b.addEventListener("click", () => { location.hash = "#/atlas/" + b.dataset.door; }));
     wireDockables(stage);
     if (arrivingFrom) { const m = stage.querySelector(".atlas__map"); m.classList.add("is-surfacing"); setTimeout(() => m.classList.remove("is-surfacing"), 1300); arrivingFrom = null; }
     // On narrow screens the map is wider than the view: start centred on the Heart.
+    // The map keeps extra room beside the glass menus (css: .atlas__map margins: left while the
+    // side menu is open, below on phones), so its edges and corner doors can be panned out from
+    // beneath them. Start the view as if that room weren't there.
     const vp = $("#atlas-vp");
-    requestAnimationFrame(() => { vp.scrollLeft = (vp.scrollWidth - vp.clientWidth) / 2; vp.scrollTop = (vp.scrollHeight - vp.clientHeight) / 2; });
+    requestAnimationFrame(() => {
+      const cs = getComputedStyle(stage.querySelector(".atlas__map"));
+      const left = parseFloat(cs.marginLeft) || 0, below = parseFloat(cs.marginBottom) || 0;
+      vp.scrollLeft = left + (vp.scrollWidth - left - vp.clientWidth) / 2; vp.scrollTop = (vp.scrollHeight - below - vp.clientHeight) / 2;
+    });
     enableDragPan(vp);
   }
 
@@ -778,7 +828,7 @@
     $("#app").dataset.view = base;
     if (base === "atlas") {
       if (lastBase !== "atlas" || !stage.querySelector(".atlas")) viewAtlas(stage);
-      if (id) openRealm(id); else closeDrawer();
+      if (id) (doorById[id] ? openDoor(id) : openRealm(id)); else closeDrawer();
     } else {
       closeDrawer();
       if (base === "realm") viewRealm(stage, id);
