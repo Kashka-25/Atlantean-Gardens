@@ -6,7 +6,7 @@ A static, single-page preview of the full Atlantean Gardens experience, built
 
 Every name, story, quote and image comes from Cassidy's own material. Nothing
 is invented: empty fields quote Manuscript V instead of being filled in. Since 20 Nov 2026 it is the Atlantean Gardens site itself, at the site root
-(https://kashka-25.github.io/Atlantean-Gardens/). Cassidy: "I think we should get
+(https://atlanteangardens.org/). Cassidy: "I think we should get
 rid of the main site compeltely and make this atlas experience the new main site".
 `living-atlas/index.html` sends old links and QR codes (`/living-atlas/#/cards/<id>`)
 on to the root, and `404.html` sends any other unknown address there.
